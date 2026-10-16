@@ -10,7 +10,7 @@
         换算出等效SPX典型价再算 (沿用 trading_journal 口径)
 - EMA250: ES 1m 收盘的 EMA250, 再减当时 basis
 - flow: YHS /v1/flow/trades, server过滤 premium>=$200k/size>=50/
-        sides=B,M,A/kind=order, 本地 min_dte==0（0DTE）, 时段 15:30-16:00 ET
+        sides=B,M,A/kind=order, 本地 min_dte==0（0DTE）, 时段 15:50-16:00 ET
 - heatmap: 占位, data/heatmap_<DS>.png 由用户稍后提供
 
 认证: YHS 经 skill CLI (Secure Vault 注入), 本脚本不接触任何 key/token.
@@ -203,8 +203,8 @@ def fetch_flow(ds):
     """SPX 当日 flow: server过滤 premium>=2万/size>=50/sides=B,M,A/kind=order,
     本地只留 0DTE 的 SPXW (tickers=SPXW 口径 + min_dte==0)，
     size>=50, 单腿 single (leg_count<=1 且不含股票腿),
-    时段 15:30-16:00 ET（尾盘半小时）. 返回 trades 列表.
-    注: 用 direction=desc 倒序拉取, 碰到早于 15:30 ET 即停 (升序会淹没在早盘大堆单子里)."""
+    时段 15:50-16:00 ET（最后十分钟）. 返回 trades 列表.
+    注: 用 direction=desc 倒序拉取, 碰到早于 15:50 ET 即停 (升序会淹没在早盘大堆单子里)."""
     all_rows, cursor, pages = [], None, 0
     done = False
     while not done:
@@ -229,7 +229,7 @@ def fetch_flow(ds):
             if occ_et.strftime("%Y-%m-%d") != ds:
                 continue
             hm = occ_et.strftime("%H:%M")
-            if hm < "15:30":
+            if hm < "15:50":
                 done = True
                 break
             if hm <= "16:00":
@@ -256,7 +256,7 @@ def fetch_flow(ds):
         if occ_et.strftime("%Y-%m-%d") != ds:
             continue
         hm = occ_et.strftime("%H:%M")
-        if not ("15:30" <= hm <= "16:00"):  # 尾盘半小时
+        if not ("15:50" <= hm <= "16:00"):  # 最后十分钟
             continue
         kept.append(r)
     return kept
@@ -377,7 +377,7 @@ def summarize_flow(trades, spot_by_min, day_close):
             "moneyness": _moneyness(right, strike, spot),
         })
     summary = {
-        "window_et": "15:30-16:00",
+        "window_et": "15:50-16:00",
         "n": len(trades),
         "trade_list": trade_list,
         "call_ask": cell("call_ask", "C"),
@@ -391,7 +391,7 @@ def summarize_flow(trades, spot_by_min, day_close):
         "lean": lean,
     }
     if total <= 0:
-        verdict = "flow中性：15:30–16:00 无符合筛选的大单"
+        verdict = "flow中性：15:50–16:00 无符合筛选的大单"
     else:
         parts = []
         for key, label in [("call_ask", "call ask主动买"), ("put_ask", "put ask主动买"),
