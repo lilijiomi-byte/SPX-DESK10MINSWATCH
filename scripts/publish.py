@@ -189,12 +189,14 @@ def fetch_flow(ds):
     """SPX 当日 flow: server过滤 premium>=2万/size>=50/sides=B,M,A/kind=order,
     本地只留 0DTE 的 SPXW (tickers=SPXW 口径 + min_dte==0)，
     size>=50, 单腿 single (leg_count<=1 且不含股票腿),
-    时段 15:30-16:00 ET（尾盘半小时）. 返回 trades 列表."""
+    时段 15:30-16:00 ET（尾盘半小时）. 返回 trades 列表.
+    注: 用 direction=desc 倒序拉取, 碰到早于 15:30 ET 即停 (升序会淹没在早盘大堆单子里)."""
     all_rows, cursor, pages = [], None, 0
-    while True:
+    done = False
+    while not done:
         q = (f"/v1/flow/trades?session_date={ds}&tickers=SPXW&kind=order"
              f"&min_premium_usd=20000&min_contracts=50&sides=B,M,A"
-             f"&sort_by=occurredAt&direction=asc&limit=25")
+             f"&sort_by=occurredAt&direction=desc&limit=25")
         if cursor:
             q += "&cursor=" + urllib.parse.quote(cursor, safe="")
         st, d = _yhs_cli_get(q)
@@ -202,12 +204,28 @@ def fetch_flow(ds):
             print(f"[flow] YHS {st}, flow 置空", flush=True)
             return []
         dd = d.get("data") or {}
-        all_rows.extend(dd.get("data") or [])
+        rows = dd.get("data") or []
+        for r in rows:
+            try:
+                occ_et = (datetime.datetime.fromisoformat(
+                    (r.get("occurred_at") or "").replace("Z", "+00:00"))
+                    .astimezone(ET))
+            except Exception:
+                continue
+            if occ_et.strftime("%Y-%m-%d") != ds:
+                continue
+            hm = occ_et.strftime("%H:%M")
+            if hm < "15:30":
+                done = True
+                break
+            if hm <= "16:00":
+                all_rows.append(r)
         pages += 1
         cursor = (dd.get("_meta") or {}).get("next_cursor")
-        if not cursor or pages > 20:
+        if not cursor or pages > 40:
             break
         time.sleep(1.1)
+    all_rows.reverse()  # 恢复时间升序
     kept = []
     for r in all_rows:
         if r.get("min_dte") != 0:          # 只要 0DTE
