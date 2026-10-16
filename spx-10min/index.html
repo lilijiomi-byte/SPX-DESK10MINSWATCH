@@ -103,7 +103,7 @@
 <div class="card">
   <h2>④ flow<span class="tag" id="flowwin"></span></h2>
   <div class="table-wrap"><table class="flow-table">
-    <thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th><th>Spot</th><th>Sweep</th></tr></thead>
+    <thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead>
     <tbody id="flowbody"></tbody>
   </table></div>
   <div class="mid-line" id="midline"></div>
@@ -178,15 +178,13 @@ function renderDay(d){
       `<td><span class="side-pill">${f2(t.side)}</span></td>` +
       `<td>${fS(t.size)}</td>` +
       `<td><b>$${Number(t.prem_m).toFixed(3)}M</b></td>` +
-      `<td>${fS(t.vol)}</td><td>${fS(t.oi)}</td>` +
-      `<td>${f2(t.spot)}</td>` +
-      `<td>${t.sweep ? "YES" : "—"}</td></tr>`
+      `<td>${fS(t.vol)}</td><td>${fS(t.oi)}</td></tr>`
     ).join("");
     document.getElementById("midline").textContent =
       `mid 成交 $${fM(f.mid_premium_m)}（${f.mid_note}）`;
     document.getElementById("flowverdict").textContent = d.flow.verdict || "";
   } else {
-    fb.innerHTML = `<tr><td colspan="13" style="color:var(--muted);">15:30–16:00 时段内无符合筛选的大单</td></tr>`;
+    fb.innerHTML = `<tr><td colspan="11" style="color:var(--muted);">15:30–16:00 时段内无符合筛选的大单</td></tr>`;
     document.getElementById("midline").textContent = f ? `mid 成交 $${fM(f.mid_premium_m)}（${f.mid_note}）` : "flow 数据缺失";
     document.getElementById("flowverdict").textContent = (d.flow && d.flow.verdict) || "";
   }
