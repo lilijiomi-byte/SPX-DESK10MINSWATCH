@@ -221,31 +221,8 @@
  "flow": {
   "summary": {
    "window_et": "15:30-16:00",
-   "n": 1,
-   "trade_list": [
-    {
-     "t": "15:50:01",
-     "ticker": "SPXW",
-     "strike": 7805.0,
-     "right": "Call",
-     "otm_pct": -0.04,
-     "exp": "10-12",
-     "dte": 0,
-     "fill": 4.49,
-     "bid": 4.7,
-     "ask": 5.0,
-     "side": "BID",
-     "size": 563,
-     "prem_m": 0.253,
-     "net_m": null,
-     "vol": 160597,
-     "oi": 1002,
-     "spot": 7807.8,
-     "iv": 29.2,
-     "sweep": false,
-     "moneyness": "ATM"
-    }
-   ],
+   "n": 0,
+   "trade_list": [],
    "call_ask": {
     "premium_m": 0.0,
     "n": 0,
@@ -253,10 +230,10 @@
     "moneyness": ""
    },
    "call_bid": {
-    "premium_m": 0.25,
-    "n": 1,
-    "strike": 7805,
-    "moneyness": "ATM"
+    "premium_m": 0.0,
+    "n": 0,
+    "strike": null,
+    "moneyness": ""
    },
    "put_ask": {
     "premium_m": 0.0,
@@ -273,15 +250,15 @@
    "mid_premium_m": 0.0,
    "mid_note": "mid 单独列示，不计入主动买卖",
    "bull_premium_m": 0.0,
-   "bear_premium_m": 0.25,
-   "lean": "偏空"
+   "bear_premium_m": 0.0,
+   "lean": "中性"
   },
-  "verdict": "flow偏空：call bid主动卖 0.25M（7805 ATM），多空资金 0.00M vs 0.25M"
+  "verdict": "flow中性：15:30–16:00 无符合筛选的大单"
  },
  "strategy": [
   "现价 7807.8：VWAP 7807.9（上方）｜EMA250 7804.7（下方）",
   "尾盘目标可能往VWAP 7807.9 一带去",
-  "flow偏空：call bid主动卖 0.25M（7805 ATM），多空资金 0.00M vs 0.25M",
+  "flow中性：15:30–16:00 无符合筛选的大单",
   "时间衰减大，只看快进快出机会"
  ],
  "heatmap_png": null,

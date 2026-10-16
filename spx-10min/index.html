@@ -103,12 +103,12 @@
 <div class="card">
   <h2>④ flow<span class="tag" id="flowwin"></span></h2>
   <div class="table-wrap"><table class="flow-table">
-    <thead><tr><th>时间</th><th>Ticker</th><th>Strike</th><th>C/P</th><th>OTM</th><th>EXP</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th><th>Spot</th><th>IV</th><th>Sweep</th></tr></thead>
+    <thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th><th>Spot</th><th>Sweep</th></tr></thead>
     <tbody id="flowbody"></tbody>
   </table></div>
   <div class="mid-line" id="midline"></div>
   <div class="verdict" id="flowverdict"></div>
-  <div class="footnote">筛选：15:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ 0DTE ｜ SPXW ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。</div>
+  <div class="footnote">筛选：15:30–16:00 ET ｜ premium ≥ $2万 ｜ size ≥ 50 ｜ 0DTE ｜ SPXW ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。</div>
 </div>
 
 <div class="card">
@@ -169,11 +169,10 @@ function renderDay(d){
   if (f && f.trade_list && f.trade_list.length){
     fb.innerHTML = f.trade_list.map(t =>
       `<tr class="${t.right === "Call" ? "tr-call" : "tr-put"}">` +
-      `<td>${t.t}</td><td>${f2(t.ticker)}</td>` +
+      `<td>${t.t}</td>` +
       `<td><b>${f2(t.strike)}</b></td>` +
       `<td><b style="color:${t.right === "Call" ? "var(--up)" : "var(--dn)"}">${t.right === "Call" ? "CALL" : "PUT"}</b></td>` +
-      `<td>${t.otm_pct != null ? (t.otm_pct >= 0 ? "+" : "") + t.otm_pct.toFixed(2) + "%" : "—"}</td>` +
-      `<td>${f2(t.exp)}</td><td>${f2(t.dte)}</td>` +
+      `<td>${f2(t.dte)}</td>` +
       `<td>${t.fill != null ? "$" + t.fill.toFixed(2) : "—"}</td>` +
       `<td>${t.bid != null ? t.bid.toFixed(2) : "—"} / ${t.ask != null ? t.ask.toFixed(2) : "—"}</td>` +
       `<td><span class="side-pill">${f2(t.side)}</span></td>` +
@@ -181,14 +180,13 @@ function renderDay(d){
       `<td><b>$${Number(t.prem_m).toFixed(3)}M</b></td>` +
       `<td>${fS(t.vol)}</td><td>${fS(t.oi)}</td>` +
       `<td>${f2(t.spot)}</td>` +
-      `<td>${t.iv != null ? t.iv.toFixed(1) + "%" : "—"}</td>` +
       `<td>${t.sweep ? "YES" : "—"}</td></tr>`
     ).join("");
     document.getElementById("midline").textContent =
       `mid 成交 $${fM(f.mid_premium_m)}（${f.mid_note}）`;
     document.getElementById("flowverdict").textContent = d.flow.verdict || "";
   } else {
-    fb.innerHTML = `<tr><td colspan="17" style="color:var(--muted);">15:30–16:00 时段内无符合筛选的大单</td></tr>`;
+    fb.innerHTML = `<tr><td colspan="13" style="color:var(--muted);">15:30–16:00 时段内无符合筛选的大单</td></tr>`;
     document.getElementById("midline").textContent = f ? `mid 成交 $${fM(f.mid_premium_m)}（${f.mid_note}）` : "flow 数据缺失";
     document.getElementById("flowverdict").textContent = (d.flow && d.flow.verdict) || "";
   }

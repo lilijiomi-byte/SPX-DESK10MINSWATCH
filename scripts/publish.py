@@ -186,14 +186,14 @@ def _yhs_cli_get(path):
 
 
 def fetch_flow(ds):
-    """SPX 当日 flow: server过滤 premium>=200k/size>=50/sides=B,M,A/kind=order,
+    """SPX 当日 flow: server过滤 premium>=2万/size>=50/sides=B,M,A/kind=order,
     本地只留 0DTE 的 SPXW (tickers=SPXW 口径 + min_dte==0)，
     size>=50, 单腿 single (leg_count<=1 且不含股票腿),
     时段 15:30-16:00 ET（尾盘半小时）. 返回 trades 列表."""
     all_rows, cursor, pages = [], None, 0
     while True:
         q = (f"/v1/flow/trades?session_date={ds}&tickers=SPXW&kind=order"
-             f"&min_premium_usd=200000&min_contracts=50&sides=B,M,A"
+             f"&min_premium_usd=20000&min_contracts=50&sides=B,M,A"
              f"&sort_by=occurredAt&direction=asc&limit=25")
         if cursor:
             q += "&cursor=" + urllib.parse.quote(cursor, safe="")
@@ -325,25 +325,10 @@ def summarize_flow(trades, spot_by_min, day_close):
         spot = r.get("underlying_price_usd") or day_close
         bid = r.get("nbbo_bid_usd")
         ask = r.get("nbbo_ask_usd")
-        iv0, iv1 = r.get("min_iv_pct"), r.get("max_iv_pct")
-        iv = None
-        if iv0 is not None and iv1 is not None:
-            iv = round((float(iv0) + float(iv1)) / 2 * 100, 1)
-        # OTM%: YHS 的 max_moneyness_pct 常为 None, 自己算 (正=OTM, 负=ITM)
-        otm_pct = None
-        mnp = r.get("max_moneyness_pct")
-        if mnp is not None:
-            otm_pct = round(float(mnp), 2)
-        elif strike and spot:
-            otm_pct = round(((strike - spot) / spot * 100
-                             if right == "C" else (spot - strike) / spot * 100), 2)
         trade_list.append({
             "t": tstr,
-            "ticker": "SPXW",
             "strike": round(strike, 1) if strike else None,
             "right": "Call" if right == "C" else "Put",
-            "otm_pct": otm_pct,
-            "exp": (r.get("expiration") or "")[5:],
             "dte": r.get("min_dte"),
             "fill": round(float(r.get("avg_fill_usd") or 0), 2) or None,
             "bid": round(float(bid), 2) if bid else None,
@@ -356,7 +341,6 @@ def summarize_flow(trades, spot_by_min, day_close):
             "vol": r.get("session_volume"),
             "oi": r.get("open_interest"),
             "spot": round(float(spot), 1) if spot else None,
-            "iv": iv,
             "sweep": bool(r.get("has_sweep")),
             "moneyness": _moneyness(right, strike, spot),
         })
