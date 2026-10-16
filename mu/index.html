@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MU 日内报告（按日期）</title>
+<style>
+
+:root{color-scheme:light dark;--bg:#eef1f3;--paper:#fff;--ink:#12171d;--muted:#58636e;--line:#cfd6dc;--gold:#a97600;--purple:#7750a2;--gold-soft:#fff0bb;--purple-soft:#eee3fa;--orange:#e94b25;--green:#087a4e;--red:#c5323b;--chip:#e7ebee;--chart:#0d1117;--shadow:0 16px 54px rgba(10,18,25,.09)}
+@media(prefers-color-scheme:dark){:root{--bg:#080c10;--paper:#11171d;--ink:#f2f5f7;--muted:#9da8b2;--line:#2b343d;--gold:#f3c72f;--purple:#b785eb;--gold-soft:#31270b;--purple-soft:#281c37;--orange:#ff5b32;--green:#35ca88;--red:#ff626c;--chip:#1c242c;--chart:#090d12;--shadow:0 18px 60px rgba(0,0,0,.36)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.68}main{max-width:1180px;margin:auto;padding:28px 28px 80px}.day-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);box-shadow:var(--shadow);position:sticky;top:0;z-index:5}.day-tab{display:flex;justify-content:center;align-items:center;min-height:58px;padding:10px;background:var(--paper);color:var(--muted);font:800 clamp(.8rem,1.7vw,1rem)/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;text-decoration:none;transition:background-color .18s,color .18s}.day-tab:hover{background:var(--chip);color:var(--ink)}.day-tab[aria-selected=true]{background:var(--ink);color:var(--paper)}.day-tab:focus-visible{outline:3px solid var(--orange);outline-offset:-3px}.tab-move{margin-left:.45em}.up{color:var(--green)}.down{color:var(--red)}.day-tab .up{color:#22c55e}.day-tab .down{color:#ef4444}.day-panel[hidden]{display:none}.mast{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:end;padding:42px 0 28px;border-bottom:1px solid var(--line)}.brand-lockup{display:flex;align-items:center;gap:16px}.brand-logo{display:block;width:52px;height:52px;object-fit:contain;flex:0 0 auto;border-radius:12px}@media(prefers-color-scheme:dark){.brand-logo{background:#fff;padding:4px}}h1{margin:0;font:850 clamp(3rem,8vw,7rem)/.86 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-.08em}.date{margin:18px 0 0;font-size:clamp(1rem,2vw,1.35rem);font-weight:750;color:var(--muted)}.tape{text-align:right;min-width:260px}.tape strong{display:block;font:850 clamp(1.65rem,3vw,2.6rem)/1 ui-monospace,SFMono-Regular,Menlo,monospace}.tape span{font-size:.86rem;color:var(--muted)}.tape strong span{font-size:inherit}.event{display:grid;grid-template-columns:170px 1fr;gap:24px;padding:30px 0;border-bottom:1px solid var(--line)}.event-tag{align-self:start;padding:10px 14px;background:var(--red);color:#fff;font-weight:850;text-align:center}.event-tag.quiet{background:var(--green)}.event h2,.section-head h2{margin:0;font-size:clamp(1.35rem,2.5vw,2rem);line-height:1.22}.event p{margin:8px 0 0;color:var(--muted)}section{padding:42px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}.section-head>p{margin:0;max-width:520px;text-align:right;color:var(--muted);font-size:.9rem}.source,.source-line{display:flex;flex-wrap:wrap;gap:7px 12px;align-items:center;margin-top:12px;color:var(--muted);font-size:.82rem}.source-line span:not(:last-of-type){padding-right:12px;border-right:1px solid var(--line)}.source-line a{color:var(--orange);font-weight:750;text-underline-offset:3px}.forecast{padding:4px 8px!important;border:0!important;background:var(--gold-soft);color:var(--ink);font-weight:800}.dot{width:7px;height:7px;background:var(--orange);border-radius:50%}.brief{border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow)}.verbatim{padding:28px;white-space:pre-wrap;font-family:"Noto Sans SC","PingFang SC",sans-serif;line-height:1.78}.chart-shell{margin:0;background:var(--chart);padding:14px;border:1px solid #2a313b;box-shadow:var(--shadow)}.chart-shell img{display:block;width:100%;height:auto;background:#0d1117}.gex-intro{margin-top:22px;padding:24px;background:var(--paper);border:1px solid var(--line)}.gex-intro h3,.top5-wrap h3,.flow-summary h3{margin:0 0 10px;font-size:1.05rem}.gex-intro p{margin:0 0 14px;color:var(--muted)}.gex-intro ul{margin:0;padding-left:1.3rem}.gex-intro li+li{margin-top:8px}.top5-wrap{margin-top:24px}.top5{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.node{padding:16px 14px;background:var(--paper);border-top:4px solid var(--gold)}.node.purple{border-color:var(--purple)}.node-rank{color:var(--muted);font-size:.78rem;font-weight:800}.node strong{display:block;margin:5px 0 3px;font:800 1.3rem/1 ui-monospace,SFMono-Regular,Menlo,monospace}.metric{font:750 .88rem/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}.node-analysis{margin:13px 0 0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem;line-height:1.7}.method{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:18px;background:var(--line);border:1px solid var(--line)}.method>div,.method>p{margin:0;padding:18px;background:var(--paper);color:var(--muted);font-size:.86rem}.method b{color:var(--ink)}.method p{margin:6px 0 0}.method>p{grid-column:1/-1}.method .strict{background:var(--gold-soft);color:var(--ink)}.flow-summary{margin-top:28px;padding:24px;background:var(--paper);border:1px solid var(--line)}.flow-summary .filter{margin:-2px 0 14px;color:var(--muted);font-size:.86rem}.flow-summary ul{margin:0;padding-left:1.25rem}.flow-summary li+li{margin-top:7px}.verdict{margin:16px 0 0;padding-top:14px;border-top:1px dashed var(--line);font-weight:750}.summary-list{counter-reset:s;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}.summary-item{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:16px;padding:20px 22px;background:var(--paper)}.summary-item:before{content:counter(s,decimal-leading-zero);font:800 .86rem/1 ui-monospace,monospace;color:var(--orange);padding-top:5px}.summary-item p{margin:0}.data-note{margin:28px 0 0;color:var(--muted);font-size:.8rem}
+@media(max-width:760px){main{padding:12px 16px 56px}.mast{grid-template-columns:1fr;padding-top:28px}.tape{text-align:left;min-width:0}.event{grid-template-columns:1fr;gap:12px}.event-tag{justify-self:start}.section-head{display:block}.section-head>p{text-align:left;margin-top:8px}.top5{grid-template-columns:1fr}.chart-shell{padding:6px;margin-left:-8px;margin-right:-8px}.method{grid-template-columns:1fr}.method>p{grid-column:auto}}
+@media(max-width:560px){.day-tabs{grid-template-columns:1fr;position:static}.day-tab{min-height:44px;justify-content:flex-start}.source-line span:not(:last-of-type){border:0;padding-right:0}.source-line{display:grid}.verbatim{padding:20px;font-size:.92rem}.top5{grid-template-columns:1fr}.summary-item{grid-template-columns:32px 1fr;padding:17px 16px;gap:10px}section{padding:34px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.day-tab{transition:none}}
+
+</style>
+</head>
+<body>
+<main>
+
+<h1 style="margin:0 0 4px">MU 日内报告</h1>
+<p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
+<nav class="day-tabs" role="tablist" aria-label="日期">
+<a class="day-tab" role="tab" data-target="day-1016" aria-selected="true" href="#day-1016">10/16 周五 <span class="tab-move down">-2.92%</span></a>
+<a class="day-tab" role="tab" data-target="day-1015" aria-selected="false" href="#day-1015">10/15 周四 <span class="tab-move up">+6.85%</span></a>
+</nav>
+<article class="day-panel" id="day-1016" role="tabpanel">
+<header class="mast"><div>
+<h1>MU 日内报告</h1>
+<p class="date">2026年10月16日 · 周五 · 日内报告</p>
+</div><div class="tape">
+<strong>878.67 <span class="down">-2.92%</span></strong>
+<span>开 905.13 · 高 907.50 · 低 875.00</span>
+</div></header>
+<aside class="event">
+<div class="event-tag">10月OPEX（月度期权到期日）</div>
+<div>
+<h2>10月OPEX（月度期权到期日）</h2>
+<p>月度期权到期日；钉住/展仓效应可能放大波动。</p>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-16 MDT｜Alpha夜航社 #junkman-analysis｜作者 Junk-man（APP徽章）</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
+检索要点（按 10/15 先例）：限定 #junkman-analysis 频道内搜 ticker &quot;MU&quot;（不要用 &quot;Micron&quot;），从 07:15 MDT 开始检查；MU 专属分析通常发于 07:15–07:16 MDT，早于 07:18–07:19 的大批次。
+
+抓到后一字不拉存入本文件，替换本行。需包含：发布时间（MDT）、盘前参考价、GEX regime、Call Wall / Magnet / Put Wall / Flip、交易区间、潜在低点观察区、三种开盘分支、五类交易机会。
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE（2026-10-16到期），夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/mu_2026-10-16.png" alt="MU 2026-10-16 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 78 档 5 分钟快照）</h3>
+<p>GEX 地形图（0DTE，夜航社 78 档 5 分钟快照）：金色=正 gamma 区（做市商对冲减速带/墙），紫色=负 gamma 区（加速带）。白点为每档现货位置。call wall 905→880（下移）。</p>
+<ul>
+<li>金色带（收盘档）：880(+491.5M)</li>
+<li>紫色带（收盘档）：无显著负节点</li>
+<li>全天最大节点：880(+491.5M@15:55)、890(-108.6M@15:25)、900(+84.2M@14:35)、875(-64.3M@15:45)、885(+56.8M@15:00)</li>
+<li>尾盘节点变化：880 +2.5M→+491.5M；890 -17.0M→-0.0M；900 -3.4M→+0.0M</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 15:55</span>
+<strong>880</strong>
+<span class="metric">+491.5M</span>
+<p class="node-analysis">一、880（正 gamma 墙/地板）：全天变化——从 +2.5M 到 +491.5M；影响时段——15:55 ET 达到峰值，当时现货约 879.96；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">② · 15:25</span>
+<strong>890</strong>
+<span class="metric">-108.6M</span>
+<p class="node-analysis">二、890（负 gamma 加速带）：全天变化——从 -17.0M 到 -108.6M；影响时段——15:25 ET 达到峰值，当时现货约 886.21；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">③ · 14:35</span>
+<strong>900</strong>
+<span class="metric">+84.2M</span>
+<p class="node-analysis">三、900（正 gamma 墙/地板）：全天变化——由 -3.4M 翻转为 +84.2M；影响时段——14:35 ET 达到峰值，当时现货约 892.19；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">④ · 15:45</span>
+<strong>875</strong>
+<span class="metric">-64.3M</span>
+<p class="node-analysis">四、875（负 gamma 加速带）：全天变化——从 -1.9M 到 -64.3M；影响时段——15:45 ET 达到峰值，当时现货约 876.60；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 15:00</span>
+<strong>885</strong>
+<span class="metric">+56.8M</span>
+<p class="node-analysis">五、885（正 gamma 墙/地板）：全天变化——由 -1.6M 翻转为 +56.8M；影响时段——15:00 ET 达到峰值，当时现货约 883.97；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流总结（0DTE，全天17笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<ul>
+<li>09:30 call ask（主 875ITM）：$0.48M / 2笔</li>
+<li>09:30 call bid（主 905ATM）：$0.40M / 1笔</li>
+<li>09:30 put ask（主 1050ITM）：$1.57M / 1笔</li>
+<li>10:00 call bid（主 900ATM）：$0.21M / 1笔</li>
+<li>11:30 call ask（主 895ITM）：$0.21M / 1笔</li>
+<li>12:30 call ask（主 860ITM）：$0.40M / 1笔</li>
+<li>12:30 call bid（主 895ITM）：$0.30M / 1笔</li>
+<li>12:30 put bid（主 895ATM）：$0.23M / 1笔</li>
+<li>14:00 call ask（主 380ITM）：$2.56M / 1笔</li>
+<li>14:00 put bid（主 915ITM）：$0.21M / 1笔</li>
+<li>15:00 put bid（主 995ITM）：$1.11M / 1笔</li>
+<li>15:30 call bid（主 840ITM）：$0.21M / 1笔</li>
+<li>15:30 put bid（主 1010ITM）：$4.57M / 4笔</li>
+</ul>
+<p class="verdict">全天17笔：主动买入(call ask + put bid)$9.78M，主动卖出(put ask + call bid)$2.70M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 905.13 在双墙 900–950 之间；全天 907.50–875.00，收 878.67（-2.92%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 905.13 → 高 907.50 → 低 875.00 → 收 878.67。</p></article>
+<article class="summary-item"><p>③ 墙位：call 950 / put 900（junk-man口径）；heatmap 算法墙首→末：call wall 905→880（下移）。</p></article>
+<article class="summary-item"><p>④ 资金流：全天17笔：主动买入(call ask + put bid)$9.78M，主动卖出(put ask + call bid)$2.70M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 下方（VWAP 891.00，EMA250 900.40）。</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1015" role="tabpanel">
+<header class="mast"><div>
+<h1>MU 日内报告</h1>
+<p class="date">2026年10月15日 · 周四 · 日内报告</p>
+</div><div class="tape">
+<strong>931.24 <span class="up">+6.85%</span></strong>
+<span>开 871.58 · 高 931.65 · 低 858.00</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-15 MDT｜Alpha夜航社 #junkman-analysis｜作者 Junk-man（APP徽章）</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
+来源：Alpha夜航社 Discord #junkman-analysis
+作者：junk_man（APP 徽章）
+发布时间：2026-10-15 07:16 MDT
+消息链接：https://discord.com/channels/1434960637561409689/1515786763417813094/1560280259763503215
+转录：浏览器只读抓取（parent 会话），已用于 MU 日内报告 10/15 tab 早盘分析区
+
+━━━━━━━━━━━━━━━━━━━━
+⚡ MU
+💵 盘前参考价 870.16｜🔴 负 GEX｜放大/加速
+🔴 950 CALL WALL 下方｜🟣 880 MAGNET 下方
+🟢 870 PUT WALL 区域内｜🔵 879.8 FLIP 下方
+🎯 交易区间 870–950｜上墙延伸 950–960
+🛟 潜在低点观察区 865–870；若失守 865，取消本轮接底，等重新收复 870 并回踩
+🧭 开盘分支｜开在 870 下方、反抽不过先看 865；875 上方回踩守住先看 879.8
+
+🎯 交易机会
+• 📈 回踩 Call：收复 875、回踩守住 → 879.8 → 885
+• 🚀 突破 Call：站稳 950、回踩有效 → 955 → 960
+• 📉 受阻 Put：875 受阻再失守 870 → 865 → 860
+• 🔻 破位 Put：跌破 870、反抽不过 → 865 → 860
+• 🛟 抄底 Call：下探 865–870 后重新收复 870、回踩守住 → 875 → 879.8
+
+另：MU 列入&quot;📈向上不对称&quot;观察（多 43% / 区间 25% / 空 32%，接受 875→879.8，反向失守 870→865）、&quot;近 Put Wall&quot;名单（参考 870.16，Put Wall 870 区域内）、&quot;中波动&quot;名单、全市场&quot;负 GEX&quot;名单。
+━━━━━━━━━━━━━━━━━━━━
+
+当日实际走势对照（收盘后补）：
+开盘 871.16（870 Put Wall 区域内，开盘即站在多空分界上），低点 858.00
+（跌破 865 观察区下沿），V 型反转收 931.40（+6.91%）。
+实际走完&quot;抄底 Call&quot;剧本（下探 865–870→收复 870→875→879.8）并远超至 931.40；
+&quot;突破 Call&quot;（站稳 950→955→960）未触发，全天最高 931.65 未碰 950。
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 1DTE heatmap</h2><div class="source">
+<p>1DTE（2026-10-16到期），夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/mu_2026-10-15.png" alt="MU 2026-10-15 5分钟K线与1DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（1DTE，夜航社 78 档 5 分钟快照）</h3>
+<p>GEX 地形图（1DTE，夜航社 78 档 5 分钟快照）：金色=正 gamma 区（做市商对冲减速带/墙），紫色=负 gamma 区（加速带）。白点为每档现货位置。call wall 880→1010（上移）；put wall 820→920（上移）。</p>
+<ul>
+<li>金色带（收盘档）：915(+17.6M)、920(+10.9M)、1010(+5.0M)</li>
+<li>紫色带（收盘档）：950(-32.0M)、925(-18.6M)、930(-14.2M)</li>
+<li>全天最大节点：950(-32.0M@15:55)、915(+20.7M@15:05)、920(+19.7M@14:55)、925(-18.6M@15:55)、930(-15.3M@15:50)</li>
+<li>尾盘节点变化：950 -2.5M→-32.0M；915 -2.1M→+17.6M；920 +4.7M→+10.9M</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node purple">
+<span class="node-rank">① · 15:55</span>
+<strong>950</strong>
+<span class="metric">-32.0M</span>
+<p class="node-analysis">一、950（负 gamma 加速带）：全天变化——从 -2.5M 到 -32.0M；影响时段——15:55 ET 达到峰值，当时现货约 931.53；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:05</span>
+<strong>915</strong>
+<span class="metric">+20.7M</span>
+<p class="node-analysis">二、915（正 gamma 墙/地板）：全天变化——由 -2.1M 翻转为 +20.7M；影响时段——15:05 ET 达到峰值，当时现货约 915.96；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">③ · 14:55</span>
+<strong>920</strong>
+<span class="metric">+19.7M</span>
+<p class="node-analysis">三、920（正 gamma 墙/地板）：全天变化——从 +4.7M 到 +19.7M；影响时段——14:55 ET 达到峰值，当时现货约 909.85；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">④ · 15:55</span>
+<strong>925</strong>
+<span class="metric">-18.6M</span>
+<p class="node-analysis">四、925（负 gamma 加速带）：全天变化——从 -2.2M 到 -18.6M；影响时段——15:55 ET 达到峰值，当时现货约 931.53；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">⑤ · 15:50</span>
+<strong>930</strong>
+<span class="metric">-15.3M</span>
+<p class="node-analysis">五、930（负 gamma 加速带）：全天变化——从 -3.2M 到 -15.3M；影响时段——15:50 ET 达到峰值，当时现货约 929.08；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流总结（1DTE，全天61笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<ul>
+<li>09:30 call ask（主 890OTM）：$0.44M / 2笔</li>
+<li>09:30 put ask（主 875ATM）：$1.07M / 4笔</li>
+<li>09:30 put bid（主 875ATM）：$4.48M / 7笔</li>
+<li>10:00 call ask（主 860ITM）：$0.78M / 3笔</li>
+<li>10:00 call bid（主 900OTM）：$0.65M / 3笔</li>
+<li>10:00 put ask（主 900ITM）：$0.30M / 1笔</li>
+<li>10:30 call ask（主 850ITM）：$2.26M / 6笔</li>
+<li>10:30 call bid（主 910ATM）：$2.44M / 6笔</li>
+<li>11:00 call ask（主 940OTM）：$0.21M / 1笔</li>
+<li>11:00 call bid（主 915ATM）：$1.48M / 3笔</li>
+<li>11:00 put ask（主 920ATM）：$1.58M / 2笔</li>
+<li>11:30 call ask（主 930OTM）：$0.40M / 1笔</li>
+<li>12:00 call bid（主 900ITM）：$0.23M / 1笔</li>
+<li>13:00 call ask（主 845ITM）：$0.37M / 1笔</li>
+<li>13:00 call bid（主 910ATM）：$1.15M / 2笔</li>
+<li>14:00 call ask（主 900ATM）：$0.32M / 1笔</li>
+<li>14:00 put ask（主 905ATM）：$0.29M / 1笔</li>
+<li>14:00 put bid（主 905ATM）：$0.63M / 2笔</li>
+<li>14:30 call ask（主 900ITM）：$0.27M / 1笔</li>
+<li>15:00 call ask（主 915ITM）：$2.46M / 5笔</li>
+<li>15:00 call bid（主 915ITM）：$0.24M / 1笔</li>
+<li>15:30 call ask（主 950OTM）：$1.67M / 4笔</li>
+<li>15:30 call bid（主 890ITM）：$0.82M / 1笔</li>
+<li>15:30 put ask（主 1000ITM）：$0.72M / 1笔</li>
+<li>15:30 put bid（主 1050ITM）：$1.25M / 1笔</li>
+</ul>
+<p class="verdict">全天61笔：主动买入(call ask + put bid)$15.53M，主动卖出(put ask + call bid)$10.95M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 1DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 871.58 在双墙 870–950 之间；全天 931.65–858.00，收 931.24（+6.85%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 871.58 → 高 931.65 → 低 858.00 → 收 931.24。</p></article>
+<article class="summary-item"><p>③ 墙位：call 950 / put 870（junk-man口径）；heatmap 算法墙首→末：call wall 880→1010（上移）; put wall 820→920（上移）。</p></article>
+<article class="summary-item"><p>④ 资金流：全天61笔：主动买入(call ask + put bid)$15.53M，主动卖出(put ask + call bid)$10.95M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 上方（VWAP 896.73，EMA250 900.40）。</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+</main>
+
+<script>
+(function(){
+  var tabs=[...document.querySelectorAll('.day-tab')];
+  var panels=[...document.querySelectorAll('.day-panel')];
+  function show(id,focus){
+    panels.forEach(function(p){p.hidden=(p.id!==id);});
+    tabs.forEach(function(t){
+      var on=t.dataset.target===id;
+      t.setAttribute('aria-selected',on?'true':'false');
+      if(on&&focus)t.focus();
+    });
+    if(history.replaceState)history.replaceState(null,'','#'+id);
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.target,false);});});
+  var h=(location.hash||'').slice(1);
+  var first=tabs.length?tabs[0].dataset.target:null;
+  var init=(h&&document.getElementById(h))?h:first;
+  if(init)show(init,false);
+})();
+</script>
+
+</body>
+</html>
