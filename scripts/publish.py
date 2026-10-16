@@ -105,6 +105,18 @@ def spx_series(spx, es):
 
 
 # ---------------- K线图 PNG (白底) ----------------
+def _emphasize_round_levels(ax):
+    """纵坐标逢整百/半百 (…00/…50) 的刻度加粗标红，作为提醒。"""
+    for lbl in ax.get_yticklabels():
+        try:
+            v = float(lbl.get_text().replace(",", ""))
+        except ValueError:
+            continue
+        if round(v) % 100 in (0, 50):
+            lbl.set_color("#dc2626")
+            lbl.set_weight("bold")
+
+
 def draw_chart(ds, bars, vwap_seg, ema_seg, out_path):
     import matplotlib
     matplotlib.use("Agg")
@@ -164,6 +176,8 @@ def draw_chart(ds, bars, vwap_seg, ema_seg, out_path):
     fig.text(0.5, 0.03, dataline, ha="center", fontsize=11, color="#17191d",
              bbox=dict(boxstyle="round,pad=0.4", fc="#eceff3", ec="#d8dde4"))
     fig.subplots_adjust(bottom=0.16, top=0.90, left=0.075, right=0.97)
+    fig.canvas.draw()  # 先绘制以生成刻度标签
+    _emphasize_round_levels(ax)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     fig.savefig(out_path, dpi=110, facecolor="white")
     plt.close(fig)
