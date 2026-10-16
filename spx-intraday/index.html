@@ -13,16 +13,25 @@
 @media(max-width:760px){main{padding:12px 16px 56px}.mast{grid-template-columns:1fr;padding-top:28px}.tape{text-align:left;min-width:0}.event{grid-template-columns:1fr;gap:12px}.event-tag{justify-self:start}.section-head{display:block}.section-head>p{text-align:left;margin-top:8px}.top5{grid-template-columns:1fr}.chart-shell{padding:6px;margin-left:-8px;margin-right:-8px}.method{grid-template-columns:1fr}.method>p{grid-column:auto}}
 @media(max-width:560px){.day-tabs{grid-template-columns:1fr;position:static}.day-tab{min-height:44px;justify-content:flex-start}.source-line span:not(:last-of-type){border:0;padding-right:0}.source-line{display:grid}.verbatim{padding:20px;font-size:.92rem}.top5{grid-template-columns:1fr}.summary-item{grid-template-columns:32px 1fr;padding:17px 16px;gap:10px}section{padding:34px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.day-tab{transition:none}}
+.sitenav{display:flex;gap:4px;flex-wrap:wrap;margin:0 0 18px;background:#243044;border-radius:8px;padding:6px}
+.sitenav a{color:#dbe3ee;text-decoration:none;font-size:13px;padding:8px 14px;border-radius:6px}
+.sitenav a:hover{background:#33445e;color:#fff}
+.sitenav a.on{background:#101b2d;color:#fff;font-weight:700}
 
 </style>
 </head>
 <body>
 <main>
 
+<nav class="sitenav"><a href="../index.html">首页</a><a href="../spx-intraday/index.html" class="on">SPX 日内报告</a><a href="../spx-10min/index.html">SPX 尾盘10分钟</a><a href="../mu/index.html">MU 日内报告</a><a href="../tsla/index.html">TSLA 日内报告</a></nav>
 <h1 style="margin:0 0 4px">SPX 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
 <a class="day-tab" role="tab" data-target="day-1016" aria-selected="true" href="#day-1016">10/16 周五 <span class="tab-move down">-1.10%</span></a>
+<a class="day-tab" role="tab" data-target="day-1015" aria-selected="false" href="#day-1015">10/15 周四 <span class="tab-move up">+0.32%</span></a>
+<a class="day-tab" role="tab" data-target="day-1014" aria-selected="false" href="#day-1014">10/14 周三 <span class="tab-move down">-1.08%</span></a>
+<a class="day-tab" role="tab" data-target="day-1013" aria-selected="false" href="#day-1013">10/13 周二 <span class="tab-move down">-0.02%</span></a>
+<a class="day-tab" role="tab" data-target="day-1012" aria-selected="false" href="#day-1012">10/12 周一 <span class="tab-move down">-0.05%</span></a>
 </nav>
 <article class="day-panel" id="day-1016" role="tabpanel">
 <header class="mast"><div>
@@ -136,6 +145,463 @@
 <article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7615, 7625, 7655]→[7655, 7660, 7670]；7660 增厚 +1346%（562M→8123M）；7655 增厚 +100%（-1695M→-0M）；7670 减弱 -100%（1168M→0M）</p></article>
 <article class="summary-item"><p>④flow 印证：中性（bull 4.45M / bear 8.22M）；最大簇 7670P 0.83M（ATM，spot≈7653.5；ask 0.83M / bid 0.0M / mid 0.0M）。</p></article>
 <article class="summary-item"><p>⑤收盘 7658.74（-1.1%），VWAP 7687.62，EMA250 7718.13；事件日：十月OPEX（月度期权到期）</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1015" role="tabpanel">
+<header class="mast"><div>
+<h1>SPX 日内报告</h1>
+<p class="date">2026年10月15日 · 周四 · 日内报告</p>
+</div><div class="tape">
+<strong>7,743.88 <span class="up">+0.32%</span></strong>
+<span>开 7,687.31 · 高 7,754.15 · 低 7,669.66</span>
+</div></header>
+<aside class="event">
+<div class="event-tag">美国9月PPI大超预期+零售销售日</div>
+<div>
+<h2>美国9月PPI大超预期+零售销售日</h2>
+<p>8:30 ET PPI+1.3%大超预期、零售销售+0.8%超预期；事件日。</p>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-15 07:19 MDT｜Alpha夜航社 #junkman-analysis｜作者 junk_man（APP徽章）</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
+━━━━━━━━━━━━━━━━━━━━
+⚡ SPXW
+💵 SPY 推算开盘参考（非现金现价）7,694.8｜🔴 负 GEX｜放大/加速
+🔴 7,725 CALL WALL 下方｜🟣 7,710 MAGNET 下方
+🟢 7,670 PUT WALL 上方｜🔵 7,707.5 FLIP 下方
+🎯 交易区间 7,670–7,725｜上墙延伸 7,725–7,735
+📊 IV 预期振幅｜🛡️ 低波动/指数｜IV 13.8% (1DTE)｜1σ 预计振幅 ±38.47 (±0.50%)｜波动区间 7,656.33–7,733.27
+🛟 潜在低点观察区 7,685–7,690（非最低价预测）；若失守 7,685，取消本轮接底，等重新收复 7,690 并回踩。
+🧭 开盘分支｜若开在 7,690 下方：反抽不过，先看 7,685（若直接低开至中轴 7,675 附近，旧破位段已跳过，转看中轴争夺与防守）；7,695 上方：回踩守住，先看 7,700；两者之间或贴近边界，等待确认。
+🎯 交易机会
+• 📈 回踩 Call：收复 7,695、回踩守住 → 7,700 → 7,705；失守 7,695 取消。
+• 🚀 突破 Call：站稳 7,725、回踩有效 → 7,730 → 7,735；跌破回踩低点退出。7,735 再站稳，才看 7,740 → 7,745。
+• 📉 受阻 Put：7,695 受阻，再失守 7,690 → 7,685 → 7,680；站稳 7,695 取消。
+• 🔻 破位 Put：跌破 7,690、反抽不过 → 7,685 → 7,680；失守再看 Put Wall 7,670；收回 7,690 取消。
+• 🛟 抄底 Call：下探 7,685–7,690 后重新收复 7,690、回踩守住 → 7,695 → 7,700；再破回踩低点退出，不接持续下跌。
+• 🛡️ 防守 Call：深探至 Put Wall 7,670 附近获支撑企稳、回踩守住 → 7,675；有效跌破 7,670 退出。5 分钟 K 线 × 0DTE heatmap K 线：Yahoo Finance · Heatmap：夜航社 API
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE，夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/spx_2026-10-15.png" alt="SPX 2026-10-15 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 78 档 5 分钟快照）</h3>
+<ul>
+<li>金色带在 7745(+5M)</li>
+<li>尾盘无显著紫色带</li>
+<li>白点轨迹: 开 7687.31→高 7754.15→低 7669.66→收 7743.88（0.32%）；收盘在 call wall 7720 上方，put wall 7685 上方</li>
+<li>尾盘节点变化: 前三节点迁移 [7720, 7745, 7750]→[7745]；7745 减弱 -99%（841M→5M）</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node purple">
+<span class="node-rank">① · 15:45</span>
+<strong>7750</strong>
+<span class="metric">-52734.5M</span>
+</article>
+<article class="node purple">
+<span class="node-rank">② · 15:20</span>
+<strong>7755</strong>
+<span class="metric">-5752.5M</span>
+</article>
+<article class="node">
+<span class="node-rank">③ · 15:45</span>
+<strong>7745</strong>
+<span class="metric">+4764.6M</span>
+</article>
+<article class="node">
+<span class="node-rank">④ · 15:30</span>
+<strong>7740</strong>
+<span class="metric">+4644.6M</span>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 14:15</span>
+<strong>7720</strong>
+<span class="metric">+3755.3M</span>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流总结（0DTE SPXW，全天58笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<ul>
+<li>{&#x27;t_et&#x27;: &#x27;09:30&#x27;, &#x27;call_ask&#x27;: 0.36, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.712, &#x27;put_bid&#x27;: 0.4, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 1, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 3, &#x27;put_bid_n&#x27;: 1, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;10:00&#x27;, &#x27;call_ask&#x27;: 0.77, &#x27;call_bid&#x27;: 0.977, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.52, &#x27;put_bid&#x27;: 0.733, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 2, &#x27;call_bid_n&#x27;: 3, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 2, &#x27;put_bid_n&#x27;: 2, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;10:30&#x27;, &#x27;call_ask&#x27;: 0.71, &#x27;call_bid&#x27;: 0.333, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.26, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 3, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;11:00&#x27;, &#x27;call_ask&#x27;: 1.074, &#x27;call_bid&#x27;: 0.817, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 1.033, &#x27;put_bid&#x27;: 0.52, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 3, &#x27;call_bid_n&#x27;: 3, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 3, &#x27;put_bid_n&#x27;: 2, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;11:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.2, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.291, &#x27;put_bid&#x27;: 0.453, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 2, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;12:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;12:30&#x27;, &#x27;call_ask&#x27;: 0.539, &#x27;call_bid&#x27;: 0.377, &#x27;call_mid&#x27;: 0.4, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.468, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 2, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 1, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 2, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;13:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.226, &#x27;call_mid&#x27;: 0.392, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 1, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;13:30&#x27;, &#x27;call_ask&#x27;: 1.141, &#x27;call_bid&#x27;: 0.355, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 4, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;14:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.529, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.227, &#x27;put_bid&#x27;: 0.41, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 2, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 2, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;14:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.304, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;15:00&#x27;, &#x27;call_ask&#x27;: 0.412, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.212, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 1, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 1, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;15:30&#x27;, &#x27;call_ask&#x27;: 0.676, &#x27;call_bid&#x27;: 0.37, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 2, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+</ul>
+<p class="verdict">主动资金0.082（中性）：主动买入 $8.88M，主动卖出 $7.53M，mid $0.79M（不计入主动买卖）。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>①开盘 7687.31，相对 call wall 7720 位置：墙下；put wall 7685。</p></article>
+<article class="summary-item"><p>②白点轨迹: 开 7687.31→高 7754.15→低 7669.66→收 7743.88（0.32%）；收盘在 call wall 7720 上方，put wall 7685 上方</p></article>
+<article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7720, 7745, 7750]→[7745]；7745 减弱 -99%（841M→5M）</p></article>
+<article class="summary-item"><p>④flow 印证：中性（bull 8.88M / bear 7.53M）；最大簇 7725C 4.42M（ATM，spot≈7732.9；ask 2.01M / bid 1.62M / mid 0.79M）。</p></article>
+<article class="summary-item"><p>⑤收盘 7743.88（0.32%），VWAP 7720.21，EMA250 7747.04；事件日：美国9月PPI大超预期+零售销售日</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1014" role="tabpanel">
+<header class="mast"><div>
+<h1>SPX 日内报告</h1>
+<p class="date">2026年10月14日 · 周三 · 日内报告</p>
+</div><div class="tape">
+<strong>7,721.49 <span class="down">-1.08%</span></strong>
+<span>开 7,774.18 · 高 7,789.15 · 低 7,693.31</span>
+</div></header>
+<aside class="event">
+<div class="event-tag">美国9月CPI日</div>
+<div>
+<h2>美国9月CPI日</h2>
+<p>8:30 ET 公布9月CPI；事件日 heatmap 只看方向。</p>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-14 07:31 MDT｜Alpha夜航社 #junkman-analysis｜作者 junk_man（APP徽章）</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
+━━━━━━━━━━━━━━━━━━━━
+⚡ SPXW
+💵 SPY 推算开盘参考（非现金现价）7,776.1｜🟡 正负混合｜方向选择
+🔴 7,805 CALL WALL 下方｜🟣 7,805 MAGNET 下方
+🟢 7,760 PUT WALL 上方｜🔵 7,783.5 FLIP 下方
+🎯 交易区间 7,760–7,805｜上墙延伸 7,805–7,810
+📊 IV 预期振幅｜🚀 高波动/指数｜IV 11.1% (1DTE)｜1σ 预计振幅 ±20.74 (±0.30%)｜波动区间 7,755.36–7,796.84
+🛟 潜在低点观察区 7,765–7,770（非最低价预测）；若失守 7,765，取消本轮接底，等重新收复 7,770 并回踩。
+🧭 开盘分支｜若开在 7,775 下方：反抽不过，先看 7,770；7,780 上方：回踩守住，先看 7,785；两者之间或贴近边界，等待确认。
+🎯 交易机会
+• 📈 回踩 Call：收复 7,780、回踩守住 → 7,785 → 7,790；失守 7,780 取消。
+• 🚀 突破 Call：站稳 7,805、回踩有效 → 7,810 → 7,815；跌破回踩低点退出。7,815 再站稳，才看 7,820。
+• 📉 受阻 Put：7,780 受阻，再失守 7,775 → 7,770 → 7,765；站稳 7,780 取消。
+• 🔻 破位 Put：跌破 7,775、反抽不过 → 7,770 → 7,765；失守再看 Put Wall 7,760；收回 7,775 取消。
+• 🛟 抄底 Call：下探 7,765–7,770 后重新收复 7,770、回踩守住 → 7,775 → 7,780；再破回踩低点退出，不接持续下跌。5 分钟 K 线 × 0DTE heatmap K 线：Yahoo Finance · Heatmap：夜航社 API
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE，夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/spx_2026-10-14.png" alt="SPX 2026-10-14 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 78 档 5 分钟快照）</h3>
+<ul>
+<li>金色带在 7720(+15203M)</li>
+<li>尾盘无显著紫色带</li>
+<li>白点轨迹: 开 7774.18→高 7789.15→低 7693.31→收 7721.49（-1.08%）；收盘在 call wall 7800 下方，put wall 7790 下方</li>
+<li>尾盘节点变化: 前三节点迁移 [7700, 7705, 7720]→[7720, 7725, 7730]；7720 增厚 +84%（8249M→15203M）；7725 减弱 -87%（1823M→228M）；7730 减弱 -100%（2169M→0M）</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 15:50</span>
+<strong>7720</strong>
+<span class="metric">+66000.5M</span>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:30</span>
+<strong>7730</strong>
+<span class="metric">+15867.5M</span>
+</article>
+<article class="node purple">
+<span class="node-rank">③ · 15:45</span>
+<strong>7715</strong>
+<span class="metric">-15562.2M</span>
+</article>
+<article class="node">
+<span class="node-rank">④ · 15:30</span>
+<strong>7725</strong>
+<span class="metric">+13721.7M</span>
+</article>
+<article class="node purple">
+<span class="node-rank">⑤ · 15:35</span>
+<strong>7710</strong>
+<span class="metric">-6839.8M</span>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流总结（0DTE SPXW，全天25笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<ul>
+<li>{&#x27;t_et&#x27;: &#x27;09:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.422, &#x27;put_bid&#x27;: 0.346, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 2, &#x27;put_bid_n&#x27;: 1, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;10:00&#x27;, &#x27;call_ask&#x27;: 0.219, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.551, &#x27;put_bid&#x27;: 0.231, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 1, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 2, &#x27;put_bid_n&#x27;: 1, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;10:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;11:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.599, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 2, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;11:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;12:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.228, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;12:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;13:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.241, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;13:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.294, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 1, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;14:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.239, &#x27;put_bid&#x27;: 0.3, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 1, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;14:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;15:00&#x27;, &#x27;call_ask&#x27;: 0.223, &#x27;call_bid&#x27;: 0.45, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.285, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 1, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;15:30&#x27;, &#x27;call_ask&#x27;: 0.499, &#x27;call_bid&#x27;: 0.267, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.868, &#x27;put_bid&#x27;: 0.674, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 1, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 3, &#x27;put_bid_n&#x27;: 3, &#x27;put_mid_n&#x27;: 0}</li>
+</ul>
+<p class="verdict">主动资金-0.197（中性）：主动买入 $2.79M，主动卖出 $4.15M，mid $0.00M（不计入主动买卖）。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>①开盘 7774.18，相对 call wall 7800 位置：墙下；put wall 7790。</p></article>
+<article class="summary-item"><p>②白点轨迹: 开 7774.18→高 7789.15→低 7693.31→收 7721.49（-1.08%）；收盘在 call wall 7800 下方，put wall 7790 下方</p></article>
+<article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7700, 7705, 7720]→[7720, 7725, 7730]；7720 增厚 +84%（8249M→15203M）；7725 减弱 -87%（1823M→228M）；7730 减弱 -100%（2169M→0M）</p></article>
+<article class="summary-item"><p>④flow 印证：中性（bull 2.79M / bear 4.15M）；最大簇 7700C 0.99M（ATM，spot≈7712.1；ask 0.72M / bid 0.27M / mid 0.0M）。</p></article>
+<article class="summary-item"><p>⑤收盘 7721.49（-1.08%），VWAP 7732.46，EMA250 7764.8；事件日：美国9月CPI日</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1013" role="tabpanel">
+<header class="mast"><div>
+<h1>SPX 日内报告</h1>
+<p class="date">2026年10月13日 · 周二 · 日内报告</p>
+</div><div class="tape">
+<strong>7,805.59 <span class="down">-0.02%</span></strong>
+<span>开 7,795.27 · 高 7,814.15 · 低 7,786.11</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+<p>无重大宏观发布。</p>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-13 07:29 MDT｜Alpha夜航社 #junkman-analysis｜作者 junk_man（APP徽章）</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
+━━━━━━━━━━━━━━━━━━━━
+⚡ SPXW
+💵 SPY 推算开盘参考（非现金现价）7,809.84｜🟢 正 GEX｜钉住/均值回归
+🔴 7,805 CALL WALL 上方｜🟣 7,810 MAGNET 下方
+🟢 7,810 PUT WALL 区域内｜🔵 7,795.5 FLIP 上方
+🎯 交易区间 7,795–7,805｜上墙延伸 7,805–7,815
+📊 IV 预期振幅｜🛡️ 低波动/指数｜IV 8.8% (1DTE)｜1σ 预计振幅 ±16.36 (±0.20%)｜波动区间 7,793.48–7,826.2
+🛟 潜在低点观察区 7,795–7,800（非最低价预测）；若失守 7,795，取消本轮接底，等重新收复 7,800 并回踩。
+⚠️ PUT WALL 在参考价上方，不作下方支撑
+🧭 开盘分支｜若开在 7,805 下方：反抽不过，先看 7,800；7,810 上方：回踩守住，先看 7,815；两者之间或贴近边界，等待确认。
+🎯 交易机会
+• 🚀 续强 Call：站稳 7,815、回踩有效 → 7,820 → 7,825；跌破回踩低点退出。7,825 再站稳，才看 7,830。
+• 📉 受阻 Put：7,805 受阻，再失守 7,800 → 7,795 → 7,790；站稳 7,805 取消。
+• 🔻 破位 Put：跌破 7,800、反抽不过 → 7,795 → 7,790；收回 7,800 取消。
+• 🛟 抄底 Call：下探 7,795–7,800 后重新收复 7,800、回踩守住 → 7,805 → 7,810；再破回踩低点退出，不接持续下跌。5 分钟 K 线 × 0DTE heatmap K 线：Yahoo Finance · Heatmap：夜航社 API
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE，夜航社 12 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/spx_2026-10-13.png" alt="SPX 2026-10-13 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 12 档 5 分钟快照）</h3>
+<ul>
+<li>金色带在 7800(+15217M) / 7810(+13092M) / 7805(+9863M)</li>
+<li>紫色带在 7770(-172M) / 7785(-153M) / 7795(-71M)</li>
+<li>白点轨迹: 开 7795.27→高 7814.15→低 7786.11→收 7805.59（-0.02%）；收盘在 call wall 7825 下方，put wall 7800 上方</li>
+<li>尾盘节点变化: 前三节点迁移 [7795, 7800, 7805]→[7800, 7805, 7810]；7800 增厚 +1061%（1311M→15217M）；7810 增厚 +2658%（-512M→13092M）；7805 增厚 +909%（-1219M→9863M）</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 14:50</span>
+<strong>7800</strong>
+<span class="metric">+28269.4M</span>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:20</span>
+<strong>7810</strong>
+<span class="metric">+13092.3M</span>
+</article>
+<article class="node">
+<span class="node-rank">③ · 15:20</span>
+<strong>7805</strong>
+<span class="metric">+9863.2M</span>
+</article>
+<article class="node purple">
+<span class="node-rank">④ · 13:50</span>
+<strong>7785</strong>
+<span class="metric">-3439.2M</span>
+</article>
+<article class="node purple">
+<span class="node-rank">⑤ · 10:50</span>
+<strong>7795</strong>
+<span class="metric">-2343.9M</span>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流总结（0DTE SPXW，全天13笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<ul>
+<li>{&#x27;t_et&#x27;: &#x27;09:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;10:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;10:30&#x27;, &#x27;call_ask&#x27;: 0.217, &#x27;call_bid&#x27;: 0.262, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 1, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;11:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;11:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;12:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;12:30&#x27;, &#x27;call_ask&#x27;: 0.226, &#x27;call_bid&#x27;: 0.244, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.206, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 1, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;13:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.206, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 1, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;13:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;14:00&#x27;, &#x27;call_ask&#x27;: 0.605, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 2, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;14:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.403, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;15:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.396, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;15:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.478, &#x27;call_mid&#x27;: 0.21, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 2, &#x27;call_mid_n&#x27;: 1, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+</ul>
+<p class="verdict">主动资金-0.227（中性）：主动买入 $1.25M，主动卖出 $1.99M，mid $0.21M（不计入主动买卖）。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>①开盘 7795.27，相对 call wall 7825 位置：墙下；put wall 7800。</p></article>
+<article class="summary-item"><p>②白点轨迹: 开 7795.27→高 7814.15→低 7786.11→收 7805.59（-0.02%）；收盘在 call wall 7825 下方，put wall 7800 上方</p></article>
+<article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7795, 7800, 7805]→[7800, 7805, 7810]；7800 增厚 +1061%（1311M→15217M）；7810 增厚 +2658%（-512M→13092M）；7805 增厚 +909%（-1219M→9863M）</p></article>
+<article class="summary-item"><p>④flow 印证：中性（bull 1.25M / bear 1.99M）；最大簇 7800C 2.14M（ATM，spot≈7806.8；ask 0.83M / bid 1.31M / mid 0.0M）。</p></article>
+<article class="summary-item"><p>⑤收盘 7805.59（-0.02%），VWAP 7801.93，EMA250 7799.22；非事件日</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1012" role="tabpanel">
+<header class="mast"><div>
+<h1>SPX 日内报告</h1>
+<p class="date">2026年10月12日 · 周一 · 日内报告</p>
+</div><div class="tape">
+<strong>7,807.79 <span class="down">-0.05%</span></strong>
+<span>开 7,813.04 · 高 7,821.67 · 低 7,796.94</span>
+</div></header>
+<aside class="event">
+<div class="event-tag">哥伦布日/债市休市（流动性枯竭）</div>
+<div>
+<h2>哥伦布日/债市休市（流动性枯竭）</h2>
+<p>债市休市，流动性枯竭日；触碰概率门槛自动覆盖45%。</p>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-12 07:25 MDT｜Alpha夜航社 #junkman-analysis｜作者 junk_man（APP徽章）</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
+━━━━━━━━━━━━━━━━━━━━
+⚡ SPXW
+💵 SPY 推算开盘参考（非现金现价）7,812.38｜🟢 正 GEX｜钉住/均值回归
+🔴 7,800 CALL WALL 上方｜🟣 7,820 MAGNET 下方
+🟢 7,800 PUT WALL 上方｜🔵 7,815.5 FLIP 下方
+🎯 交易区间 7,810–7,820｜上墙延伸 7,800–7,820
+📊 IV 预期振幅｜🛡️ 低波动/指数｜IV 8.6% (1DTE)｜1σ 预计振幅 ±15.62 (±0.20%)｜波动区间 7,796.76–7,828
+🛟 潜在低点观察区 7,805–7,810（非最低价预测）；若失守 7,805，取消本轮接底，等重新收复 7,810 并回踩。
+⚠️ 双墙重合，非双边区间
+🧭 开盘分支｜若开在 7,810 下方：反抽不过，先看 7,805；7,815 上方：回踩守住，先看 7,815.5；两者之间或贴近边界，等待确认。
+🎯 交易机会
+• 🚀 续强 Call：上墙 7,800 已越过；站稳 7,815、回踩有效 → 7,820 → 7,825；跌破回踩低点退出。7,825 再站稳，才看 7,830。
+• 📉 受阻 Put：7,815 受阻，再失守 7,810 → 7,805 → 7,800；站稳 7,815 取消。
+• 🔻 破位 Put：跌破 7,810、反抽不过 → 7,805 → 7,800；收回 7,810 取消。
+• 🛟 抄底 Call：下探 7,805–7,810 后重新收复 7,810、回踩守住 → 7,815 → 7,820；再破回踩低点退出，不接持续下跌。5 分钟 K 线 × 0DTE heatmap K 线：Yahoo Finance · Heatmap：夜航社 API
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE，夜航社 13 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/spx_2026-10-12.png" alt="SPX 2026-10-12 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 13 档 5 分钟快照）</h3>
+<ul>
+<li>金色带在 7800(+54632M)</li>
+<li>紫色带在 7795(-16628M)</li>
+<li>白点轨迹: 开 7813.04→高 7821.67→低 7796.94→收 7807.79（-0.05%）；收盘在 call wall 7830 下方，put wall 7800 上方</li>
+<li>尾盘节点变化: 前三节点迁移 [7810, 7820, 7840]→[7795, 7800, 7805]；7800 增厚 +11456%（473M→54632M）；7795 减弱 -4227%（-384M→-16628M）；7805 增厚 +26672%（-32M→8382M）</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 15:20</span>
+<strong>7800</strong>
+<span class="metric">+54632.1M</span>
+</article>
+<article class="node purple">
+<span class="node-rank">② · 15:20</span>
+<strong>7795</strong>
+<span class="metric">-16627.6M</span>
+</article>
+<article class="node">
+<span class="node-rank">③ · 13:50</span>
+<strong>7810</strong>
+<span class="metric">+14124.3M</span>
+</article>
+<article class="node">
+<span class="node-rank">④ · 14:50</span>
+<strong>7805</strong>
+<span class="metric">+11706.3M</span>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 11:50</span>
+<strong>7820</strong>
+<span class="metric">+6801.5M</span>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流总结（0DTE SPXW，全天18笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<ul>
+<li>{&#x27;t_et&#x27;: &#x27;09:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.206, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;10:00&#x27;, &#x27;call_ask&#x27;: 0.21, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.275, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 1, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 1, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;10:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.343, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;11:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.273, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 1}</li>
+<li>{&#x27;t_et&#x27;: &#x27;11:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.253, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;12:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;12:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.32, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;13:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.464, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 1, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;13:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.21, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 1, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;14:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.285, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.769, &#x27;put_mid&#x27;: 0.375, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 1, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 2, &#x27;put_mid_n&#x27;: 1}</li>
+<li>{&#x27;t_et&#x27;: &#x27;14:30&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.3, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 1, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;15:00&#x27;, &#x27;call_ask&#x27;: 0.0, &#x27;call_bid&#x27;: 0.0, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 0, &#x27;call_bid_n&#x27;: 0, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+<li>{&#x27;t_et&#x27;: &#x27;15:30&#x27;, &#x27;call_ask&#x27;: 0.29, &#x27;call_bid&#x27;: 1.824, &#x27;call_mid&#x27;: 0.0, &#x27;put_ask&#x27;: 0.0, &#x27;put_bid&#x27;: 0.0, &#x27;put_mid&#x27;: 0.0, &#x27;call_ask_n&#x27;: 1, &#x27;call_bid_n&#x27;: 3, &#x27;call_mid_n&#x27;: 0, &#x27;put_ask_n&#x27;: 0, &#x27;put_bid_n&#x27;: 0, &#x27;put_mid_n&#x27;: 0}</li>
+</ul>
+<p class="verdict">主动资金-0.29（中性）：主动买入 $1.94M，主动卖出 $3.53M，mid $0.92M（不计入主动买卖）。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>①开盘 7813.04，相对 call wall 7830 位置：墙下；put wall 7800。</p></article>
+<article class="summary-item"><p>②白点轨迹: 开 7813.04→高 7821.67→低 7796.94→收 7807.79（-0.05%）；收盘在 call wall 7830 下方，put wall 7800 上方</p></article>
+<article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7810, 7820, 7840]→[7795, 7800, 7805]；7800 增厚 +11456%（473M→54632M）；7795 减弱 -4227%（-384M→-16628M）；7805 增厚 +26672%（-32M→8382M）</p></article>
+<article class="summary-item"><p>④flow 印证：中性（bull 1.94M / bear 3.53M）；最大簇 7800P 1.91M（ATM，spot≈7800.9；ask 0.3M / bid 1.23M / mid 0.38M）。</p></article>
+<article class="summary-item"><p>⑤收盘 7807.79（-0.05%），VWAP 7807.76，EMA250 7796.95；事件日：哥伦布日/债市休市（流动性枯竭）</p></article>
 </div></section>
 <p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>

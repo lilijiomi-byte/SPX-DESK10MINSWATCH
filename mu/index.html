@@ -13,17 +13,25 @@
 @media(max-width:760px){main{padding:12px 16px 56px}.mast{grid-template-columns:1fr;padding-top:28px}.tape{text-align:left;min-width:0}.event{grid-template-columns:1fr;gap:12px}.event-tag{justify-self:start}.section-head{display:block}.section-head>p{text-align:left;margin-top:8px}.top5{grid-template-columns:1fr}.chart-shell{padding:6px;margin-left:-8px;margin-right:-8px}.method{grid-template-columns:1fr}.method>p{grid-column:auto}}
 @media(max-width:560px){.day-tabs{grid-template-columns:1fr;position:static}.day-tab{min-height:44px;justify-content:flex-start}.source-line span:not(:last-of-type){border:0;padding-right:0}.source-line{display:grid}.verbatim{padding:20px;font-size:.92rem}.top5{grid-template-columns:1fr}.summary-item{grid-template-columns:32px 1fr;padding:17px 16px;gap:10px}section{padding:34px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.day-tab{transition:none}}
+.sitenav{display:flex;gap:4px;flex-wrap:wrap;margin:0 0 18px;background:#243044;border-radius:8px;padding:6px}
+.sitenav a{color:#dbe3ee;text-decoration:none;font-size:13px;padding:8px 14px;border-radius:6px}
+.sitenav a:hover{background:#33445e;color:#fff}
+.sitenav a.on{background:#101b2d;color:#fff;font-weight:700}
 
 </style>
 </head>
 <body>
 <main>
 
+<nav class="sitenav"><a href="../index.html">首页</a><a href="../spx-intraday/index.html">SPX 日内报告</a><a href="../spx-10min/index.html">SPX 尾盘10分钟</a><a href="../mu/index.html" class="on">MU 日内报告</a><a href="../tsla/index.html">TSLA 日内报告</a></nav>
 <h1 style="margin:0 0 4px">MU 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
 <a class="day-tab" role="tab" data-target="day-1016" aria-selected="true" href="#day-1016">10/16 周五 <span class="tab-move down">-2.92%</span></a>
 <a class="day-tab" role="tab" data-target="day-1015" aria-selected="false" href="#day-1015">10/15 周四 <span class="tab-move up">+6.85%</span></a>
+<a class="day-tab" role="tab" data-target="day-1014" aria-selected="false" href="#day-1014">10/14 周三 <span class="tab-move down">-2.19%</span></a>
+<a class="day-tab" role="tab" data-target="day-1013" aria-selected="false" href="#day-1013">10/13 周二 <span class="tab-move up">+2.05%</span></a>
+<a class="day-tab" role="tab" data-target="day-1012" aria-selected="false" href="#day-1012">10/12 周一 <span class="tab-move down">-1.34%</span></a>
 </nav>
 <article class="day-panel" id="day-1016" role="tabpanel">
 <header class="mast"><div>
@@ -286,6 +294,359 @@
 <article class="summary-item"><p>③ 墙位：call 950 / put 870（junk-man口径）；heatmap 算法墙首→末：call wall 880→1010（上移）; put wall 820→920（上移）。</p></article>
 <article class="summary-item"><p>④ 资金流：全天61笔：主动买入(call ask + put bid)$15.53M，主动卖出(put ask + call bid)$10.95M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p></article>
 <article class="summary-item"><p>⑤ 收盘在 VWAP 上方（VWAP 896.73，EMA250 900.40）。</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1014" role="tabpanel">
+<header class="mast"><div>
+<h1>MU 日内报告</h1>
+<p class="date">2026年10月14日 · 周三 · 日内报告</p>
+</div><div class="tape">
+<strong>914.13 <span class="down">-2.19%</span></strong>
+<span>开 934.56 · 高 949.42 · 低 913.56</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-14 07:19 MDT｜Alpha夜航社 #junkman-analysis｜作者 Junk-man（APP徽章）</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
+⚡ MU
+💵 盘前参考价 931.48｜🔴 负 GEX｜放大/加速
+🔴 960 CALL WALL 下方｜🟣 940 MAGNET 下方
+🟢 935 PUT WALL 下方｜🔵 939.2 FLIP 下方
+🎯 交易区间 930–939.2｜上墙延伸 960–970
+🛟 潜在低点观察区 925–930（非最低价预测）；若失守 925，取消本轮接底，等重新收复 930 并回踩。
+⚠️ PUT WALL 在参考价上方，不作下方支撑
+🧭 开盘分支｜若开在 930 下方：反抽不过，先看 925；935 上方：回踩守住，先看 939.2；两者之间或贴近边界，等待确认。
+
+🎯 交易机会
+
+• 📈 回踩 Call：收复 935、回踩守住 → 939.2 → 940；失守 935 取消。
+• 🚀 突破 Call：站稳 960、回踩有效 → 965 → 970；跌破回踩低点退出。970 再站稳，才看 975 → 980。
+• 📉 受阻 Put：935 受阻，再失守 930 → 925 → 920；站稳 935 取消。
+• 🔻 破位 Put：跌破 930、反抽不过 → 925 → 920；收回 930 取消。
+• 🛟 抄底 Call：下探 925–930 后重新收复 930、回踩守住 → 935 → 939.2；再破回踩低点退出，不接持续下跌。
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE（2026-10-14到期），夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/mu_2026-10-14.png" alt="MU 2026-10-14 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 78 档 5 分钟快照）</h3>
+<p>GEX 地形图（0DTE，夜航社 78 档 5 分钟快照）：金色=正 gamma 区（做市商对冲减速带/墙），紫色=负 gamma 区（加速带）。白点为每档现货位置。put wall 940→910（下移）。</p>
+<ul>
+<li>金色带（收盘档）：910(+0.0M)</li>
+<li>紫色带（收盘档）：915(-494.7M)、920(-0.0M)</li>
+<li>全天最大节点：915(-494.7M@15:55)、925(+109.3M@15:30)、920(-57.8M@15:50)、930(+50.5M@15:30)、950(+44.9M@10:40)</li>
+<li>尾盘节点变化：915 -11.2M→-494.7M；925 -1.2M→+7.8M；920 +1.3M→-0.0M</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node purple">
+<span class="node-rank">① · 15:55</span>
+<strong>915</strong>
+<span class="metric">-494.7M</span>
+<p class="node-analysis">一、915（负 gamma 加速带）：全天变化——从 -11.2M 到 -494.7M；影响时段——15:55 ET 达到峰值，当时现货约 914.20；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:30</span>
+<strong>925</strong>
+<span class="metric">+109.3M</span>
+<p class="node-analysis">二、925（正 gamma 墙/地板）：全天变化——由 -1.2M 翻转为 +109.3M；影响时段——15:30 ET 达到峰值，当时现货约 924.12；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">③ · 15:50</span>
+<strong>920</strong>
+<span class="metric">-57.8M</span>
+<p class="node-analysis">三、920（负 gamma 加速带）：全天变化——由 +1.3M 翻转为 -57.8M；影响时段——15:50 ET 达到峰值，当时现货约 919.01；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">④ · 15:30</span>
+<strong>930</strong>
+<span class="metric">+50.5M</span>
+<p class="node-analysis">四、930（正 gamma 墙/地板）：全天变化——从 +3.5M 到 +50.5M；影响时段——15:30 ET 达到峰值，当时现货约 924.12；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 10:40</span>
+<strong>950</strong>
+<span class="metric">+44.9M</span>
+<p class="node-analysis">五、950（正 gamma 墙/地板）：全天变化——从 +34.3M 到 +44.9M；影响时段——10:40 ET 达到峰值，当时现货约 940.69；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流总结（0DTE，全天13笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<ul>
+<li>09:30 call ask（主 950OTM）：$0.55M / 2笔</li>
+<li>10:30 put bid（主 935ATM）：$0.24M / 1笔</li>
+<li>11:30 call bid（主 930ATM）：$0.23M / 1笔</li>
+<li>12:00 call bid（主 910ITM）：$0.24M / 1笔</li>
+<li>12:30 call ask（主 900ITM）：$0.93M / 3笔</li>
+<li>14:30 call ask（主 910ITM）：$0.27M / 1笔</li>
+<li>15:30 put bid（主 940ITM）：$1.35M / 4笔</li>
+</ul>
+<p class="verdict">全天13笔：主动买入(call ask + put bid)$3.34M，主动卖出(put ask + call bid)$0.47M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 934.56 在 put wall 935 下方；全天 949.42–913.56，收 914.13（-2.19%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 934.56 → 高 949.42 → 低 913.56 → 收 914.13。</p></article>
+<article class="summary-item"><p>③ 墙位：call 960 / put 935（junk-man口径）；heatmap 算法墙首→末：put wall 940→910（下移）。</p></article>
+<article class="summary-item"><p>④ 资金流：全天13笔：主动买入(call ask + put bid)$3.34M，主动卖出(put ask + call bid)$0.47M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 下方（VWAP 930.11，EMA250 899.45）。</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1013" role="tabpanel">
+<header class="mast"><div>
+<h1>MU 日内报告</h1>
+<p class="date">2026年10月13日 · 周二 · 日内报告</p>
+</div><div class="tape">
+<strong>953.19 <span class="up">+2.05%</span></strong>
+<span>开 934.07 · 高 953.60 · 低 929.03</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-13 07:28 MDT｜Alpha夜航社 #junkman-analysis｜作者 Junk-man（APP徽章）</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
+⚡ MU
+💵 盘前参考价 939.46｜🔴 负 GEX｜放大/加速
+🔴 990 CALL WALL 下方｜🟣 940 MAGNET 区域内
+🟢 935 PUT WALL 上方｜🔵 940 FLIP 区域内
+🎯 交易区间 935–990｜上墙延伸 990–1,000
+🛟 潜在低点观察区 930–935（非最低价预测）；若失守 930，取消本轮接底，等重新收复 935 并回踩。
+🧭 开盘分支｜若开在 935 下方：反抽不过，先看 930；940 上方：回踩守住，先看 945；两者之间或贴近边界，等待确认。
+
+🎯 交易机会
+
+• 📈 回踩 Call：收复 940、回踩守住 → 945 → 950；失守 940 取消。
+• 🚀 突破 Call：站稳 990、回踩有效 → 995 → 1,000；跌破回踩低点退出。1,000 再站稳，才看 1,005 → 1,010。
+• 📉 受阻 Put：940 受阻，再失守 935 → 930 → 925；站稳 940 取消。
+• 🔻 破位 Put：跌破 935、反抽不过 → 930 → 925；收回 935 取消。
+• 🛟 抄底 Call：下探 930–935 后重新收复 935、回踩守住 → 940 → 945；再破回踩低点退出，不接持续下跌。
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 1DTE heatmap</h2><div class="source">
+<p>1DTE（2026-10-14到期），夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/mu_2026-10-13.png" alt="MU 2026-10-13 5分钟K线与1DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（1DTE，夜航社 78 档 5 分钟快照）</h3>
+<p>GEX 地形图（1DTE，夜航社 78 档 5 分钟快照）：金色=正 gamma 区（做市商对冲减速带/墙），紫色=负 gamma 区（加速带）。白点为每档现货位置。call wall 950→970（上移）；put wall 930→950（上移）。</p>
+<ul>
+<li>金色带（收盘档）：970(+28.8M)、950(+28.5M)、980(+5.2M)</li>
+<li>紫色带（收盘档）：960(-14.9M)、915(-7.7M)、1025(-4.1M)</li>
+<li>全天最大节点：970(+28.8M@15:55)、950(+28.5M@15:55)、960(-14.9M@15:55)、935(+11.2M@13:50)、915(-10.7M@11:25)</li>
+<li>尾盘节点变化：970 +1.6M→+28.8M；950 +6.0M→+28.5M；960 +2.2M→-14.9M</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 15:55</span>
+<strong>970</strong>
+<span class="metric">+28.8M</span>
+<p class="node-analysis">一、970（正 gamma 墙/地板）：全天变化——从 +1.6M 到 +28.8M；影响时段——15:55 ET 达到峰值，当时现货约 953.25；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:55</span>
+<strong>950</strong>
+<span class="metric">+28.5M</span>
+<p class="node-analysis">二、950（正 gamma 墙/地板）：全天变化——从 +6.0M 到 +28.5M；影响时段——15:55 ET 达到峰值，当时现货约 953.25；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">③ · 15:55</span>
+<strong>960</strong>
+<span class="metric">-14.9M</span>
+<p class="node-analysis">三、960（负 gamma 加速带）：全天变化——由 +2.2M 翻转为 -14.9M；影响时段——15:55 ET 达到峰值，当时现货约 953.25；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">④ · 13:50</span>
+<strong>935</strong>
+<span class="metric">+11.2M</span>
+<p class="node-analysis">四、935（正 gamma 墙/地板）：全天变化——从 +1.3M 到 +11.2M；影响时段——13:50 ET 达到峰值，当时现货约 934.52；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">⑤ · 11:25</span>
+<strong>915</strong>
+<span class="metric">-10.7M</span>
+<p class="node-analysis">五、915（负 gamma 加速带）：全天变化——由 +0.7M 翻转为 -10.7M；影响时段——11:25 ET 达到峰值，当时现货约 933.83；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流总结（1DTE，全天40笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<ul>
+<li>09:30 call bid（主 945ATM）：$1.07M / 4笔</li>
+<li>09:30 put ask（主 945ATM）：$1.12M / 3笔</li>
+<li>10:00 call bid（主 950ATM）：$0.41M / 1笔</li>
+<li>10:00 put ask（主 960ITM）：$1.39M / 4笔</li>
+<li>10:30 call bid（主 950OTM）：$0.35M / 1笔</li>
+<li>10:30 put ask（主 940ATM）：$0.80M / 2笔</li>
+<li>10:30 put bid（主 935ATM）：$0.88M / 3笔</li>
+<li>11:00 call bid（主 970OTM）：$0.61M / 1笔</li>
+<li>11:00 put bid（主 935ATM）：$0.36M / 1笔</li>
+<li>11:30 call ask（主 900ITM）：$0.39M / 1笔</li>
+<li>11:30 call bid（主 900ITM）：$0.41M / 1笔</li>
+<li>12:00 call ask（主 960OTM）：$1.42M / 3笔</li>
+<li>12:00 call bid（主 940ATM）：$0.59M / 2笔</li>
+<li>12:30 call bid（主 1000OTM）：$1.16M / 3笔</li>
+<li>13:00 put bid（主 945ITM）：$0.74M / 1笔</li>
+<li>13:30 put bid（主 960ITM）：$1.69M / 3笔</li>
+<li>14:00 call ask（主 960OTM）：$0.60M / 1笔</li>
+<li>15:00 put bid（主 910OTM）：$0.50M / 1笔</li>
+<li>15:30 call ask（主 955ATM）：$0.71M / 2笔</li>
+<li>15:30 call bid（主 950ATM）：$0.31M / 1笔</li>
+<li>15:30 put ask（主 945ATM）：$0.23M / 1笔</li>
+</ul>
+<p class="verdict">全天40笔：主动买入(call ask + put bid)$7.27M，主动卖出(put ask + call bid)$8.43M，mid $0.00M（不计入主动买卖）；主动资金中性。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 1DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 934.07 在 put wall 935 下方；全天 953.60–929.03，收 953.19（+2.05%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 934.07 → 高 953.60 → 低 929.03 → 收 953.19。</p></article>
+<article class="summary-item"><p>③ 墙位：call 990 / put 935（junk-man口径）；heatmap 算法墙首→末：call wall 950→970（上移）; put wall 930→950（上移）。</p></article>
+<article class="summary-item"><p>④ 资金流：全天40笔：主动买入(call ask + put bid)$7.27M，主动卖出(put ask + call bid)$8.43M，mid $0.00M（不计入主动买卖）；主动资金中性。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 上方（VWAP 940.77，EMA250 899.44）。</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1012" role="tabpanel">
+<header class="mast"><div>
+<h1>MU 日内报告</h1>
+<p class="date">2026年10月12日 · 周一 · 日内报告</p>
+</div><div class="tape">
+<strong>989.04 <span class="down">-1.34%</span></strong>
+<span>开 1,002.45 · 高 1,002.67 · 低 978.50</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-12 07:22 MDT｜Alpha夜航社 #junkman-analysis｜作者 Junk-man（APP徽章）</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
+⚡ MU
+💵 盘前参考价 1,008.31｜🔴 负 GEX｜放大/加速
+🔴 1,060 CALL WALL 下方｜🟣 1,010 MAGNET 下方
+🟢 1,000 PUT WALL 上方｜🔵 1,009.9 FLIP 下方
+🎯 交易区间 1,000–1,060｜上墙延伸 1,060–1,070
+📊 IV 预期振幅｜🔥 高波动｜IV 28.5% (1DTE)｜1σ 预计振幅 ±15.12 (±1.50%)｜波动区间 993.19–1,023.43
+🛟 潜在低点观察区 1,000–1,005（非最低价预测）；若失守 1,000，取消本轮接底，等重新收复 1,005 并回踩。
+🧭 开盘分支｜若开在 1,005 下方：反抽不过，先看 1,000；1,009.9 上方：回踩守住，先看 1,010；两者之间或贴近边界，等待确认。
+
+🎯 交易机会
+
+• 📈 回踩 Call：收复 1,009.9、回踩守住 → 1,010 → 1,015；失守 1,009.9 取消。
+• 🚀 突破 Call：站稳 1,060、回踩有效 → 1,065 → 1,070；跌破回踩低点退出。1,070 再站稳，才看 1,075 → 1,080。
+• 📉 受阻 Put：1,009.9 受阻，再失守 1,005 → 1,000 → 995；站稳 1,009.9 取消。
+• 🔻 破位 Put：跌破 1,005、反抽不过 → 1,000 → 995；收回 1,005 取消。
+• 🛟 抄底 Call：下探 1,000–1,005 后重新收复 1,005、回踩守住 → 1,009.9 → 1,015；再破回踩低点退出，不接持续下跌。
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE（2026-10-12到期），夜航社 77 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/mu_2026-10-12.png" alt="MU 2026-10-12 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 77 档 5 分钟快照）</h3>
+<p>GEX 地形图（0DTE，夜航社 77 档 5 分钟快照）：金色=正 gamma 区（做市商对冲减速带/墙），紫色=负 gamma 区（加速带）。白点为每档现货位置。call wall 985→990（上移）。</p>
+<ul>
+<li>金色带（收盘档）：990(+464.1M)、985(+0.0M)、1040(+0.0M)</li>
+<li>紫色带（收盘档）：1050(-0.0M)、1045(-0.0M)</li>
+<li>全天最大节点：990(+464.1M@15:50)、985(+137.6M@15:40)、995(+108.7M@15:30)、1000(+94.2M@14:30)、980(-52.5M@11:25)</li>
+<li>尾盘节点变化：990 +5.5M→+464.1M；985 +4.9M→+0.0M；995 +8.1M→+0.0M</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 15:50</span>
+<strong>990</strong>
+<span class="metric">+464.1M</span>
+<p class="node-analysis">一、990（正 gamma 墙/地板）：全天变化——从 +5.5M 到 +464.1M；影响时段——15:50 ET 达到峰值，当时现货约 989.30；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:40</span>
+<strong>985</strong>
+<span class="metric">+137.6M</span>
+<p class="node-analysis">二、985（正 gamma 墙/地板）：全天变化——从 +4.9M 到 +137.6M；影响时段——15:40 ET 达到峰值，当时现货约 986.96；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">③ · 15:30</span>
+<strong>995</strong>
+<span class="metric">+108.7M</span>
+<p class="node-analysis">三、995（正 gamma 墙/地板）：全天变化——从 +8.1M 到 +108.7M；影响时段——15:30 ET 达到峰值，当时现货约 991.09；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">④ · 14:30</span>
+<strong>1000</strong>
+<span class="metric">+94.2M</span>
+<p class="node-analysis">四、1000（正 gamma 墙/地板）：全天变化——从 +2.3M 到 +94.2M；影响时段——14:30 ET 达到峰值，当时现货约 991.76；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">⑤ · 11:25</span>
+<strong>980</strong>
+<span class="metric">-52.5M</span>
+<p class="node-analysis">五、980（负 gamma 加速带）：全天变化——从 -5.4M 到 -52.5M；影响时段——11:25 ET 达到峰值，当时现货约 987.58；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流总结（0DTE，全天7笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<ul>
+<li>09:30 call ask（主 950ITM）：$0.68M / 1笔</li>
+<li>09:30 put ask（主 980OTM）：$0.53M / 2笔</li>
+<li>12:00 put ask（主 1000ATM）：$0.27M / 1笔</li>
+<li>15:30 put ask（主 1000ITM）：$0.22M / 1笔</li>
+<li>15:30 put bid（主 1015ITM）：$0.63M / 2笔</li>
+</ul>
+<p class="verdict">全天7笔：主动买入(call ask + put bid)$1.31M，主动卖出(put ask + call bid)$1.01M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 1002.45 在双墙 1000–1060 之间；全天 1002.67–978.50，收 989.04（-1.34%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 1002.45 → 高 1002.67 → 低 978.50 → 收 989.04。</p></article>
+<article class="summary-item"><p>③ 墙位：call 1060 / put 1000（junk-man口径）；heatmap 算法墙首→末：call wall 985→990（上移）。</p></article>
+<article class="summary-item"><p>④ 资金流：全天7笔：主动买入(call ask + put bid)$1.31M，主动卖出(put ask + call bid)$1.01M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 上方（VWAP 988.94，EMA250 899.45）。</p></article>
 </div></section>
 <p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>

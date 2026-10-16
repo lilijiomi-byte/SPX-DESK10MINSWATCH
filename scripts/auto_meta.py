@@ -205,6 +205,6 @@ meta = {
     "summary": summary,
     "top5_analysis": top5_analysis,
 }
-out = f"{BASE}/meta_{DS}.json"
+out = f"{D}/meta_{DS}.json"
 json.dump(meta, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("wrote", out, "| junkman:", status, "| event:", tag, "| flow_n:", buckets["n"])

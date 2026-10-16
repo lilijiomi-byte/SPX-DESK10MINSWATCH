@@ -115,43 +115,77 @@ def yahoo_chart(symbol, interval="5m", rng="1mo", prepost=True):
 def mu_fetch(ds):
     mmdd = ds[5:7] + ds[8:10]
     log(f"MU {ds}: 开始完整拉取")
-    # 1) 到期日探测: 0DTE(ds) -> 1DTE(ds+1)
+    # 1) 到期日探测: 0DTE(ds) -> 1DTE(ds+1); YHS 只保留 3 天, 超窗报 RANGE_TOO_DEEP
     d0 = datetime.date.fromisoformat(ds)
     expiry, dte_label = ds, "0DTE"
-    probe = yhs("/v1/derived/heatmap/MU/history",
-                {"expiration": ds, "from": f"{ds}T13:30:00Z",
-                 "to": f"{ds}T13:35:00Z", "limit": 100})
-    probe_rows, _ = _rows_and_cursor(probe)
-    if not probe_rows:
-        d1 = (d0 + datetime.timedelta(days=1)).isoformat()
+    probe_rows = None
+    try:
         probe = yhs("/v1/derived/heatmap/MU/history",
-                    {"expiration": d1, "from": f"{ds}T13:30:00Z",
+                    {"expiration": ds, "from": f"{ds}T13:30:00Z",
                      "to": f"{ds}T13:35:00Z", "limit": 100})
         probe_rows, _ = _rows_and_cursor(probe)
+    except Exception as e:
+        log(f"MU {ds}: 0DTE 探测失败({str(e)[:60]}), 试 1DTE")
+    if not probe_rows:
+        d1 = (d0 + datetime.timedelta(days=1)).isoformat()
+        try:
+            probe = yhs("/v1/derived/heatmap/MU/history",
+                        {"expiration": d1, "from": f"{ds}T13:30:00Z",
+                         "to": f"{ds}T13:35:00Z", "limit": 100})
+            probe_rows, _ = _rows_and_cursor(probe)
+        except Exception as e:
+            log(f"MU {ds}: 1DTE 探测失败({str(e)[:60]})")
         if probe_rows:
             expiry, dte_label = d1, "1DTE"
+    # 本地存档 fallback (YHS 只保留 3 天, 历史回补用 mu_report 存档)
+    local_rows, local_label = None, None
+    if not probe_rows:
+        for cand, lab in [(f"hm{mmdd}_full.json", "0DTE"),
+                          (f"hm{mmdd}_1dte.json", "1DTE")]:
+            p = os.path.join(MU_DIR, cand)
+            if os.path.exists(p):
+                try:
+                    d = json.load(open(p))
+                    dd = d.get("data")
+                    # 兼容两种格式: {"data":[rows]} 或 {"data":{"data":[rows]}}
+                    rows = dd if isinstance(dd, list) else (dd.get("data") if isinstance(dd, dict) else None)
+                    if rows and len(rows) > 5:
+                        local_rows, local_label = rows, lab
+                        log(f"MU {ds}: 使用本地存档 {cand} ({len(rows)} 行)")
+                        break
+                except Exception as e:
+                    log(f"MU {ds}: 本地存档 {cand} 读取失败: {e}")
+        if local_rows:
+            expiry, dte_label = local_rows[0].get("expiration", ds), local_label
         else:
-            raise RuntimeError(f"MU {ds}: 0DTE/1DTE 均无 heatmap 快照")
-    time.sleep(1)
-    # 2) heatmap 全部分页
-    all_rows, cursor, pages = [], None, 0
-    while True:
-        params = {"expiration": expiry, "from": f"{ds}T13:30:00Z",
-                  "to": f"{ds}T20:10:00Z", "limit": 100}
-        if cursor:
-            params["cursor"] = cursor
-        d = yhs("/v1/derived/heatmap/MU/history", params)
-        rows, cursor = _rows_and_cursor(d)
-        all_rows.extend(rows)
-        pages += 1
-        if not cursor or pages > 20:
-            break
-        time.sleep(1.1)
-    all_rows.sort(key=lambda r: r["minute_at"])
-    hm_file = f"hm{mmdd}_{dte_label.lower()}.json"
-    json.dump({"data": {"data": all_rows}},
-              open(os.path.join(MU_DIR, hm_file), "w"))
-    log(f"MU heatmap rows={len(all_rows)} pages={pages} -> {hm_file}")
+            raise RuntimeError(f"MU {ds}: 0DTE/1DTE 均无 heatmap 快照(本地也无存档)")
+    if local_rows:
+        all_rows = sorted(local_rows, key=lambda r: r["minute_at"])
+        hm_file = f"hm{mmdd}_{dte_label.lower()}.json"
+        json.dump({"data": {"data": all_rows}},
+                  open(os.path.join(MU_DIR, hm_file), "w"))
+        log(f"MU heatmap 本地存档 rows={len(all_rows)} -> {hm_file}")
+    else:
+        time.sleep(1)
+        # 2) heatmap 全部分页
+        all_rows, cursor, pages = [], None, 0
+        while True:
+            params = {"expiration": expiry, "from": f"{ds}T13:30:00Z",
+                      "to": f"{ds}T20:10:00Z", "limit": 100}
+            if cursor:
+                params["cursor"] = cursor
+            d = yhs("/v1/derived/heatmap/MU/history", params)
+            rows, cursor = _rows_and_cursor(d)
+            all_rows.extend(rows)
+            pages += 1
+            if not cursor or pages > 20:
+                break
+            time.sleep(1.1)
+        all_rows.sort(key=lambda r: r["minute_at"])
+        hm_file = f"hm{mmdd}_{dte_label.lower()}.json"
+        json.dump({"data": {"data": all_rows}},
+                  open(os.path.join(MU_DIR, hm_file), "w"))
+        log(f"MU heatmap rows={len(all_rows)} pages={pages} -> {hm_file}")
     time.sleep(1)
     # 3) Yahoo 5m
     y = yahoo_chart("MU", "5m", "1mo", True)

@@ -257,9 +257,23 @@ def page_foot():
     return '</main>\n' + TAB_JS + '\n</body>\n</html>\n'
 
 
+def sitenav(active):
+    """全站单色导航条. active: HOME/SPX/MU/TSLA/SPX10."""
+    items = [("../index.html", "首页", "HOME"),
+             ("../spx-intraday/index.html", "SPX 日内报告", "SPX"),
+             ("../spx-10min/index.html", "SPX 尾盘10分钟", "SPX10"),
+             ("../mu/index.html", "MU 日内报告", "MU"),
+             ("../tsla/index.html", "TSLA 日内报告", "TSLA")]
+    links = "".join(
+        f'<a href="{href}"{" class=\"on\"" if key == active else ""}>{label}</a>'
+        for href, label, key in items)
+    return f'<nav class="sitenav">{links}</nav>'
+
+
 def render_standalone(ticker, label, norm):
     """单日独立页面 (无 tab, 带返回索引链接)."""
     h = [page_head(f'{label} {norm["date"]} 日内报告')]
+    h.append(sitenav(ticker))
     h.append(f'<p style="margin:0 0 12px"><a href="index.html">← {esc(label)} 全部日期</a></p>')
     h.append(render_article(norm))
     h.append(page_foot())
@@ -293,6 +307,7 @@ def build_index(ticker_dir, ticker, label):
             pass
         tabs.append((ds, f'{d.month}/{d.day} {wd}{label_extra}'))
     h = [page_head(f"{label}（按日期）")]
+    h.append(sitenav(ticker))
     h.append(f'<h1 style="margin:0 0 4px">{esc(label)}</h1>')
     h.append('<p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>')
     h.append('<nav class="day-tabs" role="tablist" aria-label="日期">')

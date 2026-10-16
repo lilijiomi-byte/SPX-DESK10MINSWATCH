@@ -29,7 +29,8 @@ from zoneinfo import ZoneInfo
 ET = ZoneInfo("America/New_York")
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-DATA = os.path.join(ROOT, "data")
+PAGE = os.path.join(ROOT, "spx-10min")
+DATA = os.path.join(PAGE, "data")
 CHARTS = os.path.join(DATA, "charts")
 CLI = os.path.expanduser("~/workspace/skills/yehangshe/bin/yhs.py")
 
