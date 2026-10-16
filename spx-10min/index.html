@@ -103,7 +103,7 @@
 <div class="card">
   <h2>④ flow<span class="tag" id="flowwin"></span></h2>
   <div class="table-wrap"><table class="flow-table">
-    <thead><tr><th>时间(ET)</th><th>方向</th><th>买卖</th><th>Strike</th><th>权利金</th><th>张数</th><th>均价</th><th>DTE</th></tr></thead>
+    <thead><tr><th>时间</th><th>Ticker</th><th>Strike</th><th>C/P</th><th>OTM</th><th>EXP</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th><th>Spot</th><th>IV</th><th>Sweep</th></tr></thead>
     <tbody id="flowbody"></tbody>
   </table></div>
   <div class="mid-line" id="midline"></div>
@@ -160,26 +160,35 @@ function renderDay(d){
   hm.onerror = () => { hm.style.display = "none"; ph.style.display = "block"; };
   hm.src = "data/heatmap_" + d.date + ".png";
 
-  // ④ flow：逐笔时间顺序列表（call 浅绿 / put 浅红）
+  // ④ flow：全字段逐笔明细（call 浅绿 / put 浅红）
   const f = d.flow && d.flow.summary;
   document.getElementById("flowwin").textContent = f ? ("时段 " + f.window_et + " ET · " + f.n + " 笔") : "";
   const fb = document.getElementById("flowbody");
+  const f2 = v => (v === null || v === undefined) ? "—" : v;
+  const fS = v => (v === null || v === undefined) ? "—" : Number(v).toLocaleString();
   if (f && f.trade_list && f.trade_list.length){
     fb.innerHTML = f.trade_list.map(t =>
       `<tr class="${t.right === "Call" ? "tr-call" : "tr-put"}">` +
-      `<td>${t.t}</td><td><b>${t.right}</b></td>` +
-      `<td><span class="side-pill">${t.side}</span></td>` +
-      `<td>${t.strike != null ? t.strike : "—"}${t.moneyness ? ` <span class="pill">${t.moneyness}</span>` : ""}</td>` +
-      `<td>$${Number(t.premium_m).toFixed(3)}M</td>` +
-      `<td>${t.contracts != null ? t.contracts : "—"}</td>` +
-      `<td>${t.avg_fill != null ? "$" + t.avg_fill.toFixed(2) : "—"}</td>` +
-      `<td>${t.dte != null ? t.dte + "DTE" : "—"}</td></tr>`
+      `<td>${t.t}</td><td>${f2(t.ticker)}</td>` +
+      `<td><b>${f2(t.strike)}</b></td>` +
+      `<td><b style="color:${t.right === "Call" ? "var(--up)" : "var(--dn)"}">${t.right === "Call" ? "CALL" : "PUT"}</b></td>` +
+      `<td>${t.otm_pct != null ? (t.otm_pct >= 0 ? "+" : "") + t.otm_pct.toFixed(2) + "%" : "—"}</td>` +
+      `<td>${f2(t.exp)}</td><td>${f2(t.dte)}</td>` +
+      `<td>${t.fill != null ? "$" + t.fill.toFixed(2) : "—"}</td>` +
+      `<td>${t.bid != null ? t.bid.toFixed(2) : "—"} / ${t.ask != null ? t.ask.toFixed(2) : "—"}</td>` +
+      `<td><span class="side-pill">${f2(t.side)}</span></td>` +
+      `<td>${fS(t.size)}</td>` +
+      `<td><b>$${Number(t.prem_m).toFixed(3)}M</b></td>` +
+      `<td>${fS(t.vol)}</td><td>${fS(t.oi)}</td>` +
+      `<td>${f2(t.spot)}</td>` +
+      `<td>${t.iv != null ? t.iv.toFixed(1) + "%" : "—"}</td>` +
+      `<td>${t.sweep ? "YES" : "—"}</td></tr>`
     ).join("");
     document.getElementById("midline").textContent =
       `mid 成交 $${fM(f.mid_premium_m)}（${f.mid_note}）`;
     document.getElementById("flowverdict").textContent = d.flow.verdict || "";
   } else {
-    fb.innerHTML = `<tr><td colspan="8" style="color:var(--muted);">15:30–16:00 时段内无符合筛选的大单</td></tr>`;
+    fb.innerHTML = `<tr><td colspan="17" style="color:var(--muted);">15:30–16:00 时段内无符合筛选的大单</td></tr>`;
     document.getElementById("midline").textContent = f ? `mid 成交 $${fM(f.mid_premium_m)}（${f.mid_note}）` : "flow 数据缺失";
     document.getElementById("flowverdict").textContent = (d.flow && d.flow.verdict) || "";
   }

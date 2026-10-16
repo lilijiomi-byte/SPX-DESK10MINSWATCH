@@ -308,7 +308,7 @@ def summarize_flow(trades, spot_by_min, day_close):
     lean = "中性" if total <= 0 else (
         "偏多" if bias >= 0.3 else ("偏空" if bias <= -0.3 else "中性"))
     mid_m = (g("call_mid") + g("put_mid")) / 1e6
-    # 逐笔时间顺序列表（trades 已按 occurred_at 升序）
+    # 逐笔时间顺序列表（trades 已按 occurred_at 升序）— 全字段明细
     trade_list = []
     for r in trades:
         right = (r.get("right") or "").upper()
@@ -323,16 +323,42 @@ def summarize_flow(trades, spot_by_min, day_close):
             tstr = ""
         strike = _strike_of(r)
         spot = r.get("underlying_price_usd") or day_close
+        bid = r.get("nbbo_bid_usd")
+        ask = r.get("nbbo_ask_usd")
+        iv0, iv1 = r.get("min_iv_pct"), r.get("max_iv_pct")
+        iv = None
+        if iv0 is not None and iv1 is not None:
+            iv = round((float(iv0) + float(iv1)) / 2 * 100, 1)
+        # OTM%: YHS 的 max_moneyness_pct 常为 None, 自己算 (正=OTM, 负=ITM)
+        otm_pct = None
+        mnp = r.get("max_moneyness_pct")
+        if mnp is not None:
+            otm_pct = round(float(mnp), 2)
+        elif strike and spot:
+            otm_pct = round(((strike - spot) / spot * 100
+                             if right == "C" else (spot - strike) / spot * 100), 2)
         trade_list.append({
             "t": tstr,
-            "right": "Call" if right == "C" else "Put",
-            "side": {"ask": "Ask", "bid": "Bid", "mid": "Mid"}.get(b, b),
+            "ticker": "SPXW",
             "strike": round(strike, 1) if strike else None,
-            "moneyness": _moneyness(right, strike, spot),
-            "premium_m": round(float(r.get("premium_usd") or 0) / 1e6, 3),
-            "contracts": r.get("contracts"),
-            "avg_fill": round(float(r.get("avg_fill_usd") or 0), 2) or None,
+            "right": "Call" if right == "C" else "Put",
+            "otm_pct": otm_pct,
+            "exp": (r.get("expiration") or "")[5:],
             "dte": r.get("min_dte"),
+            "fill": round(float(r.get("avg_fill_usd") or 0), 2) or None,
+            "bid": round(float(bid), 2) if bid else None,
+            "ask": round(float(ask), 2) if ask else None,
+            "side": {"ask": "ASK", "bid": "BID", "mid": "MID"}.get(b, b),
+            "size": r.get("contracts"),
+            "prem_m": round(float(r.get("premium_usd") or 0) / 1e6, 3),
+            "net_m": (round(float(r.get("net_premium_usd")) / 1e6, 3)
+                      if r.get("net_premium_usd") is not None else None),
+            "vol": r.get("session_volume"),
+            "oi": r.get("open_interest"),
+            "spot": round(float(spot), 1) if spot else None,
+            "iv": iv,
+            "sweep": bool(r.get("has_sweep")),
+            "moneyness": _moneyness(right, strike, spot),
         })
     summary = {
         "window_et": "15:30-16:00",
