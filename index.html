@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>SPX 尾盘10分钟</title>
+<style>
+  :root{
+    --bg:#f5f6f7; --paper:#ffffff; --ink:#17191d; --muted:#5e6570;
+    --line:#d8dde4; --chip:#eceff3;
+    --up:#158353; --dn:#c83c43; --gold:#a97500; --blue:#3275c5;
+    --violet:#7a42cf; --pink:#cf2f8f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+       line-height:1.65; padding:24px 16px 70px;}
+  main{max-width:980px; margin:0 auto;}
+  header{margin-bottom:16px;}
+  header h1{font-size:24px; letter-spacing:1px;}
+  header p{color:var(--muted); font-size:12px; margin-top:6px;}
+  #tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+  #tabs button{background:var(--paper); color:var(--muted); border:1px solid var(--line);
+    border-radius:6px; padding:8px 14px; font-size:13px; cursor:pointer;}
+  #tabs button.active{color:var(--ink); border-color:var(--ink); background:var(--chip); font-weight:700;}
+  .card{background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    padding:18px; margin-bottom:16px;}
+  .card h2{font-size:15px; font-weight:700; margin-bottom:12px; letter-spacing:1px;}
+  .card h2 .tag{font-size:11px; font-weight:400; color:var(--muted); margin-left:8px;}
+  .chart-shell{border:1px solid var(--line); border-radius:8px; padding:10px; background:#fff;}
+  .chart-shell img{display:block; width:100%; height:auto;}
+  .footnote{margin-top:10px; font-size:12px; color:var(--muted); line-height:1.7;}
+  table.detail{width:100%; border-collapse:collapse; font-size:13px; font-variant-numeric:tabular-nums;}
+  table.detail th, table.detail td{border:1px solid var(--line); padding:7px 4px; text-align:center;}
+  table.detail thead th{background:var(--chip); font-weight:600;}
+  table.detail thead .wave{font-size:12px; color:var(--muted); background:#f7f8fa;}
+  table.detail tbody th{background:#fafbfc; font-weight:600; width:64px;}
+  table.detail td.wave-split{border-left:2px solid var(--ink);}
+  table.detail thead th.wave-split{border-left:2px solid var(--ink);}
+  .up{color:var(--up); font-weight:700;} .dn{color:var(--dn); font-weight:700;}
+  .flow-table{width:100%; border-collapse:collapse; font-size:13px;}
+  .flow-table th{font-size:11px; color:var(--muted); font-weight:400; text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); white-space:nowrap;}
+  .flow-table td{padding:7px 8px; border-bottom:1px solid #eceff3; white-space:nowrap; font-variant-numeric:tabular-nums;}
+  .flow-table tr:last-child td{border-bottom:none;}
+  .tr-call td{background:#e2f1e7;}
+  .tr-put td{background:#fae3e3;}
+  .side-pill{display:inline-block; font-size:11px; border:1px solid var(--line); border-radius:4px; padding:1px 6px; background:#fff;}
+  .table-wrap{overflow-x:auto;}
+  .pill{display:inline-block; font-size:11px; padding:1px 8px; border-radius:10px;
+    background:var(--chip); color:var(--muted); margin-left:6px; vertical-align:middle;}
+  .mid-line{margin-top:10px; font-size:13px; color:var(--muted);}
+  .verdict{margin-top:10px; font-size:14px; font-weight:600;}
+  .strat{list-style:none;}
+  .strat li{padding:9px 0; border-bottom:1px dashed var(--line); font-size:14px;}
+  .strat li:last-child{border-bottom:none;}
+  .badge{display:inline-block; font-size:11px; font-weight:700; color:#fff; background:var(--muted);
+    border-radius:4px; padding:3px 10px; margin-left:8px; vertical-align:middle;}
+  .note{font-size:15px; line-height:1.8; min-height:26px;}
+  .note.empty{color:var(--muted);}
+  .placeholder{border:1px dashed var(--line); border-radius:8px; padding:34px 16px;
+    text-align:center; color:var(--muted); font-size:14px; background:#fafbfc;}
+  #hmimg{display:none; width:100%; height:auto; border:1px solid var(--line); border-radius:8px;}
+  footer{margin-top:24px; font-size:12px; color:var(--muted); line-height:1.8;
+    border-top:1px solid var(--line); padding-top:12px;}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>SPX 尾盘10分钟</h1>
+  <p>每个交易日收盘后自动更新 · 覆盖 15:40–16:00 ET · 全部时间为美东时间 (ET)</p>
+</header>
+<div id="tabs"></div>
+
+<div class="card">
+  <h2>① 1分钟K线图<span class="tag">15:40–16:00 ET · 灰底=15:40–15:50</span></h2>
+  <div class="chart-shell"><img id="chart" alt="SPX 1分钟K线"></div>
+  <div class="footnote" id="chartnote"></div>
+</div>
+
+<div class="card">
+  <h2>② 10分钟明细表<span class="tag">15:50–16:00 ET · 每列1分钟</span></h2>
+  <div style="overflow-x:auto"><table class="detail" id="detail"></table></div>
+</div>
+
+<div class="card">
+  <h2>③ heatmap 快照</h2>
+  <img id="hmimg" alt="heatmap 快照">
+  <div class="placeholder" id="hmph">（待补充，用户稍后提供）</div>
+</div>
+
+<div class="card">
+  <h2>④ flow<span class="tag" id="flowwin"></span></h2>
+  <div class="table-wrap"><table class="flow-table">
+    <thead><tr><th>时间(ET)</th><th>方向</th><th>买卖</th><th>Strike</th><th>权利金</th><th>张数</th><th>均价</th><th>DTE</th></tr></thead>
+    <tbody id="flowbody"></tbody>
+  </table></div>
+  <div class="mid-line" id="midline"></div>
+  <div class="verdict" id="flowverdict"></div>
+  <div class="footnote">筛选：15:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ 0DTE ｜ SPXW ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。</div>
+</div>
+
+<div class="card">
+  <h2>⑤ 策略判断<span class="badge">辅助判断 · 非入场指令</span></h2>
+  <ul class="strat" id="strat"></ul>
+</div>
+
+<div class="card">
+  <h2>⑥ 一句话总结</h2>
+  <div class="note" id="note"></div>
+</div>
+
+<footer>
+  数据来源：Yahoo ^GSPC / ES=F 1分钟K线；YHS /v1/flow/trades。<br>
+  本站为公开但未宣传页面（unlisted），请勿对外分享链接。
+</footer>
+</main>
+
+<script>
+const f1 = n => (n === null || n === undefined) ? "—" : Number(n).toFixed(1);
+const fM = n => (n === null || n === undefined) ? "—" : Number(n).toFixed(2) + "M";
+const cls = n => (n === null || n === undefined) ? "" : (n >= 0 ? "up" : "dn");
+
+function renderDay(d){
+  document.title = "SPX 尾盘10分钟 · " + d.date;
+  // ① chart
+  const chart = document.getElementById("chart");
+  if (d.chart_png){ chart.src = d.chart_png; chart.style.display = "block"; }
+  else { chart.style.display = "none"; }
+  document.getElementById("chartnote").innerHTML =
+    "VWAP / EMA250 口径：SPX 本身无成交量，用 ES=F 1m 成交量（12x中位数上限）＋逐 bar 动态 basis（ES收−SPX收）" +
+    "换算出等效 SPX 典型价再算 VWAP；EMA250 = ES 1m 收盘的 EMA250 再减当时 basis。" +
+    (d.vwap != null ? `<br>当日收盘值：VWAP <b>${f1(d.vwap)}</b> ｜ EMA250 <b>${f1(d.ema250)}</b>` : "<br>VWAP/EMA250：—");
+
+  // ② 明细表
+  const t = d.table_10 || [];
+  let h = `<thead><tr><th></th><th colspan="5" class="wave">第一波 15:50–15:55</th>` +
+          `<th colspan="5" class="wave">第二波 15:55–16:00</th></tr><tr><th></th>` +
+          t.map((b,i) => `<th class="${i>=5?"wave-split":""}">${b.t}</th>`).join("") + `</tr></thead><tbody>`;
+  [["Open","o"],["High","h"],["Low","l"],["Close","c"]].forEach(([lbl,k]) => {
+    h += `<tr><th>${lbl}</th>` + t.map((b,i) => {
+      const v = b[k];
+      const c = (k==="c" && v!=null && b.o!=null) ? cls(v-b.o) : "";
+      return `<td class="${i>=5?"wave-split":""} ${c}">${f1(v)}</td>`;
+    }).join("") + `</tr>`;
+  });
+  document.getElementById("detail").innerHTML = h + "</tbody>";
+
+  // ③ heatmap
+  const hm = document.getElementById("hmimg"), ph = document.getElementById("hmph");
+  hm.style.display = "none"; ph.style.display = "block";
+  hm.onload = () => { hm.style.display = "block"; ph.style.display = "none"; };
+  hm.onerror = () => { hm.style.display = "none"; ph.style.display = "block"; };
+  hm.src = "data/heatmap_" + d.date + ".png";
+
+  // ④ flow：逐笔时间顺序列表（call 浅绿 / put 浅红）
+  const f = d.flow && d.flow.summary;
+  document.getElementById("flowwin").textContent = f ? ("时段 " + f.window_et + " ET · " + f.n + " 笔") : "";
+  const fb = document.getElementById("flowbody");
+  if (f && f.trade_list && f.trade_list.length){
+    fb.innerHTML = f.trade_list.map(t =>
+      `<tr class="${t.right === "Call" ? "tr-call" : "tr-put"}">` +
+      `<td>${t.t}</td><td><b>${t.right}</b></td>` +
+      `<td><span class="side-pill">${t.side}</span></td>` +
+      `<td>${t.strike != null ? t.strike : "—"}${t.moneyness ? ` <span class="pill">${t.moneyness}</span>` : ""}</td>` +
+      `<td>$${Number(t.premium_m).toFixed(3)}M</td>` +
+      `<td>${t.contracts != null ? t.contracts : "—"}</td>` +
+      `<td>${t.avg_fill != null ? "$" + t.avg_fill.toFixed(2) : "—"}</td>` +
+      `<td>${t.dte != null ? t.dte + "DTE" : "—"}</td></tr>`
+    ).join("");
+    document.getElementById("midline").textContent =
+      `mid 成交 $${fM(f.mid_premium_m)}（${f.mid_note}）`;
+    document.getElementById("flowverdict").textContent = d.flow.verdict || "";
+  } else {
+    fb.innerHTML = `<tr><td colspan="8" style="color:var(--muted);">15:30–16:00 时段内无符合筛选的大单</td></tr>`;
+    document.getElementById("midline").textContent = f ? `mid 成交 $${fM(f.mid_premium_m)}（${f.mid_note}）` : "flow 数据缺失";
+    document.getElementById("flowverdict").textContent = (d.flow && d.flow.verdict) || "";
+  }
+
+  // ⑤ 策略
+  document.getElementById("strat").innerHTML =
+    (d.strategy || []).map(s => `<li>${s}</li>`).join("");
+
+  // ⑥ note
+  const n = document.getElementById("note");
+  if (d.note && d.note.trim()){ n.textContent = d.note; n.classList.remove("empty"); }
+  else { n.textContent = "（暂无）"; n.classList.add("empty"); }
+}
+
+fetch("data/days.json").then(r => r.json()).then(j => {
+  const days = (j.days || []).slice().sort().reverse();
+  const tabs = document.getElementById("tabs");
+  days.forEach((ds, i) => {
+    const b = document.createElement("button");
+    const dt = new Date(ds + "T12:00:00");
+    const wd = ["周日","周一","周二","周三","周四","周五","周六"][dt.getDay()];
+    b.textContent = ds.slice(5) + " " + wd;
+    if (i === 0) b.classList.add("active");
+    b.onclick = () => {
+      tabs.querySelectorAll("button").forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+      fetch("data/" + ds + ".json").then(r => r.json()).then(renderDay);
+    };
+    tabs.appendChild(b);
+  });
+  if (days.length) fetch("data/" + days[0] + ".json").then(r => r.json()).then(renderDay);
+});
+</script>
+</body>
+</html>
