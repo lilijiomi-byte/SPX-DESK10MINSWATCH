@@ -193,7 +193,31 @@ def render_article(norm):
     # flow
     a('<div class="flow-summary">')
     a(f'<h3>{esc(norm["flow_title"])}</h3>')
-    if norm.get("flow_items"):
+    tl = norm.get("flow_trade_list")
+    if tl:
+        # 10min 同款逐笔明细表
+        a('<div class="flow-table-wrap"><table class="flow-table">')
+        a('<thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th>'
+          '<th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead><tbody>')
+        for t in tl:
+            cls = "tr-call" if t.get("right") == "Call" else "tr-put"
+            cp = "CALL" if t.get("right") == "Call" else "PUT"
+            cp_c = "#158353" if t.get("right") == "Call" else "#c83c43"
+            bid = f'{t["bid"]:.2f}' if t.get("bid") is not None else "—"
+            ask = f'{t["ask"]:.2f}' if t.get("ask") is not None else "—"
+            fill = f'${t["fill"]:.2f}' if t.get("fill") is not None else "—"
+            a(f'<tr class="{cls}"><td>{esc(str(t.get("t", "")))}</td>'
+              f'<td><b>{t.get("strike", "")}</b></td>'
+              f'<td><b style="color:{cp_c}">{cp}</b></td>'
+              f'<td>{t.get("dte", "")}</td><td>{fill}</td>'
+              f'<td>{bid} / {ask}</td>'
+              f'<td><span class="side-pill">{esc(str(t.get("side", "")))}</span></td>'
+              f'<td>{t.get("size", "")}</td>'
+              f'<td><b>${t.get("prem_m", 0):.3f}M</b></td>'
+              f'<td>{t.get("vol", "")}</td><td>{t.get("oi", "")}</td></tr>')
+        a('</tbody></table></div>')
+        a('<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ 0DTE ｜ SPXW ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>')
+    elif norm.get("flow_items"):
         a('<ul>')
         for it in norm["flow_items"]:
             a(f'<li>{esc(it)}</li>')

@@ -644,6 +644,15 @@ def adapt_spx(rd, ds):
              "et": n["et"], "pos": n["max_gex_m"] > 0, "analysis": ""}
             for i, n in enumerate(hm["top_nodes"][:5])]
     dte = hm.get("dte_label", "0DTE")
+    # 全天逐笔 flow（10min 表格式，premium≥$20万）
+    trade_list = []
+    try:
+        sys.path.insert(0, SCRIPTS)
+        import publish as _pub
+        raw = _pub.fetch_flow_fullday(ds, min_premium_usd=200000)
+        trade_list = _pub.build_trade_list(raw, k["close"])
+    except Exception as e:
+        print(f"[spx flow] 全天逐笔拉取失败: {e}", flush=True)
     return {
         "ticker": "SPX", "date": ds, "mmdd": ds[5:7] + ds[8:10], "weekday": weekday_cn(ds),
         "date_str": f"{ds[:4]}年{int(ds[5:7])}月{int(ds[8:10])}日 · {weekday_cn(ds)} · 日内报告",
@@ -663,8 +672,9 @@ def adapt_spx(rd, ds):
         "key_reads": [kr["gold_bands"], kr["purple_bands"], kr["trajectory"], kr["tail_changes"]],
         "top5": top5,
         "top5_method": f"亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。",
-        "flow_title": f"资金流总结（0DTE SPXW，全天{fl['n_trades']}笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）",
+        "flow_title": f"资金流（0DTE SPXW，全天{len(trade_list)}笔；premium≥$20万｜size≥50｜0DTE｜side=B/M/A）",
         "flow_items": fl["buckets_30min"],
+        "flow_trade_list": trade_list,
         "flow_verdict": (f"主动资金{fl['bias']}（{fl['lean']}）：主动买入 ${fl['bull_premium_m']:.2f}M，"
                          f"主动卖出 ${fl['bear_premium_m']:.2f}M，mid ${fl['mid_premium_m']:.2f}M（不计入主动买卖）。"),
         "summary": rd["summary"],

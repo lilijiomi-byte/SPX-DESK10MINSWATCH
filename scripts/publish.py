@@ -199,6 +199,58 @@ def _yhs_cli_get(path):
     return d.get("status"), d
 
 
+def fetch_flow_fullday(ds, min_premium_usd=200000):
+    """SPX 全天 flow (for 日内报告): server过滤 premium/size/sides/kind=order,
+    本地只留 0DTE 的 SPXW, size>=50, 单腿, 时段 09:30-16:00 ET. 返回 trades 列表(时间升序)."""
+    all_rows, cursor, pages = [], None, 0
+    while True:
+        q = (f"/v1/flow/trades?session_date={ds}&tickers=SPXW&kind=order"
+             f"&min_premium_usd={min_premium_usd}&min_contracts=50&sides=B,M,A"
+             f"&sort_by=occurredAt&direction=desc&limit=25")
+        if cursor:
+            q += "&cursor=" + urllib.parse.quote(cursor, safe="")
+        st, d = _yhs_cli_get(q)
+        if st != 200:
+            print(f"[flow-fullday] YHS {st}, flow 置空", flush=True)
+            return []
+        dd = d.get("data") or {}
+        rows = dd.get("data") or []
+        if not rows:
+            break
+        # 检查是否已翻到前一天 (direction=desc, 日期变小即停)
+        oldest = rows[-1].get("occurred_at", "")[:10]
+        for r in rows:
+            try:
+                occ_et = (datetime.datetime.fromisoformat(
+                    (r.get("occurred_at") or "").replace("Z", "+00:00"))
+                    .astimezone(ET))
+            except Exception:
+                continue
+            if occ_et.strftime("%Y-%m-%d") != ds:
+                continue
+            hm = occ_et.strftime("%H:%M")
+            if "09:30" <= hm <= "16:00":
+                all_rows.append(r)
+        pages += 1
+        cursor = (dd.get("_meta") or {}).get("next_cursor")
+        if not cursor or oldest < ds or pages > 60:
+            break
+        time.sleep(1.1)
+    all_rows.reverse()  # 恢复时间升序
+    kept = []
+    for r in all_rows:
+        if r.get("min_dte") != 0:
+            continue
+        if not (r.get("contract_symbol") or "").startswith("O:SPXW"):
+            continue
+        if not (r.get("contracts") or 0) >= 50:
+            continue
+        if (r.get("leg_count") or 0) > 1 or r.get("contains_stock_leg"):
+            continue
+        kept.append(r)
+    return kept
+
+
 def fetch_flow(ds):
     """SPX 当日 flow: server过滤 premium>=2万/size>=50/sides=B,M,A/kind=order,
     本地只留 0DTE 的 SPXW (tickers=SPXW 口径 + min_dte==0)，
@@ -296,6 +348,46 @@ def _strike_of(r):
     return r.get("max_strike_usd") or r.get("min_strike_usd")
 
 
+def build_trade_list(trades, day_close):
+    """把 YHS flow 原始行转成前端表格用的全字段明细（时间升序）。"""
+    trade_list = []
+    for r in trades:
+        right = (r.get("right") or "").upper()
+        if right not in ("C", "P"):
+            continue
+        b = _bucket(r.get("side"))
+        try:
+            occ_et = datetime.datetime.fromisoformat(
+                (r.get("occurred_at") or "").replace("Z", "+00:00")).astimezone(ET)
+            tstr = occ_et.strftime("%H:%M:%S")
+        except Exception:
+            tstr = ""
+        strike = _strike_of(r)
+        spot = r.get("underlying_price_usd") or day_close
+        bid = r.get("nbbo_bid_usd")
+        ask = r.get("nbbo_ask_usd")
+        trade_list.append({
+            "t": tstr,
+            "strike": round(strike, 1) if strike else None,
+            "right": "Call" if right == "C" else "Put",
+            "dte": r.get("min_dte"),
+            "fill": round(float(r.get("avg_fill_usd") or 0), 2) or None,
+            "bid": round(float(bid), 2) if bid else None,
+            "ask": round(float(ask), 2) if ask else None,
+            "side": {"ask": "ASK", "bid": "BID", "mid": "MID"}.get(b, b),
+            "size": r.get("contracts"),
+            "prem_m": round(float(r.get("premium_usd") or 0) / 1e6, 3),
+            "net_m": (round(float(r.get("net_premium_usd")) / 1e6, 3)
+                      if r.get("net_premium_usd") is not None else None),
+            "vol": r.get("session_volume"),
+            "oi": r.get("open_interest"),
+            "spot": round(float(spot), 1) if spot else None,
+            "sweep": bool(r.get("has_sweep")),
+            "moneyness": _moneyness(right, strike, spot),
+        })
+    return trade_list
+
+
 def summarize_flow(trades, spot_by_min, day_close):
     """按 call/put x ask/bid/mid 汇总 premium; 每格标主要strike+OTM/ATM/ITM."""
     buckets = {}
@@ -341,41 +433,7 @@ def summarize_flow(trades, spot_by_min, day_close):
         "偏多" if bias >= 0.3 else ("偏空" if bias <= -0.3 else "中性"))
     mid_m = (g("call_mid") + g("put_mid")) / 1e6
     # 逐笔时间顺序列表（trades 已按 occurred_at 升序）— 全字段明细
-    trade_list = []
-    for r in trades:
-        right = (r.get("right") or "").upper()
-        if right not in ("C", "P"):
-            continue
-        b = _bucket(r.get("side"))
-        try:
-            occ_et = datetime.datetime.fromisoformat(
-                (r.get("occurred_at") or "").replace("Z", "+00:00")).astimezone(ET)
-            tstr = occ_et.strftime("%H:%M:%S")
-        except Exception:
-            tstr = ""
-        strike = _strike_of(r)
-        spot = r.get("underlying_price_usd") or day_close
-        bid = r.get("nbbo_bid_usd")
-        ask = r.get("nbbo_ask_usd")
-        trade_list.append({
-            "t": tstr,
-            "strike": round(strike, 1) if strike else None,
-            "right": "Call" if right == "C" else "Put",
-            "dte": r.get("min_dte"),
-            "fill": round(float(r.get("avg_fill_usd") or 0), 2) or None,
-            "bid": round(float(bid), 2) if bid else None,
-            "ask": round(float(ask), 2) if ask else None,
-            "side": {"ask": "ASK", "bid": "BID", "mid": "MID"}.get(b, b),
-            "size": r.get("contracts"),
-            "prem_m": round(float(r.get("premium_usd") or 0) / 1e6, 3),
-            "net_m": (round(float(r.get("net_premium_usd")) / 1e6, 3)
-                      if r.get("net_premium_usd") is not None else None),
-            "vol": r.get("session_volume"),
-            "oi": r.get("open_interest"),
-            "spot": round(float(spot), 1) if spot else None,
-            "sweep": bool(r.get("has_sweep")),
-            "moneyness": _moneyness(right, strike, spot),
-        })
+    trade_list = build_trade_list(trades, day_close)
     summary = {
         "window_et": "15:50-16:00",
         "n": len(trades),
