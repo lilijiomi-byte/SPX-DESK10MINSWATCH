@@ -449,54 +449,29 @@ def mu_assemble(ds, fetched):
         top5.append({"rank": i + 1, "strike": t["strike"], "gex_m": t["max_gex_m"],
                      "et": t["et"], "pos": t["max_gex_m"] > 0, "analysis": analysis})
 
-    # flow: 30分钟桶
-    def moneyness(strike, spot, right):
-        if not strike or not spot:
-            return ""
-        r = strike / spot
-        if 0.995 <= r <= 1.005:
-            return "ATM"
-        if (right or "").lower().startswith("c"):
-            return "OTM" if r > 1.005 else "ITM"
-        return "OTM" if r < 0.995 else "ITM"
-
-    buckets, n_kept = {}, 0
-    for t in flow:
-        try:
-            dt = datetime.datetime.fromisoformat(t["occurred_at"].replace("Z", "+00:00")).astimezone(ET)
-        except Exception:
-            continue
-        slot = f"{dt.strftime('%H')}:{(dt.minute // 30) * 30:02d}"
-        side = {"at_bid": "bid", "mid": "mid", "at_ask": "ask",
-                "B": "bid", "M": "mid", "A": "ask"}.get(t.get("side"), "")
-        right = (t.get("right") or "").lower()
-        right = "call" if right.startswith("c") else "put"
-        key = (slot, right, side)
-        b = buckets.setdefault(key, {"premium": 0, "n": 0, "strikes": {}})
-        b["premium"] += t.get("premium_usd") or 0
-        b["n"] += 1
-        sk = t.get("strike")
-        if sk:
-            mn = moneyness(sk, t.get("underlying_price_usd") or cl, right)
-            b["strikes"][(sk, mn)] = b["strikes"].get((sk, mn), 0) + (t.get("premium_usd") or 0)
-        n_kept += 1
-    flow_items = []
-    for (slot, right, side) in sorted(buckets):
-        b = buckets[(slot, right, side)]
-        if side == "mid" and b["premium"] < 100_000:
-            continue
-        sk_s = ""
-        if b["strikes"]:
-            (sk, mn), _ = max(b["strikes"].items(), key=lambda x: -x[1])
-            sk_s = f"（主 {sk:.0f}{mn}）"
-        flow_items.append(f"{slot} {right} {side}{sk_s}：${b['premium']/1e6:.2f}M / {b['n']}笔")
-    bull = sum(b["premium"] for (s, r, sd), b in buckets.items() if (r == "call" and sd == "ask") or (r == "put" and sd == "bid"))
-    bear = sum(b["premium"] for (s, r, sd), b in buckets.items() if (r == "put" and sd == "ask") or (r == "call" and sd == "bid"))
-    mid_m = sum(b["premium"] for (s, r, sd), b in buckets.items() if sd == "mid") / 1e6
+    # flow: 逐笔明细表（SPX 10min 同款格式）
+    trade_list = []
+    try:
+        sys.path.insert(0, SCRIPTS)
+        import publish as _pub
+        raw = _pub.fetch_flow_stock(ds, "MU", min_premium_usd=200000)
+        trade_list = _pub.build_trade_list(raw, cl)
+    except Exception as e:
+        print(f"[mu flow] 逐笔拉取失败: {e}", flush=True)
+    n_kept = len(trade_list)
+    # 简单 verdict：从 trade_list 汇总
+    bull = sum(t["prem_m"] for t in trade_list
+               if (t["right"] == "Call" and t["side"] == "ASK")
+               or (t["right"] == "Put" and t["side"] == "BID"))
+    bear = sum(t["prem_m"] for t in trade_list
+               if (t["right"] == "Put" and t["side"] == "ASK")
+               or (t["right"] == "Call" and t["side"] == "BID"))
+    mid_m = sum(t["prem_m"] for t in trade_list if t["side"] == "MID")
     lean = "偏多" if bull > bear * 1.2 else ("偏空" if bear > bull * 1.2 else "中性")
-    flow_verdict = (f"全天{n_kept}笔：主动买入(call ask + put bid)${bull/1e6:.2f}M，"
-                     f"主动卖出(put ask + call bid)${bear/1e6:.2f}M，mid ${mid_m:.2f}M（不计入主动买卖）；"
-                     f"主动资金{lean}。")
+    flow_verdict = (f"全天{n_kept}笔：主动买入(call ask + put bid)${bull:.2f}M，"
+                    f"主动卖出(put ask + call bid)${bear:.2f}M，mid ${mid_m:.2f}M（不计入主动买卖）；"
+                    f"主动资金{lean}。")
+    flow_items = []  # 旧桶格式已废弃，保留空列表兼容
 
     # summary 事实型
     if cw and pw:
@@ -532,8 +507,9 @@ def mu_assemble(ds, fetched):
         "key_reads": key_reads,
         "top5": top5,
         "top5_method": f"亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。",
-        "flow_title": f"资金流总结（{dte_label}，全天{n_kept}笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）",
+        "flow_title": f"资金流（{dte_label}，全天{n_kept}笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）",
         "flow_items": flow_items,
+        "flow_trade_list": trade_list,
         "flow_verdict": flow_verdict,
         "summary": summary,
         "summary_title": "分析总结",
@@ -577,6 +553,15 @@ def adapt_tsla(rd, ds):
         top5.append({"rank": i + 1, "strike": n["strike"], "gex_m": gex,
                      "et": n["et"], "pos": gex > 0,
                      "analysis": top5a[i] if i < len(top5a) else ""})
+    # flow: 逐笔明细表（SPX 10min 同款格式）
+    trade_list = []
+    try:
+        sys.path.insert(0, SCRIPTS)
+        import publish as _pub
+        raw = _pub.fetch_flow_stock(ds, "TSLA", min_premium_usd=200000)
+        trade_list = _pub.build_trade_list(raw, tape["close"])
+    except Exception as e:
+        print(f"[tsla flow] 逐笔拉取失败: {e}", flush=True)
     return {
         "ticker": "TSLA", "date": ds, "mmdd": ds[5:7] + ds[8:10], "weekday": weekday_cn(ds),
         "date_str": f"{ds[:4]}年{int(ds[5:7])}月{int(ds[8:10])}日 · {weekday_cn(ds)} · 日内报告",
@@ -598,8 +583,9 @@ def adapt_tsla(rd, ds):
                       else list(hm.get("key_reads") or [])),
         "top5": top5,
         "top5_method": f"亮度口径：p99 截断 {hm.get('p99_clip_m', '?')}M；红框 = 全天该 strike 最大 |GEX| 时刻。",
-        "flow_title": f"资金流总结（{rd['hm_label']}，全天{fl['n']}笔；{fl['filter']}）",
+        "flow_title": f"资金流（{rd['hm_label']}，全天{len(trade_list)}笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）",
         "flow_items": fl["buckets"],
+        "flow_trade_list": trade_list,
         "flow_verdict": fl["verdict"],
         "summary": rd["summary"],
         "summary_title": "分析总结",

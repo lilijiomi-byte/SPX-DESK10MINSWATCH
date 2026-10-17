@@ -199,6 +199,56 @@ def _yhs_cli_get(path):
     return d.get("status"), d
 
 
+def fetch_flow_stock(ds, ticker, min_premium_usd=200000):
+    """个股 (MU/TSLA) 全天 flow: server过滤 premium/size/sides/kind=order,
+    本地只留 DTE≤1, size>=50, 单腿, 时段 09:30-16:00 ET. 返回 trades 列表(时间升序)."""
+    all_rows, cursor, pages = [], None, 0
+    while True:
+        q = (f"/v1/flow/trades?session_date={ds}&tickers={ticker}&kind=order"
+             f"&min_premium_usd={min_premium_usd}&min_contracts=50&sides=B,M,A"
+             f"&sort_by=occurredAt&direction=desc&limit=25")
+        if cursor:
+            q += "&cursor=" + urllib.parse.quote(cursor, safe="")
+        st, d = _yhs_cli_get(q)
+        if st != 200:
+            print(f"[flow-stock] YHS {st}, flow 置空", flush=True)
+            return []
+        dd = d.get("data") or {}
+        rows = dd.get("data") or []
+        if not rows:
+            break
+        oldest = rows[-1].get("occurred_at", "")[:10]
+        for r in rows:
+            try:
+                occ_et = (datetime.datetime.fromisoformat(
+                    (r.get("occurred_at") or "").replace("Z", "+00:00"))
+                    .astimezone(ET))
+            except Exception:
+                continue
+            if occ_et.strftime("%Y-%m-%d") != ds:
+                continue
+            hm = occ_et.strftime("%H:%M")
+            if "09:30" <= hm <= "16:00":
+                all_rows.append(r)
+        pages += 1
+        cursor = (dd.get("_meta") or {}).get("next_cursor")
+        if not cursor or oldest < ds or pages > 60:
+            break
+        time.sleep(1.1)
+    all_rows.reverse()
+    kept = []
+    for r in all_rows:
+        dte = r.get("min_dte")
+        if dte is None or dte > 1:  # DTE≤1
+            continue
+        if not (r.get("contracts") or 0) >= 50:
+            continue
+        if (r.get("leg_count") or 0) > 1 or r.get("contains_stock_leg"):
+            continue
+        kept.append(r)
+    return kept
+
+
 def fetch_flow_fullday(ds, min_premium_usd=200000):
     """SPX 全天 flow (for 日内报告): server过滤 premium/size/sides/kind=order,
     本地只留 0DTE 的 SPXW, size>=50, 单腿, 时段 09:30-16:00 ET. 返回 trades 列表(时间升序)."""

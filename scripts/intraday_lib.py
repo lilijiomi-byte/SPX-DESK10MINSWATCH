@@ -216,7 +216,16 @@ def render_article(norm):
               f'<td><b>${t.get("prem_m", 0):.3f}M</b></td>'
               f'<td>{t.get("vol", "")}</td><td>{t.get("oi", "")}</td></tr>')
         a('</tbody></table></div>')
-        a('<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ 0DTE ｜ SPXW ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>')
+        # footnote 按标的区分筛选口径
+        tk = norm.get("ticker", "SPX")
+        if tk == "SPX":
+            fnote = ("筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ 0DTE ｜ SPXW ｜ 单腿 ｜ "
+                     "side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。")
+        else:
+            fnote = (f"筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ DTE≤1 ｜ {tk} ｜ 单腿 ｜ "
+                     "side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。")
+        fnote += "ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。"
+        a(f'<div class="footnote">{fnote}</div>')
     elif norm.get("flow_items"):
         a('<ul>')
         for it in norm["flow_items"]:
