@@ -573,7 +573,7 @@ def main(ds):
         chart_rel = f"data/charts/spx_1m_{mmdd}.png"
         if bars:
             vl, el = draw_chart(ds, bars, vwap_seg, ema_seg,
-                               os.path.join(ROOT, chart_rel))
+                               os.path.join(CHARTS, f"spx_1m_{mmdd}.png"))
             out["chart_png"] = chart_rel
             out["vwap"] = round(vl, 1) if vl else None
             out["ema250"] = round(el, 1) if el else None
