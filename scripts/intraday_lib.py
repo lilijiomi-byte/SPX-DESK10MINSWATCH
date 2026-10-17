@@ -315,7 +315,7 @@ def build_index(ticker_dir, ticker, label):
     dates = sorted((f[:-5] for f in files), reverse=True)
     if not dates:
         raise RuntimeError(f"{ticker_dir}: 没有找到任何日期报告, 索引无法生成")
-    # 从各日期文件读取 tape 行做 tab 标签 (失败则只显示日期)
+    # 从各日期文件读取 tape 行做 tab 标签：显示当日最高-最低点差（不用涨跌%）
     tabs = []
     for ds in dates:
         d = datetime.date.fromisoformat(ds)
@@ -323,10 +323,14 @@ def build_index(ticker_dir, ticker, label):
         label_extra = ""
         try:
             ht = open(os.path.join(ticker_dir, f"{ds}.html"), encoding="utf-8").read()
-            m = re.search(r'<strong>([\d,\.]+)\s*<span class="(up|down)">([+\-][\d\.]+%)</span>', ht)
+            m = re.search(r'高\s*([\d,\.]+)\s*·\s*低\s*([\d,\.]+)', ht)
             if m:
-                cls, chg = m.group(2), m.group(3)
-                label_extra = f' <span class="tab-move {cls}">{chg}</span>'
+                hi = float(m.group(1).replace(",", ""))
+                lo = float(m.group(2).replace(",", ""))
+                rng = hi - lo
+                mc = re.search(r'<span class="(up|down)">', ht)
+                cls = mc.group(1) if mc else "up"
+                label_extra = f' <span class="tab-move {cls}">{rng:,.2f}</span>'
         except Exception:
             pass
         tabs.append((ds, f'{d.month}/{d.day} {wd}{label_extra}'))

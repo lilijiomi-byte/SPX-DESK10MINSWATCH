@@ -20,13 +20,13 @@
 
 /* flow 逐笔明细表（与 SPX 10min 同款） */
 .flow-table-wrap{overflow-x:auto;margin:12px 0;}
-.flow-table{width:100%;border-collapse:collapse;font-size:13px;}
-.flow-table th{font-size:11px;color:var(--muted);font-weight:400;text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;}
-.flow-table td{padding:7px 8px;border-bottom:1px solid #eceff3;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.flow-table{width:100%;border-collapse:collapse;font-size:13px;color:#17191d;}
+.flow-table th{font-size:11px;color:#5e6570;font-weight:400;text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;background:#fff;}
+.flow-table td{padding:7px 8px;border-bottom:1px solid #eceff3;white-space:nowrap;font-variant-numeric:tabular-nums;color:#17191d;}
 .flow-table tr:last-child td{border-bottom:none;}
-.tr-call td{background:#e2f1e7;}
-.tr-put td{background:#fae3e3;}
-.side-pill{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;background:#fff;}
+.tr-call td{background:#e2f1e7;color:#17191d;}
+.tr-put td{background:#fae3e3;color:#17191d;}
+.side-pill{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;background:#fff;color:#17191d;}
 .flow-summary .footnote{margin-top:10px;color:var(--muted);font-size:.8rem;}
 
 </style>
@@ -38,11 +38,11 @@
 <h1 style="margin:0 0 4px">SPX 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1016" aria-selected="true" href="#day-1016">10/16 周五 <span class="tab-move down">-1.10%</span></a>
-<a class="day-tab" role="tab" data-target="day-1015" aria-selected="false" href="#day-1015">10/15 周四 <span class="tab-move up">+0.32%</span></a>
-<a class="day-tab" role="tab" data-target="day-1014" aria-selected="false" href="#day-1014">10/14 周三 <span class="tab-move down">-1.08%</span></a>
-<a class="day-tab" role="tab" data-target="day-1013" aria-selected="false" href="#day-1013">10/13 周二 <span class="tab-move down">-0.02%</span></a>
-<a class="day-tab" role="tab" data-target="day-1012" aria-selected="false" href="#day-1012">10/12 周一 <span class="tab-move down">-0.05%</span></a>
+<a class="day-tab" role="tab" data-target="day-1016" aria-selected="true" href="#day-1016">10/16 周五 <span class="tab-move down">125.07</span></a>
+<a class="day-tab" role="tab" data-target="day-1015" aria-selected="false" href="#day-1015">10/15 周四 <span class="tab-move up">84.49</span></a>
+<a class="day-tab" role="tab" data-target="day-1014" aria-selected="false" href="#day-1014">10/14 周三 <span class="tab-move down">95.84</span></a>
+<a class="day-tab" role="tab" data-target="day-1013" aria-selected="false" href="#day-1013">10/13 周二 <span class="tab-move down">28.04</span></a>
+<a class="day-tab" role="tab" data-target="day-1012" aria-selected="false" href="#day-1012">10/12 周一 <span class="tab-move down">24.73</span></a>
 </nav>
 <article class="day-panel" id="day-1016" role="tabpanel">
 <header class="mast"><div>
