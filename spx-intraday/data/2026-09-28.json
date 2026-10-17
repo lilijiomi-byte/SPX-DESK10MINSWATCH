@@ -1,0 +1,97 @@
+{
+ "ticker": "SPX",
+ "date": "2026-09-28",
+ "mmdd": "0928",
+ "weekday": "周一",
+ "date_str": "2026年9月28日 · 周一 · 日内报告",
+ "tape": {
+  "close": 7684.5,
+  "chg_pct": -0.76,
+  "open": 7721.7,
+  "high": 7724.15,
+  "low": 7666.6
+ },
+ "event": {
+  "is_event": false,
+  "tag": "非事件日",
+  "detail": ""
+ },
+ "junkman": {
+  "status": "pending",
+  "meta": "",
+  "full_text": ""
+ },
+ "chart": {
+  "rel": "charts/spx_2026-09-28.png",
+  "alt": "SPX 2026-09-28 5分钟K线与0DTE dealer-GEX heatmap",
+  "caption": "0DTE，夜航社 9 档 5 分钟快照；白点为每档现货位置"
+ },
+ "chart_title": "5 分钟 K 线 × 0DTE heatmap",
+ "heatmap_title": "heatmap解读（0DTE，夜航社 9 档 5 分钟快照）",
+ "heatmap_intro": "",
+ "key_reads": [
+  "金色带在 7695(+1017M)",
+  "紫色带在 7685(-31421M) / 7680(-29850M)",
+  "白点轨迹: 开 7721.7→高 7724.15→低 7666.6→收 7684.5（-0.76%）；收盘在 call wall 7740 下方，put wall 7660 上方",
+  "尾盘节点变化: 前三节点迁移 []→[7680, 7685, 7690]"
+ ],
+ "top5": [
+  {
+   "rank": 1,
+   "strike": 7685,
+   "gex_m": -31421.0,
+   "et": "15:40",
+   "pos": false,
+   "analysis": ""
+  },
+  {
+   "rank": 2,
+   "strike": 7680,
+   "gex_m": -29849.8,
+   "et": "15:40",
+   "pos": false,
+   "analysis": ""
+  },
+  {
+   "rank": 3,
+   "strike": 7690,
+   "gex_m": -17813.5,
+   "et": "15:20",
+   "pos": false,
+   "analysis": ""
+  },
+  {
+   "rank": 4,
+   "strike": 7700,
+   "gex_m": -6130.0,
+   "et": "14:20",
+   "pos": false,
+   "analysis": ""
+  },
+  {
+   "rank": 5,
+   "strike": 7695,
+   "gex_m": -5551.8,
+   "et": "15:20",
+   "pos": false,
+   "analysis": ""
+  }
+ ],
+ "top5_method": "亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。",
+ "flow_title": "资金流（0DTE SPXW，全天0笔；premium≥$20万｜size≥50｜0DTE｜side=B/M/A）",
+ "flow_items": [],
+ "flow_trade_list": [],
+ "flow_verdict": "主动资金0（中性）：主动买入 $0.00M，主动卖出 $0.00M，mid $0.00M（不计入主动买卖）。",
+ "summary": [
+  "①开盘 7721.7，相对 call wall 7740 位置：墙下；put wall 7660。",
+  "②白点轨迹: 开 7721.7→高 7724.15→低 7666.6→收 7684.5（-0.76%）；收盘在 call wall 7740 下方，put wall 7660 上方",
+  "③尾盘节点变化: 前三节点迁移 []→[7680, 7685, 7690]",
+  "④flow：0 笔，中性。",
+  "⑤收盘 7684.5（-0.76%），VWAP 7694.07，EMA250 7706.74；非事件日"
+ ],
+ "summary_title": "分析总结",
+ "summary_sub": "价格行为 × 0DTE GEX 结构复盘",
+ "method_note": "heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。",
+ "data_note": "收盘后的静态快照；页面不在打开时更新行情。",
+ "chart_file": "charts/spx_2026-09-28.png"
+}

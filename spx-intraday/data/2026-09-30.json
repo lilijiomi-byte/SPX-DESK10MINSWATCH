@@ -1,0 +1,97 @@
+{
+ "ticker": "SPX",
+ "date": "2026-09-30",
+ "mmdd": "0930",
+ "weekday": "周三",
+ "date_str": "2026年9月30日 · 周三 · 日内报告",
+ "tape": {
+  "close": 7653.56,
+  "chg_pct": -0.23,
+  "open": 7688.99,
+  "high": 7722.88,
+  "low": 7652.9
+ },
+ "event": {
+  "is_event": true,
+  "tag": "事件日",
+  "detail": "🌅 Macro: 8:15 ADP｜8:30 PCE(Aug，核心预期3.4% y/y)+GDP final｜9:45 Chicago PMI（落在9:40/9:50两档之间——结构突变先查PMI再归因gamma）｜季末调仓日｜做市商short gamma，意外被放大"
+ },
+ "junkman": {
+  "status": "pending",
+  "meta": "",
+  "full_text": ""
+ },
+ "chart": {
+  "rel": "charts/spx_2026-09-30.png",
+  "alt": "SPX 2026-09-30 5分钟K线与0DTE dealer-GEX heatmap",
+  "caption": "0DTE，夜航社 12 档 5 分钟快照；白点为每档现货位置"
+ },
+ "chart_title": "5 分钟 K 线 × 0DTE heatmap",
+ "heatmap_title": "heatmap解读（0DTE，夜航社 12 档 5 分钟快照）",
+ "heatmap_intro": "",
+ "key_reads": [
+  "金色带在 7700(+18396M) / 7695(+5340M)",
+  "紫色带在 7690(-22525M)",
+  "白点轨迹: 开 7688.99→高 7722.88→低 7652.9→收 7653.56（-0.23%）；收盘在 call wall 7710 下方，put wall 7690 下方",
+  "尾盘节点变化: 前三节点迁移 [7650, 7690, 7700]→[7690, 7695, 7700]；7690 减弱 -393%（-4567M→-22525M）；7700 增厚 +210%（5938M→18396M）"
+ ],
+ "top5": [
+  {
+   "rank": 1,
+   "strike": 7690,
+   "gex_m": -22525.1,
+   "et": "15:20",
+   "pos": false,
+   "analysis": ""
+  },
+  {
+   "rank": 2,
+   "strike": 7700,
+   "gex_m": 18396.4,
+   "et": "15:20",
+   "pos": true,
+   "analysis": ""
+  },
+  {
+   "rank": 3,
+   "strike": 7720,
+   "gex_m": -6958.6,
+   "et": "12:20",
+   "pos": false,
+   "analysis": ""
+  },
+  {
+   "rank": 4,
+   "strike": 7740,
+   "gex_m": 5478.0,
+   "et": "10:50",
+   "pos": true,
+   "analysis": ""
+  },
+  {
+   "rank": 5,
+   "strike": 7695,
+   "gex_m": 5340.1,
+   "et": "15:20",
+   "pos": true,
+   "analysis": ""
+  }
+ ],
+ "top5_method": "亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。",
+ "flow_title": "资金流（0DTE SPXW，全天0笔；premium≥$20万｜size≥50｜0DTE｜side=B/M/A）",
+ "flow_items": [],
+ "flow_trade_list": [],
+ "flow_verdict": "主动资金0（中性）：主动买入 $0.00M，主动卖出 $0.00M，mid $0.00M（不计入主动买卖）。",
+ "summary": [
+  "①开盘 7688.99，相对 call wall 7710 位置：墙下；put wall 7690。",
+  "②白点轨迹: 开 7688.99→高 7722.88→低 7652.9→收 7653.56（-0.23%）；收盘在 call wall 7710 下方，put wall 7690 下方",
+  "③尾盘节点变化: 前三节点迁移 [7650, 7690, 7700]→[7690, 7695, 7700]；7690 减弱 -393%（-4567M→-22525M）；7700 增厚 +210%（5938M→18396M）",
+  "④flow：0 笔，中性。",
+  "⑤收盘 7653.56（-0.23%），VWAP 7698.69，EMA250 7695.52；事件日：事件日"
+ ],
+ "summary_title": "分析总结",
+ "summary_sub": "价格行为 × 0DTE GEX 结构复盘",
+ "method_note": "heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。",
+ "data_note": "收盘后的静态快照；页面不在打开时更新行情。",
+ "chart_file": "charts/spx_2026-09-30.png"
+}
