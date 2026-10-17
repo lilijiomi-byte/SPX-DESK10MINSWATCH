@@ -326,6 +326,28 @@ def render_standalone(ticker, label, norm):
     return "\n".join(h)
 
 
+def _important_event_mark(ds):
+    """只标注重要事件 (OPEX/FOMC/非农), CPI 等次要事件不标. 返回短标签或空."""
+    d = datetime.date.fromisoformat(ds)
+    # 月度 OPEX: 第三个周五
+    if _is_monthly_opex(ds):
+        return "OPEX"
+    # FOMC / 非农: 查宏观日历
+    try:
+        sys.path.insert(0, os.path.join(WS, "yhs_premarket", "daily"))
+        from lib import EVENT_DAYS
+        ed = EVENT_DAYS.get(ds)
+        if ed:
+            b = ed.get("brief_macro", "")
+            if "FOMC" in b or "议息" in b or "利率决议" in b:
+                return "FOMC"
+            if "非农" in b:
+                return "非农"
+    except Exception:
+        pass
+    return ""
+
+
 def build_index(ticker_dir, ticker, label):
     """扫描 ticker_dir 下的 <YYYY-MM-DD>.html, 按日期倒序生成 index.html.
     只追加/重排 tab, 永不删除任何旧日期文件.
@@ -355,7 +377,10 @@ def build_index(ticker_dir, ticker, label):
                 label_extra = f' <span class="tab-move {cls}">{rng:,.2f}</span>'
         except Exception:
             pass
-        tabs.append((ds, f'{d.month}/{d.day} {wd}{label_extra}'))
+        # 重要事件标记 (只 OPEX/FOMC/非农)
+        mark = _important_event_mark(ds)
+        mark_html = f' <span class="tab-event">{mark}</span>' if mark else ""
+        tabs.append((ds, f'{d.month}/{d.day} {wd}{mark_html}{label_extra}'))
     h = [page_head(f"{label}（按日期）")]
     h.append(sitenav(ticker))
     h.append(f'<h1 style="margin:0 0 4px">{esc(label)}</h1>')
