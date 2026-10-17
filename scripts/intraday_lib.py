@@ -93,8 +93,16 @@ def _is_monthly_opex(ds):
     return d == third_friday
 
 
-def event_lookup(ds):
-    """返回 (is_event, tag, detail)."""
+def event_lookup(ds, chg_pct=None):
+    """返回 (is_event, tag, detail, bias). bias: 利多/利空/中性 (按当日实际涨跌判定)."""
+    bias = ""
+    if chg_pct is not None:
+        if chg_pct > 0.3:
+            bias = "利多"
+        elif chg_pct < -0.3:
+            bias = "利空"
+        else:
+            bias = "中性"
     try:
         sys.path.insert(0, os.path.join(WS, "yhs_premarket", "daily"))
         from lib import event_day
@@ -102,13 +110,13 @@ def event_lookup(ds):
         if ed:
             tag = ed.get("scan_banner", "事件日").replace("📌 事件日：", "").replace("📌 事件日", "事件日")
             tag = tag.split("；")[0].split("，")[0][:24] or "事件日"
-            return True, "事件日", ed.get("brief_macro", "")
+            return True, "事件日", ed.get("brief_macro", ""), bias
     except Exception:
         pass
     if _is_monthly_opex(ds):
         d = datetime.date.fromisoformat(ds)
-        return True, f"{d.month}月OPEX（月度期权到期日）", "月度期权到期日；钉住/展仓效应可能放大波动。"
-    return False, "非事件日", ""
+        return True, f"{d.month}月OPEX（月度期权到期日）", "月度期权到期日；大量期权到期行权，gamma钉住效应解除，尾盘波动可能放大。", bias
+    return False, "非事件日", "", ""
 
 
 # ---------- 渲染 ----------
@@ -138,9 +146,14 @@ def render_article(norm):
     a('</div></header>')
     # event
     a('<aside class="event">')
-    a(f'<div class="event-tag{" quiet" if not ev["is_event"] else ""}">{esc(ev["tag"])}</div>')
+    bias = ev.get("bias", "")
+    bias_html = ""
+    if ev["is_event"] and bias:
+        bcls = "up" if bias == "利多" else ("down" if bias == "利空" else "")
+        bias_html = f' <span class="event-bias {bcls}">· {esc(bias)}</span>'
+    a(f'<div class="event-tag{" quiet" if not ev["is_event"] else ""}">{esc(ev["tag"])}{bias_html}</div>')
     a('<div>')
-    a(f'<h2>{esc(ev["tag"])}</h2>')
+    a(f'<h2>{esc(ev["tag"])}{bias_html}</h2>')
     if ev.get("detail"):
         a(f'<p>{esc(ev["detail"])}</p>')
     a('</div></aside>')
