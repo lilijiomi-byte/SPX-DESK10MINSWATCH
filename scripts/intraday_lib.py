@@ -331,6 +331,26 @@ def render_standalone(ticker, label, norm):
     return "\n".join(h)
 
 
+
+# 二十四节气 (公历日期, 每年大致固定)
+SOLAR_TERMS = {
+    # 2026
+    "2026-01-05": "小寒", "2026-01-20": "大寒", "2026-02-04": "立春",
+    "2026-02-18": "雨水", "2026-03-05": "惊蛰", "2026-03-20": "春分",
+    "2026-04-04": "清明", "2026-04-20": "谷雨", "2026-05-05": "立夏",
+    "2026-05-21": "小满", "2026-06-06": "芒种", "2026-06-21": "夏至",
+    "2026-07-07": "小暑", "2026-07-22": "大暑", "2026-08-07": "立秋",
+    "2026-08-23": "处暑", "2026-09-07": "白露", "2026-09-22": "秋分",
+    "2026-10-08": "寒露", "2026-10-23": "霜降", "2026-11-07": "立冬",
+    "2026-11-22": "小雪", "2026-12-07": "大雪", "2026-12-22": "冬至",
+    # 2027
+    "2027-01-05": "小寒", "2027-01-20": "大寒",
+}
+
+def _solar_term_mark(ds):
+    """节气日返回节气名, 否则空. 用于日期 tab 蓝色标注."""
+    return SOLAR_TERMS.get(ds, "")
+
 def _important_event_mark(ds):
     """只标注重要事件 (OPEX/FOMC/非农), CPI 等次要事件不标. 返回短标签或空."""
     d = datetime.date.fromisoformat(ds)
@@ -385,6 +405,9 @@ def build_index(ticker_dir, ticker, label):
         # 重要事件标记 (只 OPEX/FOMC/非农)
         mark = _important_event_mark(ds)
         mark_html = f' <span class="tab-event">{mark}</span>' if mark else ""
+        solar = _solar_term_mark(ds)
+        if solar:
+            mark_html += f' <span class="tab-solar">{solar}</span>' 
         tabs.append((ds, f'{d.month}/{d.day} {wd}{mark_html}{label_extra}'))
     h = [page_head(f"{label}（按日期）")]
     h.append(sitenav(ticker))
