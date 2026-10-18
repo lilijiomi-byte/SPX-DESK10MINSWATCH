@@ -602,8 +602,17 @@ def adapt_tsla(rd, ds):
 # ================= SPX: 现有链 + 适配 =================
 def spx_build(ds):
     mmdd = ds[5:7] + ds[8:10]
-    run([sys.executable, f"{SPX_DIR}/build_day.py", ds])
     rd_path = f"{SPX_DIR}/{ds}/report_data_{ds}.json"
+    # 历史日期已手动建好数据则跳过 build_day.py (避免覆盖 heatmap)
+    _skip_build = False
+    try:
+        _rd0 = json.load(open(rd_path))
+        if _rd0.get("kline", {}).get("bars"):
+            _skip_build = True
+    except Exception:
+        pass
+    if not _skip_build:
+        run([sys.executable, f"{SPX_DIR}/build_day.py", ds])
     rd = json.load(open(rd_path))
     # junkman: 文件查找补丁 (build_day 默认 pending)
     if rd.get("junkman", {}).get("status") != "ready":
