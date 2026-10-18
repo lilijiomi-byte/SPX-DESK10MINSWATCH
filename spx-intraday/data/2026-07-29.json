@@ -1,0 +1,92 @@
+{
+ "ticker": "SPX",
+ "date": "2026-07-29",
+ "mmdd": "0729",
+ "weekday": "周三",
+ "date_str": "2026年7月29日 · 周三 · 日内报告",
+ "tape": {
+  "close": 7314.55,
+  "chg_pct": -1.4130541729171824,
+  "open": 7419.39,
+  "high": 7449.21,
+  "low": 7314.55
+ },
+ "event": {
+  "is_event": true,
+  "tag": "FOMC",
+  "detail": "美联储议息日；14:00 ET 公布利率决议。",
+  "bias": "利空"
+ },
+ "junkman": {
+  "status": "pending",
+  "meta": "",
+  "full_text": ""
+ },
+ "chart": {
+  "rel": "charts/spx_2026-07-29.png",
+  "alt": "SPX 2026-07-29 5分钟K线与0DTE dealer-GEX heatmap",
+  "caption": "0DTE，夜航社 34 档 5 分钟快照；白点为每档现货位置"
+ },
+ "chart_title": "5 分钟 K 线 × 0DTE heatmap",
+ "heatmap_title": "heatmap解读（0DTE，夜航社 34 档 5 分钟快照）",
+ "heatmap_intro": "",
+ "key_reads": [
+  "7300 put wall 是全天的定海神针：11:00 首次成型 $3.13B，随后一路加固，13:30 达到峰值 $3.39B",
+  "7450 负 gamma -$1.14B 全场主导（15:00）；价格进入负 gamma 加速区上冲，15:30 燃料耗尽 (-83%)",
+  "14:00 FOMC 声明后现价跳涨至 7404.71；15:00 站上 flip 7442 进入加速区；收盘 7318.14 回到 7300 承接区",
+  "15:00 put wall 7300 只剩 $256M (-92% 消失)；7440 call wall 增至 $369M 成最强正节点；尾盘 7300 回升至 $3.25B"
+ ],
+ "top5": [
+  {
+   "rank": 1,
+   "strike": 7300.0,
+   "gex_m": 3527.2,
+   "et": "15:45",
+   "pos": true,
+   "analysis": ""
+  },
+  {
+   "rank": 2,
+   "strike": 7290.0,
+   "gex_m": 3025.9,
+   "et": "11:30",
+   "pos": true,
+   "analysis": ""
+  },
+  {
+   "rank": 3,
+   "strike": 7450.0,
+   "gex_m": -1148.6,
+   "et": "14:45",
+   "pos": false,
+   "analysis": ""
+  },
+  {
+   "rank": 4,
+   "strike": 7350.0,
+   "gex_m": -757.2,
+   "et": "12:15",
+   "pos": false,
+   "analysis": ""
+  },
+  {
+   "rank": 5,
+   "strike": 7415.0,
+   "gex_m": -498.6,
+   "et": "15:15",
+   "pos": false,
+   "analysis": ""
+  }
+ ],
+ "top5_method": "亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。",
+ "flow_title": "资金流（0DTE SPXW，全天0笔；premium≥$20万｜size≥50｜0DTE｜side=B/M/A）",
+ "flow_items": [],
+ "flow_trade_list": [],
+ "flow_verdict": "主动资金无数据（YHS 无该日数据）：主动买入 $0.00M，主动卖出 $0.00M，mid $0.00M（不计入主动买卖）。",
+ "summary": "",
+ "summary_title": "分析总结",
+ "summary_sub": "价格行为 × 0DTE GEX 结构复盘",
+ "method_note": "heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。",
+ "data_note": "收盘后的静态快照；页面不在打开时更新行情。",
+ "chart_file": "charts/spx_2026-07-29.png"
+}

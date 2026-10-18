@@ -24,6 +24,7 @@ import time
 import urllib.parse
 import urllib.request
 import datetime
+import math
 from zoneinfo import ZoneInfo
 
 ET = ZoneInfo("America/New_York")
@@ -105,8 +106,22 @@ def spx_series(spx, es):
 
 
 # ---------------- K线图 PNG (白底) ----------------
-def _emphasize_round_levels(ax):
-    """纵坐标逢整百/半百 (…00/…50) 的刻度加粗标红，作为提醒。"""
+def _emphasize_round_levels(ax, force_round_ticks=False):
+    """纵坐标逢整百/半百 (…00/…50) 的刻度加粗标红，作为提醒。
+    force_round_ticks=True（仅价格轴）：把轴范围内所有 xx00/xx50 强制加为刻度，
+    即使 matplotlib 自动刻度没选中它们。"""
+    if force_round_ticks:
+        lo, hi = ax.get_ylim()
+        ticks = [round(float(t), 2) for t in ax.get_yticks()]
+        v = math.ceil(lo / 50) * 50
+        add = []
+        while v <= hi:
+            if round(v) % 100 in (0, 50):
+                add.append(float(v))
+            v += 50
+        if add:
+            ax.set_yticks(sorted(set(ticks) | set(add)))
+            ax.figure.canvas.draw()
     for lbl in ax.get_yticklabels():
         try:
             v = float(lbl.get_text().replace(",", ""))
@@ -177,7 +192,7 @@ def draw_chart(ds, bars, vwap_seg, ema_seg, out_path):
              bbox=dict(boxstyle="round,pad=0.4", fc="#eceff3", ec="#d8dde4"))
     fig.subplots_adjust(bottom=0.16, top=0.90, left=0.075, right=0.97)
     fig.canvas.draw()  # 先绘制以生成刻度标签
-    _emphasize_round_levels(ax)
+    _emphasize_round_levels(ax, force_round_ticks=True)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     fig.savefig(out_path, dpi=110, facecolor="white")
     plt.close(fig)

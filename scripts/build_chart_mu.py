@@ -98,6 +98,32 @@ import matplotlib.font_manager as fm
 _cjk = fm.FontProperties(fname="/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc")
 plt.rcParams["font.family"] = _cjk.get_name()
 plt.rcParams["axes.unicode_minus"] = False
+
+
+def _emphasize_round_levels(ax, force_round_ticks=False):
+    """纵坐标逢整百/半百 (…00/…50) 的刻度加粗标红，作为提醒。
+    force_round_ticks=True（仅价格轴）：把轴范围内所有 xx00/xx50 强制加为刻度，
+    即使 matplotlib 自动刻度没选中它们。"""
+    if force_round_ticks:
+        lo, hi = ax.get_ylim()
+        ticks = [round(float(t), 2) for t in ax.get_yticks()]
+        v = math.ceil(lo / 50) * 50
+        add = []
+        while v <= hi:
+            if round(v) % 100 in (0, 50):
+                add.append(float(v))
+            v += 50
+        if add:
+            ax.set_yticks(sorted(set(ticks) | set(add)))
+            ax.figure.canvas.draw()
+    for lbl in ax.get_yticklabels():
+        try:
+            v = float(lbl.get_text().replace(",", ""))
+        except ValueError:
+            continue
+        if round(v) % 100 in (0, 50):
+            lbl.set_color("#dc2626")
+            lbl.set_weight("bold")
 fig, (ax1, axmid, ax2) = plt.subplots(3, 1, figsize=(14, 10.8), sharex=True,
                                       gridspec_kw={"height_ratios": [3, 0.34, 2]})
 fig.patch.set_facecolor("#0d1117")
@@ -197,6 +223,9 @@ ax2.set_xlabel("时间 (ET)", color="#c9d1d9", fontsize=11)
 ax2.set_xlim(-0.6, len(bars) - 0.4)
 
 fig.tight_layout(h_pad=1.2)
+fig.canvas.draw()  # 先渲染生成刻度
+_emphasize_round_levels(ax1, force_round_ticks=True)
+_emphasize_round_levels(ax2)
 out = f"{BASE}/charts_v2/mu_charts_{MMDD}.png"
 fig.savefig(out, dpi=150, facecolor=fig.get_facecolor())
 print("saved", out)
