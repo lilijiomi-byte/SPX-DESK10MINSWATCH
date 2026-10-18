@@ -152,6 +152,8 @@ for i, b in enumerate(bars):
                                      facecolor=col, edgecolor=col))
 
 ax1.axhline(OFFICIAL_OPEN, color="#ff6ec4", ls="--", lw=2.2)
+if PM_H and PM_L:
+    ax1.axhspan(PM_L, PM_H, color="#9ca3af", alpha=0.18)
 ax1.axhline(PM_H, color="#22c55e", ls="--", lw=1.4)
 ax1.axhline(PM_L, color="#ef4444", ls="--", lw=1.4)
 n = len(bars)
