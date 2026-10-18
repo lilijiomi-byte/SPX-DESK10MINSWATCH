@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>SPX 日内（按日期）</title>
+<title>SPX 日内报告（按日期）</title>
 <style>
 
 :root{color-scheme:light dark;--bg:#eef1f3;--paper:#fff;--ink:#12171d;--muted:#58636e;--line:#cfd6dc;--gold:#a97600;--purple:#7750a2;--gold-soft:#fff0bb;--purple-soft:#eee3fa;--orange:#e94b25;--green:#087a4e;--red:#c5323b;--chip:#e7ebee;--chart:#0d1117;--shadow:0 16px 54px rgba(10,18,25,.09)}
@@ -39,7 +39,7 @@
 <main>
 
 <nav class="sitenav"><a href="../index.html">首页</a><a href="../spx-intraday/index.html" class="on">SPX 日内报告</a><a href="../spx-10min/index.html">SPX 尾盘10分钟</a><a href="../mu/index.html">MU 日内报告</a><a href="../tsla/index.html">TSLA 日内报告</a><a href="../meta/index.html">META 日内报告</a></nav>
-<h1 style="margin:0 0 4px">SPX 日内</h1>
+<h1 style="margin:0 0 4px">SPX 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
 <a class="day-tab" role="tab" data-target="day-1016" aria-selected="true" href="#day-1016">10/16 周五 <span class="tab-event">OPEX</span> <span class="tab-move down">125.07</span></a>
@@ -60,6 +60,7 @@
 <a class="day-tab" role="tab" data-target="day-0925" aria-selected="false" href="#day-0925">9/25 周五 <span class="tab-move up">58.99</span></a>
 <a class="day-tab" role="tab" data-target="day-0924" aria-selected="false" href="#day-0924">9/24 周四 <span class="tab-move down">56.44</span></a>
 <a class="day-tab" role="tab" data-target="day-0923" aria-selected="false" href="#day-0923">9/23 周三 <span class="tab-move down">67.05</span></a>
+<a class="day-tab" role="tab" data-target="day-0922" aria-selected="false" href="#day-0922">9/22 周二 <span class="tab-solar">秋分</span> <span class="tab-move down">25.93</span></a>
 <a class="day-tab" role="tab" data-target="day-0916" aria-selected="false" href="#day-0916">9/16 周三 <span class="tab-event">FOMC</span> <span class="tab-move down">119.02</span></a>
 <a class="day-tab" role="tab" data-target="day-0729" aria-selected="false" href="#day-0729">7/29 周三 <span class="tab-event">FOMC</span> <span class="tab-move down">136.92</span></a>
 </nav>
@@ -1915,6 +1916,60 @@
 <div class="summary-list">
 <article class="summary-item"><p>④flow：0 笔，中性。</p></article>
 <article class="summary-item"><p>⑤收盘 7708.55（-0.72%），VWAP 7717.61，EMA250 7713.06；非事件日</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-0922" role="tabpanel">
+<header class="mast"><div>
+<h1>SPX 日内报告</h1>
+<p class="date">2026年9月22日 · 周二 · 日内报告</p>
+</div><div class="tape">
+<strong>7,764.27 <span class="down">-0.01%</span></strong>
+<span>开 7,770.81 · 高 7,782.19 · 低 7,756.26</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE，夜航社 0 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/spx_2026-09-22.png" alt="SPX 2026-09-22 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 0 档 5 分钟快照）</h3>
+<ul>
+<li>None</li>
+<li>None</li>
+<li>None</li>
+<li>None</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+</div></div>
+<div class="method"><p>亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流（0DTE SPXW，全天0笔；premium≥$20万｜size≥50｜0DTE｜side=B/M/A）</h3>
+<p>（当日无符合筛子的 flow 记录，或数据未拉取到）</p>
+<p class="verdict">主动资金0（中性）：主动买入 $0.00M，主动卖出 $0.00M，mid $0.00M（不计入主动买卖）。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>④flow：0 笔，中性。</p></article>
+<article class="summary-item"><p>⑤收盘 7764.27（-0.01%），VWAP 7768.62，EMA250 None；非事件日</p></article>
 </div></section>
 <p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
