@@ -29,6 +29,9 @@
 .side-pill{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;background:#fff;color:#17191d;}
 .flow-summary .footnote{margin-top:10px;color:var(--muted);font-size:.8rem;}
 
+/* 重要事件标记 (tab 上) */
+.tab-event{display:inline-block;margin-left:.45em;padding:1px 6px;background:#fef3c7;color:#92400e;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+
 </style>
 </head>
 <body>
@@ -45,10 +48,10 @@
 <span>开 7,745.32 · 高 7,756.84 · 低 7,631.77</span>
 </div></header>
 <aside class="event">
-<div class="event-tag">十月OPEX（月度期权到期）</div>
+<div class="event-tag">10月OPEX（月度期权到期日） <span class="event-bias down">· 利空</span></div>
 <div>
-<h2>十月OPEX（月度期权到期）</h2>
-<p>月度期权到期日；钉住/展仓效应可能放大。</p>
+<h2>10月OPEX（月度期权到期日） <span class="event-bias down">· 利空</span></h2>
+<p>月度期权到期日；大量期权到期行权，gamma钉住效应解除，尾盘波动可能放大。</p>
 </div></aside>
 <section aria-label="早盘分析">
 <div class="section-head"><h2>早盘分析</h2><div class="source">
@@ -179,7 +182,7 @@
 <article class="summary-item"><p>②白点轨迹: 开 7745.32→高 7756.84→低 7631.77→收 7658.74（-1.1%）；收盘在 call wall 7750 下方，put wall 7750 下方</p></article>
 <article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7615, 7625, 7655]→[7655, 7660, 7670]；7660 增厚 +1346%（562M→8123M）；7655 增厚 +100%（-1695M→-0M）；7670 减弱 -100%（1168M→0M）</p></article>
 <article class="summary-item"><p>④flow 印证：中性（bull 4.45M / bear 8.22M）；最大簇 7670P 0.83M（ATM，spot≈7653.5；ask 0.83M / bid 0.0M / mid 0.0M）。</p></article>
-<article class="summary-item"><p>⑤收盘 7658.74（-1.1%），VWAP 7687.62，EMA250 7718.13；事件日：十月OPEX（月度期权到期）</p></article>
+<article class="summary-item"><p>⑤收盘 7658.74（-1.1%），VWAP 7687.62，EMA250 7718.13；事件日：10月OPEX（月度期权到期日）</p></article>
 </div></section>
 <p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>

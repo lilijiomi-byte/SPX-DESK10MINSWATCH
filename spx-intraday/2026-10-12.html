@@ -29,6 +29,9 @@
 .side-pill{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;background:#fff;color:#17191d;}
 .flow-summary .footnote{margin-top:10px;color:var(--muted);font-size:.8rem;}
 
+/* 重要事件标记 (tab 上) */
+.tab-event{display:inline-block;margin-left:.45em;padding:1px 6px;background:#fef3c7;color:#92400e;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+
 </style>
 </head>
 <body>
@@ -45,10 +48,9 @@
 <span>开 7,813.04 · 高 7,821.67 · 低 7,796.94</span>
 </div></header>
 <aside class="event">
-<div class="event-tag">哥伦布日/债市休市（流动性枯竭）</div>
+<div class="event-tag quiet">非事件日</div>
 <div>
-<h2>哥伦布日/债市休市（流动性枯竭）</h2>
-<p>债市休市，流动性枯竭日；触碰概率门槛自动覆盖45%。</p>
+<h2>非事件日</h2>
 </div></aside>
 <section aria-label="早盘分析">
 <div class="section-head"><h2>早盘分析</h2><div class="source">
@@ -143,7 +145,7 @@
 <article class="summary-item"><p>②白点轨迹: 开 7813.04→高 7821.67→低 7796.94→收 7807.79（-0.05%）；收盘在 call wall 7830 下方，put wall 7800 上方</p></article>
 <article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7810, 7820, 7840]→[7795, 7800, 7805]；7800 增厚 +11456%（473M→54632M）；7795 减弱 -4227%（-384M→-16628M）；7805 增厚 +26672%（-32M→8382M）</p></article>
 <article class="summary-item"><p>④flow 印证：中性（bull 1.94M / bear 3.53M）；最大簇 7800P 1.91M（ATM，spot≈7800.9；ask 0.3M / bid 1.23M / mid 0.38M）。</p></article>
-<article class="summary-item"><p>⑤收盘 7807.79（-0.05%），VWAP 7807.76，EMA250 7796.95；事件日：哥伦布日/债市休市（流动性枯竭）</p></article>
+<article class="summary-item"><p>⑤收盘 7807.79（-0.05%），VWAP 7807.76，EMA250 7796.95；非事件日</p></article>
 </div></section>
 <p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>

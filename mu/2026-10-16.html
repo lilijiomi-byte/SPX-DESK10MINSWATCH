@@ -13,27 +13,45 @@
 @media(max-width:760px){main{padding:12px 16px 56px}.mast{grid-template-columns:1fr;padding-top:28px}.tape{text-align:left;min-width:0}.event{grid-template-columns:1fr;gap:12px}.event-tag{justify-self:start}.section-head{display:block}.section-head>p{text-align:left;margin-top:8px}.top5{grid-template-columns:1fr}.chart-shell{padding:6px;margin-left:-8px;margin-right:-8px}.method{grid-template-columns:1fr}.method>p{grid-column:auto}}
 @media(max-width:560px){.day-tabs{grid-template-columns:1fr;position:static}.day-tab{min-height:44px;justify-content:flex-start}.source-line span:not(:last-of-type){border:0;padding-right:0}.source-line{display:grid}.verbatim{padding:20px;font-size:.92rem}.top5{grid-template-columns:1fr}.summary-item{grid-template-columns:32px 1fr;padding:17px 16px;gap:10px}section{padding:34px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.day-tab{transition:none}}
+.sitenav{display:flex;gap:4px;flex-wrap:wrap;margin:0 0 18px;background:#243044;border-radius:8px;padding:6px}
+.sitenav a{color:#dbe3ee;text-decoration:none;font-size:13px;padding:8px 14px;border-radius:6px}
+.sitenav a:hover{background:#33445e;color:#fff}
+.sitenav a.on{background:#101b2d;color:#fff;font-weight:700}
+
+/* flow 逐笔明细表（与 SPX 10min 同款） */
+.flow-table-wrap{overflow-x:auto;margin:12px 0;}
+.flow-table{width:100%;border-collapse:collapse;font-size:13px;color:#17191d;}
+.flow-table th{font-size:11px;color:#5e6570;font-weight:400;text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;background:#fff;}
+.flow-table td{padding:7px 8px;border-bottom:1px solid #eceff3;white-space:nowrap;font-variant-numeric:tabular-nums;color:#17191d;}
+.flow-table tr:last-child td{border-bottom:none;}
+.tr-call td{background:#e2f1e7;color:#17191d;}
+.tr-put td{background:#fae3e3;color:#17191d;}
+.side-pill{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;background:#fff;color:#17191d;}
+.flow-summary .footnote{margin-top:10px;color:var(--muted);font-size:.8rem;}
+
+/* 重要事件标记 (tab 上) */
+.tab-event{display:inline-block;margin-left:.45em;padding:1px 6px;background:#fef3c7;color:#92400e;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
 
 </style>
 </head>
 <body>
 <main>
-<nav class="sitenav"><a href="../index.html">首页</a><a href="../spx-intraday/index.html">SPX 日内报告</a><a href="../spx-10min/index.html">SPX 尾盘10分钟</a><a href="../mu/index.html" class="on">MU 日内报告</a><a href="../tsla/index.html">TSLA 日内报告</a></nav>
 
+<nav class="sitenav"><a href="../index.html">首页</a><a href="../spx-intraday/index.html">SPX 日内报告</a><a href="../spx-10min/index.html">SPX 尾盘10分钟</a><a href="../mu/index.html" class="on">MU 日内报告</a><a href="../tsla/index.html">TSLA 日内报告</a></nav>
 <p style="margin:0 0 12px"><a href="index.html">← MU 日内报告 全部日期</a></p>
 <article class="day-panel" id="day-1016" role="tabpanel">
 <header class="mast"><div>
 <h1>MU 日内报告</h1>
 <p class="date">2026年10月16日 · 周五 · 日内报告</p>
 </div><div class="tape">
-<strong>878.67 <span class="down">-2.92%</span></strong>
-<span>开 905.13 · 高 907.50 · 低 875.00</span>
+<strong>878.84 <span class="down">-2.94%</span></strong>
+<span>开 905.49 · 高 907.50 · 低 875.00</span>
 </div></header>
 <aside class="event">
-<div class="event-tag">10月OPEX（月度期权到期日）</div>
+<div class="event-tag">10月OPEX（月度期权到期日） <span class="event-bias down">· 利空</span></div>
 <div>
-<h2>10月OPEX（月度期权到期日）</h2>
-<p>月度期权到期日；钉住/展仓效应可能放大波动。</p>
+<h2>10月OPEX（月度期权到期日） <span class="event-bias down">· 利空</span></h2>
+<p>月度期权到期日；大量期权到期行权，gamma钉住效应解除，尾盘波动可能放大。</p>
 </div></aside>
 <section aria-label="早盘分析">
 <div class="section-head"><h2>早盘分析</h2><div class="source">
@@ -106,23 +124,29 @@
 </div></div>
 <div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
 <div class="flow-summary">
-<h3>资金流总结（0DTE，全天17笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
-<ul>
-<li>09:30 call ask（主 875ITM）：$0.48M / 2笔</li>
-<li>09:30 call bid（主 905ATM）：$0.40M / 1笔</li>
-<li>09:30 put ask（主 1050ITM）：$1.57M / 1笔</li>
-<li>10:00 call bid（主 900ATM）：$0.21M / 1笔</li>
-<li>11:30 call ask（主 895ITM）：$0.21M / 1笔</li>
-<li>12:30 call ask（主 860ITM）：$0.40M / 1笔</li>
-<li>12:30 call bid（主 895ITM）：$0.30M / 1笔</li>
-<li>12:30 put bid（主 895ATM）：$0.23M / 1笔</li>
-<li>14:00 call ask（主 380ITM）：$2.56M / 1笔</li>
-<li>14:00 put bid（主 915ITM）：$0.21M / 1笔</li>
-<li>15:00 put bid（主 995ITM）：$1.11M / 1笔</li>
-<li>15:30 call bid（主 840ITM）：$0.21M / 1笔</li>
-<li>15:30 put bid（主 1010ITM）：$4.57M / 4笔</li>
-</ul>
-<p class="verdict">全天17笔：主动买入(call ask + put bid)$9.78M，主动卖出(put ask + call bid)$2.70M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p>
+<h3>资金流（0DTE，全天17笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<div class="flow-table-wrap"><table class="flow-table">
+<thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead><tbody>
+<tr class="tr-call"><td>09:33:48</td><td><b>905.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$9.00</td><td>9.00 / 9.35</td><td><span class="side-pill">BID</span></td><td>446</td><td><b>$0.401M</b></td><td>1195</td><td>722</td></tr>
+<tr class="tr-call"><td>09:36:17</td><td><b>905.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$6.20</td><td>6.15 / 6.20</td><td><span class="side-pill">ASK</span></td><td>452</td><td><b>$0.280M</b></td><td>2249</td><td>722</td></tr>
+<tr class="tr-call"><td>09:39:36</td><td><b>875.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$30.60</td><td>30.55 / 30.60</td><td><span class="side-pill">ASK</span></td><td>66</td><td><b>$0.202M</b></td><td>151</td><td>478</td></tr>
+<tr class="tr-put"><td>09:56:00</td><td><b>1050.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$157.15</td><td>154.90 / 157.15</td><td><span class="side-pill">ASK</span></td><td>100</td><td><b>$1.571M</b></td><td>112</td><td>903</td></tr>
+<tr class="tr-call"><td>10:23:02</td><td><b>900.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$5.39</td><td>5.35 / 5.60</td><td><span class="side-pill">BID</span></td><td>393</td><td><b>$0.212M</b></td><td>15422</td><td>3009</td></tr>
+<tr class="tr-call"><td>11:31:07</td><td><b>895.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$8.95</td><td>8.90 / 8.95</td><td><span class="side-pill">ASK</span></td><td>239</td><td><b>$0.214M</b></td><td>10343</td><td>627</td></tr>
+<tr class="tr-call"><td>12:37:26</td><td><b>860.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$37.75</td><td>37.65 / 37.75</td><td><span class="side-pill">ASK</span></td><td>105</td><td><b>$0.396M</b></td><td>341</td><td>869</td></tr>
+<tr class="tr-call"><td>12:39:29</td><td><b>895.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$7.40</td><td>7.40 / 7.55</td><td><span class="side-pill">BID</span></td><td>410</td><td><b>$0.303M</b></td><td>15461</td><td>627</td></tr>
+<tr class="tr-put"><td>12:41:13</td><td><b>895.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$3.80</td><td>3.80 / 3.95</td><td><span class="side-pill">BID</span></td><td>614</td><td><b>$0.233M</b></td><td>27862</td><td>768</td></tr>
+<tr class="tr-put"><td>14:10:51</td><td><b>915.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$22.90</td><td>22.90 / 22.95</td><td><span class="side-pill">BID</span></td><td>91</td><td><b>$0.208M</b></td><td>1378</td><td>1027</td></tr>
+<tr class="tr-call"><td>14:26:20</td><td><b>380.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$513.00</td><td>505.35 / 513.00</td><td><span class="side-pill">ASK</span></td><td>50</td><td><b>$2.565M</b></td><td>54</td><td>138</td></tr>
+<tr class="tr-put"><td>15:05:38</td><td><b>995.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$111.20</td><td>111.20 / 111.60</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$1.112M</b></td><td>181</td><td>900</td></tr>
+<tr class="tr-call"><td>15:50:44</td><td><b>840.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$35.20</td><td>35.20 / 35.40</td><td><span class="side-pill">BID</span></td><td>59</td><td><b>$0.208M</b></td><td>182</td><td>1341</td></tr>
+<tr class="tr-put"><td>15:53:13</td><td><b>965.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$87.00</td><td>87.00 / 87.75</td><td><span class="side-pill">BID</span></td><td>107</td><td><b>$0.931M</b></td><td>159</td><td>1073</td></tr>
+<tr class="tr-put"><td>15:55:00</td><td><b>965.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$85.00</td><td>85.00 / 87.25</td><td><span class="side-pill">BID</span></td><td>200</td><td><b>$1.700M</b></td><td>450</td><td>1073</td></tr>
+<tr class="tr-put"><td>15:55:09</td><td><b>1010.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$129.00</td><td>129.00 / 131.25</td><td><span class="side-pill">BID</span></td><td>75</td><td><b>$0.968M</b></td><td>200</td><td>784</td></tr>
+<tr class="tr-put"><td>15:57:01</td><td><b>965.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$84.60</td><td>84.60 / 85.50</td><td><span class="side-pill">BID</span></td><td>115</td><td><b>$0.973M</b></td><td>566</td><td>1073</td></tr>
+</tbody></table></div>
+<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ DTE≤1 ｜ MU ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>
+<p class="verdict">全天17笔：主动买入(call ask + put bid)$9.78M，主动卖出(put ask + call bid)$2.69M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p>
 </div>
 </section>
 <section aria-label="分析总结">
@@ -131,11 +155,11 @@
 <p>价格行为 × 0DTE GEX 结构复盘</p>
 </div>
 <div class="summary-list">
-<article class="summary-item"><p>① 开盘 905.13 在双墙 900–950 之间；全天 907.50–875.00，收 878.67（-2.92%）。</p></article>
-<article class="summary-item"><p>② 白点轨迹：开 905.13 → 高 907.50 → 低 875.00 → 收 878.67。</p></article>
+<article class="summary-item"><p>① 开盘 905.49 在双墙 900–950 之间；全天 907.50–875.00，收 878.84（-2.94%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 905.49 → 高 907.50 → 低 875.00 → 收 878.84。</p></article>
 <article class="summary-item"><p>③ 墙位：call 950 / put 900（junk-man口径）；heatmap 算法墙首→末：call wall 905→880（下移）。</p></article>
-<article class="summary-item"><p>④ 资金流：全天17笔：主动买入(call ask + put bid)$9.78M，主动卖出(put ask + call bid)$2.70M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p></article>
-<article class="summary-item"><p>⑤ 收盘在 VWAP 下方（VWAP 891.00，EMA250 900.22）。</p></article>
+<article class="summary-item"><p>④ 资金流：全天17笔：主动买入(call ask + put bid)$9.78M，主动卖出(put ask + call bid)$2.69M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 下方（VWAP 893.72，EMA250 894.87）。</p></article>
 </div></section>
 <p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>

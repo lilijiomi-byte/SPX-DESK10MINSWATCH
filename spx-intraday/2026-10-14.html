@@ -29,6 +29,9 @@
 .side-pill{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;background:#fff;color:#17191d;}
 .flow-summary .footnote{margin-top:10px;color:var(--muted);font-size:.8rem;}
 
+/* 重要事件标记 (tab 上) */
+.tab-event{display:inline-block;margin-left:.45em;padding:1px 6px;background:#fef3c7;color:#92400e;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+
 </style>
 </head>
 <body>
@@ -45,10 +48,9 @@
 <span>开 7,774.18 · 高 7,789.15 · 低 7,693.31</span>
 </div></header>
 <aside class="event">
-<div class="event-tag">美国9月CPI日</div>
+<div class="event-tag quiet">非事件日</div>
 <div>
-<h2>美国9月CPI日</h2>
-<p>8:30 ET 公布9月CPI；事件日 heatmap 只看方向。</p>
+<h2>非事件日</h2>
 </div></aside>
 <section aria-label="早盘分析">
 <div class="section-head"><h2>早盘分析</h2><div class="source">
@@ -145,7 +147,7 @@
 <article class="summary-item"><p>②白点轨迹: 开 7774.18→高 7789.15→低 7693.31→收 7721.49（-1.08%）；收盘在 call wall 7800 下方，put wall 7790 下方</p></article>
 <article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7700, 7705, 7720]→[7720, 7725, 7730]；7720 增厚 +84%（8249M→15203M）；7725 减弱 -87%（1823M→228M）；7730 减弱 -100%（2169M→0M）</p></article>
 <article class="summary-item"><p>④flow 印证：中性（bull 2.79M / bear 4.15M）；最大簇 7700C 0.99M（ATM，spot≈7712.1；ask 0.72M / bid 0.27M / mid 0.0M）。</p></article>
-<article class="summary-item"><p>⑤收盘 7721.49（-1.08%），VWAP 7732.46，EMA250 7764.8；事件日：美国9月CPI日</p></article>
+<article class="summary-item"><p>⑤收盘 7721.49（-1.08%），VWAP 7732.46，EMA250 7764.8；非事件日</p></article>
 </div></section>
 <p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>

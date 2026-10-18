@@ -93,16 +93,20 @@ def _is_monthly_opex(ds):
     return d == third_friday
 
 
+def bias_of(chg_pct):
+    """当日涨跌 → 利多/利空/中性 (阈值 ±0.3%). chg_pct 为 None 时返回空串."""
+    if chg_pct is None:
+        return ""
+    if chg_pct > 0.3:
+        return "利多"
+    if chg_pct < -0.3:
+        return "利空"
+    return "中性"
+
+
 def event_lookup(ds, chg_pct=None):
     """返回 (is_event, tag, detail, bias). bias: 利多/利空/中性 (按当日实际涨跌判定)."""
-    bias = ""
-    if chg_pct is not None:
-        if chg_pct > 0.3:
-            bias = "利多"
-        elif chg_pct < -0.3:
-            bias = "利空"
-        else:
-            bias = "中性"
+    bias = bias_of(chg_pct)
     try:
         sys.path.insert(0, os.path.join(WS, "yhs_premarket", "daily"))
         from lib import event_day
@@ -304,12 +308,13 @@ def page_foot():
 
 
 def sitenav(active):
-    """全站单色导航条. active: HOME/SPX/MU/TSLA/SPX10."""
+    """全站单色导航条. active: HOME/SPX/MU/TSLA/META/SPX10."""
     items = [("../index.html", "首页", "HOME"),
              ("../spx-intraday/index.html", "SPX 日内报告", "SPX"),
              ("../spx-10min/index.html", "SPX 尾盘10分钟", "SPX10"),
              ("../mu/index.html", "MU 日内报告", "MU"),
-             ("../tsla/index.html", "TSLA 日内报告", "TSLA")]
+             ("../tsla/index.html", "TSLA 日内报告", "TSLA"),
+             ("../meta/index.html", "META 日内报告", "META")]
     links = "".join(
         f'<a href="{href}"{" class=\"on\"" if key == active else ""}>{label}</a>'
         for href, label, key in items)

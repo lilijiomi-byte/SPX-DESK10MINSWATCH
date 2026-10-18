@@ -18,6 +18,20 @@
 .sitenav a:hover{background:#33445e;color:#fff}
 .sitenav a.on{background:#101b2d;color:#fff;font-weight:700}
 
+/* flow 逐笔明细表（与 SPX 10min 同款） */
+.flow-table-wrap{overflow-x:auto;margin:12px 0;}
+.flow-table{width:100%;border-collapse:collapse;font-size:13px;color:#17191d;}
+.flow-table th{font-size:11px;color:#5e6570;font-weight:400;text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;background:#fff;}
+.flow-table td{padding:7px 8px;border-bottom:1px solid #eceff3;white-space:nowrap;font-variant-numeric:tabular-nums;color:#17191d;}
+.flow-table tr:last-child td{border-bottom:none;}
+.tr-call td{background:#e2f1e7;color:#17191d;}
+.tr-put td{background:#fae3e3;color:#17191d;}
+.side-pill{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;background:#fff;color:#17191d;}
+.flow-summary .footnote{margin-top:10px;color:var(--muted);font-size:.8rem;}
+
+/* 重要事件标记 (tab 上) */
+.tab-event{display:inline-block;margin-left:.45em;padding:1px 6px;background:#fef3c7;color:#92400e;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+
 </style>
 </head>
 <body>
@@ -111,14 +125,18 @@
 </div></div>
 <div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
 <div class="flow-summary">
-<h3>资金流总结（0DTE，全天7笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
-<ul>
-<li>09:30 call ask（主 950ITM）：$0.68M / 1笔</li>
-<li>09:30 put ask（主 980OTM）：$0.53M / 2笔</li>
-<li>12:00 put ask（主 1000ATM）：$0.27M / 1笔</li>
-<li>15:30 put ask（主 1000ITM）：$0.22M / 1笔</li>
-<li>15:30 put bid（主 1015ITM）：$0.63M / 2笔</li>
-</ul>
+<h3>资金流（0DTE，全天7笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<div class="flow-table-wrap"><table class="flow-table">
+<thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead><tbody>
+<tr class="tr-call"><td>09:39:37</td><td><b>950.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$45.00</td><td>44.65 / 45.00</td><td><span class="side-pill">ASK</span></td><td>150</td><td><b>$0.675M</b></td><td>164</td><td>165</td></tr>
+<tr class="tr-put"><td>09:43:42</td><td><b>990.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$9.15</td><td>9.05 / 9.15</td><td><span class="side-pill">ASK</span></td><td>296</td><td><b>$0.271M</b></td><td>4321</td><td>967</td></tr>
+<tr class="tr-put"><td>09:59:00</td><td><b>980.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$3.35</td><td>3.30 / 3.35</td><td><span class="side-pill">ASK</span></td><td>775</td><td><b>$0.260M</b></td><td>7061</td><td>852</td></tr>
+<tr class="tr-put"><td>12:12:24</td><td><b>1000.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$5.30</td><td>5.20 / 5.30</td><td><span class="side-pill">ASK</span></td><td>500</td><td><b>$0.265M</b></td><td>5489</td><td>2163</td></tr>
+<tr class="tr-put"><td>15:32:16</td><td><b>1015.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$24.90</td><td>24.90 / 25.00</td><td><span class="side-pill">BID</span></td><td>97</td><td><b>$0.242M</b></td><td>846</td><td>998</td></tr>
+<tr class="tr-put"><td>15:46:38</td><td><b>1000.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$12.60</td><td>12.55 / 12.60</td><td><span class="side-pill">ASK</span></td><td>171</td><td><b>$0.215M</b></td><td>10921</td><td>2163</td></tr>
+<tr class="tr-put"><td>15:59:00</td><td><b>1010.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$19.50</td><td>19.50 / 19.70</td><td><span class="side-pill">BID</span></td><td>200</td><td><b>$0.390M</b></td><td>1719</td><td>895</td></tr>
+</tbody></table></div>
+<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ DTE≤1 ｜ MU ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>
 <p class="verdict">全天7笔：主动买入(call ask + put bid)$1.31M，主动卖出(put ask + call bid)$1.01M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p>
 </div>
 </section>
@@ -132,7 +150,7 @@
 <article class="summary-item"><p>② 白点轨迹：开 1002.45 → 高 1002.67 → 低 978.50 → 收 989.04。</p></article>
 <article class="summary-item"><p>③ 墙位：call 1060 / put 1000（junk-man口径）；heatmap 算法墙首→末：call wall 985→990（上移）。</p></article>
 <article class="summary-item"><p>④ 资金流：全天7笔：主动买入(call ask + put bid)$1.31M，主动卖出(put ask + call bid)$1.01M，mid $0.00M（不计入主动买卖）；主动资金偏多。</p></article>
-<article class="summary-item"><p>⑤ 收盘在 VWAP 上方（VWAP 988.94，EMA250 899.45）。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 下方（VWAP 989.84，EMA250 894.87）。</p></article>
 </div></section>
 <p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>

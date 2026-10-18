@@ -32,7 +32,8 @@ from zoneinfo import ZoneInfo
 SCRIPTS = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SCRIPTS)
 from intraday_lib import (render_article, render_standalone, build_index,
-                          self_check, junkman_lookup, event_lookup, weekday_cn)
+                          self_check, junkman_lookup, event_lookup, weekday_cn,
+                          bias_of)
 
 WS = os.path.expanduser("~/workspace")
 SITE = os.path.join(WS, "spx-desk")
@@ -40,11 +41,13 @@ ET = ZoneInfo("America/New_York")
 MU_DIR = os.path.join(WS, "mu_report")
 TSLA_DIR = os.path.join(WS, "trading_journal", "tsla_daily")
 SPX_DIR = os.path.join(WS, "trading_journal", "spx_daily")
+META_DIR = os.path.join(WS, "meta_report")
 
 TICKERS = {
     "mu": {"site": os.path.join(SITE, "mu"), "label": "MU 日内报告", "name": "MU"},
     "spx": {"site": os.path.join(SITE, "spx-intraday"), "label": "SPX 日内报告", "name": "SPX"},
     "tsla": {"site": os.path.join(SITE, "tsla"), "label": "TSLA 日内报告", "name": "TSLA"},
+    "meta": {"site": os.path.join(SITE, "meta"), "label": "META 日内报告", "name": "META"},
 }
 FAILURES = []
 
@@ -364,7 +367,7 @@ def mu_assemble(ds, fetched):
     cl, hi, lo, chg = lv["close"], lv["high"], lv["low"], lv["chg_pct"]
     cw, pw = cfg.get("call_wall"), cfg.get("put_wall")
 
-    is_event, tag, detail = event_lookup(ds)
+    is_event, tag, detail, bias = event_lookup(ds, chg)
     jm_status, jm_meta, jm_text = junkman_lookup("mu", ds)
 
     # per-strike 时间序列
@@ -496,7 +499,7 @@ def mu_assemble(ds, fetched):
         "ticker": "MU", "date": ds, "mmdd": ds[5:7] + ds[8:10], "weekday": weekday_cn(ds),
         "date_str": f"{ds[:4]}年{int(ds[5:7])}月{int(ds[8:10])}日 · {weekday_cn(ds)} · 日内报告",
         "tape": {"close": cl, "chg_pct": chg, "open": opx, "high": hi, "low": lo},
-        "event": {"is_event": is_event, "tag": tag, "detail": detail},
+        "event": {"is_event": is_event, "tag": tag, "detail": detail, "bias": bias},
         "junkman": {"status": jm_status, "meta": jm_meta, "full_text": jm_text},
         "chart": {"rel": f"charts/mu_{ds}.png",
                   "alt": f"MU {ds} 5分钟K线与{dte_label} dealer-GEX heatmap",
@@ -567,7 +570,8 @@ def adapt_tsla(rd, ds):
         "date_str": f"{ds[:4]}年{int(ds[5:7])}月{int(ds[8:10])}日 · {weekday_cn(ds)} · 日内报告",
         "tape": {"close": tape["close"], "chg_pct": tape["chg_pct"], "open": tape["open"],
                  "high": tape["high"], "low": tape["low"]},
-        "event": {"is_event": ev["is_event"], "tag": ev["tag"], "detail": ev.get("detail", "")},
+        "event": {"is_event": ev["is_event"], "tag": ev["tag"], "detail": ev.get("detail", ""),
+                  "bias": ev.get("bias") or bias_of(tape["chg_pct"])},
         "junkman": {"status": jm["status"],
                     "meta": (f"{jm.get('posted_mdt', ds)} MDT｜Alpha夜航社 #junkman-analysis｜"
                              f"作者 junk_man（APP徽章）") if jm["status"] == "ready" else "",
@@ -644,7 +648,8 @@ def adapt_spx(rd, ds):
         "date_str": f"{ds[:4]}年{int(ds[5:7])}月{int(ds[8:10])}日 · {weekday_cn(ds)} · 日内报告",
         "tape": {"close": k["close"], "chg_pct": k["change_pct"], "open": k["official_open"],
                  "high": k["day_high"], "low": k["day_low"]},
-        "event": {"is_event": ev["is_event"], "tag": ev["tag"], "detail": ev.get("detail", "")},
+        "event": {"is_event": ev["is_event"], "tag": ev["tag"], "detail": ev.get("detail", ""),
+                  "bias": ev.get("bias") or bias_of(k["change_pct"])},
         "junkman": {"status": jm["status"],
                     "meta": (f"{jm.get('posted_mdt', ds)} MDT｜Alpha夜航社 #junkman-analysis｜"
                              f"作者 junk_man（APP徽章）") if jm["status"] == "ready" else "",
@@ -681,11 +686,59 @@ def mu_build(ds):
     return mu_assemble(ds, fetched)
 
 
-BUILDERS = {"mu": mu_build, "tsla": tsla_build, "spx": spx_build}
+# ================= META: 本地 report_data 直接加载 =================
+def meta_build(ds):
+    """META 日内报告: 直接加载 ~/workspace/meta_report/report_data_meta_<ds>.json,
+    补上 flow_trade_list (逐笔表, 与 MU/TSLA/SPX 同款格式)."""
+    rd_path = os.path.join(META_DIR, f"report_data_meta_{ds}.json")
+    if not os.path.exists(rd_path):
+        raise RuntimeError(f"META {ds}: 本地报告数据缺失 {rd_path}")
+    norm = json.load(open(rd_path, encoding="utf-8"))
+    # chart.rel 归一化为站点相对路径 (老数据是 charts_v2/... 源路径格式)
+    mmdd = ds[5:7] + ds[8:10]
+    norm["chart"]["rel"] = f"charts/meta_{ds}.png"
+    # top5 归一化 (META 本地格式缺 rank/gex_m/et/pos)
+    _top5 = []
+    for i, n in enumerate(norm.get("top5") or []):
+        _top5.append({
+            "rank": i + 1,
+            "strike": n.get("strike"),
+            "gex_m": n.get("gex_m", 0),
+            "et": n.get("et", ""),
+            "pos": n.get("pos", True),
+            "analysis": n.get("analysis", ""),
+        })
+    norm["top5"] = _top5
+    # junkman 字段归一化 (适配 render_article 期望的 meta/full_text)
+    jm = norm.get("junkman", {})
+    if jm.get("status") == "ready":
+        if "meta" not in jm:
+            jm["meta"] = f'{jm.get("posted_mdt", "")}｜{jm.get("channel", "")}｜作者 junk_man（APP徽章）'
+        if "full_text" not in jm:
+            # 用 summary + quote 拼出全文替代
+            jm["full_text"] = (jm.get("summary", "") + "\n\n" + jm.get("quote", "")).strip()
+    norm["junkman"] = jm
+    # flow 逐笔表
+    trade_list = []
+    try:
+        sys.path.insert(0, SCRIPTS)
+        import publish as _pub
+        raw = _pub.fetch_flow_stock(ds, "META", min_premium_usd=200000)
+        trade_list = _pub.build_trade_list(raw, norm["tape"]["close"])
+    except Exception as e:
+        print(f"[meta flow] 逐笔拉取失败: {e}", flush=True)
+    norm["flow_trade_list"] = trade_list
+    # 标题统一为"资金流" (去掉"总结"二字, 与其它标的一致)
+    norm["flow_title"] = norm.get("flow_title", "").replace("资金流总结", "资金流")
+    return norm
+
+
+BUILDERS = {"mu": mu_build, "tsla": tsla_build, "spx": spx_build, "meta": meta_build}
 CHART_SRC = {
     "mu": lambda ds: os.path.join(MU_DIR, "charts_v2", f"mu_charts_{ds[5:7]+ds[8:10]}.png"),
     "tsla": lambda ds: os.path.join(TSLA_DIR, ds, "charts", f"tsla_charts_{ds[5:7]+ds[8:10]}.png"),
     "spx": lambda ds: os.path.join(SPX_DIR, ds, "charts", f"spx_charts_{ds[5:7]+ds[8:10]}.png"),
+    "meta": lambda ds: os.path.join(META_DIR, "charts_v2", f"meta_charts_{ds[5:7]+ds[8:10]}.png"),
 }
 
 
@@ -722,7 +775,7 @@ def main():
     datetime.date.fromisoformat(ds)  # 校验
     _ensure_yhs_key()
     only = sys.argv[2].lower() if len(sys.argv) > 2 else None
-    tickers = [only] if only else ["mu", "tsla", "spx"]
+    tickers = [only] if only else ["mu", "tsla", "spx", "meta"]
     for t in tickers:
         if t not in TICKERS:
             print(f"未知标的: {t}", file=sys.stderr)

@@ -42,8 +42,8 @@ if status == "ready":
     junkman.update({"posted_mdt": posted, "full_text": full_text})
 
 # ---------- event ----------
-is_event, tag, detail = event_lookup(DS)
-event = {"is_event": is_event, "tag": tag, "detail": detail}
+is_event, tag, detail, bias = event_lookup(DS, chg)
+event = {"is_event": is_event, "tag": tag, "detail": detail, "bias": bias}
 
 # ---------- magnet ----------
 magnet_strike, magnet_src = None, "heatmap"
