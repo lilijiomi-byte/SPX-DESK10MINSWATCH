@@ -200,7 +200,7 @@ function renderDay(d){
 }
 
 fetch("data/days.json").then(r => r.json()).then(j => {
-  const days = (j.days || []).slice().sort().reverse();
+  const days = (Array.isArray(j) ? j : (j.days || [])).slice().sort().reverse();
   const tabs = document.getElementById("tabs");
   days.forEach((ds, i) => {
     const b = document.createElement("button");
