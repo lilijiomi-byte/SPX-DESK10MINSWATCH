@@ -116,8 +116,13 @@
   <ul class="strat" id="strat"></ul>
 </div>
 
+<div class="card" id="user-analysis-card" style="display:none">
+  <h2>⑥ 实盘分析<span class="badge">用户复盘 · 仅记录观点</span></h2>
+  <ul class="strat" id="user-analysis"></ul>
+</div>
+
 <div class="card">
-  <h2>⑥ 一句话总结</h2>
+  <h2>⑦ 一句话总结</h2>
   <div class="note" id="note"></div>
 </div>
 
@@ -193,7 +198,17 @@ function renderDay(d){
   document.getElementById("strat").innerHTML =
     (d.strategy || []).map(s => `<li>${s}</li>`).join("");
 
-  // ⑥ note
+  // ⑥ 实盘分析（用户复盘）
+  const ua = document.getElementById("user-analysis-card");
+  if (d.user_analysis && d.user_analysis.length) {
+    document.getElementById("user-analysis").innerHTML =
+      d.user_analysis.map(s => `<li>${s}</li>`).join("");
+    ua.style.display = "";
+  } else {
+    ua.style.display = "none";
+  }
+
+  // ⑦ note
   const n = document.getElementById("note");
   if (d.note && d.note.trim()){ n.textContent = d.note; n.classList.remove("empty"); }
   else { n.textContent = "（暂无）"; n.classList.add("empty"); }
