@@ -213,7 +213,7 @@ def draw_chart(ds, bars, vwap_seg, ema_seg, out_path, prev_h=None, prev_l=None):
              bbox=dict(boxstyle="round,pad=0.4", fc="#eceff3", ec="#d8dde4"))
     fig.subplots_adjust(bottom=0.16, top=0.90, left=0.075, right=0.97)
     fig.canvas.draw()  # 先绘制以生成刻度标签
-    _emphasize_round_levels(ax, force_round_ticks=True)
+    # 10min 图不用整百刻度 (区间太小, 强制加会压扁K线)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     fig.savefig(out_path, dpi=110, facecolor="white")
     plt.close(fig)
