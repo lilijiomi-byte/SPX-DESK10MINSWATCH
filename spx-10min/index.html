@@ -121,11 +121,6 @@
   <ul class="strat" id="user-analysis"></ul>
 </div>
 
-<div class="card">
-  <h2>⑦ 一句话总结</h2>
-  <div class="note" id="note"></div>
-</div>
-
 <footer>
   数据来源：Yahoo ^GSPC / ES=F 1分钟K线；YHS /v1/flow/trades。<br>
   本站为公开但未宣传页面（unlisted），请勿对外分享链接。
@@ -208,10 +203,6 @@ function renderDay(d){
     ua.style.display = "none";
   }
 
-  // ⑦ note
-  const n = document.getElementById("note");
-  if (d.note && d.note.trim()){ n.textContent = d.note; n.classList.remove("empty"); }
-  else { n.textContent = "（暂无）"; n.classList.add("empty"); }
 }
 
 fetch("data/days.json").then(r => r.json()).then(j => {
