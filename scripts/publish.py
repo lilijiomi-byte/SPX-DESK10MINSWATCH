@@ -163,11 +163,12 @@ def draw_chart(ds, bars, vwap_seg, ema_seg, out_path):
             abs(b["c"] - b["o"]) or 0.01,
             facecolor=col, edgecolor=col, zorder=3))
     if vwap_seg:
-        ax.plot(x, [v for _, v in vwap_seg], color=VWAP_C, lw=2.0,
-                label="VWAP", zorder=4)
+        # vwap_seg 条目为 (x下标, 值)：ES 缺分钟时段数 < bars，须按各自下标画
+        ax.plot([i for i, _ in vwap_seg], [v for _, v in vwap_seg],
+                color=VWAP_C, lw=2.0, label="VWAP", zorder=4)
     if ema_seg:
-        ax.plot(x, [v for _, v in ema_seg], color=EMA_C, lw=2.0,
-                label="EMA250", zorder=4)
+        ax.plot([i for i, _ in ema_seg], [v for _, v in ema_seg],
+                color=EMA_C, lw=2.0, label="EMA250", zorder=4)
     ax.set_xlim(-0.6, len(bars) - 0.4)
     ax.set_xticks(list(range(0, len(bars), 2)))
     ax.set_xticklabels([bars[i]["t"] for i in range(0, len(bars), 2)],
@@ -184,8 +185,11 @@ def draw_chart(ds, bars, vwap_seg, ema_seg, out_path):
     # 图下方数据行
     vwap_last = vwap_seg[-1][1] if vwap_seg else None
     ema_last = ema_seg[-1][1] if ema_seg else None
+    # 线段尾端对应的实际分钟（ES 缺分钟时不是 16:00）
+    last_t = (bars[vwap_seg[-1][0]]["t"]
+              if vwap_seg and 0 <= vwap_seg[-1][0] < len(bars) else "")
     dataline = (
-        f"VWAP {vwap_last:.1f} ｜ EMA250 {ema_last:.1f}（16:00值）"
+        f"VWAP {vwap_last:.1f} ｜ EMA250 {ema_last:.1f}（{last_t or '收盘'}值）"
         if vwap_last is not None and ema_last is not None
         else "VWAP/EMA250 暂无")
     fig.text(0.5, 0.03, dataline, ha="center", fontsize=11, color="#17191d",
@@ -484,10 +488,12 @@ def summarize_flow(trades, spot_by_min, day_close):
             return {"premium_m": round(info["premium"] / 1e6, 2),
                     "n": info["n"], "strike": None, "moneyness": ""}
         _, strike, v = max(cands)
-        spot = (sum(v["spots"]) / len(v["spots"])) if v["spots"] else day_close
+        # spots 可能含 None（day_close 缺失时）：只用有效值
+        valid = [s for s in v["spots"] if s]
+        spot = (sum(valid) / len(valid)) if valid else day_close
         return {"premium_m": round(info["premium"] / 1e6, 2), "n": info["n"],
                 "strike": strike,
-                "moneyness": _moneyness(right, strike, spot)}
+                "moneyness": _moneyness(right, strike, spot) if spot else ""}
 
     g = lambda k: buckets.get(k, {"premium": 0.0})["premium"]
     bull = g("call_ask") + g("put_bid")
@@ -583,8 +589,8 @@ def main(ds):
                 for t in win_ts]
         out["bars_1m"] = bars
         out["table_10"] = [b for b in bars if b["t"] >= "15:50"]
-        vwap_seg = [(t, vw[t]) for t in win_ts if t in vw]
-        ema_seg = [(t, em[t]) for t in win_ts if t in em]
+        vwap_seg = [(win_ts.index(t), vw[t]) for t in win_ts if t in vw]
+        ema_seg = [(win_ts.index(t), em[t]) for t in win_ts if t in em]
         chart_rel = f"data/charts/spx_1m_{mmdd}.png"
         if bars:
             vl, el = draw_chart(ds, bars, vwap_seg, ema_seg,
