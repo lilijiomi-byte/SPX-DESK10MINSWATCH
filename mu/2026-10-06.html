@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="zh">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>MU 日内报告 2026-10-06</title>
+<title>MU 日内报告 2026-10-06 日内报告</title>
 <style>
 
 :root{color-scheme:light dark;--bg:#eef1f3;--paper:#fff;--ink:#12171d;--muted:#58636e;--line:#cfd6dc;--gold:#a97600;--purple:#7750a2;--gold-soft:#fff0bb;--purple-soft:#eee3fa;--orange:#e94b25;--green:#087a4e;--red:#c5323b;--chip:#e7ebee;--chart:#0d1117;--shadow:0 16px 54px rgba(10,18,25,.09)}
@@ -30,6 +31,13 @@
 
 /* 重要事件标记 (tab 上) */
 .tab-event{display:inline-block;margin-left:.45em;padding:1px 6px;background:#fef3c7;color:#92400e;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+.tab-solar{display:inline-block;margin-left:.45em;padding:1px 6px;background:#dbeafe;color:#1e40af;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+
+/* 日期 tab 收缩 */
+.day-tabs.collapsed{max-height:118px;overflow:hidden}
+.tabs-toggle{display:block;width:100%;padding:9px;background:var(--paper);border:1px solid var(--line);border-top:0;color:var(--muted);font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+.tabs-toggle:hover{background:var(--chip);color:var(--ink)}
+@media(max-width:560px){.day-tabs.collapsed{max-height:92px}}
 
 </style>
 </head>
@@ -37,497 +45,55 @@
 <main>
 
 <nav class="sitenav"><a href="../index.html">首页</a><a href="../spx-intraday/index.html">SPX 日内报告</a><a href="../spx-10min/index.html">SPX 尾盘10分钟</a><a href="../mu/index.html" class="on">MU 日内报告</a><a href="../tsla/index.html">TSLA 日内报告</a><a href="../meta/index.html">META 日内报告</a></nav>
-<main>
-<article class="day-panel" id="day-1006" role="tabpanel" aria-labelledby="tab-1006">
-    <header class="mast"><div><h1>MU</h1><p class="date">MU 2026-10-06 周二</p></div><div class="tape" aria-label="当日收盘表现"><strong>1045.56 <span class="down">−1.78%</span></strong><span>开 1064.48 · 低 1045.26</span></div></header>
-    <aside class="event" aria-labelledby="event-title-1006"><div class="event-tag quiet">非事件日</div><div><h2 id="event-title-1006">非事件日</h2></div></aside>
-    <section aria-labelledby="brief-title-1006"><div class="section-head"><div><h2 id="brief-title-1006">早盘分析</h2><div class="source">盘前预测·情况未发生｜发布时间 2026-10-06 07:27 MDT｜#junkman-analysis｜作者 junk_man</div></div></div><div class="brief-grid"><div class="brief-main" style="grid-column:1 / -1"><div style="white-space:pre-wrap">- 快照参考价 1068.08｜正GEX（钉住/均值回归）
-- 1100 CALL WALL（下方）｜1070 MAGNET（下方）｜1050 PUT WALL（上方）｜1053.9 FLIP（上方）
-- 交易区间 1050–1100，上墙延伸 1100–1110；潜在低点观察区 1060–1065（失守1060取消接底）
-- 开盘分支：开在1065下方、反抽不过先看1060；1070上方回踩守住先看1075
-- 五个交易机会：回踩Call（收复1070→1075→1080）｜突破Call（站稳1100→1105→1110）｜受阻Put（1070受阻失守1065→1060→1055）｜破位Put（跌破1065反抽不过→1060→1055）｜抄底Call（下探1060–1065后重收1065→1070→1075）</div></div></div></section>
-    <section aria-labelledby="chart-title-1006"><div class="section-head"><div><h2 id="chart-title-1006">5 分钟 K 线</h2><div class="source"><i class="dot"></i> K 线：Yahoo Finance</div></div><p>夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据。</p></div><figure class="chart-shell"><img src="charts/mu_2026-10-06.png" alt="MU 2026年10月6日五分钟K线图" /></img></figure><div class="flow-summary"><h3>资金流总结（31笔）</h3><ul><li>09:30：call ask 0.48M（1020，ITM）+ put ask 0.43M（1045/1055）→ 开盘双边</li><li>10:00–10:30：call ask 1.36M vs call bid 0.81M（1020/1065）→ call对拉</li><li>11:00–12:30：call ask 1.00M+0.43M+0.39M+0.47M（1020，ITM）→ 1020 ITM call反复买盘</li><li>15:30：call bid 0.65M + put bid 0.42M（1040，OTM）</li></ul><p>一句话：call双边对拉，1020 ITM call全天反复成交，put参与少；价格震荡下跌-1.78%。</p></div></section>
-    <section aria-labelledby="summary-title-1006"><div class="section-head"><h2 id="summary-title-1006">分析总结</h2></div><div class="summary-list"><article class="summary-item"><p>开盘1064.48正在1060–1065观察区内，开盘即跌破1060，一路跌到1045.26，收1045.56（-1.78%）。走完"破位Put"剧本（跌破1065→1060→1055），实际跌到1045超出1055目标。PUT WALL 1050被有效跌破（收在其下方）。Flow call双边对拉未能阻止下跌。</p></div></section>
-  </article>
+<p style="margin:0 0 12px"><a href="index.html">← MU 日内报告 全部日期</a></p>
+<article class="day-panel" id="day-1006" role="tabpanel">
+<header class="mast"><div>
+<h1>MU 日内报告</h1>
+<p class="date">2026年10月6日 · 周二 · 日内报告</p>
+</div><div class="tape">
+<strong>1,087.83 <span class="up">+6.93%</span></strong>
+<span>开 1,002.41 · 高 1,002.41 · 低 978.50</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet"></div>
+<div>
+<h2></h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>2026-10-06  MDT｜Alpha夜航社 #junkman-analysis｜作者 junk_man</p>
+</div></div>
+<div class="brief"><pre class="verbatim">
 
-  <article class="day-panel" id="day-1007" role="tabpanel" aria-labelledby="tab-1007">
-    <header class="mast"><div><h1>MU</h1><p class="date">MU 2026-10-07 周三</p></div><div class="tape" aria-label="当日收盘表现"><strong>1087.83 <span class="up">+6.93%</span></strong><span>开 1017.37 · 高 1089.20</span></div></header>
-    <aside class="event" aria-labelledby="event-title-1007"><div class="event-tag">事件日</div><div><h2 id="event-title-1007">事件日（消息驱动）：D.A. Davidson上调目标价 $2,100→$3,000。<span class="sentiment-badge good">📈 利好</span></h2></div></aside>
-    <section aria-labelledby="brief-title-1007"><div class="section-head"><div><h2 id="brief-title-1007">早盘分析</h2><div class="source">盘前预测·情况未发生｜发布时间 2026-10-07 07:23 MDT｜#junkman-analysis｜作者 junk_man</div></div></div><div class="brief-grid"><div class="brief-main" style="grid-column:1 / -1"><div style="white-space:pre-wrap">- 快照参考价 1017.9｜负GEX（放大/加速）
-- 1070 CALL WALL（下方）｜1025 MAGNET（下方）｜1020 PUT WALL（下方，参考价上方，不作下方支撑）｜1025 FLIP（下方）
-- 交易区间 1015–1025，上墙延伸 1070–1080；潜在低点观察区 1010–1015（失守1010取消接底）
-- 开盘分支：开在1015下方、反抽不过先看1010；1020上方回踩守住先看1025
-- 五个交易机会：回踩Call（收复1020→1025→1030）｜突破Call（站稳1070→1075→1080，1080再站稳看1085→1090）｜受阻Put（1020受阻失守1015→1010→1005）｜破位Put（跌破1015反抽不过→1010→1005）｜抄底Call（下探1010–1015后重收1015→1020→1025）</div></div></div></section>
-    <section aria-labelledby="chart-title-1007"><div class="section-head"><div><h2 id="chart-title-1007">5 分钟 K 线</h2><div class="source"><i class="dot"></i> K 线：Yahoo Finance</div></div><p>夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据。</p></div><figure class="chart-shell"><img src="assets/mu-charts-1007.png" alt="MU 2026年10月7日五分钟K线图" /></img></figure><div class="flow-summary"><h3>资金流总结（51笔）</h3><ul><li>09:30：call ask 1.79M（900/1020）vs call bid 0.81M → 开盘call买盘点火</li><li>10:00：call ask 1.91M vs call bid 1.46M（1035–1070）→ 双边巨额</li><li>10:30：call ask 1.99M vs call bid 1.74M（1045–1070）→ 双边巨额</li><li>11:00：call ask 1.00M vs call bid 1.29M</li><li>15:00：call ask 1.11M（1030/1040/1065，ITM）</li></ul><p>一句话：开盘call买盘$1.79M点火，全天call双边巨额对拉（ask合计超$8M），价格+6.93%大涨。</p></div></section>
-    <section aria-labelledby="summary-title-1007"><div class="section-head"><h2 id="summary-title-1007">分析总结</h2></div><div class="summary-list"><article class="summary-item"><p>D.A. Davidson上调目标价至$3,000驱动，跳空低开（1017.37，-2.7%）后V型反转。开盘在1015–1020之间，走完"回踩Call"（收复1020→1025→1030）并一路突破1070 CALL WALL，最高1089.20，接近1090延伸目标，收1087.83（+6.93%）。"突破Call"剧本（站稳1070→1075→1080→1085→1090）基本走完。Flow开盘call ask $1.79M点火，全天call双边超$8M对拉。</p></div></section>
-  </article>
-
-  <article class="day-panel" id="day-1008" role="tabpanel" aria-labelledby="tab-1008">
-    <header class="mast"><div><h1>MU</h1><p class="date">MU 2026-10-08 周四</p></div><div class="tape" aria-label="当日收盘表现"><strong>1035.44 <span class="down">−3.90%</span></strong><span>开 1077.50 · 低 1032.10</span></div></header>
-    <aside class="event" aria-labelledby="event-title-1008"><div class="event-tag quiet">非事件日</div><div><h2 id="event-title-1008">非事件日</h2></div></aside>
-    <section aria-labelledby="brief-title-1008"><div class="section-head"><div><h2 id="brief-title-1008">早盘分析</h2><div class="source">盘前预测·情况未发生｜发布时间 2026-10-08 07:24 MDT｜#junkman-analysis｜作者 junk_man</div></div></div><div class="brief-grid"><div class="brief-main" style="grid-column:1 / -1"><div style="white-space:pre-wrap">- 快照参考价 1075.05｜正负混合GEX（方向选择）
-- 1100 CALL WALL（下方）｜1080 MAGNET（下方）｜1085 PUT WALL（下方，参考价上方，不作下方支撑）｜1077.5 FLIP（下方）
-- 交易区间 1075–1080，上墙延伸 1100–1110；潜在低点观察区 1070–1072.5（失守1070取消接底）
-- 开盘分支：开在1072.5下方、反抽不过先看1070；1077.5上方回踩守住先看1080
-- 五个交易机会：回踩Call（收复1077.5→1080→1082.5）｜突破Call（站稳1100→1105→1110）｜受阻Put（1077.5受阻失守1075→1072.5→1070）｜破位Put（跌破1072.5反抽不过→1070→1067.5）｜抄底Call（下探1070–1072.5后重收1072.5→1075→1077.5）</div></div></div></section>
-    <section aria-labelledby="chart-title-1008"><div class="section-head"><div><h2 id="chart-title-1008">5 分钟 K 线</h2><div class="source"><i class="dot"></i> K 线：Yahoo Finance</div></div><p>夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据。</p></div><figure class="chart-shell"><img src="assets/mu-charts-1008.png" alt="MU 2026年10月8日五分钟K线图" /></img></figure><div class="flow-summary"><h3>资金流总结（49笔）</h3><ul><li>09:30：call bid 0.28M（1100，OTM）+ put ask 0.27M（1065，OTM）→ 开盘双边小单</li><li>11:00：call mid 0.38M（1020，ITM）→ 中间价成交，不计入主动买卖</li><li>12:00–13:00：call ask 0.99M+0.59M+1.50M（1020/950）→ call买盘</li><li>12:30：put bid 0.81M（1030/1050）→ 卖put</li><li>14:00：call bid 2.56M（1000/1025/1045）vs call ask 0.90M → 大额卖call</li><li>14:30：put ask 1.79M（1040/1050/1090）→ 大额买put</li></ul><p>一句话：午后call bid $2.56M大额卖call + put ask $1.79M大额买put，空头主导；收-3.90%。</p></div></section>
-    <section aria-labelledby="summary-title-1008"><div class="section-head"><h2 id="summary-title-1008">分析总结</h2></div><div class="summary-list"><article class="summary-item"><p>昨日大涨后的获利回吐日。开盘1077.50在FLIP附近，开盘后一路下跌，跌破1072.5→1070观察区后加速到1032.10，收1035.44（-3.90%）。走完"破位Put"剧本（跌破1072.5→1070→1067.5）并远超。PUT WALL 1085在参考价上方，不作下方支撑 — 全天无有效支撑。Flow午后call bid $2.56M大额卖call + put ask $1.79M买put，空头主导。</p></div></section>
-  </article>
-
-  <article class="day-panel" id="day-1009" role="tabpanel" aria-labelledby="tab-1009">
-    <header class="mast"><div><h1>MU</h1><p class="date">MU 2026-10-09 周五</p></div><div class="tape" aria-label="当日收盘表现"><strong>1028.14 <span class="down">−2.47%</span></strong><span>开 1054.17 · 低 1017.00</span></div></header>
-    <aside class="event" aria-labelledby="event-title-1009"><div class="event-tag quiet">非事件日</div><div><h2 id="event-title-1009">非事件日</h2></div></aside>
-    <section aria-labelledby="brief-title-1009"><div class="section-head"><div><h2 id="brief-title-1009">早盘分析</h2><div class="source">盘前预测·情况未发生｜发布时间 2026-10-09 07:21 MDT｜#junkman-analysis｜作者 junk_man</div></div></div><div class="brief-grid"><div class="brief-main" style="grid-column:1 / -1"><div style="white-space:pre-wrap">- 盘前参考价 1055.1｜正GEX（钉住/均值回归）｜高波动IV 32.3%（1DTE），1σ ±17.94（±1.70%），波动区间 1037.16–1073.04
-- 1060 CALL WALL（下方）｜1055 MAGNET（区域内）｜1025 PUT WALL（上方）｜1051.3 FLIP（上方）
-- 交易区间 1025–1060，上墙延伸 1060–1065；潜在低点观察区 1051.3–1055（失守1051.3取消接底）
-- 开盘分支：开在1055下方、反抽不过先看1051.3；1057.5上方回踩守住先看1060
-- 六个交易机会（多一个防守Call）：回踩Call（收复1057.5→1060）｜突破Call（站稳1060→1062.5→1065）｜受阻Put（1060受阻失守1057.5→1055→1051.3）｜破位Put（跌破1055反抽不过→1051.3→1050，失守1040看PUT WALL 1025）｜抄底Call（下探1051.3–1055后重收1055→1057.5→1060）｜防守Call（深探PUT WALL 1025附近企稳→1030）</div></div></div></section>
-    <section aria-labelledby="chart-title-1009"><div class="section-head"><div><h2 id="chart-title-1009">5 分钟 K 线</h2><div class="source"><i class="dot"></i> K 线：Yahoo Finance</div></div><p>夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据。</p></div><figure class="chart-shell"><img src="assets/mu-charts-1009.png" alt="MU 2026年10月9日五分钟K线图" /></img></figure><div class="flow-summary"><h3>资金流总结（26笔）</h3><ul><li>09:30：put ask 0.94M（1030/1035/1040）+ call ask 0.29M/call bid 0.45M（990，ITM）→ 开盘买put</li><li>10:00：put ask 0.48M（1030/1035）→ put买盘延续</li><li>10:30：call ask 0.99M（950/1000，ITM）+ put ask 0.69M（1025/1030）</li><li>15:00：call bid 1.03M（900，ITM）</li></ul><p>一句话：开盘put买盘$0.94M定调偏空，put买盘延续；收-2.47%。</p></div></section>
-    <section aria-labelledby="summary-title-1009"><div class="section-head"><h2 id="summary-title-1009">分析总结</h2></div><div class="summary-list"><article class="summary-item"><p>开盘1054.17在1051.3–1055观察区内，开盘后下跌，跌破1051.3→1050→1017.00，收1028.14（-2.47%）。走完"破位Put"剧本（跌破1055→1051.3→1050），最低1017.00刺破PUT WALL 1025后收回其上。Flow开盘put ask $0.94M买put定调偏空。</p></div></section>
-  </article>
-
-  <article class="day-panel" id="day-1012" role="tabpanel" aria-labelledby="tab-1012">
-    <header class="mast">
-      <div><h1>MU</h1><p class="date">2026 年 10 月 12 日 · 周一 · 日内报告</p></div>
-      <div class="tape" aria-label="当日收盘表现"><strong>988.97 <span class="down">−1.34%</span></strong><span>开 1002.41 · 高 1002.41 · 低 978.50</span></div>
-    </header>
-    <aside class="event" aria-labelledby="event-title-1012">
-      <div class="event-tag quiet">非事件日</div><div><h2 id="event-title-1012">Columbus Day（美债休市）</h2><p>无重要宏观数据发布。当日 MU 无新增重要公司消息。</p></div>
-    </aside>
-    <section aria-labelledby="brief-title-1012">
-      <div class="section-head"><div><h2 id="brief-title-1012">早盘分析（Junk-man 盘前预测·情况未发生）</h2><div class="source">2026-10-12 07:22 MDT｜Alpha夜航社 #junkman-analysis｜作者 junk_man</div></div></div>
-      <div class="brief-grid"><div class="brief-main" style="grid-column:1 / -1"><div style="white-space:pre-wrap">⚡ MU
-💵 盘前参考价 1,008.31｜🔴 负 GEX｜放大/加速
-🔴 1,060 CALL WALL 下方｜🟣 1,010 MAGNET 下方
-🟢 1,000 PUT WALL 上方｜🔵 1,009.9 FLIP 下方
-🎯 交易区间 1,000–1,060｜上墙延伸 1,060–1,070
-📊 IV 预期振幅｜🔥 高波动｜IV 28.5% (1DTE)｜1σ 预计振幅 ±15.12 (±1.50%)｜波动区间 993.19–1,023.43
-🛟 潜在低点观察区 1,000–1,005（非最低价预测）；若失守 1,000，取消本轮接底，等重新收复 1,005 并回踩。
-🧭 开盘分支｜若开在 1,005 下方：反抽不过，先看 1,000；1,009.9 上方：回踩守住，先看 1,010；两者之间或贴近边界，等待确认。
-
-🎯 交易机会
-
-• 📈 回踩 Call：收复 1,009.9、回踩守住 → 1,010 → 1,015；失守 1,009.9 取消。
-• 🚀 突破 Call：站稳 1,060、回踩有效 → 1,065 → 1,070；跌破回踩低点退出。1,070 再站稳，才看 1,075 → 1,080。
-• 📉 受阻 Put：1,009.9 受阻，再失守 1,005 → 1,000 → 995；站稳 1,009.9 取消。
-• 🔻 破位 Put：跌破 1,005、反抽不过 → 1,000 → 995；收回 1,005 取消。
-• 🛟 抄底 Call：下探 1,000–1,005 后重新收复 1,005、回踩守住 → 1,009.9 → 1,015；再破回踩低点退出，不接持续下跌。</div></div></div>
-    </section>
-    <section aria-labelledby="chart-title-1012">
-      <div class="section-head"><div><h2 id="chart-title-1012">5 分钟 K 线 × 0DTE heatmap</h2><div class="source"><i class="dot"></i> K 线：Yahoo Finance · Heatmap：夜航社 API</div></div><p>77 档 5 分钟快照（09:30–15:50 ET）；白点为每档现货位置</p></div>
-      <figure class="chart-shell"><img src="assets/mu-intraday-charts-1012.png" alt="MU 2026年10月12日五分钟K线及0DTE dealer GEX heatmap。开盘1002.41，收盘988.97，日高1002.41，日低978.50；Call Wall 1060，Put Wall 1000。" /></img></figure>
-      <div class="gex-intro"><h3>heatmap解读（0DTE，夜航社5分钟快照77档 09:30–15:50 ET）</h3><p style="white-space:pre-wrap">这张图是做市商 gamma 敞口的"地形图"：金色=正gamma区，做市商在此卖出反弹、买入回落，价格会被钉住减速，是墙和坡；紫色=负gamma区，做市商追涨杀跌，价格进入会被加速，是加速带。白点=现货位置；红框=各strike全天最大|GEX|时刻。
-
-10/12 这张地形：
-- 上方 985–1000 是连片金色压制带：990 在 15:50 达到 +464M 全天最强，是当天最大的磁铁；985（+137.6M）、995（+108.7M）、1000（+94.2M）同步构成天花板。价格开盘 1002.41 在其上方，跌破后全天再也没收复。
-- 下方 970–980 是紫色加速带：980 在 11:25 为 -52.5M；早盘价格跌入 978.50，正是掉进这条加速带，随后反弹收复。
-- 白点轨迹：早盘在紫色区（980–985）→ 午间沿金色带下沿爬到 995–1000 → 尾盘被压回 989，全天被钉在金色带下方。
-- 尾盘 990 的 +464M 是当天做市商布防最重的位置，收盘 988.97 在其下方 1 点——多头尾盘没能把价格送回磁铁上方。</p></div>
-      <div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
-        <article class="node"><span class="node-rank">① 金 · 15:50</span><strong>990</strong><span class="metric">+464.1M</span><p>全天最强正gamma，尾盘巨型磁铁；收盘988.97在其下方。</p></article>
-        <article class="node"><span class="node-rank">② 金 · 15:40</span><strong>985</strong><span class="metric">+137.6M</span></article>
-        <article class="node"><span class="node-rank">③ 金 · 15:30</span><strong>995</strong><span class="metric">+108.7M</span><p>985/990/995/1000构成上方金色压制带。</p></article>
-        <article class="node"><span class="node-rank">④ 金 · 14:30</span><strong>1000</strong><span class="metric">+94.2M</span></article>
-        <article class="node purple"><span class="node-rank">⑤ 紫 · 11:25</span><strong>980</strong><span class="metric">−52.5M</span><p>负gamma；日低978.50正在其下方。</p></article>
-      </div></div>
-      <div class="flow-summary"><h3>资金流总结（夜航社 flow，筛选：premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A，全天7笔）</h3><ul><li>09:30：call ask 0.68M（950 call，ITM，现货~994）+ put ask 0.53M → 开盘双边小买盘</li><li>12:00：put ask 0.27M</li><li>15:30：put bid 0.63M → 尾盘卖put</li></ul><p>一句话：全天大资金流稀疏，无明确方向性大单。</p></div>
-    </section>
-    <section aria-labelledby="summary-title-1012"><div class="section-head"><h2 id="summary-title-1012">分析总结</h2><p>价格行为 × 0DTE GEX 结构复盘</p></div><div class="summary-list">
-      <article class="summary-item"><p>开盘1002.41即全天最高，随后跌破990，跌至978.50（-2.4%），11:30后反弹，收988.97，未能收复990，收在VWAP（989.25）下方。</p></article>
-      <article class="summary-item"><p>990是全天最强正gamma节点（+464M @15:50），开盘后跌破即成压制；985（+137.6M）为收盘下方正gamma节点；990/995/1000构成收盘上方金色压制带。</p></article>
-      <article class="summary-item"><p>980在11:25出现−52.5M负gamma，日低978.50正在其下方，跌入后反弹。</p></article>
-      <article class="summary-item"><p>对照Junk-man盘前：call wall 1060 / put wall 1000；价格开盘1002.41短暂站上put wall后跌破，全天在其下方运行；“破位Put”剧本（跌破1005→1000→995）基本走完，低点到978.50后反弹，未继续深跌。</p></article>
-    </div><p class="data-note">这是 2026-10-12 收盘后的静态快照；页面不在打开时更新行情。</p></section>
-  </article>
-
-  <article class="day-panel" id="day-1013" role="tabpanel" aria-labelledby="tab-1013">
-    <header class="mast"><div><h1>MU</h1><p class="date">2026 年 10 月 13 日 · 周二 · 日内报告</p></div><div class="tape" aria-label="当日收盘表现"><strong>953.19 <span class="up">+2.05%</span></strong><span>开 934.07 · 高 953.60 · 低 929.03</span></div></header>
-    <aside class="event" aria-labelledby="event-title-1013"><div class="event-tag quiet">非事件日</div><div><h2 id="event-title-1013">CPI 前一日</h2><p>美国9月CPI于10/14 08:30 ET发布，市场观望。当日 MU 无新增重要公司消息。</p></div></aside>
-    <section aria-labelledby="brief-title-1013"><div class="section-head"><div><h2 id="brief-title-1013">早盘分析（Junk-man 盘前预测·情况未发生）</h2><div class="source">2026-10-13 07:28 MDT｜Alpha夜航社 #junkman-analysis｜作者 junk_man</div></div></div>
-      <div class="brief-grid"><div class="brief-main" style="grid-column:1 / -1"><div style="white-space:pre-wrap">⚡ MU
-💵 盘前参考价 939.46｜🔴 负 GEX｜放大/加速
-🔴 990 CALL WALL 下方｜🟣 940 MAGNET 区域内
-🟢 935 PUT WALL 上方｜🔵 940 FLIP 区域内
-🎯 交易区间 935–990｜上墙延伸 990–1,000
-🛟 潜在低点观察区 930–935（非最低价预测）；若失守 930，取消本轮接底，等重新收复 935 并回踩。
-🧭 开盘分支｜若开在 935 下方：反抽不过，先看 930；940 上方：回踩守住，先看 945；两者之间或贴近边界，等待确认。
-
-🎯 交易机会
-
-• 📈 回踩 Call：收复 940、回踩守住 → 945 → 950；失守 940 取消。
-• 🚀 突破 Call：站稳 990、回踩有效 → 995 → 1,000；跌破回踩低点退出。1,000 再站稳，才看 1,005 → 1,010。
-• 📉 受阻 Put：940 受阻，再失守 935 → 930 → 925；站稳 940 取消。
-• 🔻 破位 Put：跌破 935、反抽不过 → 930 → 925；收回 935 取消。
-• 🛟 抄底 Call：下探 930–935 后重新收复 935、回踩守住 → 940 → 945；再破回踩低点退出，不接持续下跌。</div></div></div>
-    </section>
-    <section aria-labelledby="chart-title-1013"><div class="section-head"><div><h2 id="chart-title-1013">5 分钟 K 线 × 1DTE heatmap</h2><div class="source"><i class="dot"></i> K 线：Yahoo Finance · Heatmap：夜航社 API</div></div><p>周二MU无到期合约；使用10/14到期的1DTE，共78档（09:30–15:55 ET）</p></div>
-      <figure class="chart-shell"><img src="assets/mu-intraday-charts-1013.png" alt="MU 2026年10月13日五分钟K线及1DTE dealer GEX heatmap。开盘934.07，收盘953.19，日高953.60，日低929.03；Call Wall 990，Put Wall 935。" /></img></figure>
-      <div class="gex-intro"><h3>heatmap解读（1DTE 10/14到期，夜航社5分钟快照78档 09:30–15:55 ET）</h3><p style="white-space:pre-wrap">这张图是做市商 gamma 敞口的"地形图"：金色=正gamma区，做市商在此卖出反弹、买入回落，价格会被钉住减速；紫色=负gamma区，做市商追涨杀跌，价格进入会被加速。白点=现货位置；红框=各strike全天最大|GEX|时刻。注：周二MU无到期合约，此为1DTE（10/14到期），gamma绝对值较小（最大28.8M），地形"坡度"平缓，钉住/加速力量弱，解读从严。
-10/13 这张地形：
-- 尾盘 950（+28.5M）、970（+28.8M）金色同步增强，是当天最强的两个磁铁；收盘 953.19 站上 950，在 970 下方。
-- 960（-14.9M）是夹在两块金色之间的紫色"裂缝"——价格全天在其下方运行，尾盘也没去碰。
-- 下方 915（-10.7M @11:25）是远端紫色加速带，当天低点 929.03 没掉进去。
-- 白点轨迹：早盘 934–940 横盘 → 午后沿 940–945 爬坡 → 尾盘一举站上 950，全天走的是"爬坡"不是"撞墙"。</p></div>
-      <div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
-        <article class="node"><span class="node-rank">① 金 · 15:55</span><strong>970</strong><span class="metric">+28.8M</span><p>尾盘金色增强。</p></article>
-        <article class="node"><span class="node-rank">② 金 · 15:55</span><strong>950</strong><span class="metric">+28.5M</span><p>尾盘与970同步增强；收盘953.19在其上方。</p></article>
-        <article class="node purple"><span class="node-rank">③ 紫 · 15:55</span><strong>960</strong><span class="metric">−14.9M</span><p>夹在950/970金色之间的负gamma。</p></article>
-        <article class="node"><span class="node-rank">④ 金 · 13:50</span><strong>935</strong><span class="metric">+11.2M</span></article>
-        <article class="node purple"><span class="node-rank">⑤ 紫 · 11:25</span><strong>915</strong><span class="metric">−10.7M</span></article>
-      </div></div>
-      <div class="flow-summary"><h3>资金流总结（夜航社 flow，筛选：premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A，全天40笔）</h3><ul><li>09:30：call bid 1.07M（900/930 ITM；945/950 OTM）+ put ask 1.12M → 开盘call被卖+put被买，偏空</li><li>10:00：put ask 1.39M → put买盘延续</li><li>12:00：call ask 1.42M（940 近ATM/ITM；960 OTM，现货~942）vs bid 0.59M → 午后平值call买盘转多</li><li>12:30：call bid 1.16M（955/970/1000，OTM）→ 虚值call被卖</li><li>13:00–13:30：put bid 0.74M/1.69M → 连续卖put，看多/收保费</li><li>15:30：call ask 0.71M（900/955）→ 尾盘call买盘</li></ul><p>一句话：早盘flow偏空但价格不跌反涨，午后转多（平值call买盘+卖put），全天震荡上行。</p></div>
-    </section>
-    <section aria-labelledby="summary-title-1013"><div class="section-head"><h2 id="summary-title-1013">分析总结</h2><p>价格行为 × 1DTE GEX 结构复盘</p></div><div class="summary-list">
-      <article class="summary-item"><p>跳空低开934.07（相对前收−5.5%），全天震荡上行，收953.19（+2.05%），收在VWAP（941.09）上方。</p></article>
-      <article class="summary-item"><p>早盘flow偏空（call bid 1.07M + put ask 1.12M）但价格不跌 → 空头陷阱形态；10:30后企稳，午后call买盘接力。</p></article>
-      <article class="summary-item"><p>1DTE heatmap尾盘950/970金色增强，价格收在950上方953.19，站上日内金色节点。</p></article>
-      <article class="summary-item"><p>对照Junk-man盘前：put wall 935，开盘934.07略低于935后下探929.03，随后收复935一路到953.60，走完“抄底Call”剧本（下探930–935→收复935→940→945，实际到953.60超额完成）。</p></article>
-    </div><p class="data-note">这是 2026-10-13 收盘后的静态快照；页面不在打开时更新行情。</p></section>
-  </article>
-
-  <article class="day-panel" id="day-1014" role="tabpanel" aria-labelledby="tab-1014">
-  <header class="mast">
-    <div>
-      <h1>MU</h1>
-      <p class="date">2026 年 10 月 14 日 · 周三 · 日内报告</p>
-    </div>
-    <div class="tape" aria-label="今日收盘表现">
-      <strong>914.13 <span class="down">−2.17%</span></strong>
-      <span>开 934.56 · 高 949.42 · 低 913.74</span>
-    </div>
-  </header>
-
-  <aside class="event" aria-labelledby="event-title">
-    <div class="event-tag">事件日</div>
-    <div>
-      <h2 id="event-title">大盘：美国 9 月 CPI 于 08:30 ET 发布 <span class="sentiment-badge">📉 利空</span></h2>
-      <p class="cpi-detail">9月CPI 3.7%同比（预期3.6%）、核心2.6%（预期2.5%），超预期，偏鹰</p>
-      <p>MU 自身事件与背景</p>
-      <ul>
-        <li>除息日：季度股息 $0.15／股；10 月 29 日派发。</li>
-        <li>过去 90 天内部人累计卖出 95,879 股，约 $90.9M。</li>
-        <li>五连跌：盘中最低至 913.56 附近，收盘 914.13。</li>
-      </ul>
-    </div>
-  </aside>
-
-  <section aria-labelledby="brief-title">
-    <div class="section-head">
-      <div>
-        <h2 id="brief-title">早盘分析（Junk-man 盘前预测·情况未发生）</h2>
-        <div class="source">2026-10-14 07:19 MDT｜Alpha夜航社 #junkman-analysis｜作者 junk_man</div>
-      </div>
-    </div>
-
-    <div class="brief-grid">
-      <div class="brief-main" style="grid-column:1 / -1">
-        <div style="white-space:pre-wrap">⚡ MU
-💵 盘前参考价 931.48｜🔴 负 GEX｜放大/加速
-🔴 960 CALL WALL 下方｜🟣 940 MAGNET 下方
-🟢 935 PUT WALL 下方｜🔵 939.2 FLIP 下方
-🎯 交易区间 930–939.2｜上墙延伸 960–970
-🛟 潜在低点观察区 925–930（非最低价预测）；若失守 925，取消本轮接底，等重新收复 930 并回踩。
-⚠️ PUT WALL 在参考价上方，不作下方支撑
-🧭 开盘分支｜若开在 930 下方：反抽不过，先看 925；935 上方：回踩守住，先看 939.2；两者之间或贴近边界，等待确认。
-
-🎯 交易机会
-
-• 📈 回踩 Call：收复 935、回踩守住 → 939.2 → 940；失守 935 取消。
-• 🚀 突破 Call：站稳 960、回踩有效 → 965 → 970；跌破回踩低点退出。970 再站稳，才看 975 → 980。
-• 📉 受阻 Put：935 受阻，再失守 930 → 925 → 920；站稳 935 取消。
-• 🔻 破位 Put：跌破 930、反抽不过 → 925 → 920；收回 930 取消。
-• 🛟 抄底 Call：下探 925–930 后重新收复 930、回踩守住 → 935 → 939.2；再破回踩低点退出，不接持续下跌。</div>
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="chart-title">
-    <div class="section-head">
-      <div>
-        <h2 id="chart-title">5 分钟 K 线 × 0DTE heatmap</h2>
-        <div class="source"><i class="dot"></i> K 线：Yahoo Finance · Heatmap：夜航社 API</div>
-      </div>
-      <p>两图时间轴对齐（09:30–15:55 ET）；白点为每档现货位置</p>
-    </div>
-    <figure class="chart-shell">
-      <img src="assets/mu-intraday-charts.png" alt="MU 2026年10月14日五分钟K线及同日0DTE dealer GEX heatmap。K线下方有09:30–16:00时间轴；图下方一排指标为：开盘934.56、盘前高958.20、盘前低928.50、VWAP、EMA250、Call Wall 960、Put Wall 935，其中VWAP与EMA250为随时间变化的曲线、不列固定价格；深色指标带及上下分隔线将K线区、指标带和heatmap分开。heatmap以金色表示正gamma、紫色表示负gamma、白点表示现货，全天各strike最大绝对GEX的位置以红框标出。" /></img>
-    </figure>
-
-    <div class="gex-intro">
-      <h3>heatmap解读（0DTE，夜航社5分钟快照78档 09:30–15:55 ET）</h3>
-      <p style="white-space:pre-wrap">这张图是做市商 gamma 敞口的"地形图"：金色=正gamma区（钉住减速，是墙和坡）；紫色=负gamma区（加速带）。白点=现货位置；红框=各strike全天最大|GEX|时刻。
-10/14 这张地形（典型的"金色诱多-紫色加速"日）：
-- 上午 950（+44.9M @10:40）是全天最强金色天花板：价格 5 次试探 946–949.5 未破——做市商在金色区卖出，堆高了这块"坡"，是诱多不是突破口。
-- 跌破开盘价 934.56 和 VWAP 后，价格跌入 915–925 紫色加速带：920（-57.8M @15:50）、915（-494.7M @15:55，尾盘单帧巨量，疑似收盘print毛刺），负gamma对冲加速了下跌。
-- 尾盘 925（+109.3M）、930（+50.5M）金色重新增厚，但收盘 914.13 在其下方——金色回来了，价格没回来。
-- 白点轨迹：早盘在 940–949 金色区下方徘徊 → 午后跌入紫色带 → 尾盘钉在 914–925 之间，全天走完"诱多→加速→钉住"三段。</p>
-    </div>
-
-    <div class="top5-wrap">
-      <h3>全天最大节点 TOP5</h3>
-      <div class="top5">
-        <article class="node purple"><span class="node-rank">① 紫 · 15:55</span><strong>915</strong><span class="metric">−494.7M</span><p>全天最大|GEX|，尾盘单帧巨量负gamma（疑似临近收盘print）；价格当时已在其下方914一带，紫色=加速区，破位不接。</p></article>
-        <article class="node"><span class="node-rank">② 金 · 15:30</span><strong>925</strong><span class="metric">+109.3M</span><p>尾盘金色重新走强，价格收在其下方914.13；下一次企稳的观察位，站住才看反弹。</p></article>
-        <article class="node purple"><span class="node-rank">③ 紫 · 15:50</span><strong>920</strong><span class="metric">−57.8M</span><p>下午持续紫色负gamma带的一部分；价格13:30后跌入该带加速下跌。</p></article>
-        <article class="node"><span class="node-rank">④ 金 · 15:30</span><strong>930</strong><span class="metric">+50.5M</span><p>尾盘与925同步转强；上午曾是金色支撑，10:50前后价格跌破后转弱。</p></article>
-        <article class="node"><span class="node-rank">⑤ 金 · 10:40</span><strong>950</strong><span class="metric">+44.9M</span><p>上午全场最强金色（call wall区）；10:15价格探949.42被拒绝，该节点同步见顶回落——派发位，不是突破位。</p></article>
-      </div>
-    </div>
-
-    <div class="method">
-      <p><b>亮度口径：</b>按全天 p99（54.1M）裁剪离群值，再用平方根连续映射。重要节点更亮，同时避免单一巨值把其他格子压暗。</p>
-      <p><b>数据口径：</b>78 档 5 分钟快照，仅取 2026-10-14 当日 0DTE；纵轴固定 10 个重要 strike。15:55 档 915 出现 −494.7M 单帧值，图中已做亮度裁剪但未删除数据。</p>
-    </div>
-
-    <div class="flow-summary">
-      <h3>资金流总结（夜航社 flow，筛选：premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A，全天13笔）</h3>
-      <ul>
-        <li>09:30：call ask 0.55M（950 call，OTM，现货~943）→ 开盘虚值call买盘，真看涨</li>
-        <li>12:30：call ask 0.93M（895/900 ITM；930 OTM，现货~925）→ 午后实值call买盘</li>
-        <li>15:30：put bid 1.35M（970/940 0DTE，ITM）→ 尾盘大单卖put，看多/收保费</li>
-      </ul>
-      <p>一句话：日内大资金流整体偏多（开盘虚值call真看涨bet＋午后实值call＋尾盘卖put接股），但没能挡住 gamma 结构的下跌。</p>
-    </div>
-  </section>
-
-  <section aria-labelledby="summary-title">
-    <div class="section-head">
-      <h2 id="summary-title">分析总结</h2>
-      <p>价格行为 × 0DTE GEX 结构复盘</p>
-    </div>
-    <div class="summary-list">
-      <article class="summary-item"><p><b>开盘计划：</b>950是全天金色（正gamma）最强的节点。站住开盘价934.56→往950看；站不住→往下方最近的紫色（负gamma）看。</p></article>
-      <article class="summary-item"><p><b>950攻防：</b>上午价格5次试探946–949.5一带（最高949.42 @10:15），始终未能突破950。950处正gamma在10:40堆到+44.9M峰值——做市商在此大量卖出期权收权利金，950是派发位，不是突破位。</p></article>
-      <article class="summary-item"><p><b>转折：</b>价格随后跌破开盘价（11:10首根5m收破934.56），再破VWAP，全天再未收复。</p></article>
-      <article class="summary-item"><p><b>下午：</b>价格跌到开盘价下方后，12:55反弹至934.12在开盘价下方被拒绝→继续看跌。随后跌入925–915紫色负gamma带加速下跌，收914.13（-2.17%）。</p></article>
-      <article class="summary-item"><p><b>复盘要点：</b>下跌途中能“站住”的点位看heatmap金色节点——尾盘925（+109M）/930（+50M）金色重新走强，是下一次企稳的观察位；915一带的紫色是加速区，破位不接。</p></article>
-    </div>
-    <p class="data-note">这是 2026-10-14 收盘后的静态快照；页面不在打开时更新行情。</p>
-  </section>
-  </article>
-
-  <article class="day-panel" id="day-1015" role="tabpanel" aria-labelledby="tab-1015">
-    <header class="mast">
-      <div>
-        <h1>MU</h1>
-        <p class="date">MU 2026-10-15 周四</p>
-      </div>
-      <div class="tape" aria-label="当日收盘表现">
-        <strong>931.40 <span class="up">+6.91%</span></strong>
-        <span>开 871.16 · 高 931.65 · 低 858.00</span>
-      </div>
-    </header>
-
-    <aside class="event" aria-labelledby="event-title-1015">
-      <div class="event-tag">事件日</div>
-      <div>
-        <h2 id="event-title-1015">事件日（消息驱动）：中国CXMT宣称DRAM技术突破（4F2数据中心芯片，年底量产）＋台湾工厂罢工风险。<span class="sentiment-badge">📉 利空</span></h2>
-      </div>
-    </aside>
-
-    <section aria-labelledby="brief-title-1015">
-      <div class="section-head">
-        <div><h2 id="brief-title-1015">早盘分析（盘前预测·情况未发生｜发布时间 2026-10-15 07:16 MDT｜#junkman-analysis｜作者 junk_man）</h2></div>
-      </div>
-      <div class="brief-grid">
-        <div class="brief-main" style="grid-column:1 / -1">
-          <div style="white-space:pre-wrap">- 盘前参考价 870.16｜负GEX（放大/加速）
-- 950 CALL WALL（下方）｜880 MAGNET（下方）｜870 PUT WALL（区域内）｜879.8 FLIP（下方）
-- 交易区间 870–950，上墙延伸 950–960；潜在低点观察区 865–870（失守865取消本轮接底，等重新收复870并回踩）
-- 开盘分支：开在870下方、反抽不过先看865；875上方回踩守住先看879.8
-- 五个交易机会：回踩Call（收复875、回踩守住→879.8→885）｜突破Call（站稳950、回踩有效→955→960）｜受阻Put（875受阻再失守870→865→860）｜破位Put（跌破870反抽不过→865→860）｜抄底Call（下探865–870后重新收复870、回踩守住→875→879.8）
-- 另：MU 列入"📈向上不对称"观察（多43%/区间25%/空32%，接受875→879.8，反向失守870→865）、"近Put Wall"名单（参考870.16，Put Wall 870区域内）、"中波动"名单、全市场"负GEX"名单。</div>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="chart-title-1015">
-      <div class="section-head">
-        <div>
-          <h2 id="chart-title-1015">5 分钟 K 线 × 1DTE heatmap</h2>
-          <div class="source"><i class="dot"></i> K 线：Yahoo Finance · Heatmap：夜航社 API</div>
-        </div>
-        <p>78 档 5 分钟快照（09:30–15:55 ET）；白点为每档现货位置</p>
-      </div>
-      <figure class="chart-shell">
-        <img src="assets/mu-intraday-charts-1015.png" alt="MU 2026年10月15日五分钟K线及1DTE dealer GEX heatmap。开盘871.16，收盘931.40，日高931.65，日低858.00；Call Wall 950，Put Wall 870。" /></img>
-      </figure>
-
-      <div class="gex-intro">
-        <h3>heatmap解读（1DTE 10/16到期，夜航社5分钟快照78档 09:30–15:55 ET）</h3>
-        <p style="white-space:pre-wrap">这张图是做市商 gamma 敞口的"地形图"：金色=正gamma区（钉住减速，是墙和坡）；紫色=负gamma区（加速带）。白点=现货位置；红框=各strike全天最大|GEX|时刻。注：周四MU无到期合约，此为1DTE（10/16到期），gamma绝对值较小（最大32M），地形"坡度"平缓，解读从严。
-10/15 这张地形（"金色托底-紫色加速"日，是10/14的镜像）：
-- 下方 915（+20.7M @15:05）、920（+19.7M @14:55）是全天最强金色带：价格早盘从858下方爬上来，午间被钉在905-918一带横盘——金色托住了价格。
-- 上方 925–960 是紫色加速带：950（-32.0M @15:55）为全天最大单节点，925（-18.6M）、930（-15.3M）同步。尾盘价格突破金色带、冲进紫色带，做市商追涨对冲，助力最后45分钟从915拉到931.65。
-- 白点轨迹：早盘在858-890（金色带下方）→ 午间爬进金色带横盘 → 尾盘突破金色、冲进紫色带收931.40，全天走完"托底→钉住→加速"三段。
-- 收盘931.40在950（-32M）下方、925/930紫色带上沿——价格收在了加速带里，上方950是最近的加速磁铁。</p>
-      </div>
-
-      <div class="top5-wrap">
-        <h3>不同strike的全天最大绝对GEX TOP5（含节点变化对价格的影响）</h3>
-        <div class="top5" style="grid-template-columns:1fr">
-          <article class="node purple"><p style="margin:0;color:var(--ink);font-size:.9rem">1. 950｜-32.0M｜15:55｜变化：-2.5M→-32.0M，全天12倍加深｜影响：上方加速燃料越积越多。价格全天在其下方运行，尾盘冲到931.40逼近它，负gamma加深意味着越接近950、做市商追涨动能越强；但950全天未被测试，是上方未兑现的天花板。</p></article>
-          <article class="node"><p style="margin:0;color:var(--ink);font-size:.9rem">2. 915｜+20.7M｜15:05｜变化：0→+20.7M，从无到有｜影响：上午它还不存在，价格从858自由反弹到912几乎没有gamma阻力；11:30后快速增厚到+16M以上，在价格脚下形成地板——午后905-918横盘三次回踩910-912都被它托住；尾盘价格突破915后，它转为下方支撑。</p></article>
-          <article class="node"><p style="margin:0;color:var(--ink);font-size:.9rem">3. 920｜+19.7M｜14:55｜变化：+4.7M→+19.7M，稳步增厚4倍｜影响：与915组成双层金色托底带，是午间横盘期的主要钉住带；价格全天只有尾盘才真正站上它。</p></article>
-          <article class="node purple"><p style="margin:0;color:var(--ink);font-size:.9rem">4. 925｜-18.6M｜15:55｜变化：-2.2M→-18.6M，8倍加深｜影响：15:30前价格在其下方（905-918），它是上方待命的燃料；15:30价格突破925后，它转为加速器——最后25分钟从923拉到931.65，925的负gamma加深提供了做市商追涨燃料。</p></article>
-          <article class="node purple"><p style="margin:0;color:var(--ink);font-size:.9rem">5. 930｜-15.3M｜15:50｜变化：0→-15.3M，尾盘新长出｜影响：收盘931.40刚好站上它，它从"不存在"变成脚下的"活板门"——价格在其上方时，若回落跌破930，负gamma会加速下跌。</p></article>
-        </div>
-        <p style="margin:16px 0 0;padding:16px;background:var(--gold-soft);font-weight:700">一句话：上午金色带还很弱、价格自由反弹；午间915/920金色增厚把价格钉在905-918；尾盘金色托底＋925/930/950紫色带同步加深，负gamma接力把价格推到931.65——节点不是静止的，是越长大越推着价格走。</p>
-      </div>
-
-      <div class="flow-summary">
-        <h3>资金流总结（YHS flow，premium≥$200k｜size≥50｜DTE≤1｜side只看B/M/A）</h3>
-        <ul>
-          <li>09:30：put bid 4.48M（850/855/860/875，以OTM为主）+ put ask 1.07M → 开盘大举卖put，看多/收保费，定调</li>
-          <li>10:30：call ask 2.26M（850/890/905/910）vs call bid 2.44M（890/895/905/910）→ call双边大额对拉</li>
-          <li>11:00：call bid 1.48M（915，ATM）+ put ask 1.58M（920/925，ITM）→ 卖call+买put，对冲/偏空</li>
-          <li>15:00–15:30：call ask 2.46M+1.67M（800/890/915/920/930/940/950）+ put bid 1.25M（1050，ITM）→ 尾盘call买盘+卖put，看多延续</li>
-        </ul>
-        <p>一句话：开盘put bid $4.48M大举卖put定调看多，盘中call双边对拉，尾盘call买盘+卖put延续看多；全天flow偏多，与+6.91%涨幅一致。</p>
-      </div>
-    </section>
-
-    <section aria-labelledby="summary-title-1015">
-      <div class="section-head"><h2 id="summary-title-1015">分析总结</h2></div>
-      <div class="summary-list">
-        <article class="summary-item"><div><p>CXMT DRAM突破消息导致跳空低开-4.7%（官方开盘871.16），恐慌低点858.00。但开盘flow显示聪明钱在卖put（put bid $4.48M，以OTM为主），价格V型反转：11点前收复盘前高888并站上VWAP，午间在915/920金色带横盘蓄势，尾盘突破金色带冲进925-960紫色加速带，做市商追涨助力，最后45分钟从915拉到931.65，收931.40（+6.91%）。这是10/13（周二）的镜像剧本：同样是低开后被"吸上去"——周二吸的是金色磁铁（935→950），今天是金色托底＋紫色加速带接力。注意收盘价已进入紫色带，950（-32M）是上方最近的加速磁铁。</p><p style="margin-top:14px">对照 Junk-man 盘前剧本：实际走完"抄底Call"（下探865–870→收复870→875→879.8），并远超至931.40；"突破Call"（站稳950→955→960）未触发，全天最高931.65。开盘871.16正在870 Put Wall区域内，开盘即站在他的多空分界上。</p></div></article>
-      </div>
-    </section>
-  </article>
-
-  <article class="day-panel" id="day-1016" role="tabpanel" aria-labelledby="tab-1016">
-    <header class="mast">
-      <div>
-        <h1>MU</h1>
-        <p class="date">MU 2026-10-16 周五</p>
-      </div>
-      <div class="tape" aria-label="当日收盘表现">
-        <strong>878.67 <span class="down">−2.92%</span></strong>
-        <span>开 905.13 · 低 875.00</span>
-      </div>
-    </header>
-
-    <section aria-labelledby="forecast-title-1016">
-      <div class="section-head"><h2 id="forecast-title-1016">今日预测（盘前，根据过夜墙迁移）</h2></div>
-      <div class="forecast">
-        <ul>
-          <li>昨收墙（10/15）：Call Wall 950 / Put Wall 870</li>
-          <li>今早墙（10/16 Junk-man 07:17 MDT）：Call Wall 950 / Put Wall 900</li>
-          <li>迁移：Call Wall 950→950 不动；Put Wall 870→900 上移30点，支撑抬高 → 结构偏多</li>
-          <li>复盘：CXMT利空下跳空低开905.13，开盘即在Put Wall 900下方，结构信号被消息淹没，全天收-2.92%</li>
-        </ul>
-      </div>
-    </section>
-
-    <aside class="event" aria-labelledby="event-title-1016">
-      <div class="event-tag">事件日</div>
-      <div>
-        <h2 id="event-title-1016">事件日（消息驱动）：CXMT 4F2 DRAM竞争担忧延续，MU本周跌约10-12%。<span class="sentiment-badge">📉 利空</span></h2>
-      </div>
-    </aside>
-
-    <section aria-labelledby="brief-title-1016">
-      <div class="section-head">
-        <div><h2 id="brief-title-1016">早盘分析（盘前预测·情况未发生｜发布时间 2026-10-16 07:17 MDT｜#junkman-analysis｜作者 junk_man）</h2></div>
-      </div>
-      <div class="brief-grid">
-        <div class="brief-main" style="grid-column:1 / -1">
-          <div style="white-space:pre-wrap">- 盘前参考价 908.7｜正负混合GEX（方向选择）｜IV 68.9%（1DTE，极高波动），1σ ±21.81（±2.40%），波动区间 886.89–930.51
-- 950 CALL WALL（下方）｜920 MAGNET（下方）｜900 PUT WALL（上方）｜918 FLIP（下方）
-- 交易区间 900–950，上墙延伸 950–960；潜在低点观察区 900–905（失守900取消接底）
-- 开盘分支：开在905下方、反抽不过先看900；910上方回踩守住先看915；之间等待确认
-- 五个交易机会：回踩Call（收复910→915→918）｜突破Call（站稳950→955→960）｜受阻Put（910受阻失守905→900→895）｜破位Put（跌破905反抽不过→900→895）｜抄底Call（下探900–905后重收905→910→915）</div>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="chart-title-1016">
-      <div class="section-head">
-        <div>
-          <h2 id="chart-title-1016">5 分钟 K 线 × 0DTE heatmap</h2>
-          <div class="source"><i class="dot"></i> K 线：Yahoo Finance · Heatmap：夜航社 API</div>
-        </div>
-        <p>78 档 5 分钟快照（09:30–15:55 ET）；白点为每档现货位置</p>
-      </div>
-      <figure class="chart-shell">
-        <img src="assets/mu-intraday-charts-1016.png" alt="MU 2026年10月16日五分钟K线及0DTE dealer GEX heatmap。开盘905.13，收盘878.67（-2.92%），日低875.00；Call Wall 950，Put Wall 900。" /></img>
-      </figure>
-
-      <div class="top5-wrap">
-        <h3>不同strike的全天最大绝对GEX TOP5（含节点变化对价格的影响）</h3>
-        <div class="top5" style="grid-template-columns:1fr">
-          <article class="node"><p style="margin:0;color:var(--ink);font-size:.9rem">1. 880｜+491.5M｜15:55｜①全天约200倍增长：09:30仅+2.5M，中午+1.8M，15:00+25.2M，15:55爆发到+491.5M。②15:00之后，价格跌到880附近时。③巨型正gamma磁铁/钉住：价格下午跌到880一带后被钉住，收盘878.67停在880下方，最低875.00只短暂刺破，880是尾盘地板。</p></article>
-          <article class="node purple"><p style="margin:0;color:var(--ink);font-size:.9rem">2. 890｜-108.6M｜15:25｜①开盘-17.0M，中午几乎消失（-2.0M），13:00后重新加深，15:00-54.8M，15:25到峰值-108.6M（约6倍），15:50归零。②13:00–15:30，价格在890下方运行时。③上方负gamma加速带：价格13:00后跌破890进入其下方，负gamma追涨杀跌加速了下午的跌势；15:30后随0DTE到期衰减消失。</p></article>
-          <article class="node"><p style="margin:0;color:var(--ink);font-size:.9rem">3. 900｜+84.2M｜14:35｜①开盘-3.4M（轻微负），中午转正+13.6M，午后增强到14:35峰值+84.2M（约25倍），15:40归零。②11:00–14:30，价格在900下方时。③上方正gamma天花板：价格上午多次反弹到900附近被压回（11:00、12:30、13:30多次测试900失败），是全天的上行阻力；尾盘随0DTE到期消失。</p></article>
-          <article class="node purple"><p style="margin:0;color:var(--ink);font-size:.9rem">4. 875｜-64.3M｜15:45｜①开盘-1.9M，全天基本不存在，15:00-14.5M，15:45爆发到-64.3M（约30倍），15:50回落到-21.0M。②15:00–15:50，价格跌到875一带时。③下方负gamma加速带/活板门：全天最低875.00正好打到该节点，尾盘价格在其附近（878.67）挣扎；若跌破875可能加速。</p></article>
-          <article class="node"><p style="margin:0;color:var(--ink);font-size:.9rem">5. 885｜+56.8M｜15:00｜①开盘-1.6M，中午+5.8M，15:00峰值+56.8M（约35倍），15:50归零。②13:30–15:30。③中段正gamma缓冲：价格14:00–15:00在885附近获得短暂支撑（多次在885企稳），但15:00后被跌破，随后加速到875；尾盘到期消失。</p></article>
-        </div>
-      </div>
-
-      <div class="flow-summary">
-        <h3>资金流总结（YHS flow，premium≥$200k｜size≥50｜DTE≤1｜side只看B/M/A，共17笔）</h3>
-        <ul>
-          <li>09:30：call ask 0.48M（875/905）+ call bid 0.40M（905，ATM）+ put ask 1.57M（1050，深ITM，现货~893）→ 开盘put买盘主导</li>
-          <li>12:30：call ask 0.40M（860，ITM）+ call bid 0.30M（895，ITM）</li>
-          <li>14:00：call ask 2.56M（380，深ITM，现货~893）→ 深度ITM call买盘（delta型）</li>
-          <li>15:00：put bid 1.11M（995，ITM）→ 卖put</li>
-          <li>15:30：put bid 4.57M（965/1010，ITM）→ 尾盘大额卖put</li>
-        </ul>
-        <p>一句话：开盘$1.57M深ITM put买盘定调偏空/对冲，尾盘$4.57M卖put（看多/收保费）；14:00一笔$2.56M深度ITM call买盘。</p>
-      </div>
-    </section>
-
-    <section aria-labelledby="summary-title-1016">
-      <div class="section-head"><h2 id="summary-title-1016">分析总结</h2></div>
-      <div class="summary-list">
-        <article class="summary-item"><p>CXMT消息延续发酵，事件日（利空）。官方开盘905.13（-2.9%跳空低开），开盘正在900–905观察区下沿，开盘分支"开在905下方、反抽不过先看900" — 价格全天震荡下行，跌破905后反抽不过900，午后加速，最低875.00，收878.67（-2.92%）。走完"破位Put"剧本（跌破905→900→895）并远超到875。PUT WALL 900在参考价上方，开盘即在其下方运行。0DTE heatmap：上方900正gamma天花板压制全天反弹（多次测试900失败），价格跌破890后负gamma加速带加速跌势，尾盘880巨型正gamma（+491.5M，约200倍增长）钉住价格、收在880下方。Flow开盘$1.57M深ITM put买盘定调偏空，尾盘$4.57M卖put收保费。</p></article>
-      </div>
-      <div class="forecast" style="margin-top:24px">
-        <h3>剧本确认（5分钟K线）</h3>
-        <ul>
-          <li>09:30 首根5m收盘跌破905（收901.15）→ 「破位Put」确认；随后7次反抽905均未站住</li>
-          <li>09:45 首根5m收盘跌破900（收896.97）→ 目标895到达并远超，最低875.00</li>
-          <li>「回踩Call」（需收复910）：全天最高907.50，未触及 → 未确认</li>
-          <li>「突破Call」（需站稳950）：未触及 → 未确认</li>
-          <li>「受阻Put」（需910受阻）：910未触及 → 未确认</li>
-          <li>「抄底Call」（需重收905并站住）：09:35曾收905.12但随即跌破 → 未确认</li>
-        </ul>
-      </div>
-    </section>
-
-    <section aria-labelledby="tomorrow-title-1016">
-      <div class="section-head"><h2 id="tomorrow-title-1016">明日预测（下一个交易日 10/19 周一）</h2></div>
-      <div class="forecast">
-        <ul>
-          <li>📏 预期 ±29.7 点（IV 46.5%，10/19到期，ATM 880）</li>
-          <li>🐢慢（收盘正gamma钉住，880有+491M）→ 不做，theta送钱</li>
-          <li>关键位：Call Wall 880 / Put Wall 885 / Flip 871.67（收盘dealer-gex快照；注意880的+491M是周五0DTE节点，周一到期消失，届时以早盘快照为准）</li>
-        </ul>
-      </div>
-    </section>
-  </article>
-</main>
-<script>
-(function(){
-  var tabs=[].slice.call(document.querySelectorAll('.day-tab'));
-  var panels=[].slice.call(document.querySelectorAll('.day-panel'));
-  function show(id, focus){
-    tabs.forEach(function(tab){var active=tab.getAttribute('aria-controls')===id;tab.setAttribute('aria-selected',active?'true':'false');tab.tabIndex=active?0:-1;});
-    panels.forEach(function(panel){panel.hidden=panel.id!==id;});
-    if(focus){document.querySelector('.day-tabs').scrollIntoView({behavior:'smooth',block:'start'});}
-  }
-  tabs.forEach(function(tab, index){
-    tab.addEventListener('click',function(event){event.preventDefault();var id=tab.getAttribute('aria-controls');show(id,true);history.replaceState(null,'','#'+id);});
-    tab.addEventListener('keydown',function(event){if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;event.preventDefault();var next=(index+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[next].focus();tabs[next].click();});
-  });
-  var requested=location.hash.slice(1);
-  show(document.getElementById(requested)&&document.getElementById(requested).classList.contains('day-panel')?requested:'day-1016',false);
-})();
-</script>
-</body>
-</html>
-
-</main>
+</pre></div>
+<p class="data-note">盘前预测 · 情况未发生</p>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线</h2><div class="source">
+<p>5分钟K线；夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/mu_2026-10-06.png" alt="MU 2026-10-06 5分钟K线图" loading="lazy"></figure>
+<div class="gex-intro">
+<h3></h3>
+<p>夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据。</p>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+</div></div>
+<div class="flow-summary">
+<h3></h3>
+<p>（当日无符合筛子的 flow 记录，或数据未拉取到）</p>
+<p class="verdict">YHS flow 历史从 2026-10-02 起，本日无 flow 数据。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>①开盘 1002.41，最高 1002.41，最低 978.50，收 1087.83（+6.93%）。日内振幅 23.91 点。</p></article>
+</div></section>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
 </main>
 
 <script>
@@ -550,7 +116,6 @@
   if(init)show(init,false);
 })();
 </script>
-
 
 </body>
 </html>

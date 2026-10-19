@@ -31,6 +31,13 @@
 
 /* 重要事件标记 (tab 上) */
 .tab-event{display:inline-block;margin-left:.45em;padding:1px 6px;background:#fef3c7;color:#92400e;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+.tab-solar{display:inline-block;margin-left:.45em;padding:1px 6px;background:#dbeafe;color:#1e40af;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+
+/* 日期 tab 收缩 */
+.day-tabs.collapsed{max-height:118px;overflow:hidden}
+.tabs-toggle{display:block;width:100%;padding:9px;background:var(--paper);border:1px solid var(--line);border-top:0;color:var(--muted);font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+.tabs-toggle:hover{background:var(--chip);color:var(--ink)}
+@media(max-width:560px){.day-tabs.collapsed{max-height:92px}}
 
 </style>
 </head>
@@ -48,93 +55,40 @@
 <span>开 7,601.25 · 高 7,626.79 · 低 7,507.77</span>
 </div></header>
 <aside class="event">
-<div class="event-tag quiet">非事件日</div>
+<div class="event-tag quiet"></div>
 <div>
-<h2>非事件日</h2>
+<h2></h2>
 </div></aside>
 <section aria-label="早盘分析">
 <div class="section-head"><h2>早盘分析</h2><div class="source">
-<p>2026-09-16 07:22 MDT｜Alpha夜航社 #junkman-analysis｜作者 junk_man（APP徽章）</p>
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
 </div></div>
-<div class="brief"><pre class="verbatim">
-⚡ SPXW
-💵 SPY 推算开盘参考（非现金现价） 7,605.43｜🔴 负 GEX｜放大/加速
-🎯 交易区间 7,600–7,650｜上墙延伸 7,650–7,660
-🛟 潜在低点观察区 7,600–7,605（非最低价预测）；若失守 7,600，取消本轮接底，等重新收复 7,605 并回踩。
-
-🔴 7,650 CALL WALL 下方｜🟣 7,615 MAGNET 下方
-🟢 7,600 PUT WALL 上方｜🔵 7,612.9 FLIP 下方
-
-🧭 开盘分支｜若开在 7,605 下方：反抽不过，先看 7,600；7,610 上方：回踩守住，先看 7,612.9；两者之间或贴近边界，等待确认。
-⏩ 若开盘或确认前已到首目标，跳过旧首段，不改追第二目标；等待新的独立回踩机会。
-
-🎯 交易机会
-• 📈 回踩 Call：收复 7,610、回踩守住 → 7,612.9 → 7,615；失守 7,610 取消。
-• 🚀 突破 Call：站稳 7,650、回踩有效 → 7,655 → 7,660；跌破回踩低点退出。7,660 再站稳，才看 7,665 → 7,670。
-• 📉 受阻 Put：7,610 受阻，再失守 7,605 → 7,600 → 7,595；站稳 7,610 取消。
-• 🔻 破位 Put：跌破 7,605、反抽不过 → 7,600 → 7,595；收回 7,605 取消。
-• 🛟 抄底 Call：下探 7,600–7,605 后重新收复 7,605、回踩守住 → 7,610 → 7,612.9；再破回踩低点退出，不接持续下跌。
-</pre></div>
-<p class="data-note">盘前预测 · 情况未发生</p>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
 </section>
 <section aria-label="K线与heatmap">
-<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
-<p>0DTE，夜航社 0 档 5 分钟快照；白点为每档现货位置</p>
+<div class="section-head"><h2>5 分钟 K 线</h2><div class="source">
+<p>5分钟K线；夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据</p>
 </div></div>
-<figure class="chart-shell"><img src="charts/spx_2026-09-16.png" alt="SPX 2026-09-16 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<figure class="chart-shell"><img src="charts/spx_2026-09-16.png" alt="SPX 2026-09-16 5分钟K线图" loading="lazy"></figure>
 <div class="gex-intro">
-<h3>heatmap解读（0DTE，夜航社 0 档 5 分钟快照）</h3>
-<ul>
-<li>7550 全天最强正节点 ($14.89B)；7500 ($6.78B) 尾盘承接</li>
-<li>待补充</li>
-<li>FOMC 日，开盘 7601.25，收 7553.33 (-0.43%)</li>
-<li>待补充</li>
-</ul>
+<h3></h3>
+<p>夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据。</p>
 </div>
 <div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
-<article class="node">
-<span class="node-rank">① · 15:55</span>
-<strong>7550.0</strong>
-<span class="metric">+14887.6M</span>
-</article>
-<article class="node">
-<span class="node-rank">② · 15:25</span>
-<strong>7500.0</strong>
-<span class="metric">+6775.2M</span>
-</article>
-<article class="node">
-<span class="node-rank">③ · 15:45</span>
-<strong>7540.0</strong>
-<span class="metric">+4877.2M</span>
-</article>
-<article class="node">
-<span class="node-rank">④ · 15:40</span>
-<strong>7530.0</strong>
-<span class="metric">+4503.7M</span>
-</article>
-<article class="node">
-<span class="node-rank">⑤ · 15:30</span>
-<strong>7520.0</strong>
-<span class="metric">+4121.5M</span>
-</article>
 </div></div>
-<div class="method"><p>亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
 <div class="flow-summary">
-<h3>资金流（0DTE SPXW，全天0笔；premium≥$20万｜size≥50｜0DTE｜side=B/M/A）</h3>
+<h3></h3>
 <p>（当日无符合筛子的 flow 记录，或数据未拉取到）</p>
-<p class="verdict">主动资金无数据（YHS 无该日数据）：主动买入 $0.00M，主动卖出 $0.00M，mid $0.00M（不计入主动买卖）。</p>
+<p class="verdict">YHS flow 历史从 2026-10-02 起，本日无 flow 数据。</p>
 </div>
 </section>
 <section aria-label="分析总结">
 <div class="section-head">
 <h2>分析总结</h2>
-<p>价格行为 × 0DTE GEX 结构复盘</p>
 </div>
 <div class="summary-list">
-<article class="summary-item"><p>④flow：0 笔，中性。</p></article>
-<article class="summary-item"><p>⑤收盘 7553.33（-0.43%），VWAP 7583.11，EMA250 None；非事件日</p></article>
+<article class="summary-item"><p>①开盘 7601.25，最高 7626.79，最低 7507.77，收 7553.33（-0.43%）。日内振幅 119.02 点。</p></article>
 </div></section>
-<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
 </article>
 </main>

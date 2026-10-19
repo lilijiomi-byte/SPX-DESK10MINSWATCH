@@ -31,6 +31,13 @@
 
 /* 重要事件标记 (tab 上) */
 .tab-event{display:inline-block;margin-left:.45em;padding:1px 6px;background:#fef3c7;color:#92400e;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+.tab-solar{display:inline-block;margin-left:.45em;padding:1px 6px;background:#dbeafe;color:#1e40af;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+
+/* 日期 tab 收缩 */
+.day-tabs.collapsed{max-height:118px;overflow:hidden}
+.tabs-toggle{display:block;width:100%;padding:9px;background:var(--paper);border:1px solid var(--line);border-top:0;color:var(--muted);font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+.tabs-toggle:hover{background:var(--chip);color:var(--ink)}
+@media(max-width:560px){.day-tabs.collapsed{max-height:92px}}
 
 </style>
 </head>
@@ -48,10 +55,9 @@
 <span>开 7,418.16 · 高 7,450.84 · 低 7,313.92</span>
 </div></header>
 <aside class="event">
-<div class="event-tag">FOMC <span class="event-bias down">· 利空</span></div>
+<div class="event-tag quiet"></div>
 <div>
-<h2>FOMC <span class="event-bias down">· 利空</span></h2>
-<p>美联储议息日；14:00 ET 公布利率决议。</p>
+<h2></h2>
 </div></aside>
 <section aria-label="早盘分析">
 <div class="section-head"><h2>早盘分析</h2><div class="source">
@@ -60,61 +66,29 @@
 <div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
 </section>
 <section aria-label="K线与heatmap">
-<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
-<p>0DTE，夜航社 34 档 5 分钟快照；白点为每档现货位置</p>
+<div class="section-head"><h2>5 分钟 K 线</h2><div class="source">
+<p>5分钟K线；夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据</p>
 </div></div>
-<figure class="chart-shell"><img src="charts/spx_2026-07-29.png" alt="SPX 2026-07-29 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<figure class="chart-shell"><img src="charts/spx_2026-07-29.png" alt="SPX 2026-07-29 5分钟K线图" loading="lazy"></figure>
 <div class="gex-intro">
-<h3>heatmap解读（0DTE，夜航社 34 档 5 分钟快照）</h3>
-<ul>
-<li>7300 put wall 是全天的定海神针：11:00 首次成型 $3.13B，随后一路加固，13:30 达到峰值 $3.39B</li>
-<li>7450 负 gamma -$1.14B 全场主导（15:00）；价格进入负 gamma 加速区上冲，15:30 燃料耗尽 (-83%)</li>
-<li>14:00 FOMC 声明后现价跳涨至 7404.71；15:00 站上 flip 7442 进入加速区；收盘 7318.14 回到 7300 承接区</li>
-<li>15:00 put wall 7300 只剩 $256M (-92% 消失)；7440 call wall 增至 $369M 成最强正节点；尾盘 7300 回升至 $3.25B</li>
-</ul>
+<h3></h3>
+<p>夜航社 heatmap 历史仅保留最近3个交易日，本日无 heatmap 数据。</p>
 </div>
 <div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
-<article class="node">
-<span class="node-rank">① · 15:45</span>
-<strong>7300.0</strong>
-<span class="metric">+3527.2M</span>
-</article>
-<article class="node">
-<span class="node-rank">② · 11:30</span>
-<strong>7290.0</strong>
-<span class="metric">+3025.9M</span>
-</article>
-<article class="node purple">
-<span class="node-rank">③ · 14:45</span>
-<strong>7450.0</strong>
-<span class="metric">-1148.6M</span>
-</article>
-<article class="node purple">
-<span class="node-rank">④ · 12:15</span>
-<strong>7350.0</strong>
-<span class="metric">-757.2M</span>
-</article>
-<article class="node purple">
-<span class="node-rank">⑤ · 15:15</span>
-<strong>7415.0</strong>
-<span class="metric">-498.6M</span>
-</article>
 </div></div>
-<div class="method"><p>亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
 <div class="flow-summary">
-<h3>资金流（0DTE SPXW，全天0笔；premium≥$20万｜size≥50｜0DTE｜side=B/M/A）</h3>
+<h3></h3>
 <p>（当日无符合筛子的 flow 记录，或数据未拉取到）</p>
-<p class="verdict">主动资金无数据（YHS 无该日数据）：主动买入 $0.00M，主动卖出 $0.00M，mid $0.00M（不计入主动买卖）。</p>
+<p class="verdict">YHS flow 历史从 2026-10-02 起，本日无 flow 数据。</p>
 </div>
 </section>
 <section aria-label="分析总结">
 <div class="section-head">
 <h2>分析总结</h2>
-<p>价格行为 × 0DTE GEX 结构复盘</p>
 </div>
 <div class="summary-list">
+<article class="summary-item"><p>①开盘 7418.16，最高 7450.84，最低 7313.92，收 7316.15（-1.41%）。日内振幅 136.92 点。</p></article>
 </div></section>
-<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
 <p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
 </article>
 </main>
