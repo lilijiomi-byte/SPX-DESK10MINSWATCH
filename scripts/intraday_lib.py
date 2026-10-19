@@ -392,7 +392,7 @@ def build_index(ticker_dir, ticker, label):
         label_extra = ""
         try:
             ht = open(os.path.join(ticker_dir, f"{ds}.html"), encoding="utf-8").read()
-            m = re.search(r'高\s*([\d,\.]+)\s*·\s*低\s*([\d,\.]+)', ht)
+            m = re.search(r'高\s*([\d,\.]+)\s*[·｜]\s*(?:最)?低\s*([\d,\.]+)', ht)
             if m:
                 hi = float(m.group(1).replace(",", ""))
                 lo = float(m.group(2).replace(",", ""))
