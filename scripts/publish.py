@@ -132,7 +132,7 @@ def _emphasize_round_levels(ax, force_round_ticks=False):
             lbl.set_weight("bold")
 
 
-def draw_chart(ds, bars, vwap_seg, ema_seg, out_path):
+def draw_chart(ds, bars, vwap_seg, ema_seg, out_path, prev_h=None, prev_l=None):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -169,6 +169,23 @@ def draw_chart(ds, bars, vwap_seg, ema_seg, out_path):
     if ema_seg:
         ax.plot([i for i, _ in ema_seg], [v for _, v in ema_seg],
                 color=EMA_C, lw=2.0, label="EMA250", zorder=4)
+    # 前日高低线 (模板标配)
+    if prev_h:
+        ax.axhline(prev_h, color="#22c55e", ls="--", lw=1.5, alpha=0.8, label=f"前日高 {prev_h:.1f}", zorder=2)
+    if prev_l:
+        ax.axhline(prev_l, color="#ef4444", ls="--", lw=1.5, alpha=0.8, label=f"前日低 {prev_l:.1f}", zorder=2)
+    # 纵坐标收紧: 按实际数据范围, 不用过宽 (10分钟窗口价格波动小)
+    all_lows = [b["l"] for b in bars]
+    all_highs = [b["h"] for b in bars]
+    if vwap_seg:
+        all_lows += [v for _, v in vwap_seg]
+        all_highs += [v for _, v in vwap_seg]
+    if ema_seg:
+        all_lows += [v for _, v in ema_seg]
+        all_highs += [v for _, v in ema_seg]
+    data_lo, data_hi = min(all_lows), max(all_highs)
+    pad = max((data_hi - data_lo) * 0.25, 3.0)  # 上下各留 25% 或至少 3 点
+    ax.set_ylim(data_lo - pad, data_hi + pad)
     ax.set_xlim(-0.6, len(bars) - 0.4)
     ax.set_xticks(list(range(0, len(bars), 2)))
     ax.set_xticklabels([bars[i]["t"] for i in range(0, len(bars), 2)],
@@ -594,7 +611,8 @@ def main(ds):
         chart_rel = f"data/charts/spx_1m_{mmdd}.png"
         if bars:
             vl, el = draw_chart(ds, bars, vwap_seg, ema_seg,
-                               os.path.join(CHARTS, f"spx_1m_{mmdd}.png"))
+                               os.path.join(CHARTS, f"spx_1m_{mmdd}.png"),
+                               prev_h=out.get("prev_h"), prev_l=out.get("prev_l"))
             out["chart_png"] = chart_rel
             out["vwap"] = round(vl, 1) if vl else None
             out["ema250"] = round(el, 1) if el else None
