@@ -419,7 +419,7 @@ def build_index(ticker_dir, ticker, label):
         h.append(f'<a class="day-tab" role="tab" data-target="day-{mmdd}" '
                  f'aria-selected="{"true" if i == 0 else "false"}" href="#day-{mmdd}">{lab}</a>')
     h.append('</nav>')
-    # 日期 tab 收缩: 超过10个日期时默认收起, 展开看全部, 下滚自动收起
+    # 日期 tab 收缩: 超过10个日期时默认收起, 手动按钮展开/收起 (不自动收起)
     if len(tabs) > 10:
         n = len(tabs)
         js = ("<button class=\"tabs-toggle\" type=\"button\">展开全部 %d 个日期 ▾</button>\n"
@@ -427,10 +427,7 @@ def build_index(ticker_dir, ticker, label):
               "var btn=document.querySelector('.tabs-toggle');var n=%d;nav.classList.add('collapsed');"
               "function setC(c){nav.classList.toggle('collapsed',c);"
               "btn.innerHTML=c?('展开全部 '+n+' 个日期 \\u25be'):'收起 \\u25b4';}"
-              "btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};"
-              "var ticking=false;window.addEventListener('scroll',function(){if(ticking)return;ticking=true;"
-              "requestAnimationFrame(function(){if(window.scrollY>400&&!nav.classList.contains('collapsed'))setC(true);"
-              "ticking=false;});},{passive:true});})();</script>" % (n, n))
+              "btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>" % (n, n))
         h.append(js)
     # 日期 tab 切换: 点击 tab 显示对应面板 (之前缺这段 JS, 点 tab 只跳锚点导致空白)
     h.append(

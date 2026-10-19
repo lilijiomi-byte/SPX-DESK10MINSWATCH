@@ -44,7 +44,7 @@
 <body>
 <main>
 
-<nav class="sitenav"><a href="../index.html">首页</a><a href="../spx-intraday/index.html">SPX 日内报告</a><a href="../spx-10min/index.html">SPX 尾盘10分钟</a><a href="../mu/index.html" class="on">MU 日内报告</a><a href="../tsla/index.html">TSLA 日内报告</a><a href="../meta/index.html">META 日内报告</a></nav>
+<nav class="sitenav"><a href="../index.html">首页</a><a href="../spx-intraday/index.html">SPX 日内报告</a><a href="../spx-10min/index.html">SPX 尾盘10分钟</a><a href="../mu/index.html">MU 日内报告</a><a href="../tsla/index.html">TSLA 日内报告</a><a href="../meta/index.html">META 日内报告</a></nav>
 <h1 style="margin:0 0 4px">MU 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
@@ -91,7 +91,7 @@
 <a class="day-tab" role="tab" data-target="day-0820" aria-selected="false" href="#day-0820">8/20 周四 <span class="tab-move up">48.21</span></a>
 </nav>
 <button class="tabs-toggle" type="button">展开全部 41 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=41;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};var ticking=false;window.addEventListener('scroll',function(){if(ticking)return;ticking=true;requestAnimationFrame(function(){if(window.scrollY>400&&!nav.classList.contains('collapsed'))setC(true);ticking=false;});},{passive:true});})();</script>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=41;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var el=document.getElementById(id);if(el)el.scrollIntoView();}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
 <article class="day-panel" id="day-1016" role="tabpanel">
 <header class="mast"><div>

@@ -20,10 +20,15 @@
   header{margin-bottom:16px;}
   header h1{font-size:24px; letter-spacing:1px;}
   header p{color:var(--muted); font-size:12px; margin-top:6px;}
-  #tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+  #tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px;}
+  #tabs.collapsed{max-height:96px; overflow:hidden;}
   #tabs button{background:var(--paper); color:var(--muted); border:1px solid var(--line);
     border-radius:6px; padding:8px 14px; font-size:13px; cursor:pointer;}
   #tabs button.active{color:var(--ink); border-color:var(--ink); background:var(--chip); font-weight:700;}
+  .tabs-toggle{display:block; width:100%; padding:9px; margin-bottom:18px; background:var(--paper);
+    border:1px solid var(--line); border-radius:6px; color:var(--muted); font-size:13px;
+    font-weight:700; cursor:pointer;}
+  .tabs-toggle:hover{background:var(--chip); color:var(--ink);}
   .card{background:var(--paper); border:1px solid var(--line); border-radius:10px;
     padding:18px; margin-bottom:16px;}
   .card h2{font-size:15px; font-weight:700; margin-bottom:12px; letter-spacing:1px;}
@@ -221,6 +226,21 @@ fetch("data/days.json").then(r => r.json()).then(j => {
     };
     tabs.appendChild(b);
   });
+  // 日期收缩: 超过10个日期时默认收起, 手动按钮展开/收起
+  if (days.length > 10) {
+    const n = days.length;
+    tabs.classList.add("collapsed");
+    const btn = document.createElement("button");
+    btn.className = "tabs-toggle";
+    btn.type = "button";
+    const setC = (c) => {
+      tabs.classList.toggle("collapsed", c);
+      btn.innerHTML = c ? ("展开全部 " + n + " 个日期 ▾") : "收起 ▴";
+    };
+    setC(true);
+    btn.onclick = () => setC(!tabs.classList.contains("collapsed"));
+    tabs.after(btn);
+  }
   if (days.length) fetch("data/" + days[0] + ".json").then(r => r.json()).then(renderDay);
 });
 </script>
