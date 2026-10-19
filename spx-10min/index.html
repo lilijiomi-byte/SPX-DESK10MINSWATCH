@@ -29,6 +29,8 @@
     border:1px solid var(--line); border-radius:6px; color:var(--muted); font-size:13px;
     font-weight:700; cursor:pointer;}
   .tabs-toggle:hover{background:var(--chip); color:var(--ink);}
+  .tab-solar{display:inline-block; margin-left:6px; padding:1px 6px; background:#dbeafe;
+    color:#1e40af; font-size:11px; font-weight:800; border-radius:4px; white-space:nowrap;}
   .card{background:var(--paper); border:1px solid var(--line); border-radius:10px;
     padding:18px; margin-bottom:16px;}
   .card h2{font-size:15px; font-weight:700; margin-bottom:12px; letter-spacing:1px;}
@@ -213,11 +215,30 @@ function renderDay(d){
 fetch("data/days.json").then(r => r.json()).then(j => {
   const days = (Array.isArray(j) ? j : (j.days || [])).slice().sort().reverse();
   const tabs = document.getElementById("tabs");
+  // 节气标注 (与日内页一致, 美东口径)
+  const SOLAR_TERMS = {
+    "2026-01-05":"小寒","2026-01-20":"大寒","2026-02-04":"立春",
+    "2026-02-18":"雨水","2026-03-05":"惊蛰","2026-03-20":"春分",
+    "2026-04-04":"清明","2026-04-20":"谷雨","2026-05-05":"立夏",
+    "2026-05-21":"小满","2026-06-06":"芒种","2026-06-21":"夏至",
+    "2026-07-07":"小暑","2026-07-22":"大暑","2026-08-07":"立秋",
+    "2026-08-23":"处暑","2026-09-07":"白露","2026-09-23":"秋分",
+    "2026-10-08":"寒露","2026-10-23":"霜降","2026-11-07":"立冬",
+    "2026-11-22":"小雪","2026-12-07":"大雪","2026-12-22":"冬至",
+    "2027-01-05":"小寒","2027-01-20":"大寒"
+  };
   days.forEach((ds, i) => {
     const b = document.createElement("button");
     const dt = new Date(ds + "T12:00:00");
     const wd = ["周日","周一","周二","周三","周四","周五","周六"][dt.getDay()];
     b.textContent = ds.slice(5) + " " + wd;
+    // 节气蓝色标注
+    if (SOLAR_TERMS[ds]) {
+      const s = document.createElement("span");
+      s.className = "tab-solar";
+      s.textContent = SOLAR_TERMS[ds];
+      b.appendChild(s);
+    }
     if (i === 0) b.classList.add("active");
     b.onclick = () => {
       tabs.querySelectorAll("button").forEach(x => x.classList.remove("active"));
