@@ -29,6 +29,7 @@
     border:1px solid var(--line); border-radius:6px; color:var(--muted); font-size:13px;
     font-weight:700; cursor:pointer;}
   .tabs-toggle:hover{background:var(--chip); color:var(--ink);}
+  .tab-range{color:#6b7280; font-size:.85em; margin-left:4px;}
   .tab-solar{display:inline-block; margin-left:6px; padding:1px 6px; background:#dbeafe;
     color:#1e40af; font-size:11px; font-weight:800; border-radius:4px; white-space:nowrap;}
   .card{background:var(--paper); border:1px solid var(--line); border-radius:10px;
@@ -227,11 +228,14 @@ fetch("data/days.json").then(r => r.json()).then(j => {
     "2026-11-22":"小雪","2026-12-07":"大雪","2026-12-22":"冬至",
     "2027-01-05":"小寒","2027-01-20":"大寒"
   };
+  // 先加载所有 JSON 拿高低点差
+  const dayRanges = {};
   days.forEach((ds, i) => {
     const b = document.createElement("button");
     const dt = new Date(ds + "T12:00:00");
     const wd = ["周日","周一","周二","周三","周四","周五","周六"][dt.getDay()];
     b.textContent = ds.slice(5) + " " + wd;
+    b.dataset.ds = ds;
     // 节气蓝色标注
     if (SOLAR_TERMS[ds]) {
       const s = document.createElement("span");
@@ -239,6 +243,19 @@ fetch("data/days.json").then(r => r.json()).then(j => {
       s.textContent = SOLAR_TERMS[ds];
       b.appendChild(s);
     }
+    // 高低点差 (异步补)
+    const r = document.createElement("span");
+    r.className = "tab-range";
+    r.dataset.ds = ds;
+    b.appendChild(r);
+    // 异步加载高低点差
+    fetch("data/" + ds + ".json").then(r => r.json()).then(d => {
+      if (d.day_high && d.day_low) {
+        const rng = (d.day_high - d.day_low).toFixed(2);
+        const el = tabs.querySelector(`.tab-range[data-ds="${ds}"]`);
+        if (el) el.textContent = " " + rng;
+      }
+    }).catch(()=>{});
     if (i === 0) b.classList.add("active");
     b.onclick = () => {
       tabs.querySelectorAll("button").forEach(x => x.classList.remove("active"));
