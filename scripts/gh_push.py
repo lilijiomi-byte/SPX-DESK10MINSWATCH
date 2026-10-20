@@ -46,18 +46,48 @@ def main():
     full = next(r["full_name"] for r in repos if "DESK" in r["name"])
     print("target:", full)
 
-    files = subprocess.run(["git", "ls-files"], capture_output=True,
-                           text=True, check=True).stdout.split()
-    print("files:", len(files))
-    entries = []
-    for f in files:
-        with open(f, "rb") as fh:
+    def ls_files():
+        return subprocess.run(["git", "ls-files"], capture_output=True,
+                              text=True, check=True).stdout.split()
+
+    blobs = {}   # path -> blob sha
+    mtimes = {}  # path -> mtime at upload time
+
+    def upload(path):
+        with open(path, "rb") as fh:
             content = base64.b64encode(fh.read()).decode()
         st, blob = api("POST", f"/repos/{full}/git/blobs",
                        {"content": content, "encoding": "base64"}, token)
         assert st == 201, (st, blob)
-        entries.append({"path": f, "mode": "100644", "type": "blob",
-                        "sha": blob["sha"]})
+        blobs[path] = blob["sha"]
+        mtimes[path] = os.path.getmtime(path)
+
+    for f in ls_files():
+        try:
+            upload(f)
+        except FileNotFoundError:
+            pass  # deleted mid-run; dropped from the final list below
+    print("files:", len(blobs))
+
+    # 2026-10-19 stale-list fix: re-snapshot immediately before tree creation.
+    # Uploading thousands of blobs takes minutes; files added or modified in
+    # the meantime were silently dropped from the tree, while the parent was
+    # read fresh just before PATCH -- so the push looked like a clean
+    # fast-forward that deleted them. Re-snapshotting shrinks that race
+    # window from minutes to seconds.
+    fresh = ls_files()
+    rescued = 0
+    for f in fresh:
+        try:
+            if f not in blobs or os.path.getmtime(f) != mtimes.get(f):
+                upload(f)
+                rescued += 1
+        except FileNotFoundError:
+            pass
+    if rescued:
+        print(f"re-snapshot rescued {rescued} new/modified file(s)")
+    entries = [{"path": f, "mode": "100644", "type": "blob", "sha": blobs[f]}
+               for f in fresh if f in blobs]
     st, tree = api("POST", f"/repos/{full}/git/trees", {"tree": entries}, token)
     assert st == 201, (st, tree)
 
