@@ -60,6 +60,40 @@ for i, t in enumerate(ts):
 if not bars:
     sys.exit(f"build_chart_mu: {DS} 当日无 Yahoo 5m bar, 退出")
 
+# ---------- 前日高低 (同一份 Yahoo 文件里的前一个交易日, 常规时段) ----------
+def _should_draw_level(level, day_lo, day_hi, is_high):
+    """制图核心原则: 只画有参考价值的线 (碰过或在附近<=50%日波幅);
+    图例文字永远保留数值, 与线是否画出无关."""
+    day_range = day_hi - day_lo
+    if day_range <= 0:
+        return True
+    if is_high:
+        return day_hi >= level * 0.999 or (level - day_hi) <= day_range * 0.5
+    return day_lo <= level * 1.001 or (day_lo - level) <= day_range * 0.5
+
+PREV_H, PREV_L = None, None
+try:
+    prev_day = None
+    for t in ts:
+        pds = datetime.datetime.fromtimestamp(t, datetime.timezone.utc).astimezone(ET).strftime("%Y-%m-%d")
+        if pds < DS and (prev_day is None or pds > prev_day):
+            prev_day = pds
+    if prev_day:
+        ph, pl = None, None
+        for i, t in enumerate(ts):
+            dt = datetime.datetime.fromtimestamp(t, datetime.timezone.utc).astimezone(ET)
+            if dt.strftime("%Y-%m-%d") != prev_day or q["close"][i] is None:
+                continue
+            if not (datetime.time(9, 30) <= dt.timetz() < datetime.time(16, 0)):
+                continue
+            ph = max(ph, q["high"][i]) if ph is not None else q["high"][i]
+            pl = min(pl, q["low"][i]) if pl is not None else q["low"][i]
+        PREV_H, PREV_L = ph, pl
+except Exception as e:
+    print(f"build_chart_mu: 前日高低计算失败({e}), 跳过", flush=True)
+day_lo = min(b["l"] for b in bars)
+day_hi = max(b["h"] for b in bars)
+
 # ---------- heatmap ----------
 dd = json.load(open(HM_FILE))
 snaps = sorted((s for s in dd["data"]["data"] if s["expiration"] == EXPIRY),
@@ -156,6 +190,12 @@ if PM_H and PM_L:
     ax1.axhspan(PM_L, PM_H, color="#9ca3af", alpha=0.18)
 ax1.axhline(PM_H, color="#22c55e", ls="--", lw=1.4)
 ax1.axhline(PM_L, color="#ef4444", ls="--", lw=1.4)
+# 前日高低: 智能显隐——K线扫过的范围内才画线 (SPX 格式: 绿/红虚线 lw=1.5);
+# 太远不画线, 但图例文字保留数值
+if PREV_H and _should_draw_level(PREV_H, day_lo, day_hi, True):
+    ax1.axhline(PREV_H, color="#22c55e", ls="--", lw=1.5)
+if PREV_L and _should_draw_level(PREV_L, day_lo, day_hi, False):
+    ax1.axhline(PREV_L, color="#ef4444", ls="--", lw=1.5)
 n = len(bars)
 ax1.plot(x, (VWAP_CURVE + [VWAP_CURVE[-1]] * n)[:n], color="#a855f7", ls="-", lw=1.8)
 ax1.plot(x, (EMA_CURVE + [EMA_CURVE[-1]] * n)[:n], color="#3b82f6", ls="-", lw=1.8)
@@ -176,6 +216,11 @@ if CALL_WALL:
     row.append(("Call Wall %.0f" % CALL_WALL, "#ffd76a"))
 if PUT_WALL:
     row.append(("Put Wall %.0f" % PUT_WALL, "#c4a5ff"))
+# 图例永远保留前日高低数值, 无论线画没画出来
+if PREV_H:
+    row.append(("前日高 %.2f" % PREV_H, "#22c55e"))
+if PREV_L:
+    row.append(("前日低 %.2f" % PREV_L, "#ef4444"))
 for j, (txt, col) in enumerate(row):
     axmid.text(0.065 + j * (0.87 / max(len(row) - 1, 1)), 0.5, txt, color=col, fontsize=11,
                weight="bold", ha="center", va="center", transform=axmid.transAxes)
