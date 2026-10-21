@@ -31,6 +31,8 @@
 
 /* 重要事件标记 (tab 上) */
 .tab-event{display:inline-block;margin-left:.45em;padding:1px 6px;background:#fef3c7;color:#92400e;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
+.day-tab.leg80{background:#fdecec;}
+.day-tab.leg80[aria-selected=true]{background:#f3b8b8;color:var(--ink);}
 .tab-solar{display:inline-block;margin-left:.45em;padding:1px 6px;background:#dbeafe;color:#1e40af;font-size:.72em;font-weight:800;border-radius:4px;white-space:nowrap;}
 
 /* 日期 tab 收缩 */
@@ -50,9 +52,9 @@
 <nav class="day-tabs" role="tablist" aria-label="日期">
 <a class="day-tab" role="tab" data-target="day-1020" aria-selected="true" href="#day-1020">10/20 周二 <span class="tab-move up">80.39</span></a>
 <a class="day-tab" role="tab" data-target="day-1019" aria-selected="false" href="#day-1019">10/19 周一 <span class="tab-move up">46.39</span></a>
-<a class="day-tab" role="tab" data-target="day-1016" aria-selected="false" href="#day-1016">10/16 周五 <span class="tab-event">OPEX</span> <span class="tab-move down">125.07</span></a>
-<a class="day-tab" role="tab" data-target="day-1015" aria-selected="false" href="#day-1015">10/15 周四 <span class="tab-move up">84.49</span></a>
-<a class="day-tab" role="tab" data-target="day-1014" aria-selected="false" href="#day-1014">10/14 周三 <span class="tab-move down">95.84</span></a>
+<a class="day-tab leg80" role="tab" data-target="day-1016" aria-selected="false" href="#day-1016">10/16 周五 <span class="tab-event">OPEX</span> <span class="tab-move down">125.07</span></a>
+<a class="day-tab leg80" role="tab" data-target="day-1015" aria-selected="false" href="#day-1015">10/15 周四 <span class="tab-move up">84.49</span></a>
+<a class="day-tab leg80" role="tab" data-target="day-1014" aria-selected="false" href="#day-1014">10/14 周三 <span class="tab-move down">95.84</span></a>
 <a class="day-tab" role="tab" data-target="day-1013" aria-selected="false" href="#day-1013">10/13 周二 <span class="tab-move down">28.04</span></a>
 <a class="day-tab" role="tab" data-target="day-1012" aria-selected="false" href="#day-1012">10/12 周一 <span class="tab-move down">24.73</span></a>
 <a class="day-tab" role="tab" data-target="day-1009" aria-selected="false" href="#day-1009">10/9 周五 <span class="tab-move up">41.23</span></a>
@@ -69,10 +71,10 @@
 <a class="day-tab" role="tab" data-target="day-0924" aria-selected="false" href="#day-0924">9/24 周四 <span class="tab-move down">56.44</span></a>
 <a class="day-tab" role="tab" data-target="day-0923" aria-selected="false" href="#day-0923">9/23 周三 <span class="tab-solar">秋分</span> <span class="tab-move down">67.05</span></a>
 <a class="day-tab" role="tab" data-target="day-0922" aria-selected="false" href="#day-0922">9/22 周二 <span class="tab-move down">25.93</span></a>
-<a class="day-tab" role="tab" data-target="day-0921" aria-selected="false" href="#day-0921">9/21 周一 <span class="tab-move up">88.03</span></a>
+<a class="day-tab leg80" role="tab" data-target="day-0921" aria-selected="false" href="#day-0921">9/21 周一 <span class="tab-move up">88.03</span></a>
 <a class="day-tab" role="tab" data-target="day-0918" aria-selected="false" href="#day-0918">9/18 周五 <span class="tab-event">OPEX</span> <span class="tab-move down">46.65</span></a>
 <a class="day-tab" role="tab" data-target="day-0917" aria-selected="false" href="#day-0917">9/17 周四 <span class="tab-move up">35.05</span></a>
-<a class="day-tab" role="tab" data-target="day-0916" aria-selected="false" href="#day-0916">9/16 周三 <span class="tab-event">FOMC</span> <span class="tab-move down">119.02</span></a>
+<a class="day-tab leg80" role="tab" data-target="day-0916" aria-selected="false" href="#day-0916">9/16 周三 <span class="tab-event">FOMC</span> <span class="tab-move down">119.02</span></a>
 <a class="day-tab" role="tab" data-target="day-0915" aria-selected="false" href="#day-0915">9/15 周二 <span class="tab-move down">44.57</span></a>
 <a class="day-tab" role="tab" data-target="day-0914" aria-selected="false" href="#day-0914">9/14 周一 <span class="tab-move up">55.71</span></a>
 <a class="day-tab" role="tab" data-target="day-0911" aria-selected="false" href="#day-0911">9/11 周五 <span class="tab-move up">40.27</span></a>
@@ -102,11 +104,11 @@
 <a class="day-tab" role="tab" data-target="day-0807" aria-selected="false" href="#day-0807">8/7 周五 <span class="tab-solar">立秋</span> <span class="tab-move up">36.50</span></a>
 <a class="day-tab" role="tab" data-target="day-0806" aria-selected="false" href="#day-0806">8/6 周四 <span class="tab-move up">36.25</span></a>
 <a class="day-tab" role="tab" data-target="day-0805" aria-selected="false" href="#day-0805">8/5 周三 <span class="tab-move up">62.50</span></a>
-<a class="day-tab" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">110.00</span></a>
-<a class="day-tab" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">75.00</span></a>
-<a class="day-tab" role="tab" data-target="day-0731" aria-selected="false" href="#day-0731">7/31 周五 <span class="tab-move up">113.50</span></a>
+<a class="day-tab leg80" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">110.00</span></a>
+<a class="day-tab leg80" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">75.00</span></a>
+<a class="day-tab leg80" role="tab" data-target="day-0731" aria-selected="false" href="#day-0731">7/31 周五 <span class="tab-move up">113.50</span></a>
 <a class="day-tab" role="tab" data-target="day-0730" aria-selected="false" href="#day-0730">7/30 周四 <span class="tab-move up">79.50</span></a>
-<a class="day-tab" role="tab" data-target="day-0729" aria-selected="false" href="#day-0729">7/29 周三 <span class="tab-event">FOMC</span> <span class="tab-move down">136.92</span></a>
+<a class="day-tab leg80" role="tab" data-target="day-0729" aria-selected="false" href="#day-0729">7/29 周三 <span class="tab-event">FOMC</span> <span class="tab-move down">136.92</span></a>
 <a class="day-tab" role="tab" data-target="day-0728" aria-selected="false" href="#day-0728">7/28 周二 <span class="tab-move up">68.75</span></a>
 <a class="day-tab" role="tab" data-target="day-0727" aria-selected="false" href="#day-0727">7/27 周一 <span class="tab-move down">97.75</span></a>
 <a class="day-tab" role="tab" data-target="day-0724" aria-selected="false" href="#day-0724">7/24 周五 <span class="tab-move up">65.00</span></a>
