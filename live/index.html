@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>SPX 实时监控</title>
+<style>
+  :root{
+    --bg:#0a1120; --panel:#0f1a30; --line:#22314f; --ink:#dbe4f0; --muted:#8a97ad;
+    --green:#2ee06f; --red:#ff4d5e; --blue:#4db2ff; --yellow:#ffd23f; --orange:#ff9f1c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+       padding:18px 14px 40px;}
+  .wrap{max-width:1280px; margin:0 auto;}
+  header{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 18px;
+         border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:14px;}
+  header h1{font-size:22px; font-weight:700; letter-spacing:1px;}
+  header .upd{color:var(--muted); font-size:13px;}
+  header .spot{font-size:22px; font-weight:700; color:var(--yellow);}
+  header .spot small{font-size:12px; color:var(--muted); font-weight:400; margin-right:6px;}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr));
+         gap:10px; margin-bottom:14px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:10px;
+        padding:10px 12px;}
+  .card .k{font-size:12px; color:var(--muted); margin-bottom:4px;}
+  .card .v{font-size:20px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .card .s{font-size:12px; color:var(--muted); margin-top:2px;}
+  .neg{color:var(--red);} .pos{color:var(--green);}
+  .tgt{display:flex; gap:14px; font-size:19px; font-weight:700;}
+  .tgt .u{color:var(--green);} .tgt .f{color:var(--blue);} .tgt .d{color:var(--red);}
+  .chartbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
+            padding:8px; margin-bottom:16px;}
+  .chartbox img{width:100%; height:auto; display:block; border-radius:6px;}
+  h2{font-size:16px; margin:6px 0 10px; color:var(--ink);}
+  h2 span{color:var(--muted); font-size:12px; font-weight:400; margin-left:8px;}
+  .feed{display:flex; flex-direction:column; gap:8px;}
+  .item{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--blue);
+        border-radius:8px; padding:9px 12px; font-size:14.5px; line-height:1.55;}
+  .item .t{color:var(--muted); font-size:12px; margin-right:10px;
+           font-variant-numeric:tabular-nums;}
+  .empty{color:var(--muted); font-size:14px; padding:14px 4px;}
+  footer{color:var(--muted); font-size:12px; margin-top:22px; line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>SPX 实时监控</h1>
+    <div class="spot"><small>现价</small><span id="spot">—</span></div>
+    <div class="upd">更新：<span id="updated">—</span>（每 5 分钟扫描，13:00 ET 后每 10 分钟；页面每 60 秒自动刷新）</div>
+  </header>
+
+  <div class="cards">
+    <div class="card"><div class="k">总 Gamma（standard GEX）</div><div class="v" id="total">—</div><div class="s" id="regime">—</div></div>
+    <div class="card"><div class="k">Gamma Flip</div><div class="v" id="flip">—</div><div class="s" id="fliprel">—</div></div>
+    <div class="card"><div class="k">Call Wall</div><div class="v pos" id="cw">—</div><div class="s">上方最近强正节点（dealer 口径）</div></div>
+    <div class="card"><div class="k">Put Wall</div><div class="v neg" id="pw">—</div><div class="s">下方最近强正节点（dealer 口径）</div></div>
+    <div class="card"><div class="k">King 节点</div><div class="v" id="king">—</div><div class="s" id="kinggex">—</div></div>
+    <div class="card" style="grid-column:span 2; min-width:230px;"><div class="k">30m 靶向（最新截面推演）</div>
+      <div class="tgt"><span class="u">↗ <span id="tup">—</span></span><span class="f">➡ <span id="tflat">—</span></span><span class="d">↘ <span id="tdown">—</span></span></div>
+      <div class="s">上行目标 / 钉住位 / 下行承接（heatmap 0DTE 结构位）</div></div>
+  </div>
+
+  <div class="chartbox"><img id="chart" src="spx_heatmap_live.png" alt="SPX 0DTE heatmap 河流图"></div>
+
+  <h2>Heatmap 重要变化<span>当日累计 · 最新在前（墙迁移 / King / 大节点增减 / 总 Gamma / Flip）</span></h2>
+  <div class="feed" id="feed"><div class="empty">加载中…</div></div>
+
+  <footer>
+    数据源：夜航社（YHS）SPX 0DTE heatmap（约 10 分钟延迟）+ dealer-gex 标准快照。图为当日结构推演，不构成交易建议。
+  </footer>
+</div>
+
+<script>
+function fmtM(v){ if(v==null) return "—"; var s=(v>0?"+":"")+Number(v).toLocaleString("en-US",{maximumFractionDigits:0}); return s+"M"; }
+function fmtPx(v){ return v==null ? "—" : Number(v).toLocaleString("en-US",{maximumFractionDigits:2}); }
+function load(){
+  fetch("status.json?t="+Date.now()).then(function(r){ return r.json(); }).then(function(s){
+    document.getElementById("updated").textContent = s.updated_et || "—";
+    document.getElementById("spot").textContent = fmtPx(s.spot);
+    var tot = document.getElementById("total");
+    tot.textContent = fmtM(s.total_gex_m);
+    tot.className = "v " + (s.total_gex_m < 0 ? "neg" : "pos");
+    document.getElementById("regime").textContent = s.regime || "";
+    document.getElementById("flip").textContent = fmtPx(s.flip);
+    if (s.spot!=null && s.flip!=null){
+      document.getElementById("fliprel").textContent =
+        (s.spot >= s.flip ? "现价在 Flip 上方" : "现价在 Flip 下方") +
+        "（" + (s.spot - s.flip >= 0 ? "+" : "") + (s.spot - s.flip).toFixed(1) + " 点）";
+    }
+    document.getElementById("cw").textContent = fmtPx(s.call_wall);
+    document.getElementById("pw").textContent = fmtPx(s.put_wall);
+    document.getElementById("king").textContent = fmtPx(s.king_strike);
+    document.getElementById("kinggex").textContent = "GEX " + fmtM(s.king_gex_m);
+    if (s.targets){
+      document.getElementById("tup").textContent = fmtPx(s.targets.up);
+      document.getElementById("tflat").textContent = fmtPx(s.targets.flat);
+      document.getElementById("tdown").textContent = fmtPx(s.targets.down);
+    }
+    var feed = document.getElementById("feed");
+    if (s.changes && s.changes.length){
+      feed.innerHTML = "";
+      s.changes.forEach(function(c){
+        var d = document.createElement("div"); d.className = "item";
+        var t = document.createElement("span"); t.className = "t"; t.textContent = c.t;
+        d.appendChild(t); d.appendChild(document.createTextNode(c.text));
+        feed.appendChild(d);
+      });
+    } else {
+      feed.innerHTML = '<div class="empty">今日暂无重要变化</div>';
+    }
+    var img = document.getElementById("chart");
+    var url = "spx_heatmap_live.png?t=" + Date.now();
+    var pre = new Image();
+    pre.onload = function(){ img.src = url; };
+    pre.src = url;
+  }).catch(function(e){ /* 下一轮自动重试 */ });
+}
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>
