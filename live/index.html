@@ -85,6 +85,10 @@
   .rngmeta b{color:var(--ink);}
   .rngscale{display:flex; justify-content:space-between; gap:8px; font-size:11.5px;
             color:var(--muted); margin:0 0 6px 50px; font-variant-numeric:tabular-nums;}
+  .dread{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--orange);
+         border-radius:8px; padding:10px 12px; font-size:14.5px; line-height:1.65;
+         margin:-6px 0 16px;}
+  .dread .k{color:var(--muted); font-size:12px; margin-right:8px;}
   .chartbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
             padding:8px; margin-bottom:16px;}
   .chartbox img{width:100%; height:auto; display:block; border-radius:6px;}
@@ -135,6 +139,10 @@
   <div class="rngbox" id="rangebox"><div class="empty">加载中…</div></div>
 
   <div class="chartbox"><img id="chart" src="spx_heatmap_live.png" alt="SPX 0DTE heatmap 河流图"></div>
+
+  <h2>Δ 切片（30分钟 Gamma 变化量）<span>存量看点位 · 变化量看点位在往哪变 · 金 = 增强 · 紫 = 衰减</span></h2>
+  <div class="chartbox"><img id="deltachart" src="spx_delta_live.png" alt="Δ 切片图"></div>
+  <div class="dread" id="deltaread" style="display:none;"><span class="k">Exposure 解读（最新完整切片）</span><span id="deltareadtxt"></span></div>
 
   <h2>Heatmap 重要变化<span>当日累计 · 最新在前（墙迁移 / King / 大节点增减 / 总 Gamma / Flip）</span></h2>
   <div class="feed" id="feed"><div class="empty">加载中…</div></div>
@@ -309,11 +317,21 @@ function load(){
     } else {
       feed.innerHTML = '<div class="empty">今日暂无重要变化</div>';
     }
-    var img = document.getElementById("chart");
-    var url = "spx_heatmap_live.png?t=" + Date.now();
-    var pre = new Image();
-    pre.onload = function(){ img.src = url; };
-    pre.src = url;
+    var dr = document.getElementById("deltaread");
+    if (dr){
+      if (s.delta && s.delta.read){
+        document.getElementById("deltareadtxt").textContent = s.delta.read;
+        dr.style.display = "block";
+      } else { dr.style.display = "none"; }
+    }
+    [["chart", "spx_heatmap_live.png"], ["deltachart", "spx_delta_live.png"]].forEach(function(cfg){
+      var img = document.getElementById(cfg[0]);
+      if (!img) return;
+      var url = cfg[1] + "?t=" + Date.now();
+      var pre = new Image();
+      pre.onload = function(){ img.src = url; };
+      pre.src = url;
+    });
   }).catch(function(e){ /* 下一轮自动重试 */ });
 }
 load();
