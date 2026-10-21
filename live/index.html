@@ -58,6 +58,27 @@
   .lvgrid.small .lvbox{padding:7px 10px;}
   .lvgrid.small .v{font-size:16px;}
   h3.subh{font-size:13.5px; color:var(--muted); margin:2px 0 8px; font-weight:600;}
+  .rngbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
+          padding:14px 14px 8px; margin-bottom:16px;}
+  .rngrow{display:flex; align-items:center; gap:10px; margin-bottom:4px;}
+  .rnglab{flex:0 0 40px; font-size:13px; font-weight:700;}
+  .rngtrack{position:relative; flex:1; height:26px; background:#0a1425;
+            border:1px solid var(--line); border-radius:6px;}
+  .rngband{position:absolute; top:3px; bottom:3px; border-radius:4px;}
+  .rngband.off{border:1.5px solid #2fd48c; background:rgba(47,212,140,.10);}
+  .rngband.brf{background:rgba(77,178,255,.45); border:1px solid #4db2ff;}
+  .rngctr{position:absolute; top:0; bottom:0; width:2px; background:#fff; opacity:.85; z-index:2;}
+  .rngedge{position:absolute; top:50%; transform:translateY(-50%); font-size:11px;
+           color:#c8d4e6; font-variant-numeric:tabular-nums; white-space:nowrap; z-index:2;
+           text-shadow:0 1px 3px #000;}
+  .rngspot{position:absolute; top:-4px; bottom:-4px; width:2px; background:var(--yellow); z-index:3;}
+  .rngspot.tri::before{content:"▼"; position:absolute; top:-14px; left:50%;
+           transform:translateX(-50%); color:var(--yellow); font-size:11px;}
+  .rngmeta{font-size:12.5px; color:var(--muted); margin:0 0 12px 50px;
+           font-variant-numeric:tabular-nums; line-height:1.6;}
+  .rngmeta b{color:var(--ink);}
+  .rngscale{display:flex; justify-content:space-between; gap:8px; font-size:11.5px;
+            color:var(--muted); margin:0 0 6px 50px; font-variant-numeric:tabular-nums;}
   .chartbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
             padding:8px; margin-bottom:16px;}
   .chartbox img{width:100%; height:auto; display:block; border-radius:6px;}
@@ -99,6 +120,9 @@
   <div class="lvgrid" id="levels"><div class="empty">加载中…</div></div>
   <h3 class="subh">次要参考（昨开 / 昨收 · 周一 / 周二高低）</h3>
   <div class="lvgrid small" id="levels2"></div>
+
+  <h2>区间位置<span>官方区间（昨晚 NW 预告 90%）描边 · 日报区间（9:30 简报）填充 · 白刻为中心 · 黄线为现价</span></h2>
+  <div class="rngbox" id="rangebox"><div class="empty">加载中…</div></div>
 
   <div class="chartbox"><img id="chart" src="spx_heatmap_live.png" alt="SPX 0DTE heatmap 河流图"></div>
 
@@ -174,6 +198,62 @@ function load(){
                s.levels.filter(function(L){ return L.tier === "primary"; }));
       lvRender(document.getElementById("levels2"),
                s.levels.filter(function(L){ return L.tier === "secondary"; }));
+    }
+    var rbEl = document.getElementById("rangebox");
+    if (rbEl && s.range && s.spot != null){
+      var R = s.range, rSpot = s.spot;
+      var vs = [rSpot];
+      ["official","brief"].forEach(function(k){
+        if (R[k]){ vs.push(R[k].low, R[k].high); }
+      });
+      if (R.realized){ vs.push(R.realized.low, R.realized.high); }
+      var mn = Math.min.apply(null, vs), mx = Math.max.apply(null, vs);
+      var pad = Math.max((mx - mn) * 0.06, 5); mn -= pad; mx += pad;
+      function rpct(v){ return ((v - mn) / (mx - mn) * 100) + "%"; }
+      rbEl.innerHTML = "";
+      function bandRow(lab, B, cls, withTri){
+        var row = document.createElement("div"); row.className = "rngrow";
+        var lb = document.createElement("div"); lb.className = "rnglab";
+        lb.textContent = lab; row.appendChild(lb);
+        var tr = document.createElement("div"); tr.className = "rngtrack";
+        row.appendChild(tr); rbEl.appendChild(row);
+        if (!B){
+          var e = document.createElement("div"); e.className = "empty";
+          e.textContent = "数据未到"; tr.appendChild(e); return;
+        }
+        var bd = document.createElement("div"); bd.className = "rngband " + cls;
+        bd.style.left = rpct(B.low);
+        bd.style.width = ((B.high - B.low) / (mx - mn) * 100) + "%";
+        tr.appendChild(bd);
+        var ct = document.createElement("div"); ct.className = "rngctr";
+        ct.style.left = rpct(B.center); tr.appendChild(ct);
+        var sp = document.createElement("div");
+        sp.className = "rngspot" + (withTri ? " tri" : "");
+        sp.style.left = rpct(rSpot); tr.appendChild(sp);
+        var el = document.createElement("div"); el.className = "rngedge";
+        el.style.left = "5px"; el.textContent = fmtPx(B.low); tr.appendChild(el);
+        var eh = document.createElement("div"); eh.className = "rngedge";
+        eh.style.right = "5px"; eh.textContent = fmtPx(B.high); tr.appendChild(eh);
+        var meta = document.createElement("div"); meta.className = "rngmeta";
+        var posTxt = "位置 <b>" + B.pos_pct + "%</b>";
+        if (B.pos_pct > 100) posTxt += "（已破上沿）";
+        else if (B.pos_pct < 0) posTxt += "（已破下沿）";
+        meta.innerHTML = lab + "区间 <b>" + fmtPx(B.low) + "–" + fmtPx(B.high) +
+          "</b> · 中心 <b>" + fmtPx(B.center) + "</b>（距中心 " +
+          (B.center_dist >= 0 ? "+" : "") + B.center_dist + " 点）· " + posTxt +
+          (B.consumed_pct != null ? " · 振幅消耗 <b>" + B.consumed_pct + "%</b>" : "");
+        rbEl.appendChild(meta);
+      }
+      bandRow("官方", R.official, "off", true);
+      bandRow("日报", R.brief, "brf", false);
+      var sc = document.createElement("div"); sc.className = "rngscale";
+      var scL = document.createElement("span"); scL.textContent = fmtPx(mn);
+      var scM = document.createElement("span");
+      scM.textContent = "现价 " + fmtPx(rSpot) + (R.realized ?
+        " · 今日已实现 " + fmtPx(R.realized.low) + "–" + fmtPx(R.realized.high) : "");
+      var scR = document.createElement("span"); scR.textContent = fmtPx(mx);
+      sc.appendChild(scL); sc.appendChild(scM); sc.appendChild(scR);
+      rbEl.appendChild(sc);
     }
     var feed = document.getElementById("feed");
     if (s.changes && s.changes.length){
