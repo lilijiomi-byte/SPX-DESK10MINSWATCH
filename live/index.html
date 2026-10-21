@@ -37,6 +37,27 @@
   .neg{color:var(--red);} .pos{color:var(--green);}
   .tgt{display:flex; gap:14px; font-size:19px; font-weight:700;}
   .tgt .u{color:var(--green);} .tgt .f{color:var(--blue);} .tgt .d{color:var(--red);}
+  .lvgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr));
+          gap:10px; margin-bottom:10px;}
+  .lvbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
+         padding:10px 12px;}
+  .lvbox .n{font-size:12.5px; color:var(--muted); margin-bottom:3px;}
+  .lvbox .v{font-size:20px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .lvbox .d{font-size:12.5px; color:var(--muted); margin-top:2px;
+            font-variant-numeric:tabular-nums;}
+  .lvbox.near{border-color:#f5b301; box-shadow:0 0 0 1px rgba(245,179,1,.35);}
+  .lvbox.near .d{font-weight:700; color:#ffdf8a;}
+  .lvbox.atA{background:#ffc400; border-color:#ffc400; color:#191300;}
+  .lvbox.atA .n, .lvbox.atA .d{color:#5c4a00;}
+  .lvbox.atB{background:#a855f7; border-color:#a855f7; color:#ffffff;}
+  .lvbox.atB .n, .lvbox.atB .d{color:#eadcff;}
+  .lvbox.crossed{opacity:.55;}
+  .lvtag{display:inline-block; font-size:11px; font-weight:700; border:1px solid var(--line);
+         border-radius:20px; padding:1px 8px; margin-top:5px;}
+  .lvgrid.small{grid-template-columns:repeat(auto-fit,minmax(128px,1fr));}
+  .lvgrid.small .lvbox{padding:7px 10px;}
+  .lvgrid.small .v{font-size:16px;}
+  h3.subh{font-size:13.5px; color:var(--muted); margin:2px 0 8px; font-weight:600;}
   .chartbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
             padding:8px; margin-bottom:16px;}
   .chartbox img{width:100%; height:auto; display:block; border-radius:6px;}
@@ -73,6 +94,11 @@
       <div class="tgt"><span class="u">↗ <span id="tup">—</span></span><span class="f">➡ <span id="tflat">—</span></span><span class="d">↘ <span id="tdown">—</span></span></div>
       <div class="s">上行目标 / 钉住位 / 下行承接（heatmap 0DTE 结构位）</div></div>
   </div>
+
+  <h2>点位参考<span>亚洲 / 前日 9:30 后锁定 · VWAP / EMA250 动态 · ≤1.5 点合并为合力位 · 到达 ±2 点发警报</span></h2>
+  <div class="lvgrid" id="levels"><div class="empty">加载中…</div></div>
+  <h3 class="subh">次要参考（昨开 / 昨收 · 周一 / 周二高低）</h3>
+  <div class="lvgrid small" id="levels2"></div>
 
   <div class="chartbox"><img id="chart" src="spx_heatmap_live.png" alt="SPX 0DTE heatmap 河流图"></div>
 
@@ -115,6 +141,39 @@ function load(){
       document.getElementById("tup").textContent = fmtPx(s.targets.up);
       document.getElementById("tflat").textContent = fmtPx(s.targets.flat);
       document.getElementById("tdown").textContent = fmtPx(s.targets.down);
+    }
+    function lvRender(el, list){
+      if (!el) return;
+      el.innerHTML = "";
+      (list || []).forEach(function(L){
+        var d = document.createElement("div");
+        var cls = "lvbox";
+        if (L.state === "near") cls += " near";
+        if (L.state === "at") cls += (L.side === "上方" ? " atA" : " atB");
+        if (L.state === "crossed_up" || L.state === "crossed_down") cls += " crossed";
+        d.className = cls;
+        var n = document.createElement("div"); n.className = "n"; n.textContent = L.name;
+        var v = document.createElement("div"); v.className = "v"; v.textContent = fmtPx(L.value);
+        var dd = document.createElement("div"); dd.className = "d";
+        dd.textContent = (L.side === "上方" ? "▲ 上方 +" : "▼ 下方 −") + Math.abs(L.dist).toFixed(1) + " 点";
+        d.appendChild(n); d.appendChild(v); d.appendChild(dd);
+        var tag = null;
+        if (L.state === "at") tag = "🎯 到达";
+        else if (L.state === "near") tag = "接近中";
+        else if (L.state === "crossed_up") tag = "已上破 · 转支撑";
+        else if (L.state === "crossed_down") tag = "已跌破 · 转压力";
+        if (tag){
+          var tg = document.createElement("span"); tg.className = "lvtag";
+          tg.textContent = tag; d.appendChild(tg);
+        }
+        el.appendChild(d);
+      });
+    }
+    if (s.levels){
+      lvRender(document.getElementById("levels"),
+               s.levels.filter(function(L){ return L.tier === "primary"; }));
+      lvRender(document.getElementById("levels2"),
+               s.levels.filter(function(L){ return L.tier === "secondary"; }));
     }
     var feed = document.getElementById("feed");
     if (s.changes && s.changes.length){
