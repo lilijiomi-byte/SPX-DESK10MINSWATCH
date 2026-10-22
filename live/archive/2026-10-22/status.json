@@ -1,14 +1,14 @@
 {
- "updated_et": "2026-10-22 15:45 ET",
+ "updated_et": "2026-10-22 15:50 ET",
  "alert": null,
  "watch": null,
- "spot": 7642.91,
- "total_gex_m": -138.0,
- "flip": 7636.0,
- "call_wall": 7645,
- "put_wall": 7640,
- "king_strike": 7640,
- "king_gex_m": -49.8,
+ "spot": 7642.94,
+ "total_gex_m": -205.2,
+ "flip": 7635.6,
+ "call_wall": 7655,
+ "put_wall": 7660,
+ "king_strike": 7655,
+ "king_gex_m": -62.8,
  "regime": "负 Gamma",
  "targets": {
   "up": 7650,
@@ -45,8 +45,8 @@
   },
   {
    "name": "EMA250",
-   "value": 7698.15,
-   "dist": 55.2,
+   "value": 7697.85,
+   "dist": 54.9,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -63,17 +63,17 @@
   },
   {
    "name": "VWAP",
-   "value": 7644.71,
-   "dist": 1.8,
+   "value": 7652.94,
+   "dist": 10.0,
    "side": "上方",
-   "state": "at",
+   "state": "crossed_down",
    "tier": "primary",
    "merged": false
   },
   {
    "name": "昨收",
    "value": 7757.17,
-   "dist": 114.3,
+   "dist": 114.2,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -100,7 +100,7 @@
   {
    "name": "周一高",
    "value": 7731.18,
-   "dist": 88.3,
+   "dist": 88.2,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -150,7 +150,7 @@
    "low": 7700,
    "high": 7710,
    "center": 7705.0,
-   "pos_pct": -570.9,
+   "pos_pct": -570.6,
    "center_dist": -62.1,
    "consumed_pct": 655.8
   },
@@ -168,13 +168,18 @@
   }
  },
  "flow": {
-  "as_of": "15:50 ET",
+  "as_of": "15:51 ET",
   "bull": {
-   "premium": 104670,
-   "count": 2,
-   "max_premium": 54670,
+   "premium": 170670,
+   "count": 3,
+   "max_premium": 66000,
    "max_strike": 7650,
    "top": [
+    [
+     7650,
+     "C",
+     66000
+    ],
     [
      7650,
      "P",
@@ -188,8 +193,8 @@
    ]
   },
   "bear": {
-   "premium": 170160,
-   "count": 2,
+   "premium": 116560,
+   "count": 1,
    "max_premium": 116560,
    "max_strike": 7640,
    "top": [
@@ -197,11 +202,6 @@
      7640,
      "P",
      116560
-    ],
-    [
-     7650,
-     "P",
-     53600
     ]
    ]
   },
@@ -248,14 +248,30 @@
   "below_pos_d": -7866,
   "neg_above_d": -1992,
   "neg_below_d": -4117,
-  "flip_dist": 13.5,
+  "flip_dist": 13.9,
   "read": "现价带 7640–7655 合计 -7.7B 衰减；7665 +582M 新垒；增厚最大 7670 +637M、7665 +582M；衰减最大 7655 -3.9B、7620 -2.6B；正 GEX 重心上移 6 点（7636→7641）；现价下方至 7640 间为负曝光（-4,701M），dealer 对冲顺势放大下行波动。"
  },
  "frame_quality": {
   "latest_complete_et": "15:45",
-  "degraded": false
+  "degraded": true
  },
  "changes": [
+  {
+   "t": "15:50 ET",
+   "text": "⚡ 总 Gamma -138M→-205M（Δ-67M）"
+  },
+  {
+   "t": "15:50 ET",
+   "text": "🧲 King 节点 7640→7655"
+  },
+  {
+   "t": "15:50 ET",
+   "text": "🧱 Put Wall 7640→7660 上移"
+  },
+  {
+   "t": "15:50 ET",
+   "text": "🧱 Call Wall 7645→7655 上移"
+  },
   {
    "t": "15:45 ET",
    "text": "🧲 King 节点 7645→7640"
