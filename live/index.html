@@ -73,6 +73,24 @@
   .fqnote{display:none; font-size:13px; font-weight:700; color:#ffe6b0;
           background:#33270a; border:1px solid #ffbf3f; border-radius:8px;
           padding:8px 12px; margin:0 0 10px; line-height:1.6;}
+  .decline{grid-column:1 / -1; background:#12233f; border:1px solid var(--orange);
+          border-radius:10px; padding:9px 12px; font-size:15px; font-weight:700;
+          line-height:1.55; font-variant-numeric:tabular-nums;}
+  .lad{display:flex; flex-direction:column; gap:3px; margin-bottom:16px;}
+  .lrow{display:flex; align-items:center; gap:8px; background:var(--panel);
+        border:1px solid var(--line); border-radius:7px; padding:5px 9px;
+        font-variant-numeric:tabular-nums;}
+  .lrow .stk{flex:0 0 48px; font-weight:700; font-size:15px;}
+  .lrow .rl{flex:0 1 auto; min-width:0; font-size:12px; color:var(--muted);
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .lrow .bar{flex:1 1 24px; min-width:20px; height:12px; background:#0a1425;
+             border-radius:3px; overflow:hidden;}
+  .lrow .bar i{display:block; height:100%;}
+  .lrow .gv{flex:0 0 64px; text-align:right; font-size:13px; font-weight:700;}
+  .lrow .dt{flex:0 0 44px; text-align:right; font-size:12px; color:var(--muted);}
+  .lspot{display:flex; align-items:center; gap:8px; color:var(--yellow);
+         font-weight:700; font-size:13.5px; padding:2px;}
+  .lspot .ln{flex:1; border-top:2px dashed var(--yellow); opacity:.6;}
   .lvbox.flmid{border-color:#f5b301; box-shadow:0 0 0 1px rgba(245,179,1,.35);}
   .lvbox.flbigb{background:#ffc400; border-color:#ffc400; color:#191300;}
   .lvbox.flbigb .n, .lvbox.flbigb .d{color:#5c4a00;}
@@ -135,6 +153,7 @@
   <div class="surgeb" id="surge"></div>
 
   <div class="cards">
+    <div class="decline" id="decline" style="display:none"></div>
     <div class="card"><div class="k">总 Gamma（standard GEX）</div><div class="v" id="total">—</div><div class="s" id="regime">—</div></div>
     <div class="card"><div class="k">Gamma Flip</div><div class="v" id="flip">—</div><div class="s" id="fliprel">—</div></div>
     <div class="card"><div class="k">Call Wall</div><div class="v pos" id="cw">—</div><div class="s">上方最近强正节点（dealer 口径）</div></div>
@@ -149,6 +168,9 @@
 
   <h2>重要节点<span>最新帧结构 · Δ = 最新完整 30 分钟切片的变化量</span></h2>
   <div class="lvgrid" id="nodesrow"><div class="empty">加载中…</div></div>
+
+  <h2>点位梯<span>最新完整帧 · 现价 ±40 点 · 每行一 strike：角色 / GEX 横条（√ 强度）/ 距现价</span></h2>
+  <div class="lad" id="ladder"><div class="empty">加载中…</div></div>
 
   <h2>点位参考<span>亚洲 / 前日 9:30 后锁定 · VWAP 动态 · EMA250 动态（5 分钟口径） · ≤1.5 点合并为合力位 · 到达 ±2 点发警报</span></h2>
   <div class="lvgrid" id="levels"><div class="empty">加载中…</div></div>
@@ -254,6 +276,57 @@ function load(){
         "合计 GEX " + fmtM(N.neg_cluster.gex_m) + "（现价 25 点内）");
       if (!ndEl.children.length)
         ndEl.innerHTML = '<div class="empty">节点数据未到</div>';
+    }
+    var dcEl = document.getElementById("decline");
+    if (dcEl){
+      if (s.decision_line){
+        var D = s.decision_line;
+        dcEl.textContent = "现价 " + fmtPx(D.spot) + "｜🎯 靶心 King " + fmtPx(D.king) +
+          "（" + (D.king_dist >= 0 ? "+" : "") + Number(D.king_dist).toFixed(1) +
+          "）｜失效：" + D.invalidation_text;
+        dcEl.style.display = "block";
+      } else { dcEl.style.display = "none"; }
+    }
+    var ladEl = document.getElementById("ladder");
+    if (ladEl){
+      if (s.ladder && s.ladder.length){
+        var lmax = s.ladder_max_m || 0;
+        s.ladder.forEach(function(r){ if (Math.abs(r.gex_m) > lmax) lmax = Math.abs(r.gex_m); });
+        ladEl.innerHTML = "";
+        var spotDone = false;
+        function spotRow(){
+          var d = document.createElement("div"); d.className = "lspot";
+          var a = document.createElement("span");
+          a.textContent = "现价 " + fmtPx(s.spot) + " ───";
+          var ln = document.createElement("span"); ln.className = "ln";
+          d.appendChild(a); d.appendChild(ln);
+          ladEl.appendChild(d);
+        }
+        s.ladder.forEach(function(r){
+          if (!spotDone && r.dist < 0){ spotRow(); spotDone = true; }
+          var d = document.createElement("div"); d.className = "lrow";
+          var stk = document.createElement("span"); stk.className = "stk";
+          stk.textContent = fmtPx(r.strike);
+          var rl = document.createElement("span"); rl.className = "rl";
+          rl.textContent = (r.roles || []).join(" · ");
+          var bar = document.createElement("span"); bar.className = "bar";
+          var fill = document.createElement("i");
+          fill.style.width = (lmax > 0 ? Math.sqrt(Math.abs(r.gex_m) / lmax) * 100 : 0).toFixed(1) + "%";
+          fill.style.background = r.gex_m >= 0 ? "#ffc400" : "#a855f7";
+          bar.appendChild(fill);
+          var gv = document.createElement("span"); gv.className = "gv";
+          gv.textContent = fmtM(r.gex_m);
+          gv.style.color = r.gex_m >= 0 ? "#ffc400" : "#a855f7";
+          var dt = document.createElement("span"); dt.className = "dt";
+          dt.textContent = (r.dist >= 0 ? "+" : "") + Number(r.dist).toFixed(1);
+          d.appendChild(stk); d.appendChild(rl); d.appendChild(bar);
+          d.appendChild(gv); d.appendChild(dt);
+          ladEl.appendChild(d);
+        });
+        if (!spotDone) spotRow();
+      } else {
+        ladEl.innerHTML = '<div class="empty">点位梯数据未到</div>';
+      }
     }
     function lvRender(el, list){
       if (!el) return;
