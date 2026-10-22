@@ -1,14 +1,14 @@
 {
- "updated_et": "2026-10-22 14:40 ET",
+ "updated_et": "2026-10-22 14:45 ET",
  "alert": null,
  "watch": null,
- "spot": 7645.1,
- "total_gex_m": -108.8,
- "flip": 7641.6,
+ "spot": 7645.09,
+ "total_gex_m": -130.0,
+ "flip": 7641.5,
  "call_wall": 7650,
  "put_wall": 7655,
  "king_strike": 7650,
- "king_gex_m": -32.3,
+ "king_gex_m": -39.6,
  "regime": "负 Gamma",
  "targets": {
   "up": 7675,
@@ -45,8 +45,8 @@
   },
   {
    "name": "EMA250",
-   "value": 7703.74,
-   "dist": 58.6,
+   "value": 7703.27,
+   "dist": 58.2,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -63,8 +63,8 @@
   },
   {
    "name": "VWAP",
-   "value": 7645.17,
-   "dist": 0.1,
+   "value": 7645.82,
+   "dist": 0.7,
    "side": "上方",
    "state": "at",
    "tier": "primary",
@@ -128,26 +128,26 @@
  "nodes": {
   "king": {
    "strike": 7640,
-   "gex_m": 4324,
+   "gex_m": 4362,
    "delta_m": 3226
   },
   "band_up": {
-   "lo": 7685,
-   "hi": 7690,
-   "gex_m": 1027,
-   "delta_m": 127
+   "lo": 7675,
+   "hi": 7675,
+   "gex_m": 694,
+   "delta_m": 0
   },
   "support": {
    "strike": 7640,
-   "gex_m": 4324,
+   "gex_m": 4362,
    "delta_m": 3226,
    "building": true,
    "overlap": []
   },
   "neg_cluster": {
    "lo": 7645,
-   "hi": 7670,
-   "gex_m": -9249
+   "hi": 7665,
+   "gex_m": -7493
   }
  },
  "range": {
@@ -155,7 +155,7 @@
    "low": 7700,
    "high": 7710,
    "center": 7705.0,
-   "pos_pct": -549.0,
+   "pos_pct": -549.1,
    "center_dist": -59.9,
    "consumed_pct": 630.8
   },
@@ -173,50 +173,50 @@
   }
  },
  "flow": {
-  "as_of": "14:45 ET",
+  "as_of": "14:50 ET",
   "bull": {
-   "premium": 525050,
-   "count": 6,
-   "max_premium": 190460,
-   "max_strike": 7660,
+   "premium": 530520,
+   "count": 8,
+   "max_premium": 95000,
+   "max_strike": 7645,
    "top": [
     [
-     7660,
+     7650,
+     "C",
+     321660
+    ],
+    [
+     7640,
      "P",
-     190460
+     113860
     ],
     [
      7645,
      "C",
-     142360
-    ],
-    [
-     7650,
-     "C",
-     130310
+     95000
     ]
    ]
   },
   "bear": {
-   "premium": 172530,
-   "count": 3,
-   "max_premium": 65520,
-   "max_strike": 7650,
+   "premium": 445590,
+   "count": 7,
+   "max_premium": 102700,
+   "max_strike": 7645,
    "top": [
-    [
-     7650,
-     "C",
-     65520
-    ],
-    [
-     7655,
-     "C",
-     55650
-    ],
     [
      7645,
      "P",
-     51360
+     154060
+    ],
+    [
+     7640,
+     "P",
+     118000
+    ],
+    [
+     7650,
+     "C",
+     117880
     ]
    ]
   },
@@ -263,14 +263,22 @@
   "below_pos_d": 4059,
   "neg_above_d": 1148,
   "neg_below_d": -759,
-  "flip_dist": 4.7,
+  "flip_dist": 4.8,
   "read": "上方带 7655–7670 合计 -1.8B 衰减；7640 +3.2B 新垒；增厚最大 7640 +3.2B、7645 +1.8B；衰减最大 7670 -912M、7655 -604M；正 GEX 重心基本不动（7637）；现价下方至 7640 间为负曝光（-1,334M），dealer 对冲顺势放大下行波动。"
  },
  "frame_quality": {
-  "latest_complete_et": "14:40",
+  "latest_complete_et": "14:45",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "14:45 ET",
+   "text": "⚡ 总 Gamma -109M→-130M（Δ-21M）"
+  },
+  {
+   "t": "14:45 ET",
+   "text": "🟢 新增强节点 7630：正 GEX 达 1,046M（原 749M）"
+  },
   {
    "t": "14:40 ET",
    "text": "🧲 King 节点 7655→7650"
