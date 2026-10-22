@@ -27,10 +27,18 @@
   header .spot small{font-size:12px; color:var(--muted); font-weight:400; margin-right:6px;}
   .alert{display:none; background:#3d0a12; border:1px solid #ff4d5e; color:#ffd7db;
          border-radius:10px; padding:12px 14px; font-size:15px; font-weight:700;
-         line-height:1.65; margin-bottom:14px; box-shadow:0 0 0 1px rgba(255,77,94,.25);}
+         line-height:1.65; margin-bottom:14px; box-shadow:0 0 0 1px rgba(255,77,94,.25);
+         white-space:pre-line;}
   .watchb{display:none; background:#33270a; border:1px solid #ffbf3f; color:#ffe6b0;
          border-radius:10px; padding:12px 14px; font-size:15px; font-weight:700;
-         line-height:1.65; margin-bottom:14px; box-shadow:0 0 0 1px rgba(255,191,63,.22);}
+         line-height:1.65; margin-bottom:14px; box-shadow:0 0 0 1px rgba(255,191,63,.22);
+         white-space:pre-line;}
+  .surgeb{display:none; border-radius:10px; padding:12px 14px; font-size:15px;
+         font-weight:700; line-height:1.65; margin-bottom:14px; white-space:pre-line;}
+  .surgeb.down{background:#2e0a24; border:1px solid #c0267d; color:#ffd7ec;
+         box-shadow:0 0 0 1px rgba(192,38,125,.25);}
+  .surgeb.up{background:#0d2b16; border:1px solid #2fd48c; color:#d9f7e5;
+         box-shadow:0 0 0 1px rgba(47,212,140,.22);}
   .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr));
          gap:10px; margin-bottom:14px;}
   .card{background:var(--panel); border:1px solid var(--line); border-radius:10px;
@@ -62,6 +70,9 @@
   .lvgrid.small .lvbox{padding:7px 10px;}
   .lvgrid.small .v{font-size:16px;}
   .flnote{font-size:12px; color:var(--muted); margin:0 0 14px; line-height:1.6;}
+  .fqnote{display:none; font-size:13px; font-weight:700; color:#ffe6b0;
+          background:#33270a; border:1px solid #ffbf3f; border-radius:8px;
+          padding:8px 12px; margin:0 0 10px; line-height:1.6;}
   .lvbox.flmid{border-color:#f5b301; box-shadow:0 0 0 1px rgba(245,179,1,.35);}
   .lvbox.flbigb{background:#ffc400; border-color:#ffc400; color:#191300;}
   .lvbox.flbigb .n, .lvbox.flbigb .d{color:#5c4a00;}
@@ -100,7 +111,8 @@
   h2 span{color:var(--muted); font-size:12px; font-weight:400; margin-left:8px;}
   .feed{display:flex; flex-direction:column; gap:8px;}
   .item{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--blue);
-        border-radius:8px; padding:9px 12px; font-size:14.5px; line-height:1.55;}
+        border-radius:8px; padding:9px 12px; font-size:14.5px; line-height:1.55;
+        white-space:pre-line;}
   .item .t{color:var(--muted); font-size:12px; margin-right:10px;
            font-variant-numeric:tabular-nums;}
   .empty{color:var(--muted); font-size:14px; padding:14px 4px;}
@@ -113,12 +125,14 @@
   <header>
     <h1>SPX 实时监控</h1>
     <div class="spot"><small>现价</small><span id="spot">—</span></div>
-    <div class="upd">更新：<span id="updated">—</span>（每 5 分钟扫描，13:00 ET 后每 10 分钟；页面每 60 秒自动刷新）</div>
+    <div class="upd">更新：<span id="updated">—</span>（每 5 分钟扫描；页面每 60 秒自动刷新）</div>
   </header>
 
   <div class="alert" id="alert"></div>
 
   <div class="watchb" id="watch"></div>
+
+  <div class="surgeb" id="surge"></div>
 
   <div class="cards">
     <div class="card"><div class="k">总 Gamma（standard GEX）</div><div class="v" id="total">—</div><div class="s" id="regime">—</div></div>
@@ -131,14 +145,19 @@
       <div class="s">上行目标 / 钉住位 / 下行承接（heatmap 0DTE 结构位）</div></div>
   </div>
 
+  <div class="fqnote" id="fqnote"></div>
+
+  <h2>重要节点<span>最新帧结构 · Δ = 最新完整 30 分钟切片的变化量</span></h2>
+  <div class="lvgrid" id="nodesrow"><div class="empty">加载中…</div></div>
+
   <h2>点位参考<span>亚洲 / 前日 9:30 后锁定 · VWAP 动态 · EMA250 动态（5 分钟口径） · ≤1.5 点合并为合力位 · 到达 ±2 点发警报</span></h2>
   <div class="lvgrid" id="levels"><div class="empty">加载中…</div></div>
   <h3 class="subh">次要参考（昨开 / 昨收 · 周一 / 周二高低）</h3>
   <div class="lvgrid small" id="levels2"></div>
 
-  <h2>🌊 Flow 簇<span id="flowasof">SPXW 0DTE · 近 10 分钟主动成交</span></h2>
+  <h2>🌊 Flow 簇<span id="flowasof">SPXW 0DTE · 近 10 分钟主动成交（单笔 ≥$50k · ≥50 张）</span></h2>
   <div class="lvgrid" id="flowrow"><div class="empty">加载中…</div></div>
-  <div class="flnote">仅显示 · 不改方向预判（看多簇 = call 主动买 + put 主动卖；看空簇 = put 主动买 + call 主动卖｜中簇 ≥$60万 · 大簇 ≥$150万或单笔 ≥$80万）</div>
+  <div class="flnote">仅显示 · 不改方向预判（看多簇 = call 主动买 + put 主动卖；看空簇 = put 主动买 + call 主动卖｜统计门槛：单笔 ≥$50k 且 ≥50 张｜中簇 ≥$60万 · 大簇 ≥$150万或单笔 ≥$80万）</div>
 
   <h2>区间位置<span>官方区间（昨晚 NW 预告 90%）描边 · 日报区间（9:30 简报）填充 · 白刻为中心 · 黄线为现价</span></h2>
   <div class="rngbox" id="rangebox"><div class="empty">加载中…</div></div>
@@ -170,6 +189,20 @@ function load(){
     var wb = document.getElementById("watch");
     if (s.watch){ wb.textContent = s.watch; wb.style.display = "block"; }
     else { wb.style.display = "none"; }
+    var sb = document.getElementById("surge");
+    if (s.surge && s.surge.text){
+      sb.textContent = s.surge.text;
+      sb.className = "surgeb " + (s.surge.dir === "up" ? "up" : "down");
+      sb.style.display = "block";
+    } else { sb.style.display = "none"; }
+    var fqEl = document.getElementById("fqnote");
+    if (fqEl){
+      if (s.frame_quality && s.frame_quality.degraded){
+        fqEl.textContent = "⚠ 最新帧不完整，已回退到 " +
+          (s.frame_quality.latest_complete_et || "—") + " 帧";
+        fqEl.style.display = "block";
+      } else { fqEl.style.display = "none"; }
+    }
     document.getElementById("spot").textContent = fmtPx(s.spot);
     var tot = document.getElementById("total");
     tot.textContent = fmtM(s.total_gex_m);
@@ -189,6 +222,38 @@ function load(){
       document.getElementById("tup").textContent = fmtPx(s.targets.up);
       document.getElementById("tflat").textContent = fmtPx(s.targets.flat);
       document.getElementById("tdown").textContent = fmtPx(s.targets.down);
+    }
+    var ndEl = document.getElementById("nodesrow");
+    if (ndEl){
+      ndEl.innerHTML = "";
+      var N = s.nodes || {};
+      function ndBox(label, big, sub){
+        var d = document.createElement("div"); d.className = "lvbox";
+        var n = document.createElement("div"); n.className = "n"; n.textContent = label;
+        var v = document.createElement("div"); v.className = "v"; v.textContent = big;
+        var dd = document.createElement("div"); dd.className = "d"; dd.textContent = sub;
+        d.appendChild(n); d.appendChild(v); d.appendChild(dd);
+        ndEl.appendChild(d);
+      }
+      function dTxt(m){ return "本片 Δ " + (m == null ? "—" : fmtM(m)); }
+      if (N.king) ndBox("👑 King 节点", fmtPx(N.king.strike),
+        "GEX " + fmtM(N.king.gex_m) + " · " + dTxt(N.king.delta_m));
+      if (N.band_up) ndBox("🧲 上方主带", fmtPx(N.band_up.lo) + "–" + fmtPx(N.band_up.hi),
+        "合计 GEX " + fmtM(N.band_up.gex_m) + " · " + dTxt(N.band_up.delta_m));
+      if (N.support){
+        var sSub = "GEX " + fmtM(N.support.gex_m) + " · " + dTxt(N.support.delta_m) +
+          (N.support.building ? " · 垒厚中" : "");
+        ndBox("🛡 下方承接", fmtPx(N.support.strike), sSub);
+        if (N.support.overlap && N.support.overlap.length){
+          var tg = document.createElement("span"); tg.className = "lvtag";
+          tg.textContent = "★ 与 " + N.support.overlap.join("·") + " 重合 · 权重最大";
+          ndEl.lastChild.appendChild(tg);
+        }
+      }
+      if (N.neg_cluster) ndBox("⛽ 负曝光簇", fmtPx(N.neg_cluster.lo) + "–" + fmtPx(N.neg_cluster.hi),
+        "合计 GEX " + fmtM(N.neg_cluster.gex_m) + "（现价 25 点内）");
+      if (!ndEl.children.length)
+        ndEl.innerHTML = '<div class="empty">节点数据未到</div>';
     }
     function lvRender(el, list){
       if (!el) return;
@@ -227,7 +292,7 @@ function load(){
     if (frEl){
       if (s.flow){
         var fa = document.getElementById("flowasof");
-        if (fa) fa.textContent = "SPXW 0DTE · 近 10 分钟主动成交（截至 " + (s.flow.as_of || "—") + "）";
+        if (fa) fa.textContent = "SPXW 0DTE · 近 10 分钟主动成交（单笔 ≥$50k · ≥50 张；截至 " + (s.flow.as_of || "—") + "）";
         frEl.innerHTML = "";
         [["看多簇", s.flow.bull, "bull"], ["看空簇", s.flow.bear, "bear"]].forEach(function(cfg){
           var F = cfg[1] || {}, prem = F.premium || 0, mxp = F.max_premium || 0;
@@ -243,6 +308,13 @@ function load(){
           dd.textContent = (F.count || 0) + " 笔" + (F.count ?
             " · 最大单笔 " + fmtUSD(mxp) + " @" + (F.max_strike == null ? "—" : fmtPx(F.max_strike)) : "");
           d.appendChild(n); d.appendChild(v); d.appendChild(dd);
+          if (F.top && F.top.length){
+            var lg = document.createElement("div"); lg.className = "d";
+            lg.textContent = F.top.map(function(t){
+              return t[0] + t[1] + " " + fmtUSD(t[2]);
+            }).join(" · ");
+            d.appendChild(lg);
+          }
           if (lv){
             var tg = document.createElement("span"); tg.className = "lvtag";
             tg.textContent = lv === 2 ? "大簇" : "中簇";
