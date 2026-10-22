@@ -1,25 +1,25 @@
 {
- "updated_et": "2026-10-22 09:40 ET",
+ "updated_et": "2026-10-22 09:45 ET",
  "alert": null,
  "watch": null,
- "spot": 7692.49,
- "total_gex_m": 11.4,
- "flip": 7693.5,
+ "spot": 7682.58,
+ "total_gex_m": 1.9,
+ "flip": 7683.1,
  "call_wall": 7730,
- "put_wall": 7680,
+ "put_wall": 7650,
  "king_strike": 7680,
- "king_gex_m": -0.4,
+ "king_gex_m": -1.1,
  "regime": "混合 Gamma",
  "targets": {
   "up": 7700,
-  "flat": 7700,
-  "down": 7685
+  "flat": 7680,
+  "down": 7660
  },
  "levels": [
   {
    "name": "前日高",
    "value": 7770.4,
-   "dist": 77.9,
+   "dist": 87.8,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -28,7 +28,7 @@
   {
    "name": "亚洲高",
    "value": 7742.85,
-   "dist": 50.4,
+   "dist": 60.3,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -37,7 +37,7 @@
   {
    "name": "周一高·EMA250",
    "value": 7731.18,
-   "dist": 38.7,
+   "dist": 48.6,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -46,7 +46,7 @@
   {
    "name": "前日低",
    "value": 7709.34,
-   "dist": 16.8,
+   "dist": 26.8,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -54,8 +54,8 @@
   },
   {
    "name": "VWAP",
-   "value": 7694.52,
-   "dist": 2.0,
+   "value": 7688.52,
+   "dist": 5.9,
    "side": "上方",
    "state": "crossed_down",
    "tier": "primary",
@@ -64,16 +64,16 @@
   {
    "name": "亚洲低",
    "value": 7679.85,
-   "dist": -12.6,
+   "dist": -2.7,
    "side": "下方",
-   "state": "normal",
+   "state": "near",
    "tier": "primary",
    "merged": false
   },
   {
    "name": "昨收",
    "value": 7757.17,
-   "dist": 64.7,
+   "dist": 74.6,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -82,7 +82,7 @@
   {
    "name": "周二高",
    "value": 7748.42,
-   "dist": 55.9,
+   "dist": 65.8,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -91,7 +91,7 @@
   {
    "name": "昨开",
    "value": 7736.43,
-   "dist": 43.9,
+   "dist": 53.9,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -100,16 +100,16 @@
   {
    "name": "周一低",
    "value": 7684.79,
-   "dist": -7.7,
-   "side": "下方",
-   "state": "near",
+   "dist": 2.2,
+   "side": "上方",
+   "state": "crossed_down",
    "tier": "secondary",
    "merged": false
   },
   {
    "name": "周二低",
    "value": 7668.03,
-   "dist": -24.5,
+   "dist": -14.6,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -119,23 +119,21 @@
  "nodes": {
   "king": {
    "strike": 7700,
-   "gex_m": 1472,
+   "gex_m": 1326,
    "delta_m": 0
   },
   "band_up": {
    "lo": 7700,
    "hi": 7700,
-   "gex_m": 1472,
+   "gex_m": 1326,
    "delta_m": 0
   },
   "support": {
-   "strike": 7685,
-   "gex_m": 246,
+   "strike": 7635,
+   "gex_m": 313,
    "delta_m": 0,
    "building": false,
-   "overlap": [
-    "周一低"
-   ]
+   "overlap": []
   }
  },
  "range": {
@@ -143,35 +141,35 @@
    "low": 7700,
    "high": 7710,
    "center": 7705.0,
-   "pos_pct": -75.1,
-   "center_dist": -12.5,
-   "consumed_pct": 167.2
+   "pos_pct": -174.2,
+   "center_dist": -22.4,
+   "consumed_pct": 197.8
   },
   "official": {
    "low": 7670,
    "high": 7845,
    "center": 7757.5,
-   "pos_pct": 12.9,
-   "center_dist": -65.0,
-   "consumed_pct": 9.6
+   "pos_pct": 7.2,
+   "center_dist": -74.9,
+   "consumed_pct": 11.3
   },
   "realized": {
    "high": 7699.52,
-   "low": 7682.8
+   "low": 7679.74
   }
  },
  "flow": {
-  "as_of": "09:45 ET",
+  "as_of": "09:48 ET",
   "bull": {
-   "premium": 417650,
+   "premium": 454420,
    "count": 4,
-   "max_premium": 157090,
-   "max_strike": 7720,
+   "max_premium": 188100,
+   "max_strike": 7700,
    "top": [
     [
-     7720,
+     7700,
      "C",
-     157090
+     188100
     ],
     [
      7700,
@@ -179,15 +177,15 @@
      105000
     ],
     [
-     7725,
+     7680,
      "C",
-     94240
+     100000
     ]
    ]
   },
   "bear": {
-   "premium": 901250,
-   "count": 9,
+   "premium": 962870,
+   "count": 10,
    "max_premium": 142000,
    "max_strike": 7715,
    "top": [
@@ -213,10 +211,26 @@
  "surge": null,
  "delta": null,
  "frame_quality": {
-  "latest_complete_et": "09:40",
+  "latest_complete_et": "09:45",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "09:45 ET",
+   "text": "图4 · 🎯 09:45 1分钟低 7680.9 到达亚洲低 7679.9（ES换算）"
+  },
+  {
+   "t": "09:45 ET",
+   "text": "🎯 Gamma Flip 7693.5→7683.1（移动 -10 点）"
+  },
+  {
+   "t": "09:45 ET",
+   "text": "🧲 King@7680 GEX -0M→-1M（-147%）"
+  },
+  {
+   "t": "09:45 ET",
+   "text": "🧱 Put Wall 7680→7650 下移"
+  },
   {
    "t": "09:40 ET",
    "text": "🎯 现价 7692.5 跌破 Flip 7693.5"
