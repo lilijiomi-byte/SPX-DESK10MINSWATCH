@@ -67,6 +67,39 @@
   .lvtag{display:inline-block; font-size:11px; font-weight:700; border:1px solid var(--line);
          border-radius:20px; padding:1px 8px; margin-top:5px;}
   .lvgrid.small{grid-template-columns:repeat(auto-fit,minmax(128px,1fr));}
+  .lvlist{display:flex; flex-direction:column; gap:4px; margin-bottom:14px;}
+  .lvstrip{display:flex; align-items:center; gap:8px; border:1px solid var(--line);
+           border-radius:7px; padding:6px 10px; min-width:0;
+           font-variant-numeric:tabular-nums;}
+  .lvstrip .n{flex:1 1 auto; min-width:0; font-size:13.5px; white-space:nowrap;
+              overflow:hidden; text-overflow:ellipsis;}
+  .lvstrip .v{flex:0 0 auto; font-size:16px; font-weight:700;}
+  .lvstrip .d{flex:0 0 58px; text-align:right; font-size:12.5px; color:var(--muted);}
+  .lvstrip .tg{flex:0 0 auto; font-size:11px; font-weight:700;
+               border:1px solid var(--line); border-radius:20px; padding:1px 7px;}
+  .lvstrip.p{background:#18294a; border-color:#33507f;}
+  .lvstrip.p .n{color:#e8eefb;}
+  .lvstrip.p .v{color:#ffffff;}
+  .lvstrip.s{background:rgba(21,32,55,.45); border-color:rgba(51,80,127,.45);}
+  .lvstrip.s .n{color:#93a5c0;}
+  .lvstrip.s .v{color:#aebdd4; font-weight:600;}
+  .lvstrip.s .d{color:#71809a;}
+  .lvstrip.near{border-color:#f5b301; box-shadow:0 0 0 1px rgba(245,179,1,.35);}
+  .lvstrip.near .d{font-weight:700; color:#ffdf8a;}
+  .lvstrip.atA{background:#ffc400; border-color:#ffc400; color:#191300;}
+  .lvstrip.atA .n, .lvstrip.atA .d{color:#5c4a00;}
+  .lvstrip.atB{background:#a855f7; border-color:#a855f7; color:#ffffff;}
+  .lvstrip.atB .n, .lvstrip.atB .d{color:#eadcff;}
+  .lvstrip.s.atA{background:#8a6f1e; border-color:#8a6f1e; color:#f2e7bd;}
+  .lvstrip.s.atA .n, .lvstrip.s.atA .d{color:#d8c88f;}
+  .lvstrip.s.atB{background:#5f4480; border-color:#5f4480; color:#e6dbf7;}
+  .lvstrip.s.atB .n, .lvstrip.s.atB .d{color:#cdbce8;}
+  .lvstrip.crossed{opacity:.55;}
+  .lvstrip.s.crossed{opacity:.42;}
+  .lvspot{display:flex; align-items:center; gap:8px; color:var(--yellow);
+          font-weight:700; font-size:13.5px; padding:2px;
+          font-variant-numeric:tabular-nums;}
+  .lvspot .ln{flex:1; border-top:2px dashed var(--yellow); opacity:.65;}
   .lvgrid.small .lvbox{padding:7px 10px;}
   .lvgrid.small .v{font-size:16px;}
   .flnote{font-size:12px; color:var(--muted); margin:0 0 14px; line-height:1.6;}
@@ -172,10 +205,8 @@
   <h2>点位梯<span>最新完整帧 · 现价 ±40 点 · 每行一 strike：角色 / GEX 横条（√ 强度）/ 距现价</span></h2>
   <div class="lad" id="ladder"><div class="empty">加载中…</div></div>
 
-  <h2>点位参考<span>亚洲 / 前日 9:30 后锁定 · VWAP 动态 · EMA250 动态（5 分钟口径） · ≤1.5 点合并为合力位 · 到达 ±2 点发警报</span></h2>
-  <div class="lvgrid" id="levels"><div class="empty">加载中…</div></div>
-  <h3 class="subh">次要参考（昨开 / 昨收 · 周一 / 周二高低）</h3>
-  <div class="lvgrid small" id="levels2"></div>
+  <h2>点位参考<span>按价位由高到低排列 · 深色 = 主要 · 浅色 = 次要 · 现价黄条定位 · 亚洲 / 前日 9:30 后锁定 · VWAP 动态 · EMA250 动态（5 分钟口径） · ≤1.5 点合并为合力位 · 到达 ±2 点发警报</span></h2>
+  <div class="lvlist" id="levels"><div class="empty">加载中…</div></div>
 
   <h2>🌊 Flow 簇<span id="flowasof">SPXW 0DTE · 近 10 分钟主动成交（单笔 ≥$50k · ≥50 张）</span></h2>
   <div class="lvgrid" id="flowrow"><div class="empty">加载中…</div></div>
@@ -328,38 +359,53 @@ function load(){
         ladEl.innerHTML = '<div class="empty">点位梯数据未到</div>';
       }
     }
-    function lvRender(el, list){
+    function lvRender(el, list, spot){
       if (!el) return;
       el.innerHTML = "";
-      (list || []).forEach(function(L){
+      var rows = (list || []).slice().sort(function(a, b){ return b.value - a.value; });
+      if (!rows.length){
+        el.innerHTML = '<div class="empty">点位数据未到</div>';
+        return;
+      }
+      var spotDone = (spot == null);
+      function spotStrip(){
+        var d = document.createElement("div"); d.className = "lvspot";
+        var a = document.createElement("span");
+        a.textContent = "现价 " + fmtPx(spot);
+        var ln = document.createElement("span"); ln.className = "ln";
+        d.appendChild(a); d.appendChild(ln);
+        el.appendChild(d);
+      }
+      rows.forEach(function(L){
+        if (!spotDone && L.value < spot){ spotStrip(); spotDone = true; }
         var d = document.createElement("div");
-        var cls = "lvbox";
+        var cls = "lvstrip " + (L.tier === "secondary" ? "s" : "p");
         if (L.state === "near") cls += " near";
         if (L.state === "at") cls += (L.side === "上方" ? " atA" : " atB");
         if (L.state === "crossed_up" || L.state === "crossed_down") cls += " crossed";
         d.className = cls;
-        var n = document.createElement("div"); n.className = "n"; n.textContent = L.name;
-        var v = document.createElement("div"); v.className = "v"; v.textContent = fmtPx(L.value);
-        var dd = document.createElement("div"); dd.className = "d";
-        dd.textContent = (L.side === "上方" ? "▲ 上方 +" : "▼ 下方 −") + Math.abs(L.dist).toFixed(1) + " 点";
-        d.appendChild(n); d.appendChild(v); d.appendChild(dd);
+        var n = document.createElement("span"); n.className = "n"; n.textContent = L.name;
+        d.appendChild(n);
         var tag = null;
         if (L.state === "at") tag = "🎯 到达";
         else if (L.state === "near") tag = "接近中";
         else if (L.state === "crossed_up") tag = "已上破 · 转支撑";
         else if (L.state === "crossed_down") tag = "已跌破 · 转压力";
         if (tag){
-          var tg = document.createElement("span"); tg.className = "lvtag";
+          var tg = document.createElement("span"); tg.className = "tg";
           tg.textContent = tag; d.appendChild(tg);
         }
+        var v = document.createElement("span"); v.className = "v"; v.textContent = fmtPx(L.value);
+        var dd = document.createElement("span"); dd.className = "d";
+        var dv = (L.dist != null) ? L.dist : (spot != null ? L.value - spot : 0);
+        dd.textContent = (dv >= 0 ? "+" : "−") + Math.abs(dv).toFixed(1);
+        d.appendChild(v); d.appendChild(dd);
         el.appendChild(d);
       });
+      if (!spotDone) spotStrip();
     }
     if (s.levels){
-      lvRender(document.getElementById("levels"),
-               s.levels.filter(function(L){ return L.tier === "primary"; }));
-      lvRender(document.getElementById("levels2"),
-               s.levels.filter(function(L){ return L.tier === "secondary"; }));
+      lvRender(document.getElementById("levels"), s.levels, s.spot);
     }
     var frEl = document.getElementById("flowrow");
     if (frEl){
