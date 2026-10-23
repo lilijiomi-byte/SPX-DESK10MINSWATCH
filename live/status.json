@@ -61,13 +61,24 @@
    "flip_role": null
   },
   {
-   "name": "亚洲低·VWAP",
+   "name": "亚洲低",
    "value": 7652.65,
    "dist": 4.0,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
-   "merged": true,
+   "merged": false,
+   "today_events": [],
+   "flip_role": null
+  },
+  {
+   "name": "VWAP",
+   "value": 7650.06,
+   "dist": 1.5,
+   "side": "上方",
+   "state": "at",
+   "tier": "primary",
+   "merged": false,
    "today_events": [],
    "flip_role": null
   },
@@ -296,10 +307,10 @@
   }
  },
  "flow": {
-  "as_of": "12:20 ET",
+  "as_of": "12:21 ET",
   "bull": {
-   "premium": 331150,
-   "count": 4,
+   "premium": 390870,
+   "count": 5,
    "max_premium": 106530,
    "max_strike": 7650,
    "top": [
@@ -309,15 +320,20 @@
      265630
     ],
     [
-     7645,
+     7610,
      "P",
-     65520
+     68440
+    ],
+    [
+     7655,
+     "C",
+     56800
     ]
    ]
   },
   "bear": {
-   "premium": 507460,
-   "count": 6,
+   "premium": 651420,
+   "count": 8,
    "max_premium": 121340,
    "max_strike": 7655,
    "top": [
@@ -332,13 +348,13 @@
      164840
     ],
     [
-     7635,
+     7630,
      "P",
-     83600
+     84800
     ]
    ]
   },
-  "level": "none"
+  "level": "mid"
  },
  "surge": null,
  "delta": {
@@ -389,6 +405,10 @@
   "degraded": false
  },
  "changes": [
+  {
+   "t": "12:15 ET",
+   "text": "图13 · 🌊 看空 flow 簇形成：近10min 主动 $651,420（8 笔）｜主腿 7655C $195,660 · 7645P $164,840 · 7630P $84,800"
+  },
   {
    "t": "12:15 ET",
    "text": "🎯 现价 7648.6 跌破 Flip 7649.6"
