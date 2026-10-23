@@ -77,6 +77,11 @@
   .lvstrip .d{flex:0 0 58px; text-align:right; font-size:12.5px; color:var(--muted);}
   .lvstrip .tg{flex:0 0 auto; font-size:11px; font-weight:700;
                border:1px solid var(--line); border-radius:20px; padding:1px 7px;}
+  .lvstrip .tg.tgf{border-color:var(--orange); color:var(--orange);}
+  .lvstrip .ev{flex:0 1 auto; min-width:0; font-size:11.5px; color:var(--muted);
+               white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .lvstrip .ev .evl{color:#ffd23f; font-weight:700;}
+  .lvstrip.s .ev{color:#71809a;}
   .lvstrip.p{background:#18294a; border-color:#33507f;}
   .lvstrip.p .n{color:#e8eefb;}
   .lvstrip.p .v{color:#ffffff;}
@@ -205,7 +210,7 @@
   <h2>点位梯<span>最新完整帧 · 现价 ±40 点 · 每行一 strike：角色 / GEX 横条（√ 强度）/ 距现价</span></h2>
   <div class="lad" id="ladder"><div class="empty">加载中…</div></div>
 
-  <h2>点位参考<span>按价位由高到低排列 · 深色 = 主要 · 浅色 = 次要 · 现价黄条定位 · 亚洲 / 前日 9:30 后锁定 · VWAP 动态 · EMA250 动态（5 分钟口径） · ≤1.5 点合并为合力位 · 到达 ±2 点发警报</span></h2>
+  <h2>点位参考<span>按价位由高到低排列 · 深色 = 主要 · 浅色 = 次要 · 现价黄条定位 · 条上小字 = 今日触碰结局（撑住/穿过/被拒/上破）· 亚洲 / 前日 9:30 后锁定 · VWAP 动态 · EMA250 动态（5 分钟口径） · ≤1.5 点合并为合力位 · 到达 ±2 点发警报</span></h2>
   <div class="lvlist" id="levels"><div class="empty">加载中…</div></div>
 
   <h2>🌊 Flow 簇<span id="flowasof">SPXW 0DTE · 近 10 分钟主动成交（单笔 ≥$50k · ≥50 张）</span></h2>
@@ -386,11 +391,28 @@ function load(){
         d.className = cls;
         var n = document.createElement("span"); n.className = "n"; n.textContent = L.name;
         d.appendChild(n);
+        var evs = L.today_events || [];
+        if (evs.length){
+          var ev = document.createElement("span"); ev.className = "ev";
+          ev.title = "今日触碰：" + evs.join(" · ");
+          evs.forEach(function(t, i){
+            if (i) ev.appendChild(document.createTextNode(" · "));
+            var sp = document.createElement("span");
+            if (i === evs.length - 1) sp.className = "evl";
+            sp.textContent = t;
+            ev.appendChild(sp);
+          });
+          d.appendChild(ev);
+        }
+        if (L.flip_role){
+          var fp = document.createElement("span"); fp.className = "tg tgf";
+          fp.textContent = L.flip_role.replace("变", "→");
+          d.appendChild(fp);
+        }
         var tag = null;
         if (L.state === "at") tag = "🎯 到达";
         else if (L.state === "near") tag = "接近中";
-        else if (L.state === "crossed_up") tag = "已上破 · 转支撑";
-        else if (L.state === "crossed_down") tag = "已跌破 · 转压力";
+        // crossed（已破）不再单独挂牌：变暗 + 今日结局 + 翻转标签已表达
         if (tag){
           var tg = document.createElement("span"); tg.className = "tg";
           tg.textContent = tag; d.appendChild(tg);
