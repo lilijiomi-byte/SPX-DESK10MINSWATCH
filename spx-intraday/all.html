@@ -51,7 +51,8 @@
 <h1 style="margin:0 0 4px">SPX 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1023" aria-selected="true" href="#day-1023">10/23 周五 <span class="tab-solar">霜降</span> <span class="tab-move down">48.08</span></a>
+<a class="day-tab" role="tab" data-target="day-1026" aria-selected="true" href="#day-1026">10/26 周一 <span class="tab-move up">62.43</span></a>
+<a class="day-tab" role="tab" data-target="day-1023" aria-selected="false" href="#day-1023">10/23 周五 <span class="tab-solar">霜降</span> <span class="tab-move down">48.08</span></a>
 <a class="day-tab" role="tab" data-target="day-1022" aria-selected="false" href="#day-1022">10/22 周四 <span class="tab-move down">65.58</span></a>
 <a class="day-tab" role="tab" data-target="day-1021" aria-selected="false" href="#day-1021">10/21 周三 <span class="tab-move up">61.06</span></a>
 <a class="day-tab leg80" role="tab" data-target="day-1020" aria-selected="false" href="#day-1020">10/20 周二 <span class="tab-move up">80.39</span></a>
@@ -119,10 +120,107 @@
 <a class="day-tab" role="tab" data-target="day-0723" aria-selected="false" href="#day-0723">7/23 周四 <span class="tab-move down">74.50</span></a>
 <a class="day-tab" role="tab" data-target="day-0722" aria-selected="false" href="#day-0722">7/22 周三 <span class="tab-solar">大暑</span> <span class="tab-move up">38.25</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 67 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=67;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 68 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=68;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var el=document.getElementById(id);if(el)el.scrollIntoView();}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1023" role="tabpanel">
+<article class="day-panel" id="day-1026" role="tabpanel">
+<header class="mast"><div>
+<h1>SPX 日内报告</h1>
+<p class="date">2026年10月26日 · 周一 · 日内报告</p>
+</div><div class="tape">
+<strong>7,676.61 <span class="up">+0.69%</span></strong>
+<span>开 7,639.70 · 高 7,702.13 · 低 7,639.70</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE，夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/spx_2026-10-26.png" alt="SPX 2026-10-26 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 78 档 5 分钟快照）</h3>
+<ul>
+<li>金色带在 7680(+0M)</li>
+<li>紫色带在 7685(-0M) / 7690(-0M)</li>
+<li>白点轨迹: 开 7639.7→高 7702.13→低 7639.7→收 7676.61（0.69%）；收盘在 call wall 7680 下方，put wall 7610 上方</li>
+<li>尾盘节点变化: 前三节点迁移 [7655, 7675, 7680]→[7680, 7685, 7690]；7680 减弱 -100%（5141M→0M）；7690 减弱 -100%（528M→-0M）</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 15:45</span>
+<strong>7680</strong>
+<span class="metric">+51174.1M</span>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:50</span>
+<strong>7675</strong>
+<span class="metric">+32545.1M</span>
+</article>
+<article class="node">
+<span class="node-rank">③ · 15:35</span>
+<strong>7685</strong>
+<span class="metric">+6479.3M</span>
+</article>
+<article class="node purple">
+<span class="node-rank">④ · 13:10</span>
+<strong>7690</strong>
+<span class="metric">-4290.4M</span>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 13:45</span>
+<strong>7655</strong>
+<span class="metric">+3684.7M</span>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流（0DTE SPXW，全天12笔；premium≥$20万｜size≥50｜0DTE｜side=B/M/A）</h3>
+<div class="flow-table-wrap"><table class="flow-table">
+<thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead><tbody>
+<tr class="tr-call"><td>10:16:57</td><td><b>7700.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$4.55</td><td>4.50 / 4.70</td><td><span class="side-pill">BID</span></td><td>500</td><td><b>$0.227M</b></td><td>30453</td><td>3392</td></tr>
+<tr class="tr-call"><td>10:17:14</td><td><b>7660.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$24.20</td><td>24.10 / 24.20</td><td><span class="side-pill">ASK</span></td><td>88</td><td><b>$0.213M</b></td><td>16760</td><td>2453</td></tr>
+<tr class="tr-call"><td>10:38:37</td><td><b>7700.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$3.70</td><td>3.60 / 3.70</td><td><span class="side-pill">ASK</span></td><td>1000</td><td><b>$0.370M</b></td><td>43631</td><td>3392</td></tr>
+<tr class="tr-call"><td>10:40:38</td><td><b>7705.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$3.00</td><td>3.00 / 3.10</td><td><span class="side-pill">BID</span></td><td>1000</td><td><b>$0.300M</b></td><td>22955</td><td>610</td></tr>
+<tr class="tr-call"><td>11:05:34</td><td><b>7720.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$3.30</td><td>3.30 / 3.40</td><td><span class="side-pill">BID</span></td><td>1000</td><td><b>$0.330M</b></td><td>25071</td><td>1293</td></tr>
+<tr class="tr-put"><td>11:40:44</td><td><b>7705.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$14.90</td><td>14.90 / 15.00</td><td><span class="side-pill">BID</span></td><td>160</td><td><b>$0.238M</b></td><td>3870</td><td>276</td></tr>
+<tr class="tr-put"><td>11:44:38</td><td><b>7705.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$16.45</td><td>16.40 / 16.80</td><td><span class="side-pill">BID</span></td><td>122</td><td><b>$0.201M</b></td><td>4094</td><td>276</td></tr>
+<tr class="tr-put"><td>11:49:37</td><td><b>7690.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$9.63</td><td>9.60 / 9.80</td><td><span class="side-pill">BID</span></td><td>233</td><td><b>$0.224M</b></td><td>21318</td><td>532</td></tr>
+<tr class="tr-put"><td>11:59:36</td><td><b>7695.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$19.80</td><td>19.70 / 19.80</td><td><span class="side-pill">ASK</span></td><td>129</td><td><b>$0.255M</b></td><td>19172</td><td>377</td></tr>
+<tr class="tr-call"><td>13:02:02</td><td><b>7650.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$31.56</td><td>30.90 / 31.50</td><td><span class="side-pill">ASK</span></td><td>75</td><td><b>$0.237M</b></td><td>13174</td><td>1698</td></tr>
+<tr class="tr-put"><td>13:48:08</td><td><b>7670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$5.62</td><td>5.40 / 5.70</td><td><span class="side-pill">ASK</span></td><td>440</td><td><b>$0.247M</b></td><td>84220</td><td>874</td></tr>
+<tr class="tr-put"><td>14:22:04</td><td><b>7685.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$6.40</td><td>6.40 / 6.50</td><td><span class="side-pill">ASK</span></td><td>390</td><td><b>$0.250M</b></td><td>58696</td><td>770</td></tr>
+</tbody></table></div>
+<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ 0DTE ｜ SPXW ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>
+<p class="verdict">主动资金0.109（中性）：主动买入 $3.64M，主动卖出 $2.92M，mid $0.00M（不计入主动买卖）。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>①开盘 7639.7，相对 call wall 7680 位置：墙下；put wall 7610。</p></article>
+<article class="summary-item"><p>②白点轨迹: 开 7639.7→高 7702.13→低 7639.7→收 7676.61（0.69%）；收盘在 call wall 7680 下方，put wall 7610 上方</p></article>
+<article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7655, 7675, 7680]→[7680, 7685, 7690]；7680 减弱 -100%（5141M→0M）；7690 减弱 -100%（528M→-0M）</p></article>
+<article class="summary-item"><p>④flow 印证：中性（bull 3.64M / bear 2.92M）；最大簇 7675C 0.75M（ATM，spot≈7688.4；ask 0.21M / bid 0.54M / mid 0.0M）。</p></article>
+<article class="summary-item"><p>⑤收盘 7676.61（0.69%），VWAP 7677.33，EMA250 7674.04；非事件日</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1023" role="tabpanel">
 <header class="mast"><div>
 <h1>SPX 日内报告</h1>
 <p class="date">2026年10月23日 · 周五 · 日内报告</p>
