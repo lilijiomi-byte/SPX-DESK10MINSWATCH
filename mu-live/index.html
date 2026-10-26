@@ -164,6 +164,15 @@
   .chartbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
             padding:8px; margin-bottom:16px;}
   .chartbox img{width:100%; height:auto; display:block; border-radius:6px;}
+  .wk{margin-bottom:14px;}
+  .wk table{width:100%;border-collapse:collapse;font-size:13.5px;
+             font-variant-numeric:tabular-nums;}
+  .wk th{color:var(--muted);font-size:12px;font-weight:600;text-align:right;
+          padding:6px 4px;border-bottom:1px solid var(--line);}
+  .wk th:first-child{text-align:left;}
+  .wk td{text-align:right;padding:6px 4px;border-bottom:1px solid #1c2438;}
+  .wk td:first-child{text-align:left;}
+  .wk td.c{font-weight:700;}
   h2{font-size:16px; margin:6px 0 10px; color:var(--ink);}
   h2 span{color:var(--muted); font-size:12px; font-weight:400; margin-left:8px;}
   .feed{display:flex; flex-direction:column; gap:8px;}
@@ -213,6 +222,9 @@
 
   <h2>点位参考<span>按价位由高到低排列 · 深色 = 主要 · 浅色 = 次要 · 现价黄条定位 · 条上小字 = 今日触碰结局（撑住/穿过/被拒/上破）· 盘前 / 前日 9:30 后锁定 · VWAP 动态 · EMA250 动态（5 分钟口径） · ≤1.5 点合并为合力位 · 到达 ±2 点发警报</span></h2>
   <div class="lvlist" id="levels"><div class="empty">加载中…</div></div>
+
+  <h2>上周日线<span>上周一至周五 · Yahoo 日线口径（与点位表同源）</span></h2>
+  <div class="wk" id="prevweek"><div class="empty">加载中…</div></div>
 
   <h2>🌊 Flow 簇<span id="flowasof">MU 最近到期 · 近 10 分钟主动成交（单笔 ≥$50k · ≥50 张）</span></h2>
   <div class="lvgrid" id="flowrow"><div class="empty">加载中…</div></div>
@@ -430,6 +442,20 @@ function load(){
     }
     if (s.levels){
       lvRender(document.getElementById("levels"), s.levels, s.spot);
+    }
+    var pwEl = document.getElementById("prevweek");
+    if (pwEl){
+      if (s.prev_week && s.prev_week.length){
+        var h = "<table><tr><th>日期</th><th>开</th><th>高</th><th>低</th><th>收</th></tr>";
+        s.prev_week.forEach(function(r){
+          h += "<tr><td>" + r.wd + " " + r.md + "</td><td>" + fmtPx(r.o) +
+               "</td><td>" + fmtPx(r.h) + "</td><td>" + fmtPx(r.l) +
+               "</td><td class=\"c\">" + fmtPx(r.c) + "</td></tr>";
+        });
+        pwEl.innerHTML = h + "</table>";
+      } else {
+        pwEl.innerHTML = '<div class="empty">暂无上周日线</div>';
+      }
     }
     var frEl = document.getElementById("flowrow");
     if (frEl){
