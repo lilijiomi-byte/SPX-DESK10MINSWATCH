@@ -1,25 +1,25 @@
 {
- "updated_et": "2026-10-26 10:40 ET",
+ "updated_et": "2026-10-26 10:45 ET",
  "alert": null,
  "watch": null,
- "spot": 7680.07,
- "total_gex_m": -26.3,
- "flip": 7675.2,
- "call_wall": 7680,
+ "spot": 7688.12,
+ "total_gex_m": -28.9,
+ "flip": 7698.0,
+ "call_wall": 7685,
  "put_wall": 7650,
- "king_strike": 7680,
- "king_gex_m": -16.0,
+ "king_strike": 7685,
+ "king_gex_m": -18.5,
  "regime": "负 Gamma",
  "targets": {
   "up": 7700,
-  "flat": 7685,
-  "down": 7640
+  "flat": 7690,
+  "down": 7665
  },
  "levels": [
   {
    "name": "月高",
    "value": 7844.52,
-   "dist": 164.5,
+   "dist": 156.4,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -28,31 +28,35 @@
    "flip_role": null
   },
   {
-   "name": "VWAP",
-   "value": 7677.84,
-   "dist": -2.2,
+   "name": "周一低·VWAP",
+   "value": 7684.79,
+   "dist": -3.3,
    "side": "下方",
-   "state": "near",
+   "state": "crossed_up",
    "tier": "primary",
-   "merged": false,
-   "today_events": [],
+   "merged": true,
+   "today_events": [
+    "↑被拒"
+   ],
    "flip_role": null
   },
   {
    "name": "周二低·EMA250",
    "value": 7668.03,
-   "dist": -12.0,
+   "dist": -20.1,
    "side": "下方",
    "state": "crossed_up",
    "tier": "primary",
    "merged": true,
-   "today_events": [],
+   "today_events": [
+    "↑上破"
+   ],
    "flip_role": null
   },
   {
    "name": "前日高",
    "value": 7660.15,
-   "dist": -19.9,
+   "dist": -28.0,
    "side": "下方",
    "state": "crossed_up",
    "tier": "primary",
@@ -65,7 +69,7 @@
   {
    "name": "亚洲高",
    "value": 7645.7,
-   "dist": -34.4,
+   "dist": -42.4,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -78,7 +82,7 @@
   {
    "name": "前日低·月低",
    "value": 7612.07,
-   "dist": -68.0,
+   "dist": -76.1,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -89,7 +93,7 @@
   {
    "name": "亚洲低",
    "value": 7609.45,
-   "dist": -70.6,
+   "dist": -78.7,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -100,7 +104,7 @@
   {
    "name": "周二高",
    "value": 7748.42,
-   "dist": 68.3,
+   "dist": 60.3,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -111,7 +115,7 @@
   {
    "name": "周一高",
    "value": 7731.18,
-   "dist": 51.1,
+   "dist": 43.1,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -120,22 +124,9 @@
    "flip_role": null
   },
   {
-   "name": "周一低",
-   "value": 7684.79,
-   "dist": 4.7,
-   "side": "上方",
-   "state": "near",
-   "tier": "secondary",
-   "merged": false,
-   "today_events": [
-    "↑被拒"
-   ],
-   "flip_role": null
-  },
-  {
    "name": "昨开",
    "value": 7637.18,
-   "dist": -42.9,
+   "dist": -50.9,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -146,7 +137,7 @@
   {
    "name": "昨收",
    "value": 7623.68,
-   "dist": -56.4,
+   "dist": -64.4,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -158,18 +149,18 @@
  "nodes": {
   "king": {
    "strike": 7710,
-   "gex_m": 1677,
+   "gex_m": 2259,
    "delta_m": 262
   },
   "band_up": {
    "lo": 7710,
    "hi": 7720,
-   "gex_m": 2992,
+   "gex_m": 4308,
    "delta_m": 517
   },
   "support": {
    "strike": 7640,
-   "gex_m": 468,
+   "gex_m": 471,
    "delta_m": -175,
    "building": false,
    "overlap": []
@@ -177,30 +168,30 @@
   "neg_cluster": {
    "lo": 7675,
    "hi": 7695,
-   "gex_m": -2694
+   "gex_m": -3360
   }
  },
  "ladder": [
   {
    "strike": 7720,
-   "gex_m": 1016.7,
-   "dist": 39.9,
+   "gex_m": 1697.1,
+   "dist": 31.9,
    "roles": [
     "🧲 上方主带"
    ]
   },
   {
    "strike": 7715,
-   "gex_m": 298.4,
-   "dist": 34.9,
+   "gex_m": 352.0,
+   "dist": 26.9,
    "roles": [
     "🧲 上方主带"
    ]
   },
   {
    "strike": 7710,
-   "gex_m": 1676.8,
-   "dist": 29.9,
+   "gex_m": 2259.3,
+   "dist": 21.9,
    "roles": [
     "👑 King",
     "🧲 上方主带"
@@ -208,145 +199,159 @@
   },
   {
    "strike": 7705,
-   "gex_m": -188.2,
-   "dist": 24.9,
+   "gex_m": -422.1,
+   "dist": 16.9,
    "roles": []
   },
   {
    "strike": 7700,
-   "gex_m": 446.7,
-   "dist": 19.9,
-   "roles": []
+   "gex_m": 634.7,
+   "dist": 11.9,
+   "roles": [
+    "Flip 线"
+   ]
   },
   {
    "strike": 7695,
-   "gex_m": -240.1,
-   "dist": 14.9,
+   "gex_m": -276.8,
+   "dist": 6.9,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 7690,
-   "gex_m": -796.6,
-   "dist": 9.9,
+   "gex_m": -1060.6,
+   "dist": 1.9,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 7685,
-   "gex_m": -757.0,
-   "dist": 4.9,
-   "roles": [
-    "⛽ 负曝光簇"
-   ]
-  },
-  {
-   "strike": 7680,
-   "gex_m": -819.5,
-   "dist": -0.1,
+   "gex_m": -1250.8,
+   "dist": -3.1,
    "roles": [
     "⛽ 负曝光簇",
     "Call Wall"
    ]
   },
   {
-   "strike": 7675,
-   "gex_m": -80.9,
-   "dist": -5.1,
+   "strike": 7680,
+   "gex_m": -678.4,
+   "dist": -8.1,
    "roles": [
-    "⛽ 负曝光簇",
-    "Flip 线"
+    "⛽ 负曝光簇"
+   ]
+  },
+  {
+   "strike": 7675,
+   "gex_m": -92.9,
+   "dist": -13.1,
+   "roles": [
+    "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 7665,
-   "gex_m": 252.8,
-   "dist": -15.1,
+   "gex_m": 224.9,
+   "dist": -23.1,
    "roles": []
   },
   {
-   "strike": 7660,
-   "gex_m": -133.9,
-   "dist": -20.1,
+   "strike": 7655,
+   "gex_m": 195.8,
+   "dist": -33.1,
    "roles": []
+  },
+  {
+   "strike": 7650,
+   "gex_m": 227.1,
+   "dist": -38.1,
+   "roles": [
+    "Put Wall"
+   ]
   }
  ],
- "ladder_max_m": 1676.8,
+ "ladder_max_m": 2259.3,
  "decision_line": {
-  "spot": 7680.07,
+  "spot": 7688.12,
   "king": 7710,
-  "king_dist": 29.9,
-  "flip": 7675.2,
-  "invalidation_text": "跌回 7675.2 下方失效"
+  "king_dist": 21.9,
+  "flip": 7698.0,
+  "invalidation_text": "站上 7698 失效"
  },
  "range": {
   "brief": {
    "low": 7610,
    "high": 7675,
    "center": 7642.5,
-   "pos_pct": 107.8,
-   "center_dist": 37.6,
-   "consumed_pct": 66.7
+   "pos_pct": 120.2,
+   "center_dist": 45.6,
+   "consumed_pct": 79.9
   },
   "official": {
    "low": 7498,
    "high": 7748,
    "center": 7623.0,
-   "pos_pct": 72.8,
-   "center_dist": 57.1,
-   "consumed_pct": 17.4
+   "pos_pct": 76.0,
+   "center_dist": 65.1,
+   "consumed_pct": 20.8
   },
   "realized": {
-   "high": 7683.08,
+   "high": 7691.61,
    "low": 7639.7
   }
  },
  "flow": {
-  "as_of": "10:44 ET",
+  "as_of": "10:49 ET",
   "bull": {
-   "premium": 576440,
-   "count": 4,
-   "max_premium": 370000,
+   "premium": 832040,
+   "count": 10,
+   "max_premium": 161500,
    "max_strike": 7700,
    "top": [
     [
-     7700,
-     "C",
-     370000
-    ],
-    [
-     7680,
-     "C",
-     115000
+     7685,
+     "P",
+     235060
     ],
     [
      7685,
      "C",
-     91440
+     186200
+    ],
+    [
+     7700,
+     "P",
+     161500
     ]
    ]
   },
   "bear": {
-   "premium": 411600,
-   "count": 2,
+   "premium": 956320,
+   "count": 8,
    "max_premium": 300000,
    "max_strike": 7705,
    "top": [
+    [
+     7680,
+     "C",
+     322580
+    ],
     [
      7705,
      "C",
      300000
     ],
     [
-     7680,
+     7690,
      "C",
-     111600
+     145330
     ]
    ]
   },
-  "level": "none"
+  "level": "mid"
  },
  "surge": null,
  "delta": {
@@ -389,14 +394,42 @@
   "below_pos_d": 27,
   "neg_above_d": -159,
   "neg_below_d": 238,
-  "flip_dist": -5.6,
+  "flip_dist": -28.3,
   "read": "本片无 ≥800M 的单边结构变化；增厚最大 7650 +301M；正 GEX 重心上移 11 点（7671→7682）；现价上方至 7710 间为负曝光（-1,161M），dealer 对冲顺势放大上行波动。"
  },
  "frame_quality": {
-  "latest_complete_et": "10:40",
+  "latest_complete_et": "10:45",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "10:45 ET",
+   "text": "图18 · 🌊 看空 flow 簇形成：近10min 主动 $956,320（8 笔）｜主腿 7680C $322,580 · 7705C $300,000 · 7690C $145,330"
+  },
+  {
+   "t": "10:45 ET",
+   "text": "图17 · 🌊 看多 flow 簇形成：近10min 主动 $832,040（10 笔）｜主腿 7685P $235,060 · 7685C $186,200 · 7700P $161,500"
+  },
+  {
+   "t": "10:45 ET",
+   "text": "图16 · 🎯 10:44 1分钟高 7683.1 到达周一低·VWAP 7684.8"
+  },
+  {
+   "t": "10:45 ET",
+   "text": "🎯 现价 7688.1 跌破 Flip 7698"
+  },
+  {
+   "t": "10:45 ET",
+   "text": "🎯 Gamma Flip 7675.2→7698（移动 +23 点）"
+  },
+  {
+   "t": "10:45 ET",
+   "text": "🧲 King 节点 7680→7685"
+  },
+  {
+   "t": "10:45 ET",
+   "text": "🧱 Call Wall 7680→7685 上移"
+  },
   {
    "t": "10:40 ET",
    "text": "🟢 新增强节点 7720：正 GEX 达 1,017M（原 891M）"
