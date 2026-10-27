@@ -1,18 +1,18 @@
 {
- "updated_et": "2026-10-27 09:50 ET",
+ "updated_et": "2026-10-27 09:55 ET",
  "alert": null,
  "watch": null,
  "spot": 915.3,
- "total_gex_m": 36.3,
+ "total_gex_m": 46.0,
  "flip": null,
  "call_wall": 920,
  "put_wall": 915,
- "king_strike": 960,
- "king_gex_m": 7.5,
+ "king_strike": 915,
+ "king_gex_m": 10.5,
  "regime": "正 Gamma",
  "targets": {
   "up": 920,
-  "flat": 920,
+  "flat": 915,
   "down": 915
  },
  "levels": [
@@ -40,10 +40,10 @@
   },
   {
    "name": "VWAP",
-   "value": 918.48,
+   "value": 918.54,
    "dist": 3.2,
    "side": "上方",
-   "state": "near",
+   "state": "normal",
    "tier": "primary",
    "merged": false,
    "today_events": [],
@@ -73,8 +73,8 @@
   },
   {
    "name": "EMA250",
-   "value": 897.54,
-   "dist": -17.8,
+   "value": 897.71,
+   "dist": -17.6,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -193,40 +193,57 @@
  ],
  "nodes": {
   "king": {
-   "strike": 960,
-   "gex_m": 8,
+   "strike": 915,
+   "gex_m": 10,
    "delta_m": 0
   },
   "band_up": {
    "lo": 920,
-   "hi": 925,
-   "gex_m": 11,
+   "hi": 930,
+   "gex_m": 16,
    "delta_m": 0
   },
   "support": {
-   "strike": 895,
-   "gex_m": 6,
+   "strike": 915,
+   "gex_m": 10,
    "delta_m": 0,
    "building": false,
-   "overlap": []
+   "overlap": [
+    "昨日高",
+    "本周高"
+   ]
   }
  },
  "ladder": [
   {
    "strike": 955,
-   "gex_m": -1.0,
+   "gex_m": -0.9,
    "dist": 39.7,
    "roles": []
   },
   {
+   "strike": 950,
+   "gex_m": -1.1,
+   "dist": 34.7,
+   "roles": []
+  },
+  {
    "strike": 935,
-   "gex_m": -1.6,
+   "gex_m": -1.9,
    "dist": 19.7,
    "roles": []
   },
   {
+   "strike": 930,
+   "gex_m": 1.8,
+   "dist": 14.7,
+   "roles": [
+    "🧲 上方主带"
+   ]
+  },
+  {
    "strike": 925,
-   "gex_m": 7.5,
+   "gex_m": 8.2,
    "dist": 9.7,
    "roles": [
     "🧲 上方主带"
@@ -234,7 +251,7 @@
   },
   {
    "strike": 920,
-   "gex_m": 3.8,
+   "gex_m": 6.2,
    "dist": 4.7,
    "roles": [
     "🧲 上方主带",
@@ -243,22 +260,24 @@
   },
   {
    "strike": 915,
-   "gex_m": 4.2,
+   "gex_m": 10.5,
    "dist": -0.3,
    "roles": [
+    "👑 King",
+    "🛡 下方承接",
     "Put Wall",
     "Flip 线"
    ]
   },
   {
    "strike": 910,
-   "gex_m": 3.2,
+   "gex_m": 3.5,
    "dist": -5.3,
    "roles": []
   },
   {
    "strike": 905,
-   "gex_m": 3.1,
+   "gex_m": 3.2,
    "dist": -10.3,
    "roles": []
   },
@@ -270,24 +289,22 @@
   },
   {
    "strike": 895,
-   "gex_m": 6.1,
+   "gex_m": 6.3,
    "dist": -20.3,
-   "roles": [
-    "🛡 下方承接"
-   ]
+   "roles": []
   },
   {
-   "strike": 890,
-   "gex_m": 1.2,
-   "dist": -25.3,
+   "strike": 880,
+   "gex_m": -0.1,
+   "dist": -35.3,
    "roles": []
   }
  ],
- "ladder_max_m": 7.5,
+ "ladder_max_m": 10.5,
  "decision_line": {
   "spot": 915.3,
-  "king": 960,
-  "king_dist": 44.7,
+  "king": 915,
+  "king_dist": -0.3,
   "flip": null,
   "invalidation_text": "Flip 暂不可用（dealer 快照与帧现价偏离 >$10，flip 已弃用）"
  },
@@ -307,57 +324,72 @@
   }
  },
  "flow": {
-  "as_of": "09:54 ET",
+  "as_of": "09:57 ET",
   "bull": {
-   "premium": 202250,
-   "count": 3,
-   "max_premium": 78000,
-   "max_strike": 925,
+   "premium": 124250,
+   "count": 2,
+   "max_premium": 63500,
+   "max_strike": 915,
    "top": [
     [
      915,
      "P",
      124250
-    ],
-    [
-     925,
-     "P",
-     78000
     ]
    ]
   },
   "bear": {
-   "premium": 345500,
+   "premium": 1633660,
    "count": 4,
-   "max_premium": 100000,
-   "max_strike": 910,
+   "max_premium": 1100575,
+   "max_strike": 915,
    "top": [
+    [
+     915,
+     "C",
+     1100575
+    ],
+    [
+     920,
+     "C",
+     375335
+    ],
     [
      910,
      "C",
-     190000
-    ],
-    [
-     925,
-     "P",
-     87750
-    ],
-    [
-     915,
-     "P",
-     67750
+     90000
     ]
    ]
   },
-  "level": "mid"
+  "level": "big"
  },
  "surge": null,
  "delta": null,
  "frame_quality": {
-  "latest_complete_et": "09:50",
+  "latest_complete_et": "09:55",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "09:55 ET",
+   "text": "图12 · 🌊 看空大簇：近10分钟主动成交 $1,633,660（4 笔，最大单笔 $1,100,575 @915）｜主腿 915C $1,100,575 · 920C $375,335 · 910C $90,000 → 仅显示，未改方向预判"
+  },
+  {
+   "t": "09:55 ET",
+   "text": "⚡ 总 Gamma +36M→+46M（Δ+10M）"
+  },
+  {
+   "t": "09:55 ET",
+   "text": "🟢 新增强节点 915：正 GEX 达 10M（原 4M）"
+  },
+  {
+   "t": "09:55 ET",
+   "text": "🧲 最强正节点 915 GEX 4M→10M（+151%）"
+  },
+  {
+   "t": "09:55 ET",
+   "text": "图11 · 🧲 King 节点 960→915"
+  },
   {
    "t": "09:50 ET",
    "text": "图10 · 🧲 King 节点 925→960"
