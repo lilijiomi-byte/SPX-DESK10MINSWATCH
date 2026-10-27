@@ -1,18 +1,18 @@
 {
- "updated_et": "2026-10-27 09:45 ET",
+ "updated_et": "2026-10-27 09:50 ET",
  "alert": null,
  "watch": null,
  "spot": 915.3,
- "total_gex_m": 35.7,
+ "total_gex_m": 36.3,
  "flip": null,
  "call_wall": 920,
  "put_wall": 915,
- "king_strike": 925,
- "king_gex_m": 7.2,
+ "king_strike": 960,
+ "king_gex_m": 7.5,
  "regime": "正 Gamma",
  "targets": {
   "up": 920,
-  "flat": 925,
+  "flat": 920,
   "down": 915
  },
  "levels": [
@@ -40,10 +40,10 @@
   },
   {
    "name": "VWAP",
-   "value": 918.52,
+   "value": 918.48,
    "dist": 3.2,
    "side": "上方",
-   "state": "normal",
+   "state": "near",
    "tier": "primary",
    "merged": false,
    "today_events": [],
@@ -73,8 +73,8 @@
   },
   {
    "name": "EMA250",
-   "value": 897.36,
-   "dist": -17.9,
+   "value": 897.54,
+   "dist": -17.8,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -193,14 +193,14 @@
  ],
  "nodes": {
   "king": {
-   "strike": 925,
-   "gex_m": 7,
+   "strike": 960,
+   "gex_m": 8,
    "delta_m": 0
   },
   "band_up": {
    "lo": 920,
    "hi": 925,
-   "gex_m": 12,
+   "gex_m": 11,
    "delta_m": 0
   },
   "support": {
@@ -214,14 +214,8 @@
  "ladder": [
   {
    "strike": 955,
-   "gex_m": -0.3,
+   "gex_m": -1.0,
    "dist": 39.7,
-   "roles": []
-  },
-  {
-   "strike": 950,
-   "gex_m": -0.5,
-   "dist": 34.7,
    "roles": []
   },
   {
@@ -232,16 +226,15 @@
   },
   {
    "strike": 925,
-   "gex_m": 7.2,
+   "gex_m": 7.5,
    "dist": 9.7,
    "roles": [
-    "👑 King",
     "🧲 上方主带"
    ]
   },
   {
    "strike": 920,
-   "gex_m": 4.5,
+   "gex_m": 3.8,
    "dist": 4.7,
    "roles": [
     "🧲 上方主带",
@@ -250,7 +243,7 @@
   },
   {
    "strike": 915,
-   "gex_m": 3.8,
+   "gex_m": 4.2,
    "dist": -0.3,
    "roles": [
     "Put Wall",
@@ -259,13 +252,13 @@
   },
   {
    "strike": 910,
-   "gex_m": 2.9,
+   "gex_m": 3.2,
    "dist": -5.3,
    "roles": []
   },
   {
    "strike": 905,
-   "gex_m": 2.9,
+   "gex_m": 3.1,
    "dist": -10.3,
    "roles": []
   },
@@ -290,11 +283,11 @@
    "roles": []
   }
  ],
- "ladder_max_m": 7.2,
+ "ladder_max_m": 7.5,
  "decision_line": {
   "spot": 915.3,
-  "king": 925,
-  "king_dist": 9.7,
+  "king": 960,
+  "king_dist": 44.7,
   "flip": null,
   "invalidation_text": "Flip 暂不可用（dealer 快照与帧现价偏离 >$10，flip 已弃用）"
  },
@@ -314,40 +307,35 @@
   }
  },
  "flow": {
-  "as_of": "09:47 ET",
+  "as_of": "09:54 ET",
   "bull": {
-   "premium": 1001300,
-   "count": 8,
-   "max_premium": 310000,
-   "max_strike": 900,
+   "premium": 202250,
+   "count": 3,
+   "max_premium": 78000,
+   "max_strike": 925,
    "top": [
     [
-     920,
-     "C",
-     313485
-    ],
-    [
-     900,
-     "C",
-     310000
+     915,
+     "P",
+     124250
     ],
     [
      925,
      "P",
-     153000
+     78000
     ]
    ]
   },
   "bear": {
-   "premium": 255750,
-   "count": 3,
+   "premium": 345500,
+   "count": 4,
    "max_premium": 100000,
    "max_strike": 910,
    "top": [
     [
      910,
      "C",
-     100000
+     190000
     ],
     [
      925,
@@ -355,21 +343,25 @@
      87750
     ],
     [
-     940,
-     "C",
-     68000
+     915,
+     "P",
+     67750
     ]
    ]
   },
-  "level": "big"
+  "level": "mid"
  },
  "surge": null,
  "delta": null,
  "frame_quality": {
-  "latest_complete_et": "09:45",
+  "latest_complete_et": "09:50",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "09:50 ET",
+   "text": "图10 · 🧲 King 节点 925→960"
+  },
   {
    "t": "09:45 ET",
    "text": "图9 · 🌊 看空 flow 簇形成：近10min 主动 $255,750（3 笔）｜主腿 910C $100,000 · 925P $87,750 · 940C $68,000"
