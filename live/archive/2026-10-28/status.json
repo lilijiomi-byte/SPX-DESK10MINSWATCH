@@ -1,14 +1,14 @@
 {
- "updated_et": "2026-10-28 10:40 ET",
+ "updated_et": "2026-10-28 10:45 ET",
  "alert": null,
  "watch": null,
- "spot": 7732.18,
- "total_gex_m": -42.9,
- "flip": 7738.4,
+ "spot": 7729.44,
+ "total_gex_m": -43.1,
+ "flip": 7737.5,
  "call_wall": 7740,
  "put_wall": 7730,
  "king_strike": 7730,
- "king_gex_m": -5.2,
+ "king_gex_m": -4.9,
  "regime": "负 Gamma",
  "targets": {
   "up": 7740,
@@ -19,7 +19,7 @@
   {
    "name": "月高",
    "value": 7844.52,
-   "dist": 112.3,
+   "dist": 115.1,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -30,7 +30,7 @@
   {
    "name": "昨日高·本周高",
    "value": 7736.24,
-   "dist": 4.1,
+   "dist": 6.8,
    "side": "上方",
    "state": "crossed_down",
    "tier": "primary",
@@ -43,9 +43,9 @@
   {
    "name": "亚洲高·VWAP",
    "value": 7731.6,
-   "dist": -0.6,
-   "side": "下方",
-   "state": "at",
+   "dist": 2.2,
+   "side": "上方",
+   "state": "crossed_down",
    "tier": "primary",
    "merged": true,
    "today_events": [],
@@ -54,7 +54,7 @@
   {
    "name": "亚洲低",
    "value": 7712.85,
-   "dist": -19.3,
+   "dist": -16.6,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -65,7 +65,7 @@
   {
    "name": "前日高·EMA250",
    "value": 7702.13,
-   "dist": -30.1,
+   "dist": -27.3,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -76,7 +76,7 @@
   {
    "name": "昨日低",
    "value": 7677.16,
-   "dist": -55.0,
+   "dist": -52.3,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -87,7 +87,7 @@
   {
    "name": "前日低·本周低",
    "value": 7639.7,
-   "dist": -92.5,
+   "dist": -89.7,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -98,7 +98,7 @@
   {
    "name": "前周低·月低",
    "value": 7612.07,
-   "dist": -120.1,
+   "dist": -117.4,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -109,7 +109,7 @@
   {
    "name": "前周高",
    "value": 7770.4,
-   "dist": 38.2,
+   "dist": 41.0,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -120,9 +120,9 @@
   {
    "name": "昨收",
    "value": 7722.6,
-   "dist": -9.6,
+   "dist": -6.8,
    "side": "下方",
-   "state": "normal",
+   "state": "near",
    "tier": "secondary",
    "merged": false,
    "today_events": [],
@@ -131,7 +131,7 @@
   {
    "name": "昨开",
    "value": 7699.47,
-   "dist": -32.7,
+   "dist": -30.0,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -143,18 +143,18 @@
  "nodes": {
   "king": {
    "strike": 7800,
-   "gex_m": 373,
+   "gex_m": 349,
    "delta_m": 13
   },
   "band_up": {
    "lo": 7795,
    "hi": 7800,
-   "gex_m": 532,
+   "gex_m": 498,
    "delta_m": 180
   },
   "support": {
    "strike": 7725,
-   "gex_m": 287,
+   "gex_m": 273,
    "delta_m": 262,
    "building": true,
    "overlap": []
@@ -162,95 +162,100 @@
   "neg_cluster": {
    "lo": 7710,
    "hi": 7720,
-   "gex_m": -1925
+   "gex_m": -2017
   }
  },
  "ladder": [
   {
    "strike": 7765,
-   "gex_m": 224.0,
-   "dist": 32.8,
+   "gex_m": 208.9,
+   "dist": 35.6,
    "roles": []
   },
   {
    "strike": 7755,
-   "gex_m": -233.2,
-   "dist": 22.8,
+   "gex_m": -227.4,
+   "dist": 25.6,
    "roles": []
   },
   {
    "strike": 7750,
-   "gex_m": 146.9,
-   "dist": 17.8,
+   "gex_m": 160.3,
+   "dist": 20.6,
    "roles": []
   },
   {
    "strike": 7745,
-   "gex_m": -465.8,
-   "dist": 12.8,
+   "gex_m": -471.5,
+   "dist": 15.6,
    "roles": []
   },
   {
    "strike": 7740,
-   "gex_m": 241.4,
-   "dist": 7.8,
+   "gex_m": 250.1,
+   "dist": 10.6,
    "roles": [
-    "Call Wall",
-    "Flip 线"
+    "Call Wall"
    ]
   },
   {
    "strike": 7725,
-   "gex_m": 287.1,
-   "dist": -7.2,
+   "gex_m": 272.6,
+   "dist": -4.4,
    "roles": [
     "🛡 下方承接"
    ]
   },
   {
    "strike": 7720,
-   "gex_m": -796.4,
-   "dist": -12.2,
+   "gex_m": -830.8,
+   "dist": -9.4,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 7715,
-   "gex_m": -879.4,
-   "dist": -17.2,
+   "gex_m": -915.0,
+   "dist": -14.4,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 7710,
-   "gex_m": -249.2,
-   "dist": -22.2,
+   "gex_m": -271.0,
+   "dist": -19.4,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 7700,
-   "gex_m": -440.1,
-   "dist": -32.2,
+   "gex_m": -479.2,
+   "dist": -29.4,
    "roles": []
   },
   {
    "strike": 7695,
-   "gex_m": 152.7,
-   "dist": -37.2,
+   "gex_m": 158.8,
+   "dist": -34.4,
+   "roles": []
+  },
+  {
+   "strike": 7690,
+   "gex_m": -339.2,
+   "dist": -39.4,
    "roles": []
   }
  ],
- "ladder_max_m": 879.4,
+ "ladder_max_m": 915.0,
  "decision_line": {
-  "spot": 7732.18,
+  "spot": 7729.44,
   "king": 7800,
-  "king_dist": 67.8,
-  "flip": 7738.4,
-  "invalidation_text": "站上 7738.4 失效"
+  "king_dist": 70.6,
+  "flip": 7737.5,
+  "invalidation_text": "站上 7737.5 失效"
  },
  "range": {
   "brief": null,
@@ -258,8 +263,8 @@
    "low": 7625,
    "high": 7820,
    "center": 7722.5,
-   "pos_pct": 55.0,
-   "center_dist": 9.7,
+   "pos_pct": 53.6,
+   "center_dist": 6.9,
    "consumed_pct": 12.5
   },
   "realized": {
@@ -268,10 +273,10 @@
   }
  },
  "flow": {
-  "as_of": "10:45 ET",
+  "as_of": "10:48 ET",
   "bull": {
-   "premium": 330600,
-   "count": 4,
+   "premium": 236100,
+   "count": 3,
    "max_premium": 114300,
    "max_strike": 7725,
    "top": [
@@ -281,32 +286,27 @@
      114300
     ],
     [
-     7710,
-     "P",
-     94500
-    ],
-    [
      7715,
      "P",
      69000
+    ],
+    [
+     7680,
+     "P",
+     52800
     ]
    ]
   },
   "bear": {
-   "premium": 569560,
-   "count": 6,
+   "premium": 341500,
+   "count": 3,
    "max_premium": 167000,
    "max_strike": 7725,
    "top": [
     [
      7725,
      "P",
-     167000
-    ],
-    [
-     7715,
-     "P",
-     125960
+     253000
     ],
     [
      7735,
@@ -358,11 +358,11 @@
   "below_pos_d": 155,
   "neg_above_d": -288,
   "neg_below_d": -841,
-  "flip_dist": -3.1,
+  "flip_dist": -2.2,
   "read": "本片无 ≥800M 的单边结构变化；衰减最大 7720 -340M、7715 -327M；正 GEX 重心基本不动（7763）；现价附近曝光无单边缺口，对冲放大不明显。"
  },
  "frame_quality": {
-  "latest_complete_et": "10:40",
+  "latest_complete_et": "10:45",
   "degraded": false
  },
  "changes": [
