@@ -1,14 +1,14 @@
 {
- "updated_et": "2026-10-29 09:35 ET",
+ "updated_et": "2026-10-29 09:40 ET",
  "alert": null,
  "watch": null,
  "spot": 962.08,
- "total_gex_m": 2.4,
+ "total_gex_m": 4.8,
  "flip": null,
  "call_wall": null,
  "put_wall": 950,
  "king_strike": 950,
- "king_gex_m": 65.9,
+ "king_gex_m": 66.7,
  "regime": "混合 Gamma",
  "targets": {
   "up": 975,
@@ -46,28 +46,19 @@
    "state": "normal",
    "tier": "primary",
    "merged": false,
-   "today_events": [],
+   "today_events": [
+    "↓穿过"
+   ],
    "flip_role": null
   },
   {
-   "name": "昨开·VWAP",
-   "value": 961.71,
-   "dist": -0.4,
-   "side": "下方",
-   "state": "at",
-   "tier": "primary",
-   "merged": true,
-   "today_events": [],
-   "flip_role": null
-  },
-  {
-   "name": "昨日低",
+   "name": "昨日低·VWAP",
    "value": 959.34,
    "dist": -2.7,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
-   "merged": false,
+   "merged": true,
    "today_events": [],
    "flip_role": null
   },
@@ -84,8 +75,8 @@
   },
   {
    "name": "EMA250",
-   "value": 940.61,
-   "dist": -21.5,
+   "value": 940.73,
+   "dist": -21.3,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -110,6 +101,17 @@
    "dist": 21.2,
    "side": "上方",
    "state": "normal",
+   "tier": "secondary",
+   "merged": false,
+   "today_events": [],
+   "flip_role": null
+  },
+  {
+   "name": "昨开",
+   "value": 961.71,
+   "dist": -0.4,
+   "side": "下方",
+   "state": "at",
    "tier": "secondary",
    "merged": false,
    "today_events": [],
@@ -205,7 +207,7 @@
  "nodes": {
   "king": {
    "strike": 950,
-   "gex_m": 66,
+   "gex_m": 67,
    "delta_m": 0
   },
   "band_up": {
@@ -216,21 +218,21 @@
   },
   "support": {
    "strike": 950,
-   "gex_m": 66,
+   "gex_m": 67,
    "delta_m": 0,
    "building": false,
    "overlap": []
   },
   "neg_cluster": {
-   "lo": 932.5,
+   "lo": 935,
    "hi": 940,
-   "gex_m": -21
+   "gex_m": -18
   }
  },
  "ladder": [
   {
    "strike": 1000,
-   "gex_m": -28.0,
+   "gex_m": -27.3,
    "dist": 37.9,
    "roles": [
     "⚡ 负GEX"
@@ -238,7 +240,7 @@
   },
   {
    "strike": 990,
-   "gex_m": 1.1,
+   "gex_m": 1.4,
    "dist": 27.9,
    "roles": [
     "🧲 上方主带"
@@ -246,7 +248,7 @@
   },
   {
    "strike": 985,
-   "gex_m": 7.9,
+   "gex_m": 7.6,
    "dist": 22.9,
    "roles": [
     "🧲 上方主带"
@@ -270,13 +272,13 @@
   },
   {
    "strike": 965,
-   "gex_m": -8.3,
+   "gex_m": -9.3,
    "dist": 2.9,
    "roles": []
   },
   {
    "strike": 950,
-   "gex_m": 65.9,
+   "gex_m": 66.7,
    "dist": -12.1,
    "roles": [
     "👑 King",
@@ -286,7 +288,7 @@
   },
   {
    "strike": 940,
-   "gex_m": -9.7,
+   "gex_m": -9.5,
    "dist": -22.1,
    "roles": [
     "⛽ 负曝光簇"
@@ -294,34 +296,26 @@
   },
   {
    "strike": 935,
-   "gex_m": -8.0,
+   "gex_m": -8.1,
    "dist": -27.1,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
-   "strike": 932.5,
-   "gex_m": -3.0,
-   "dist": -29.6,
-   "roles": [
-    "⛽ 负曝光簇"
-   ]
-  },
-  {
    "strike": 930,
-   "gex_m": 2.0,
+   "gex_m": 2.6,
    "dist": -32.1,
    "roles": []
   },
   {
    "strike": 925,
-   "gex_m": -8.3,
+   "gex_m": -8.4,
    "dist": -37.1,
    "roles": []
   }
  ],
- "ladder_max_m": 65.9,
+ "ladder_max_m": 66.7,
  "decision_line": {
   "spot": 962.08,
   "king": 950,
@@ -344,14 +338,67 @@
    "low": 950.5
   }
  },
- "flow": null,
+ "flow": {
+  "as_of": "09:45 ET",
+  "bull": {
+   "premium": 559860,
+   "count": 6,
+   "max_premium": 151525,
+   "max_strike": 935,
+   "top": [
+    [
+     960,
+     "C",
+     187295
+    ],
+    [
+     935,
+     "C",
+     151525
+    ],
+    [
+     950,
+     "C",
+     97500
+    ]
+   ]
+  },
+  "bear": {
+   "premium": 986645,
+   "count": 6,
+   "max_premium": 505000,
+   "max_strike": 970,
+   "top": [
+    [
+     970,
+     "P",
+     505000
+    ],
+    [
+     935,
+     "P",
+     170845
+    ],
+    [
+     960,
+     "C",
+     135000
+    ]
+   ]
+  },
+  "level": "big"
+ },
  "surge": null,
  "delta": null,
  "frame_quality": {
-  "latest_complete_et": "09:35",
+  "latest_complete_et": "09:40",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "09:40 ET",
+   "text": "⚡ 总 Gamma +2M→+5M（Δ+2M）"
+  },
   {
    "t": "09:35 ET",
    "text": "图7 · 🎯 09:31 1分钟高 966.8 到达盘前高 968.0"
