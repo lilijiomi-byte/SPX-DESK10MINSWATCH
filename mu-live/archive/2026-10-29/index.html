@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>MU 实时监控 · 存档 2026-10-29</title>
+<style>
+  :root{
+    --bg:#0a1120; --panel:#0f1a30; --line:#22314f; --ink:#dbe4f0; --muted:#8a97ad;
+    --green:#ffc400; --red:#a855f7; --blue:#4db2ff; --yellow:#ffd23f; --orange:#ff9f1c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+       padding:18px 14px 40px;}
+  .wrap{max-width:1280px; margin:0 auto;}
+  .archnav{font-size:13px; color:var(--muted); margin-bottom:12px; line-height:1.9;}
+  .archnav a{color:var(--blue); text-decoration:none; margin-right:12px;}
+  .archmark{font-size:14px; font-weight:700; color:var(--orange);
+            border:1px solid var(--orange); border-radius:20px; padding:2px 12px;}
+  header{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 18px;
+         border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:14px;}
+  header h1{font-size:22px; font-weight:700; letter-spacing:1px;}
+  header .upd{color:var(--muted); font-size:13px;}
+  header .spot{font-size:22px; font-weight:700; color:var(--yellow);}
+  header .spot small{font-size:12px; color:var(--muted); font-weight:400; margin-right:6px;}
+  .alert{display:none; background:#3d0a12; border:1px solid #ff4d5e; color:#ffd7db;
+         border-radius:10px; padding:12px 14px; font-size:15px; font-weight:700;
+         line-height:1.65; margin-bottom:14px; box-shadow:0 0 0 1px rgba(255,77,94,.25);
+         white-space:pre-line;}
+  .watchb{display:none; background:#33270a; border:1px solid #ffbf3f; color:#ffe6b0;
+         border-radius:10px; padding:12px 14px; font-size:15px; font-weight:700;
+         line-height:1.65; margin-bottom:14px; box-shadow:0 0 0 1px rgba(255,191,63,.22);
+         white-space:pre-line;}
+  .surgeb{display:none; border-radius:10px; padding:12px 14px; font-size:15px;
+         font-weight:700; line-height:1.65; margin-bottom:14px; white-space:pre-line;}
+  .surgeb.down{background:#2e0a24; border:1px solid #c0267d; color:#ffd7ec;
+         box-shadow:0 0 0 1px rgba(192,38,125,.25);}
+  .surgeb.up{background:#0d2b16; border:1px solid #2fd48c; color:#d9f7e5;
+         box-shadow:0 0 0 1px rgba(47,212,140,.22);}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr));
+         gap:10px; margin-bottom:14px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:10px;
+        padding:10px 12px;}
+  .card .k{font-size:12px; color:var(--muted); margin-bottom:4px;}
+  .card .v{font-size:20px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .card .s{font-size:12px; color:var(--muted); margin-top:2px;}
+  .neg{color:var(--red);} .pos{color:var(--green);}
+  .tgt{display:flex; gap:14px; font-size:19px; font-weight:700;}
+  .tgt .u{color:var(--green);} .tgt .f{color:var(--blue);} .tgt .d{color:var(--red);}
+  .lvgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr));
+          gap:10px; margin-bottom:10px;}
+  .lvbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
+         padding:10px 12px;}
+  .lvbox .n{font-size:12.5px; color:var(--muted); margin-bottom:3px;}
+  .lvbox .v{font-size:20px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .lvbox .d{font-size:12.5px; color:var(--muted); margin-top:2px;
+            font-variant-numeric:tabular-nums;}
+  .lvbox.near{border-color:#f5b301; box-shadow:0 0 0 1px rgba(245,179,1,.35);}
+  .lvbox.near .d{font-weight:700; color:#ffdf8a;}
+  .lvbox.atA{background:#ffc400; border-color:#ffc400; color:#191300;}
+  .lvbox.atA .n, .lvbox.atA .d{color:#5c4a00;}
+  .lvbox.atB{background:#a855f7; border-color:#a855f7; color:#ffffff;}
+  .lvbox.atB .n, .lvbox.atB .d{color:#eadcff;}
+  .lvbox.crossed{opacity:.55;}
+  .lvtag{display:inline-block; font-size:11px; font-weight:700; border:1px solid var(--line);
+         border-radius:20px; padding:1px 8px; margin-top:5px;}
+  .lvgrid.small{grid-template-columns:repeat(auto-fit,minmax(128px,1fr));}
+  .lvlist{display:flex; flex-direction:column; gap:4px; margin-bottom:14px;}
+  .lvstrip{display:flex; align-items:center; gap:8px; border:1px solid var(--line);
+           border-radius:7px; padding:6px 10px; min-width:0;
+           font-variant-numeric:tabular-nums;}
+  .lvstrip .n{flex:0 0 auto; max-width:36%; font-size:13.5px; white-space:nowrap;
+              overflow:hidden; text-overflow:ellipsis;}
+  .lvstrip .v{flex:0 0 auto; font-size:16px; font-weight:700;}
+  .lvstrip .d{flex:0 0 58px; text-align:right; font-size:12.5px; color:var(--muted);}
+  .lvstrip .tg{flex:0 0 auto; font-size:11px; font-weight:700;
+               border:1px solid var(--line); border-radius:20px; padding:1px 7px;}
+  .lvstrip .tg.tgf{border-color:var(--orange); color:var(--orange);}
+  .lvstrip .ev{flex:1 1 auto; min-width:0; font-size:11.5px; color:var(--muted);
+               white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .lvstrip .ev .evl{color:#ffd23f; font-weight:700;}
+  .lvstrip.s .ev{color:#71809a;}
+  @media (max-width:520px){ .lvstrip .ev .evold{display:none;} }
+  .lvstrip.p{background:#18294a; border-color:#33507f;}
+  .lvstrip.p .n{color:#e8eefb;}
+  .lvstrip.p .v{color:#ffffff;}
+  .lvstrip.s{background:rgba(21,32,55,.45); border-color:rgba(51,80,127,.45);}
+  .lvstrip.s .n{color:#93a5c0;}
+  .lvstrip.s .v{color:#aebdd4; font-weight:600;}
+  .lvstrip.s .d{color:#71809a;}
+  .lvstrip.near{border-color:#f5b301; box-shadow:0 0 0 1px rgba(245,179,1,.35);}
+  .lvstrip.near .d{font-weight:700; color:#ffdf8a;}
+  .lvstrip.atA{background:#ffc400; border-color:#ffc400; color:#191300;}
+  .lvstrip.atA .n, .lvstrip.atA .d{color:#5c4a00;}
+  .lvstrip.atB{background:#a855f7; border-color:#a855f7; color:#ffffff;}
+  .lvstrip.atB .n, .lvstrip.atB .d{color:#eadcff;}
+  .lvstrip.s.atA{background:#8a6f1e; border-color:#8a6f1e; color:#f2e7bd;}
+  .lvstrip.s.atA .n, .lvstrip.s.atA .d{color:#d8c88f;}
+  .lvstrip.s.atB{background:#5f4480; border-color:#5f4480; color:#e6dbf7;}
+  .lvstrip.s.atB .n, .lvstrip.s.atB .d{color:#cdbce8;}
+  .lvstrip.crossed{opacity:.55;}
+  .lvstrip.s.crossed{opacity:.42;}
+  .lvspot{display:flex; align-items:center; gap:8px; color:var(--yellow);
+          font-weight:700; font-size:13.5px; padding:2px;
+          font-variant-numeric:tabular-nums;}
+  .lvspot .ln{flex:1; border-top:2px dashed var(--yellow); opacity:.65;}
+  .lvgrid.small .lvbox{padding:7px 10px;}
+  .lvgrid.small .v{font-size:16px;}
+  .flnote{font-size:12px; color:var(--muted); margin:0 0 14px; line-height:1.6;}
+  .fqnote{display:none; font-size:13px; font-weight:700; color:#ffe6b0;
+          background:#33270a; border:1px solid #ffbf3f; border-radius:8px;
+          padding:8px 12px; margin:0 0 10px; line-height:1.6;}
+  .decline{grid-column:1 / -1; background:#12233f; border:1px solid var(--orange);
+          border-radius:10px; padding:9px 12px; font-size:15px; font-weight:700;
+          line-height:1.55; font-variant-numeric:tabular-nums;}
+  .lad{display:flex; flex-direction:column; gap:3px; margin-bottom:16px;}
+  .lrow{display:flex; align-items:center; gap:8px; background:var(--panel);
+        border:1px solid var(--line); border-radius:7px; padding:5px 9px;
+        font-variant-numeric:tabular-nums;}
+  .lrow .stk{flex:0 0 48px; font-weight:700; font-size:15px;}
+  .lrow .rl{flex:0 1 auto; min-width:0; font-size:12px; color:var(--muted);
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .lrow .bar{flex:1 1 24px; min-width:20px; height:12px; background:#0a1425;
+             border-radius:3px; overflow:hidden;}
+  .lrow .bar i{display:block; height:100%;}
+  .lrow .gv{flex:0 0 64px; text-align:right; font-size:13px; font-weight:700;}
+  .lrow .dt{flex:0 0 44px; text-align:right; font-size:12px; color:var(--muted);}
+  .lspot{display:flex; align-items:center; gap:8px; color:var(--yellow);
+         font-weight:700; font-size:13.5px; padding:2px;}
+  .lspot .ln{flex:1; border-top:2px dashed var(--yellow); opacity:.6;}
+  .lvbox.flmid{border-color:#f5b301; box-shadow:0 0 0 1px rgba(245,179,1,.35);}
+  .lvbox.flbigb{background:#ffc400; border-color:#ffc400; color:#191300;}
+  .lvbox.flbigb .n, .lvbox.flbigb .d{color:#5c4a00;}
+  .lvbox.flbigp{background:#a855f7; border-color:#a855f7; color:#ffffff;}
+  .lvbox.flbigp .n, .lvbox.flbigp .d{color:#eadcff;}
+  h3.subh{font-size:13.5px; color:var(--muted); margin:2px 0 8px; font-weight:600;}
+  .rngbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
+          padding:14px 14px 8px; margin-bottom:16px;}
+  .rngrow{display:flex; align-items:center; gap:10px; margin-bottom:4px;}
+  .rnglab{flex:0 0 40px; font-size:13px; font-weight:700;}
+  .rngtrack{position:relative; flex:1; height:26px; background:#0a1425;
+            border:1px solid var(--line); border-radius:6px;}
+  .rngband{position:absolute; top:3px; bottom:3px; border-radius:4px;}
+  .rngband.off{border:1.5px solid #2fd48c; background:rgba(47,212,140,.10);}
+  .rngband.brf{background:rgba(77,178,255,.45); border:1px solid #4db2ff;}
+  .rngctr{position:absolute; top:0; bottom:0; width:2px; background:#fff; opacity:.85; z-index:2;}
+  .rngedge{position:absolute; top:50%; transform:translateY(-50%); font-size:11px;
+           color:#c8d4e6; font-variant-numeric:tabular-nums; white-space:nowrap; z-index:2;
+           text-shadow:0 1px 3px #000;}
+  .rngspot{position:absolute; top:-4px; bottom:-4px; width:2px; background:var(--yellow); z-index:3;}
+  .rngspot.tri::before{content:"▼"; position:absolute; top:-14px; left:50%;
+           transform:translateX(-50%); color:var(--yellow); font-size:11px;}
+  .rngmeta{font-size:12.5px; color:var(--muted); margin:0 0 12px 50px;
+           font-variant-numeric:tabular-nums; line-height:1.6;}
+  .rngmeta b{color:var(--ink);}
+  .rngscale{display:flex; justify-content:space-between; gap:8px; font-size:11.5px;
+            color:var(--muted); margin:0 0 6px 50px; font-variant-numeric:tabular-nums;}
+  .dread{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--orange);
+         border-radius:8px; padding:10px 12px; font-size:14.5px; line-height:1.65;
+         margin:-6px 0 16px;}
+  .dread .k{color:var(--muted); font-size:12px; margin-right:8px;}
+  .chartbox{background:var(--panel); border:1px solid var(--line); border-radius:10px;
+            padding:8px; margin-bottom:16px;}
+  .chartbox img{width:100%; height:auto; display:block; border-radius:6px;}
+  .wk{margin-bottom:14px;}
+  .wk table{width:100%;border-collapse:collapse;font-size:13.5px;
+             font-variant-numeric:tabular-nums;}
+  .wk th{color:var(--muted);font-size:12px;font-weight:600;text-align:right;
+          padding:6px 4px;border-bottom:1px solid var(--line);}
+  .wk th:first-child{text-align:left;}
+  .wk td{text-align:right;padding:6px 4px;border-bottom:1px solid #1c2438;}
+  .wk td:first-child{text-align:left;}
+  .wk td.c{font-weight:700;}
+  h2{font-size:16px; margin:6px 0 10px; color:var(--ink);}
+  h2 span{color:var(--muted); font-size:12px; font-weight:400; margin-left:8px;}
+  .feed{display:flex; flex-direction:column; gap:8px;}
+  .item{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--blue);
+        border-radius:8px; padding:9px 12px; font-size:14.5px; line-height:1.55;
+        white-space:pre-line;}
+  .item .t{color:var(--muted); font-size:12px; margin-right:10px;
+           font-variant-numeric:tabular-nums;}
+  .empty{color:var(--muted); font-size:14px; padding:14px 4px;}
+  footer{color:var(--muted); font-size:12px; margin-top:22px; line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="archnav"><a href="../../">← 回到实时</a> · <a href="../2026-10-26/">📁 2026-10-26</a> · <a href="../2026-10-27/">📁 2026-10-27</a> · <a href="../2026-10-28/">📁 2026-10-28</a></div>
+  <header>
+    <h1>MU 实时监控</h1><span class="archmark">📁 存档 · 2026-10-29</span>
+    <div class="spot"><small>现价</small><span id="spot">—</span></div>
+    <div class="upd">更新：<span id="updated">—</span>（存档快照 · 当日最终状态 · 不再更新）</div>
+  </header>
+
+  <div class="alert" id="alert"></div>
+
+  <div class="watchb" id="watch"></div>
+
+  <div class="surgeb" id="surge"></div>
+
+  <div class="cards">
+    <div class="decline" id="decline" style="display:none"></div>
+    <div class="card"><div class="k">总 Gamma（heatmap 全帧合计）</div><div class="v" id="total">—</div><div class="s" id="regime">—</div></div>
+    <div class="card"><div class="k">Gamma Flip</div><div class="v" id="flip">—</div><div class="s" id="fliprel">—</div></div>
+    <div class="card"><div class="k">Call Wall</div><div class="v pos" id="cw">—</div><div class="s">上方最近强正节点（heatmap 全帧现算）</div></div>
+    <div class="card"><div class="k">Put Wall</div><div class="v neg" id="pw">—</div><div class="s">下方最近强正节点（heatmap 全帧现算）</div></div>
+    <div class="card"><div class="k">King 节点</div><div class="v" id="king">—</div><div class="s" id="kinggex">—</div></div>
+    <div class="card" style="grid-column:span 2; min-width:230px;"><div class="k">30m 靶向（最新截面推演）</div>
+      <div class="tgt"><span class="u">↗ <span id="tup">—</span></span><span class="f">➡ <span id="tflat">—</span></span><span class="d">↘ <span id="tdown">—</span></span></div>
+      <div class="s">上行目标 / 钉住位 / 下行承接（heatmap 最近到期结构位）</div></div>
+  </div>
+
+  <div class="fqnote" id="fqnote"></div>
+
+  <h2>重要节点<span>最新帧结构 · Δ = 最新完整 30 分钟切片的变化量</span></h2>
+  <div class="lvgrid" id="nodesrow"><div class="empty">加载中…</div></div>
+
+  <h2>点位梯<span>最新完整帧 · 现价 ±40 点 · 每行一 strike：角色 / GEX 横条（√ 强度）/ 距现价</span></h2>
+  <div class="lad" id="ladder"><div class="empty">加载中…</div></div>
+
+  <h2>点位参考<span>按价位由高到低排列 · 深色 = 主要 · 浅色 = 次要 · 现价黄条定位 · 条上小字 = 今日触碰结局（撑住/穿过/被拒/上破）· 盘前 / 前日 9:30 后锁定 · VWAP 动态 · EMA250 动态（5 分钟口径） · ≤1.5 点合并为合力位 · 到达 ±2 点发警报</span></h2>
+  <div class="lvlist" id="levels"><div class="empty">加载中…</div></div>
+
+  <h2>上周日线<span>上周一至周五 · Yahoo 日线口径（与点位表同源）</span></h2>
+  <div class="wk" id="prevweek"><div class="empty">加载中…</div></div>
+
+  <h2>🌊 Flow 簇<span id="flowasof">MU 最近到期 · 近 10 分钟主动成交（单笔 ≥$50k · ≥50 张）</span></h2>
+  <div class="lvgrid" id="flowrow"><div class="empty">加载中…</div></div>
+  <div class="flnote">仅显示 · 不改方向预判（看多簇 = call 主动买 + put 主动卖；看空簇 = put 主动买 + call 主动卖｜统计门槛：单笔 ≥$50k 且 ≥50 张｜中簇 ≥$20万 · 大簇 ≥$50万或单笔 ≥$25万；MU 量级初始校准）</div>
+
+  <h2>区间位置<span>预期波幅带（开盘价 ± 早盘 straddle 预期日波幅）· 白刻为中心 · 黄线为现价</span></h2>
+  <div class="rngbox" id="rangebox"><div class="empty">加载中…</div></div>
+
+  <div class="chartbox"><img id="chart" src="mu_heatmap_live.png" alt="MU 最近到期 heatmap 河流图"></div>
+
+  <h2>Δ 切片（30分钟 Gamma 变化量）<span>存量看点位 · 变化量看点位在往哪变 · 金 = 增强 · 紫 = 衰减</span></h2>
+  <div class="chartbox"><img id="deltachart" src="mu_delta_live.png" alt="Δ 切片图"></div>
+  <div class="dread" id="deltaread" style="display:none;"><span class="k">Exposure 解读（最新完整切片）</span><span id="deltareadtxt"></span></div>
+
+  <h2>Heatmap 重要变化<span>当日累计 · 最新在前（墙迁移 / King / 大节点增减 / 总 Gamma / Flip）</span></h2>
+  <div class="feed" id="feed"><div class="empty">加载中…</div></div>
+
+  <footer>
+    数据源：夜航社（YHS）MU 最近到期 heatmap + dealer-gex 快照（现价/flip）+ Yahoo MU 1m/5m。墙位由 heatmap 全帧现算（dealer 快照仅前 5 strike、summary 双墙退化，不用）。金额阈值按 MU 量级缩放、为初始校准。图为当日结构推演，不构成交易建议。
+  </footer>
+</div>
+
+<script>
+function fmtM(v){ if(v==null) return "—"; var s=(v>0?"+":"")+Number(v).toLocaleString("en-US",{maximumFractionDigits:0}); return s+"M"; }
+function fmtUSD(v){ if(v==null) return "—"; if(v>=1e6) return "$"+(v/1e6).toFixed(2)+"M"; if(v>=1e3) return "$"+Math.round(v/1e3)+"k"; return "$"+Math.round(v); }
+function fmtPx(v){ return v==null ? "—" : Number(v).toLocaleString("en-US",{maximumFractionDigits:2}); }
+function load(){
+  fetch("status.json?t="+Date.now()).then(function(r){ return r.json(); }).then(function(s){
+    document.getElementById("updated").textContent = s.updated_et || "—";
+    var al = document.getElementById("alert");
+    if (s.alert){ al.textContent = s.alert; al.style.display = "block"; }
+    else { al.style.display = "none"; }
+    var wb = document.getElementById("watch");
+    if (s.watch){ wb.textContent = s.watch; wb.style.display = "block"; }
+    else { wb.style.display = "none"; }
+    var sb = document.getElementById("surge");
+    if (s.surge && s.surge.text){
+      sb.textContent = s.surge.text;
+      sb.className = "surgeb " + (s.surge.dir === "up" ? "up" : "down");
+      sb.style.display = "block";
+    } else { sb.style.display = "none"; }
+    var fqEl = document.getElementById("fqnote");
+    if (fqEl){
+      if (s.frame_quality && s.frame_quality.degraded){
+        fqEl.textContent = "⚠ 最新帧不完整，已回退到 " +
+          (s.frame_quality.latest_complete_et || "—") + " 帧";
+        fqEl.style.display = "block";
+      } else { fqEl.style.display = "none"; }
+    }
+    document.getElementById("spot").textContent = fmtPx(s.spot);
+    var tot = document.getElementById("total");
+    tot.textContent = fmtM(s.total_gex_m);
+    tot.className = "v " + (s.total_gex_m < 0 ? "neg" : "pos");
+    document.getElementById("regime").textContent = s.regime || "";
+    document.getElementById("flip").textContent = fmtPx(s.flip);
+    if (s.spot!=null && s.flip!=null){
+      document.getElementById("fliprel").textContent =
+        (s.spot >= s.flip ? "现价在 Flip 上方" : "现价在 Flip 下方") +
+        "（" + (s.spot - s.flip >= 0 ? "+" : "") + (s.spot - s.flip).toFixed(1) + " 点）";
+    }
+    document.getElementById("cw").textContent = fmtPx(s.call_wall);
+    document.getElementById("pw").textContent = fmtPx(s.put_wall);
+    document.getElementById("king").textContent = fmtPx(s.king_strike);
+    document.getElementById("kinggex").textContent = "GEX " + fmtM(s.king_gex_m);
+    if (s.targets){
+      document.getElementById("tup").textContent = fmtPx(s.targets.up);
+      document.getElementById("tflat").textContent = fmtPx(s.targets.flat);
+      document.getElementById("tdown").textContent = fmtPx(s.targets.down);
+    }
+    var ndEl = document.getElementById("nodesrow");
+    if (ndEl){
+      ndEl.innerHTML = "";
+      var N = s.nodes || {};
+      function ndBox(label, big, sub){
+        var d = document.createElement("div"); d.className = "lvbox";
+        var n = document.createElement("div"); n.className = "n"; n.textContent = label;
+        var v = document.createElement("div"); v.className = "v"; v.textContent = big;
+        var dd = document.createElement("div"); dd.className = "d"; dd.textContent = sub;
+        d.appendChild(n); d.appendChild(v); d.appendChild(dd);
+        ndEl.appendChild(d);
+      }
+      function dTxt(m){ return "本片 Δ " + (m == null ? "—" : fmtM(m)); }
+      if (N.king) ndBox("👑 King 节点", fmtPx(N.king.strike),
+        "GEX " + fmtM(N.king.gex_m) + " · " + dTxt(N.king.delta_m));
+      if (N.band_up) ndBox("🧲 上方主带", fmtPx(N.band_up.lo) + "–" + fmtPx(N.band_up.hi),
+        "合计 GEX " + fmtM(N.band_up.gex_m) + " · " + dTxt(N.band_up.delta_m));
+      if (N.support){
+        var sSub = "GEX " + fmtM(N.support.gex_m) + " · " + dTxt(N.support.delta_m) +
+          (N.support.building ? " · 垒厚中" : "");
+        ndBox("🛡 下方承接", fmtPx(N.support.strike), sSub);
+        if (N.support.overlap && N.support.overlap.length){
+          var tg = document.createElement("span"); tg.className = "lvtag";
+          tg.textContent = "★ 与 " + N.support.overlap.join("·") + " 重合 · 权重最大";
+          ndEl.lastChild.appendChild(tg);
+        }
+      }
+      if (N.neg_cluster) ndBox("⛽ 负曝光簇", fmtPx(N.neg_cluster.lo) + "–" + fmtPx(N.neg_cluster.hi),
+        "合计 GEX " + fmtM(N.neg_cluster.gex_m) + "（现价 25 点内）");
+      if (!ndEl.children.length)
+        ndEl.innerHTML = '<div class="empty">节点数据未到</div>';
+    }
+    var dcEl = document.getElementById("decline");
+    if (dcEl){
+      if (s.decision_line){
+        var D = s.decision_line;
+        dcEl.textContent = "现价 " + fmtPx(D.spot) + "｜🎯 靶心 King " + fmtPx(D.king) +
+          "（" + (D.king_dist >= 0 ? "+" : "") + Number(D.king_dist).toFixed(1) +
+          "）｜失效：" + D.invalidation_text;
+        dcEl.style.display = "block";
+      } else { dcEl.style.display = "none"; }
+    }
+    var ladEl = document.getElementById("ladder");
+    if (ladEl){
+      if (s.ladder && s.ladder.length){
+        var lmax = s.ladder_max_m || 0;
+        s.ladder.forEach(function(r){ if (Math.abs(r.gex_m) > lmax) lmax = Math.abs(r.gex_m); });
+        ladEl.innerHTML = "";
+        var spotDone = false;
+        function spotRow(){
+          var d = document.createElement("div"); d.className = "lspot";
+          var a = document.createElement("span");
+          a.textContent = "现价 " + fmtPx(s.spot) + " ───";
+          var ln = document.createElement("span"); ln.className = "ln";
+          d.appendChild(a); d.appendChild(ln);
+          ladEl.appendChild(d);
+        }
+        s.ladder.forEach(function(r){
+          if (!spotDone && r.dist < 0){ spotRow(); spotDone = true; }
+          var d = document.createElement("div"); d.className = "lrow";
+          var stk = document.createElement("span"); stk.className = "stk";
+          stk.textContent = fmtPx(r.strike);
+          var rl = document.createElement("span"); rl.className = "rl";
+          rl.textContent = (r.roles || []).join(" · ");
+          var bar = document.createElement("span"); bar.className = "bar";
+          var fill = document.createElement("i");
+          fill.style.width = (lmax > 0 ? Math.sqrt(Math.abs(r.gex_m) / lmax) * 100 : 0).toFixed(1) + "%";
+          fill.style.background = r.gex_m >= 0 ? "#ffc400" : "#a855f7";
+          bar.appendChild(fill);
+          var gv = document.createElement("span"); gv.className = "gv";
+          gv.textContent = fmtM(r.gex_m);
+          gv.style.color = r.gex_m >= 0 ? "#ffc400" : "#a855f7";
+          var dt = document.createElement("span"); dt.className = "dt";
+          dt.textContent = (r.dist >= 0 ? "+" : "") + Number(r.dist).toFixed(1);
+          d.appendChild(stk); d.appendChild(rl); d.appendChild(bar);
+          d.appendChild(gv); d.appendChild(dt);
+          ladEl.appendChild(d);
+        });
+        if (!spotDone) spotRow();
+      } else {
+        ladEl.innerHTML = '<div class="empty">点位梯数据未到</div>';
+      }
+    }
+    function lvRender(el, list, spot){
+      if (!el) return;
+      el.innerHTML = "";
+      var rows = (list || []).slice().sort(function(a, b){ return b.value - a.value; });
+      if (!rows.length){
+        el.innerHTML = '<div class="empty">点位数据未到</div>';
+        return;
+      }
+      var spotDone = (spot == null);
+      function spotStrip(){
+        var d = document.createElement("div"); d.className = "lvspot";
+        var a = document.createElement("span");
+        a.textContent = "现价 " + fmtPx(spot);
+        var ln = document.createElement("span"); ln.className = "ln";
+        d.appendChild(a); d.appendChild(ln);
+        el.appendChild(d);
+      }
+      rows.forEach(function(L){
+        if (!spotDone && L.value < spot){ spotStrip(); spotDone = true; }
+        var d = document.createElement("div");
+        var cls = "lvstrip " + (L.tier === "secondary" ? "s" : "p");
+        if (L.state === "near") cls += " near";
+        if (L.state === "at") cls += (L.side === "上方" ? " atA" : " atB");
+        if (L.state === "crossed_up" || L.state === "crossed_down") cls += " crossed";
+        d.className = cls;
+        var n = document.createElement("span"); n.className = "n"; n.textContent = L.name;
+        d.appendChild(n);
+        var evs = L.today_events || [];
+        if (evs.length){
+          var ev = document.createElement("span"); ev.className = "ev";
+          ev.title = "今日触碰：" + evs.join(" · ");
+          if (evs.length > 1){
+            var old = document.createElement("span"); old.className = "evold";
+            old.textContent = evs.slice(0, -1).join(" · ") + " · ";
+            ev.appendChild(old);
+          }
+          var lastEv = document.createElement("span"); lastEv.className = "evl";
+          lastEv.textContent = evs[evs.length - 1];
+          ev.appendChild(lastEv);
+          d.appendChild(ev);
+        }
+        if (L.flip_role){
+          var fp = document.createElement("span"); fp.className = "tg tgf";
+          fp.textContent = L.flip_role.replace("变", "→");
+          d.appendChild(fp);
+        }
+        var tag = null;
+        if (L.state === "at") tag = "🎯 到达";
+        else if (L.state === "near") tag = "接近中";
+        // crossed（已破）不再单独挂牌：变暗 + 今日结局 + 翻转标签已表达
+        if (tag){
+          var tg = document.createElement("span"); tg.className = "tg";
+          tg.textContent = tag; d.appendChild(tg);
+        }
+        var v = document.createElement("span"); v.className = "v"; v.textContent = fmtPx(L.value);
+        var dd = document.createElement("span"); dd.className = "d";
+        var dv = (L.dist != null) ? L.dist : (spot != null ? L.value - spot : 0);
+        dd.textContent = (dv >= 0 ? "+" : "−") + Math.abs(dv).toFixed(1);
+        d.appendChild(v); d.appendChild(dd);
+        el.appendChild(d);
+      });
+      if (!spotDone) spotStrip();
+    }
+    if (s.levels){
+      lvRender(document.getElementById("levels"), s.levels, s.spot);
+    }
+    var pwEl = document.getElementById("prevweek");
+    if (pwEl){
+      if (s.prev_week && s.prev_week.length){
+        var h = "<table><tr><th>日期</th><th>开</th><th>高</th><th>低</th><th>收</th></tr>";
+        s.prev_week.forEach(function(r){
+          h += "<tr><td>" + r.wd + " " + r.md + "</td><td>" + fmtPx(r.o) +
+               "</td><td>" + fmtPx(r.h) + "</td><td>" + fmtPx(r.l) +
+               "</td><td class=\"c\">" + fmtPx(r.c) + "</td></tr>";
+        });
+        pwEl.innerHTML = h + "</table>";
+      } else {
+        pwEl.innerHTML = '<div class="empty">暂无上周日线</div>';
+      }
+    }
+    var frEl = document.getElementById("flowrow");
+    if (frEl){
+      if (s.flow){
+        var fa = document.getElementById("flowasof");
+        if (fa) fa.textContent = "MU 最近到期 · 近 10 分钟主动成交（单笔 ≥$50k · ≥50 张；截至 " + (s.flow.as_of || "—") + "）";
+        frEl.innerHTML = "";
+        [["看多簇", s.flow.bull, "bull"], ["看空簇", s.flow.bear, "bear"]].forEach(function(cfg){
+          var F = cfg[1] || {}, prem = F.premium || 0, mxp = F.max_premium || 0;
+          var lv = (prem >= 500000 || mxp >= 250000) ? 2 : (prem >= 200000 ? 1 : 0);
+          var d = document.createElement("div");
+          var cls = "lvbox";
+          if (lv === 1) cls += " flmid";
+          if (lv === 2) cls += (cfg[2] === "bull" ? " flbigb" : " flbigp");
+          d.className = cls;
+          var n = document.createElement("div"); n.className = "n"; n.textContent = cfg[0];
+          var v = document.createElement("div"); v.className = "v"; v.textContent = fmtUSD(prem);
+          var dd = document.createElement("div"); dd.className = "d";
+          dd.textContent = (F.count || 0) + " 笔" + (F.count ?
+            " · 最大单笔 " + fmtUSD(mxp) + " @" + (F.max_strike == null ? "—" : fmtPx(F.max_strike)) : "");
+          d.appendChild(n); d.appendChild(v); d.appendChild(dd);
+          if (F.top && F.top.length){
+            var lg = document.createElement("div"); lg.className = "d";
+            lg.textContent = F.top.map(function(t){
+              return t[0] + t[1] + " " + fmtUSD(t[2]);
+            }).join(" · ");
+            d.appendChild(lg);
+          }
+          if (lv){
+            var tg = document.createElement("span"); tg.className = "lvtag";
+            tg.textContent = lv === 2 ? "大簇" : "中簇";
+            d.appendChild(tg);
+          }
+          frEl.appendChild(d);
+        });
+      } else {
+        frEl.innerHTML = '<div class="empty">flow 数据未到</div>';
+      }
+    }
+    var rbEl = document.getElementById("rangebox");
+    if (rbEl && s.range && s.spot != null){
+      var R = s.range, rSpot = s.spot;
+      var vs = [rSpot];
+      ["official","brief"].forEach(function(k){
+        if (R[k]){ vs.push(R[k].low, R[k].high); }
+      });
+      if (R.realized){ vs.push(R.realized.low, R.realized.high); }
+      var mn = Math.min.apply(null, vs), mx = Math.max.apply(null, vs);
+      var pad = Math.max((mx - mn) * 0.06, 5); mn -= pad; mx += pad;
+      function rpct(v){ return ((v - mn) / (mx - mn) * 100) + "%"; }
+      rbEl.innerHTML = "";
+      function bandRow(lab, B, cls, withTri){
+        var row = document.createElement("div"); row.className = "rngrow";
+        var lb = document.createElement("div"); lb.className = "rnglab";
+        lb.textContent = lab; row.appendChild(lb);
+        var tr = document.createElement("div"); tr.className = "rngtrack";
+        row.appendChild(tr); rbEl.appendChild(row);
+        if (!B){
+          var e = document.createElement("div"); e.className = "empty";
+          e.textContent = "数据未到"; tr.appendChild(e); return;
+        }
+        var bd = document.createElement("div"); bd.className = "rngband " + cls;
+        bd.style.left = rpct(B.low);
+        bd.style.width = ((B.high - B.low) / (mx - mn) * 100) + "%";
+        tr.appendChild(bd);
+        var ct = document.createElement("div"); ct.className = "rngctr";
+        ct.style.left = rpct(B.center); tr.appendChild(ct);
+        var sp = document.createElement("div");
+        sp.className = "rngspot" + (withTri ? " tri" : "");
+        sp.style.left = rpct(rSpot); tr.appendChild(sp);
+        var el = document.createElement("div"); el.className = "rngedge";
+        el.style.left = "5px"; el.textContent = fmtPx(B.low); tr.appendChild(el);
+        var eh = document.createElement("div"); eh.className = "rngedge";
+        eh.style.right = "5px"; eh.textContent = fmtPx(B.high); tr.appendChild(eh);
+        var meta = document.createElement("div"); meta.className = "rngmeta";
+        var posTxt = "位置 <b>" + B.pos_pct + "%</b>";
+        if (B.pos_pct > 100) posTxt += "（已破上沿）";
+        else if (B.pos_pct < 0) posTxt += "（已破下沿）";
+        meta.innerHTML = lab + "区间 <b>" + fmtPx(B.low) + "–" + fmtPx(B.high) +
+          "</b> · 中心 <b>" + fmtPx(B.center) + "</b>（距中心 " +
+          (B.center_dist >= 0 ? "+" : "") + B.center_dist + " 点）· " + posTxt +
+          (B.consumed_pct != null ? " · 振幅消耗 <b>" + B.consumed_pct + "%</b>" : "");
+        rbEl.appendChild(meta);
+      }
+      bandRow("预期波幅", R.brief, "brf", false);
+      var sc = document.createElement("div"); sc.className = "rngscale";
+      var scL = document.createElement("span"); scL.textContent = fmtPx(mn);
+      var scM = document.createElement("span");
+      scM.textContent = "现价 " + fmtPx(rSpot) + (R.realized ?
+        " · 今日已实现 " + fmtPx(R.realized.low) + "–" + fmtPx(R.realized.high) : "");
+      var scR = document.createElement("span"); scR.textContent = fmtPx(mx);
+      sc.appendChild(scL); sc.appendChild(scM); sc.appendChild(scR);
+      rbEl.appendChild(sc);
+    }
+    var feed = document.getElementById("feed");
+    if (s.changes && s.changes.length){
+      feed.innerHTML = "";
+      s.changes.forEach(function(c){
+        var d = document.createElement("div"); d.className = "item";
+        var t = document.createElement("span"); t.className = "t"; t.textContent = c.t;
+        d.appendChild(t); d.appendChild(document.createTextNode(c.text));
+        feed.appendChild(d);
+      });
+    } else {
+      feed.innerHTML = '<div class="empty">今日暂无重要变化</div>';
+    }
+    var dr = document.getElementById("deltaread");
+    if (dr){
+      if (s.delta && s.delta.read){
+        document.getElementById("deltareadtxt").textContent = s.delta.read;
+        dr.style.display = "block";
+      } else { dr.style.display = "none"; }
+    }
+    [["chart", "mu_heatmap_live.png"], ["deltachart", "mu_delta_live.png"]].forEach(function(cfg){
+      var img = document.getElementById(cfg[0]);
+      if (!img) return;
+      var url = cfg[1] + "?t=" + Date.now();
+      var pre = new Image();
+      pre.onload = function(){ img.src = url; };
+      pre.src = url;
+    });
+  }).catch(function(e){ /* 下一轮自动重试 */ });
+}
+function loadArchiveNav(){
+  fetch("archives.json?t="+Date.now()).then(function(r){ return r.json(); }).then(function(list){
+    if (!list || !list.length) return;
+    var el = document.getElementById("archnav");
+    if (!el) return;
+    el.innerHTML = "📁 历史存档：" + list.map(function(d){
+      return '<a href="archive/' + d + '/">' + d + '</a>';
+    }).join("");
+    el.style.display = "block";
+  }).catch(function(e){});
+}
+load();
+/* 存档页：不自动刷新 */
+</script>
+</body>
+</html>
