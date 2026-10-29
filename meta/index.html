@@ -50,7 +50,8 @@
 <h1 style="margin:0 0 4px">META 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1028" aria-selected="true" href="#day-1028">10/28 周三 <span class="tab-event">FOMC</span> <span class="tab-move down">15.42</span></a>
+<a class="day-tab" role="tab" data-target="day-1029" aria-selected="true" href="#day-1029">10/29 周四 <span class="tab-move up">17.88</span></a>
+<a class="day-tab" role="tab" data-target="day-1028" aria-selected="false" href="#day-1028">10/28 周三 <span class="tab-event">FOMC</span> <span class="tab-move down">15.42</span></a>
 <a class="day-tab" role="tab" data-target="day-1027" aria-selected="false" href="#day-1027">10/27 周二 <span class="tab-move down">9.25</span></a>
 <a class="day-tab" role="tab" data-target="day-1026" aria-selected="false" href="#day-1026">10/26 周一 <span class="tab-move down">19.87</span></a>
 <a class="day-tab" role="tab" data-target="day-1023" aria-selected="false" href="#day-1023">10/23 周五 <span class="tab-solar">霜降</span> <span class="tab-move down">14.77</span></a>
@@ -113,10 +114,113 @@
 <a class="day-tab" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">11.75</span></a>
 <a class="day-tab" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">23.61</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 62 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=62;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 63 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=63;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var el=document.getElementById(id);if(el)el.scrollIntoView();}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1028" role="tabpanel">
+<article class="day-panel" id="day-1029" role="tabpanel">
+<header class="mast"><div>
+<h1>META 日内报告</h1>
+<p class="date">2026年10月29日 · 周四 · 日内报告</p>
+</div><div class="tape">
+<strong>624.54 <span class="up">+1.97%</span></strong>
+<span>开 620.92 · 高 634.68 · 低 616.80</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+<p>lib.EVENT_DAYS 无 2026-10-29 条目（周四问题未获回复，按默认正常日子处理；10-28 FOMC 决议＋盘后 MSFT/GOOGL 财报的影响体现在今日高开缺口中，但当日无 lib 登记的事件日条目，不按事件日降级/方向-only 处理）。</p>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 1DTE heatmap</h2><div class="source">
+<p>1DTE（2026-10-30到期），夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/meta_2026-10-29.png" alt="META 2026-10-29 5分钟K线与1DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（1DTE（2026-10-30到期），夜航社 78 档 5 分钟快照）</h3>
+<p>GEX 地形图（1DTE（2026-10-30到期），夜航社 78 档 5 分钟快照）：金色=正 gamma 区（做市商对冲减速带/墙），紫色=负 gamma 区（加速带）。白点为每档现货位置。</p>
+<ul>
+<li>金色带（15:55收盘帧）：635(+11.1M)/640(+10.5M)/650(+9.1M)/610(+8.5M)/645(+5.9M)/680(+5.5M)；现价 ±5 点内无正节点（622.5 仅 +1.2M），正 gamma 全在远端</li>
+<li>紫色带（15:55收盘帧）：625(-30.8M)/630(-24.9M)/642.5(-12.7M)/620(-12.0M)/612.5(-8.0M)；现价 624.65 正处 625/630 负簇之间，负 gamma 高度集中在现价一带</li>
+<li>全天最大节点：625(-35.2M@13:35)、630(-27.0M@15:30)、642.5(-20.5M@12:55)、680(+18.8M@12:30)、650(+16.3M@12:30)、640(+14.1M@15:40)</li>
+<li>结构特点：总 gamma 开盘 -1.9M → 10:30 -22.1M → 13:30 -48.8M（全天最负）→ 15:55 -40.5M，全天为负；上午价格在负 gamma 加速结构中稳步上行（619→634.68），午后回落至 624.54，收盘仍在 625 负簇边缘；收盘价在 VWAP(626.41)下方、EMA250(623.00)上方</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node purple">
+<span class="node-rank">① · 13:35</span>
+<strong>625</strong>
+<span class="metric">-35.2M</span>
+<p class="node-analysis">一、625（全天主加速带，价格全程在其上方运行）：全天变化——09:30 -18.8M → 10:00 -26.2M → 11:00 -29.2M → 13:00 -30.2M → 13:35 -35.2M 峰值 → 15:50 -34.6M → 15:55 -30.8M；影响时段——10:00 起价格收盘站上 625 后再未收回其下方（仅终根 15:55 收 624.54 勉强跌回下方）；影响方式——负 gamma 加速带而非墙：价格在其上方时负值逐级加深，配合上午稳步上行（10:00 收 625.48 → 12:55 高 634.68），属顺势加速结构，未出现被 625 压回的情形。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">② · 15:30</span>
+<strong>630</strong>
+<span class="metric">-27.0M</span>
+<p class="node-analysis">二、630（次级加速带，午后随价格回落而见顶）：全天变化——09:30 -9.2M → 10:00 -13.1M → 12:00 -13.7M → 13:00 -19.3M → 15:00 -26.7M → 15:30 -27.0M 峰值 → 15:55 -24.9M；影响时段——11:55 价格首收 630.50 站上 630，13:30 起价格回落至 630 下方（13:30 收 627.90）；影响方式——价格在其上方时负值加深助涨，午后价格跌回其下方后负值仍在 -25M 量级，未把价格进一步拖向 625 下方，收盘 624.54 仍贴在 625 一带。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">③ · 12:55</span>
+<strong>642.5</strong>
+<span class="metric">-20.5M</span>
+<p class="node-analysis">三、642.5（上方远端负簇，见顶时刻即全天高点时刻）：全天变化——10:00 -2.2M → 11:00 -12.4M → 12:00 -17.9M → 12:55 -20.5M 峰值（现货 634.39 在其下方约 8 点）→ 15:50 -15.0M → 15:55 -12.7M（释放）；影响时段——上午随价格上行逐级加深，12:55 价格见全天高 634.68 的同一档见顶；影响方式——远端负簇：价格从未到达 642.5，但其加深过程与上午加速上行同步，午后随价格回落同步释放，未兑现为向上加速到 642.5。</p>
+</article>
+<article class="node">
+<span class="node-rank">④ · 12:30</span>
+<strong>680</strong>
+<span class="metric">+18.8M</span>
+<p class="node-analysis">四、680（远端正节点，与价格无关的背景）：全天变化——09:30 +3.3M → 10:00 +11.3M → 12:30 +18.8M 峰值（现货 633.45 在其下方约 47 点）→ 13:00 +4.1M（骤衰）→ 15:00 +15.8M → 15:55 +5.5M；影响时段——全天距现价 45 点以上，从未进入价格 ±10 点范围；影响方式——纯背景正节点：13:00 的骤衰与价格午后回落同向但无因果读数，不作支撑/阻力。</p>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 12:30</span>
+<strong>650</strong>
+<span class="metric">+16.3M</span>
+<p class="node-analysis">五、650（上方正带，午间峰值后衰减）：全天变化——09:30 +6.4M → 11:00 +10.0M → 12:30 +16.3M 峰值（现货 633.45 在其下方约 17 点）→ 13:00 +15.3M → 15:50 +13.7M → 15:55 +9.1M；影响时段——上午至午间随价格上行缓慢增厚，但价格距其最近时仍有约 15 点；影响方式——远端正带：只作上方背景，价格最高 634.68 未靠近 650，未起上行压制或承接作用。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻；TOP5 排名以全天最大 |GEX| 为准（build_meta_day.py 输出一致）。</p></div>
+<div class="flow-summary">
+<h3>资金流（1DTE到期2026-10-30，11笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<div class="flow-table-wrap"><table class="flow-table">
+<thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead><tbody>
+<tr class="tr-call"><td>09:33:09</td><td><b>625.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$5.00</td><td>4.95 / 5.00</td><td><span class="side-pill">ASK</span></td><td>450</td><td><b>$0.225M</b></td><td>444</td><td>4088</td></tr>
+<tr class="tr-put"><td>10:12:35</td><td><b>660.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$37.50</td><td>36.00 / 37.50</td><td><span class="side-pill">ASK</span></td><td>100</td><td><b>$0.375M</b></td><td>203</td><td>906</td></tr>
+<tr class="tr-put"><td>10:24:30</td><td><b>660.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$35.20</td><td>35.20 / 37.50</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$0.352M</b></td><td>305</td><td>906</td></tr>
+<tr class="tr-put"><td>10:47:02</td><td><b>660.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$37.00</td><td>35.90 / 37.00</td><td><span class="side-pill">ASK</span></td><td>100</td><td><b>$0.370M</b></td><td>417</td><td>906</td></tr>
+<tr class="tr-call"><td>10:58:48</td><td><b>620.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$10.35</td><td>10.35 / 10.50</td><td><span class="side-pill">BID</span></td><td>250</td><td><b>$0.259M</b></td><td>6551</td><td>1308</td></tr>
+<tr class="tr-put"><td>11:10:46</td><td><b>625.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$4.85</td><td>4.80 / 4.85</td><td><span class="side-pill">ASK</span></td><td>505</td><td><b>$0.245M</b></td><td>3767</td><td>3166</td></tr>
+<tr class="tr-call"><td>11:35:44</td><td><b>632.5</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$5.55</td><td>5.50 / 5.55</td><td><span class="side-pill">ASK</span></td><td>445</td><td><b>$0.247M</b></td><td>6270</td><td>1292</td></tr>
+<tr class="tr-call"><td>12:43:10</td><td><b>630.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$8.95</td><td>8.90 / 8.95</td><td><span class="side-pill">ASK</span></td><td>250</td><td><b>$0.224M</b></td><td>21122</td><td>4289</td></tr>
+<tr class="tr-put"><td>13:13:30</td><td><b>632.5</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$7.00</td><td>6.95 / 7.00</td><td><span class="side-pill">ASK</span></td><td>402</td><td><b>$0.281M</b></td><td>2368</td><td>564</td></tr>
+<tr class="tr-put"><td>13:39:08</td><td><b>660.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$33.40</td><td>32.60 / 33.40</td><td><span class="side-pill">ASK</span></td><td>100</td><td><b>$0.334M</b></td><td>653</td><td>906</td></tr>
+<tr class="tr-call"><td>13:48:19</td><td><b>625.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$8.00</td><td>8.00 / 8.10</td><td><span class="side-pill">BID</span></td><td>250</td><td><b>$0.200M</b></td><td>19956</td><td>4088</td></tr>
+</tbody></table></div>
+<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ DTE≤1 ｜ META ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>
+<p class="verdict">原始 134 笔中 11 笔通过 DTE≤1（全为 2026-10-30 到期；其余为远期到期，被正确过滤）。按 flow 口径（call ask＋put bid＝偏多，put ask＋call bid＝偏空，mid 不计；无 mid 单）：偏多 4 笔 $1.048M（C625 ask $0.225M、C632.5 ask $0.247M、C630 ask $0.224M、P660 bid $0.352M），偏空 7 笔 $2.064M（P660 ask 3 笔合计 $1.079M、P625 ask $0.245M、P632.5 ask $0.281M、C620 bid $0.259M、C625 bid $0.200M）。名义偏空，但 P660 深实值 4 笔（现货约 623–627、行权 660，成交价 33.4–37.5 几乎等于内在价值，时间价值约 0.1–0.2）合计 $1.431M，应为到期前平仓/了结而非方向押注，剔除全部 P660 单后偏多 $0.696M（仅 call ask）对偏空 $0.985M（P625/P632.5 ask $0.526M＋C620/C625 bid $0.459M），仍偏空但差距收窄、无单边大单主导。方向单集中在 625–632.5 一带（上午 call ask 与 put ask 交替），与价格上午上行、午后回落的走势一致。注意：DTE≤1 大单最晚一笔为 13:48 ET，午后 14:00–16:00 时段无符合口径的大单。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 1DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 620.92（官方），全天 616.80–634.68，收 624.54（+1.97% vs 昨收 612.49；收开差 +3.62）。高开缺口 +1.38%（昨收 612.49 → 开盘 620.92），缺口全天未回补（全天低 616.80 仍高于昨收）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 620.92 → 首根收 619.24、09:35 低 616.80（全天低，仍高于昨收）→ 09:55 收 623.08 站上盘前高 622.50 → 10:00 收 625.48 站上 625 与前日高 624.42 → 11:55 首收 630.50 站上 630 → 12:55 高 634.68（全天高）→ 午后回落，13:30 收 627.90 跌回 630 下方 → 终根 15:55 收 624.54，勉强跌回 625 下方。盘前高 622.50 开盘后约 25 分钟站上且再未收回其下方；盘前低 614.75 全天未触及。</p></article>
+<article class="summary-item"><p>③ 结构：总 gamma 全天为负（开盘 -1.9M → 13:30 最负 -48.8M → 收盘 -40.5M）；625/630/642.5 负簇全天加深而非瓦解，价格在负 gamma 加速结构中上午上行、午后回落——负 gamma 放大双向波动，未形成正 gamma 钉住。收盘现价 624.65（heatmap 帧）正处 625 负簇边缘，现价 ±5 点内无正节点承接。</p></article>
+<article class="summary-item"><p>④ Junk-man 简报待核实（见 junkman 字段）：若核实无独立 META 简报，墙位记 null；收盘算法关键位见明日预测（算法值，非简报墙）。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 下方（VWAP 626.41）/ EMA250 上方（EMA250 623.00）。</p></article>
+</div></section>
+<p class="data-note">K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照；heatmap亮度=平方根连续渐变（p99裁剪）。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1028" role="tabpanel">
 <header class="mast"><div>
 <h1>META 日内报告</h1>
 <p class="date">2026年10月28日 · 周三 · 日内报告</p>
