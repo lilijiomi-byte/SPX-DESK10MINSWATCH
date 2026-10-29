@@ -207,6 +207,7 @@
     <div class="card"><div class="k">Call Wall</div><div class="v pos" id="cw">—</div><div class="s">上方最近强正节点（heatmap 全帧现算）</div></div>
     <div class="card"><div class="k">Put Wall</div><div class="v neg" id="pw">—</div><div class="s">下方最近强正节点（heatmap 全帧现算）</div></div>
     <div class="card"><div class="k">King 节点</div><div class="v" id="king">—</div><div class="s" id="kinggex">—</div></div>
+    <div class="card"><div class="k">MaxPain（OI 钉住位）</div><div class="v" id="maxpain">—</div><div class="s" id="maxpaindist">—</div></div>
     <div class="card" style="grid-column:span 2; min-width:230px;"><div class="k">30m 靶向（最新截面推演）</div>
       <div class="tgt"><span class="u">↗ <span id="tup">—</span></span><span class="f">➡ <span id="tflat">—</span></span><span class="d">↘ <span id="tdown">—</span></span></div>
       <div class="s">上行目标 / 钉住位 / 下行承接（heatmap 最近到期结构位）</div></div>
@@ -289,6 +290,18 @@ function load(){
     document.getElementById("pw").textContent = fmtPx(s.put_wall);
     document.getElementById("king").textContent = fmtPx(s.king_strike);
     document.getElementById("kinggex").textContent = "GEX " + fmtM(s.king_gex_m);
+    var mpEl = document.getElementById("maxpain");
+    if (mpEl){
+      if (s.max_pain && s.max_pain.value != null){
+        mpEl.textContent = fmtPx(s.max_pain.value);
+        var dd = (s.max_pain.dist >= 0 ? "+" : "") + Number(s.max_pain.dist).toFixed(1);
+        document.getElementById("maxpaindist").textContent =
+          (s.max_pain.expiry || "") + " 到期 · 距帧价 " + dd + " 点";
+      } else {
+        mpEl.textContent = "—";
+        document.getElementById("maxpaindist").textContent = "当日 OI 快照未到";
+      }
+    }
     if (s.targets){
       document.getElementById("tup").textContent = fmtPx(s.targets.up);
       document.getElementById("tflat").textContent = fmtPx(s.targets.flat);
