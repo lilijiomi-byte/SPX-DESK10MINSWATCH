@@ -112,6 +112,10 @@
   .fqnote{display:none; font-size:13px; font-weight:700; color:#ffe6b0;
           background:#33270a; border:1px solid #ffbf3f; border-radius:8px;
           padding:8px 12px; margin:0 0 10px; line-height:1.6;}
+  .pmbox{display:none; font-size:13px; color:#dbe7ff; background:#12233f;
+         border:1px solid #3f6fb5; border-radius:10px; padding:10px 12px;
+         margin:0 0 12px; line-height:1.7;}
+  .pmbox b{color:#fff;}
   .decline{grid-column:1 / -1; background:#12233f; border:1px solid var(--orange);
           border-radius:10px; padding:9px 12px; font-size:15px; font-weight:700;
           line-height:1.55; font-variant-numeric:tabular-nums;}
@@ -200,6 +204,8 @@
 
   <div class="surgeb" id="surge"></div>
 
+  <div class="pmbox" id="pmbox" style="display:none"></div>
+
   <div class="cards">
     <div class="decline" id="decline" style="display:none"></div>
     <div class="card"><div class="k">总 Gamma（heatmap 全帧合计）</div><div class="v" id="total">—</div><div class="s" id="regime">—</div></div>
@@ -267,6 +273,37 @@ function load(){
       sb.className = "surgeb " + (s.surge.dir === "up" ? "up" : "down");
       sb.style.display = "block";
     } else { sb.style.display = "none"; }
+    var pmEl = document.getElementById("pmbox");
+    if (pmEl){
+      var P = s.premarket;
+      if (P){
+        var html = "<b>盘前（09:25 锁定）</b>";
+        if (P.asia){
+          html += "｜🌏 亚洲高低：ES " + fmtPx(P.asia.es_h) + " / " + fmtPx(P.asia.es_l) +
+            "（≈SPX " + fmtPx(P.asia.spx_h) + " / " + fmtPx(P.asia.spx_l) + "）";
+        }
+        if (P.movers && P.movers.length){
+          html += "｜📊 盘前异动：" + P.movers.map(function(m){
+            return m.ticker + " " + (m.chg_pct >= 0 ? "+" : "") + m.chg_pct + "%" +
+              (m.reason ? "（" + m.reason + "）" : "");
+          }).join(" · ");
+        } else {
+          html += "｜📊 盘前异动：无 ≥5% 异动";
+        }
+        if (P.tonight_earnings && P.tonight_earnings.length){
+          html += "｜🌙 今晚财报：" + P.tonight_earnings.map(function(e){
+            return e.ticker + (e.note ? "（" + e.note + "）" : "");
+          }).join(" · ");
+        }
+        if (P.mu){
+          html += "｜MU 早盘：开盘 ≈" + fmtPx(P.mu.open) +
+            " · 前日高 " + fmtPx(P.mu.prev_h) + " / 前日低 " + fmtPx(P.mu.prev_l) +
+            " · 盘前高 " + fmtPx(P.mu.pm_h) + " / 盘前低 " + fmtPx(P.mu.pm_l);
+        }
+        pmEl.innerHTML = html;
+        pmEl.style.display = "block";
+      } else { pmEl.style.display = "none"; }
+    }
     var fqEl = document.getElementById("fqnote");
     if (fqEl){
       if (s.frame_quality && s.frame_quality.degraded){
