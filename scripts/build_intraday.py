@@ -32,6 +32,7 @@ from zoneinfo import ZoneInfo
 SCRIPTS = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SCRIPTS)
 from intraday_lib import (render_article, render_standalone, build_index,
+                          build_spx_branches,
                           self_check, junkman_lookup, event_lookup, weekday_cn,
                           bias_of)
 
@@ -484,7 +485,11 @@ def mu_assemble(ds, fetched):
     else:
         wall_pos = f"开盘 {opx:.2f}"
     vwap_pos = "收盘在 VWAP 上方" if cl > lv["vwap"] else "收盘在 VWAP 下方"
-    wall_line = f"call {cw:.0f} / put {pw:.0f}（{cfg.get('wall_src', '')}口径）"
+    # 墙缺失时印"无": 2026-10-29 开盘高过首帧, 首帧算法墙 call 为空,
+    # 旧写法在此对 None 用 :.0f 格式化直接崩溃, 导致整日站点页/图/数据未生成
+    cw_s = f"{cw:.0f}" if cw else "无"
+    pw_s = f"{pw:.0f}" if pw else "无"
+    wall_line = f"call {cw_s} / put {pw_s}（{cfg.get('wall_src', '')}口径）"
     if mig:
         wall_line += f"；heatmap 算法墙首→末：{'; '.join(mig)}"
     summary = [
@@ -803,7 +808,11 @@ def main():
     # 重建索引 (只追加/重排, 永不删除旧日期)
     for t in tickers:
         try:
-            dates, idx = build_index(TICKERS[t]["site"], TICKERS[t]["name"], TICKERS[t]["label"])
+            if t == "spx":
+                # SPX 分支结构: 选择页 + 全部报告 + FOMC/OPEX/非农 合集
+                dates, idx = build_spx_branches(TICKERS[t]["site"])
+            else:
+                dates, idx = build_index(TICKERS[t]["site"], TICKERS[t]["name"], TICKERS[t]["label"])
             log(f"{t}: 索引已重建, 共 {len(dates)} 个日期 (最新 {dates[0]})")
         except Exception as e:
             FAILURES.append(f"{t} 索引: {e}")
