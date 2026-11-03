@@ -1,18 +1,18 @@
 {
- "updated_et": "2026-11-03 11:55 ET",
+ "updated_et": "2026-11-03 12:05 ET",
  "alert": null,
  "watch": null,
  "spot": 856.73,
- "total_gex_m": -5.0,
+ "total_gex_m": -4.2,
  "flip": null,
  "call_wall": 860,
  "put_wall": 850,
  "king_strike": 900,
- "king_gex_m": 5.0,
- "regime": "负 Gamma",
+ "king_gex_m": 4.7,
+ "regime": "混合 Gamma",
  "targets": {
   "up": 860,
-  "flat": 855,
+  "flat": 860,
   "down": 850
  },
  "levels": [
@@ -29,8 +29,8 @@
   },
   {
    "name": "EMA250",
-   "value": 878.26,
-   "dist": 21.5,
+   "value": 877.9,
+   "dist": 21.2,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -51,8 +51,8 @@
   },
   {
    "name": "VWAP",
-   "value": 859.67,
-   "dist": 2.9,
+   "value": 859.49,
+   "dist": 2.8,
    "side": "上方",
    "state": "crossed_down",
    "tier": "primary",
@@ -184,13 +184,13 @@
   "king": {
    "strike": 900,
    "gex_m": 5,
-   "delta_m": 3
+   "delta_m": 2
   },
   "band_up": {
-   "lo": 860,
-   "hi": 865,
-   "gex_m": 5,
-   "delta_m": 0
+   "lo": 885,
+   "hi": 900,
+   "gex_m": 10,
+   "delta_m": 4
   },
   "support": {
    "strike": 850,
@@ -202,52 +202,59 @@
  },
  "ladder": [
   {
-   "strike": 890,
-   "gex_m": 2.3,
-   "dist": 33.3,
-   "roles": []
-  },
-  {
-   "strike": 885,
-   "gex_m": 1.5,
-   "dist": 28.3,
-   "roles": []
-  },
-  {
-   "strike": 875,
-   "gex_m": 1.0,
-   "dist": 18.3,
-   "roles": []
-  },
-  {
-   "strike": 870,
-   "gex_m": -5.2,
-   "dist": 13.3,
-   "roles": []
-  },
-  {
-   "strike": 865,
-   "gex_m": 1.9,
-   "dist": 8.3,
+   "strike": 895,
+   "gex_m": 1.1,
+   "dist": 38.3,
    "roles": [
     "🧲 上方主带"
    ]
   },
   {
-   "strike": 860,
-   "gex_m": 3.1,
-   "dist": 3.3,
+   "strike": 890,
+   "gex_m": 2.4,
+   "dist": 33.3,
    "roles": [
-    "🧲 上方主带",
-    "Call Wall"
+    "🧲 上方主带"
    ]
   },
   {
-   "strike": 855,
-   "gex_m": 0.9,
-   "dist": -1.7,
+   "strike": 885,
+   "gex_m": 1.6,
+   "dist": 28.3,
    "roles": [
-    "Flip 线"
+    "🧲 上方主带"
+   ]
+  },
+  {
+   "strike": 880,
+   "gex_m": -1.5,
+   "dist": 23.3,
+   "roles": []
+  },
+  {
+   "strike": 875,
+   "gex_m": 1.1,
+   "dist": 18.3,
+   "roles": []
+  },
+  {
+   "strike": 870,
+   "gex_m": -4.3,
+   "dist": 13.3,
+   "roles": []
+  },
+  {
+   "strike": 865,
+   "gex_m": 2.2,
+   "dist": 8.3,
+   "roles": []
+  },
+  {
+   "strike": 860,
+   "gex_m": 4.2,
+   "dist": 3.3,
+   "roles": [
+    "Call Wall"
    ]
   },
   {
@@ -261,7 +268,7 @@
   },
   {
    "strike": 845,
-   "gex_m": -3.2,
+   "gex_m": -3.9,
    "dist": -11.7,
    "roles": []
   },
@@ -273,19 +280,19 @@
   },
   {
    "strike": 835,
-   "gex_m": -1.7,
+   "gex_m": -1.6,
    "dist": -21.7,
    "roles": []
   },
   {
    "strike": 830,
-   "gex_m": -1.3,
+   "gex_m": -1.5,
    "dist": -26.7,
    "roles": []
   },
   {
    "strike": 825,
-   "gex_m": -5.4,
+   "gex_m": -5.5,
    "dist": -31.7,
    "roles": []
   },
@@ -296,7 +303,7 @@
    "roles": []
   }
  ],
- "ladder_max_m": 5.4,
+ "ladder_max_m": 5.5,
  "decision_line": {
   "spot": 856.73,
   "king": 900,
@@ -320,45 +327,50 @@
   }
  },
  "flow": {
-  "as_of": "11:57 ET",
+  "as_of": "12:10 ET",
   "bull": {
-   "premium": 204530,
-   "count": 2,
-   "max_premium": 125055,
-   "max_strike": 850,
-   "top": [
-    [
-     850,
-     "C",
-     125055
-    ],
-    [
-     860,
-     "C",
-     79475
-    ]
-   ]
-  },
-  "bear": {
-   "premium": 811092,
-   "count": 5,
-   "max_premium": 442530,
+   "premium": 319750,
+   "count": 3,
+   "max_premium": 175500,
    "max_strike": 860,
    "top": [
     [
      860,
-     "C",
-     442530
-    ],
-    [
-     900,
-     "C",
-     143472
-    ],
-    [
-     830,
      "P",
-     119250
+     175500
+    ],
+    [
+     880,
+     "C",
+     75000
+    ],
+    [
+     850,
+     "P",
+     69250
+    ]
+   ]
+  },
+  "bear": {
+   "premium": 718240,
+   "count": 4,
+   "max_premium": 440440,
+   "max_strike": 860,
+   "top": [
+    [
+     860,
+     "P",
+     440440
+    ],
+    [
+     870,
+     "C",
+     107500
+    ],
+    [
+     835,
+     "P",
+     88400
     ]
    ]
   },
@@ -366,50 +378,50 @@
  },
  "surge": null,
  "delta": {
-  "slice": "11:00–11:30",
-  "total_m": -5,
+  "slice": "11:30–12:00",
+  "total_m": 9,
   "top_gain": [
    [
     900,
-    3
-   ],
-   [
-    930,
     2
    ],
    [
     880,
     2
+   ],
+   [
+    860,
+    1
    ]
   ],
   "top_lose": [
    [
-    825,
-    -6
+    815,
+    -1
    ],
    [
-    790,
-    -2
+    855,
+    -1
    ],
    [
-    800,
+    795,
     -1
    ]
   ],
-  "com_now": 874.2,
-  "com_prev": 878.1,
-  "com_shift": -3.9,
-  "above_pos_m": 14,
-  "above_pos_d": 4,
-  "below_pos_m": 1,
-  "below_pos_d": -4,
-  "neg_above_d": 6,
-  "neg_below_d": -11,
+  "com_now": 884.5,
+  "com_prev": 874.2,
+  "com_shift": 10.3,
+  "above_pos_m": 18,
+  "above_pos_d": 5,
+  "below_pos_m": 2,
+  "below_pos_d": 1,
+  "neg_above_d": 2,
+  "neg_below_d": 2,
   "flip_dist": null,
-  "read": "本片无 ≥8M 的单边结构变化；衰减最大 825 -6M；正 GEX 重心基本不动（874）；现价附近曝光无单边缺口，对冲放大不明显。"
+  "read": "本片无 ≥8M 的单边结构变化；正 GEX 重心上移 10 点（874→885）；现价被正曝光包覆且在增厚，波动被对冲吸收。"
  },
  "frame_quality": {
-  "latest_complete_et": "11:55",
+  "latest_complete_et": "12:05",
   "degraded": false
  },
  "changes": [
@@ -585,8 +597,8 @@
  "max_pain": {
   "expiry": "2026-11-04",
   "value": 875,
-  "frame_spot": 855.72,
-  "dist": -19.3,
+  "frame_spot": 857.81,
+  "dist": -17.2,
   "oi_as_of": "2026-11-03T11:30:00.563Z"
  },
  "premarket": {
