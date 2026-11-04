@@ -1,25 +1,25 @@
 {
- "updated_et": "2026-11-03 15:55 ET",
+ "updated_et": "2026-11-04 09:30 ET",
  "alert": null,
  "watch": null,
- "spot": 854.94,
- "total_gex_m": 27.9,
- "flip": null,
- "call_wall": 860,
- "put_wall": 850,
+ "spot": 819.44,
+ "total_gex_m": -9.8,
+ "flip": 817.2,
+ "call_wall": 850,
+ "put_wall": null,
  "king_strike": 850,
- "king_gex_m": 11.9,
- "regime": "正 Gamma",
+ "king_gex_m": 10.4,
+ "regime": "负 Gamma",
  "targets": {
-  "up": 860,
-  "flat": 850,
-  "down": 850
+  "up": 850,
+  "flat": 820,
+  "down": 785
  },
  "levels": [
   {
-   "name": "昨日高·本周高·月高",
+   "name": "前日高·本周高·月高",
    "value": 892.08,
-   "dist": 37.1,
+   "dist": 72.6,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -28,9 +28,20 @@
    "flip_role": null
   },
   {
-   "name": "盘前高",
-   "value": 875.0,
-   "dist": 20.1,
+   "name": "盘前高·昨日高·EMA250",
+   "value": 872.94,
+   "dist": 53.5,
+   "side": "上方",
+   "state": "normal",
+   "tier": "primary",
+   "merged": true,
+   "today_events": [],
+   "flip_role": null
+  },
+  {
+   "name": "昨日低",
+   "value": 845.25,
+   "dist": 25.8,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -39,20 +50,31 @@
    "flip_role": null
   },
   {
-   "name": "EMA250",
-   "value": 869.94,
-   "dist": 15.0,
+   "name": "前日低·本周低·月低",
+   "value": 829.24,
+   "dist": 9.8,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
-   "merged": false,
+   "merged": true,
    "today_events": [],
    "flip_role": null
   },
   {
    "name": "VWAP",
-   "value": 856.5,
-   "dist": 1.6,
+   "value": 825.56,
+   "dist": 6.1,
+   "side": "上方",
+   "state": "normal",
+   "tier": "primary",
+   "merged": false,
+   "today_events": [],
+   "flip_role": null
+  },
+  {
+   "name": "盘前低",
+   "value": 821.27,
+   "dist": 1.8,
    "side": "上方",
    "state": "at",
    "tier": "primary",
@@ -61,31 +83,9 @@
    "flip_role": null
   },
   {
-   "name": "昨日低·本周低·月低",
-   "value": 829.24,
-   "dist": -25.7,
-   "side": "下方",
-   "state": "normal",
-   "tier": "primary",
-   "merged": true,
-   "today_events": [],
-   "flip_role": null
-  },
-  {
-   "name": "盘前低",
-   "value": 825.25,
-   "dist": -29.7,
-   "side": "下方",
-   "state": "normal",
-   "tier": "primary",
-   "merged": false,
-   "today_events": [],
-   "flip_role": null
-  },
-  {
    "name": "前周高",
    "value": 990.0,
-   "dist": 135.1,
+   "dist": 170.6,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -94,9 +94,9 @@
    "flip_role": null
   },
   {
-   "name": "前日高",
-   "value": 906.54,
-   "dist": 51.6,
+   "name": "前周低",
+   "value": 861.59,
+   "dist": 42.2,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -106,8 +106,8 @@
   },
   {
    "name": "昨开",
-   "value": 890.54,
-   "dist": 35.6,
+   "value": 859.93,
+   "dist": 40.5,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -116,21 +116,10 @@
    "flip_role": null
   },
   {
-   "name": "前日低·前周低",
-   "value": 861.59,
-   "dist": 6.7,
-   "side": "上方",
-   "state": "crossed_down",
-   "tier": "secondary",
-   "merged": true,
-   "today_events": [],
-   "flip_role": null
-  },
-  {
    "name": "昨收",
-   "value": 833.59,
-   "dist": -21.3,
-   "side": "下方",
+   "value": 855.1,
+   "dist": 35.7,
+   "side": "上方",
    "state": "normal",
    "tier": "secondary",
    "merged": false,
@@ -183,528 +172,272 @@
  "nodes": {
   "king": {
    "strike": 850,
-   "gex_m": 12,
-   "delta_m": 2
+   "gex_m": 10,
+   "delta_m": 0
   },
   "band_up": {
-   "lo": 855,
+   "lo": 850,
    "hi": 865,
-   "gex_m": 16,
-   "delta_m": 1
+   "gex_m": 17,
+   "delta_m": 0
   },
   "support": {
-   "strike": 850,
-   "gex_m": 12,
-   "delta_m": 2,
-   "building": true,
+   "strike": 785,
+   "gex_m": 2,
+   "delta_m": 0,
+   "building": false,
    "overlap": []
+  },
+  "neg_cluster": {
+   "lo": 810,
+   "hi": 825,
+   "gex_m": -17
   }
  },
  "ladder": [
   {
-   "strike": 890,
-   "gex_m": 3.1,
-   "dist": 35.1,
-   "roles": []
-  },
-  {
-   "strike": 875,
-   "gex_m": 4.4,
-   "dist": 20.1,
-   "roles": []
-  },
-  {
-   "strike": 865,
-   "gex_m": 8.1,
-   "dist": 10.1,
+   "strike": 855,
+   "gex_m": 0.9,
+   "dist": 35.6,
    "roles": [
     "🧲 上方主带"
    ]
   },
   {
-   "strike": 860,
-   "gex_m": 6.7,
-   "dist": 5.1,
+   "strike": 850,
+   "gex_m": 10.4,
+   "dist": 30.6,
    "roles": [
+    "👑 King",
     "🧲 上方主带",
     "Call Wall"
    ]
   },
   {
-   "strike": 855,
-   "gex_m": 1.2,
-   "dist": 0.1,
-   "roles": [
-    "🧲 上方主带",
-    "Flip 线"
-   ]
-  },
-  {
-   "strike": 850,
-   "gex_m": 11.9,
-   "dist": -4.9,
-   "roles": [
-    "👑 King",
-    "🛡 下方承接",
-    "Put Wall"
-   ]
-  },
-  {
    "strike": 845,
-   "gex_m": -3.2,
-   "dist": -9.9,
+   "gex_m": -3.4,
+   "dist": 25.6,
    "roles": []
   },
   {
    "strike": 840,
-   "gex_m": 1.7,
-   "dist": -14.9,
+   "gex_m": 2.5,
+   "dist": 20.6,
    "roles": []
   },
   {
-   "strike": 835,
-   "gex_m": -0.7,
-   "dist": -19.9,
+   "strike": 830,
+   "gex_m": 2.5,
+   "dist": 10.6,
    "roles": []
   },
   {
    "strike": 825,
-   "gex_m": -5.6,
-   "dist": -29.9,
-   "roles": []
+   "gex_m": -8.7,
+   "dist": 5.6,
+   "roles": [
+    "⛽ 负曝光簇"
+   ]
   },
   {
    "strike": 820,
-   "gex_m": -2.3,
-   "dist": -34.9,
-   "roles": []
+   "gex_m": -4.0,
+   "dist": 0.6,
+   "roles": [
+    "⛽ 负曝光簇"
+   ]
   },
   {
    "strike": 815,
-   "gex_m": -0.9,
-   "dist": -39.9,
+   "gex_m": -3.4,
+   "dist": -4.4,
+   "roles": [
+    "⛽ 负曝光簇",
+    "Flip 线"
+   ]
+  },
+  {
+   "strike": 810,
+   "gex_m": -1.3,
+   "dist": -9.4,
+   "roles": [
+    "⛽ 负曝光簇"
+   ]
+  },
+  {
+   "strike": 800,
+   "gex_m": -6.0,
+   "dist": -19.4,
+   "roles": []
+  },
+  {
+   "strike": 790,
+   "gex_m": -3.5,
+   "dist": -29.4,
+   "roles": []
+  },
+  {
+   "strike": 785,
+   "gex_m": 1.7,
+   "dist": -34.4,
+   "roles": [
+    "🛡 下方承接"
+   ]
+  },
+  {
+   "strike": 780,
+   "gex_m": 0.8,
+   "dist": -39.4,
    "roles": []
   }
  ],
- "ladder_max_m": 11.9,
+ "ladder_max_m": 10.4,
  "decision_line": {
-  "spot": 854.94,
+  "spot": 819.44,
   "king": 850,
-  "king_dist": -4.9,
-  "flip": null,
-  "invalidation_text": "Flip 暂不可用（dealer 快照与帧现价偏离 >$10，flip 已弃用）"
+  "king_dist": 30.6,
+  "flip": 817.2,
+  "invalidation_text": "跌回 817.2 下方失效"
  },
  "range": {
   "brief": {
-   "low": 810.9099975585938,
-   "high": 908.7099975585937,
-   "center": 859.81,
-   "pos_pct": 45.0,
-   "center_dist": -4.9,
-   "consumed_pct": 26.8
+   "low": 791.642529296875,
+   "high": 854.292529296875,
+   "center": 822.97,
+   "pos_pct": 44.4,
+   "center_dist": -3.5,
+   "consumed_pct": 21.4
   },
   "official": null,
   "realized": {
-   "high": 871.49,
-   "low": 845.25
+   "high": 831.0,
+   "low": 817.6
   }
  },
  "flow": {
-  "as_of": "15:57 ET",
+  "as_of": "09:36 ET",
   "bull": {
-   "premium": 209350,
-   "count": 1,
-   "max_premium": 209350,
-   "max_strike": 860,
+   "premium": 158080,
+   "count": 2,
+   "max_premium": 104095,
+   "max_strike": 825,
    "top": [
     [
-     860,
+     825,
      "C",
-     209350
+     104095
+    ],
+    [
+     825,
+     "P",
+     53985
     ]
    ]
   },
   "bear": {
-   "premium": 0,
-   "count": 0,
-   "max_premium": 0,
-   "max_strike": null,
-   "top": []
+   "premium": 741990,
+   "count": 5,
+   "max_premium": 443220,
+   "max_strike": 825,
+   "top": [
+    [
+     825,
+     "C",
+     443220
+    ],
+    [
+     815,
+     "P",
+     152505
+    ],
+    [
+     830,
+     "C",
+     146265
+    ]
+   ]
   },
-  "level": "mid"
+  "level": "big"
  },
  "surge": null,
- "delta": {
-  "slice": "15:00–15:30",
-  "total_m": 6,
-  "top_gain": [
-   [
-    850,
-    2
-   ],
-   [
-    865,
-    1
-   ],
-   [
-    815,
-    1
-   ]
-  ],
-  "top_lose": [
-   [
-    835,
-    -1
-   ],
-   [
-    930,
-    -1
-   ],
-   [
-    895,
-    -1
-   ]
-  ],
-  "com_now": 869.3,
-  "com_prev": 869.9,
-  "com_shift": -0.6,
-  "above_pos_m": 35,
-  "above_pos_d": -8,
-  "below_pos_m": 14,
-  "below_pos_d": 12,
-  "neg_above_d": -1,
-  "neg_below_d": 3,
-  "flip_dist": null,
-  "read": "本片无 ≥8M 的单边结构变化；现价上方拆带、下方垒承接；正 GEX 重心基本不动（869）；现价被正曝光包覆且在增厚，波动被对冲吸收。"
- },
+ "delta": null,
  "frame_quality": {
-  "latest_complete_et": "15:55",
+  "latest_complete_et": "09:30",
   "degraded": false
  },
  "changes": [
   {
-   "t": "15:45 ET",
-   "text": "图30 · 🌊 看空 flow 簇形成：近10min 主动 $224,990（2 笔）｜主腿 870C $150,510 · 860C $74,480"
-  },
-  {
-   "t": "15:45 ET",
-   "text": "图29 · 🌊 看多大簇：近10分钟主动成交 $371,070（2 笔，最大单笔 $259,350 @860）｜主腿 860C $371,070 → 仅显示，未改方向预判"
-  },
-  {
-   "t": "15:45 ET",
-   "text": "⚡ 总 Gamma +25M→+30M（Δ+4M）"
-  },
-  {
-   "t": "15:35 ET",
-   "text": "图28 · 🌊 看多 flow 簇形成：近10min 主动 $306,015（2 笔）｜主腿 885C $222,495 · 890C $83,520"
-  },
-  {
-   "t": "15:05 ET",
-   "text": "⚡ 总 Gamma +19M→+24M（Δ+4M）"
-  },
-  {
-   "t": "15:05 ET",
-   "text": "🟢 新增强节点 850：正 GEX 达 11M（原 9M）"
-  },
-  {
-   "t": "14:55 ET",
-   "text": "⚡ 总 Gamma +17M→+19M（Δ+2M）"
-  },
-  {
-   "t": "14:25 ET",
-   "text": "🧲 King 节点 860→850"
-  },
-  {
-   "t": "14:15 ET",
-   "text": "⚡ 总 Gamma +12M→+16M（Δ+4M）"
-  },
-  {
-   "t": "14:15 ET",
-   "text": "🧲 King 节点 850→860"
-  },
-  {
-   "t": "14:05 ET",
-   "text": "图27 · 🌊 看空大簇：近10分钟主动成交 $557,060（1 笔，最大单笔 $557,060 @850）｜主腿 850C $557,060 → 仅显示，未改方向预判"
-  },
-  {
-   "t": "14:05 ET",
-   "text": "⚡ 总 Gamma +10M→+12M（Δ+3M）"
-  },
-  {
-   "t": "14:05 ET",
-   "text": "🧲 King 节点 860→850"
-  },
-  {
-   "t": "13:45 ET",
-   "text": "图26 · 🌊 看空 flow 簇形成：近10min 主动 $215,580（3 笔）｜主腿 865C $81,295 · 860C $76,250 · 870C $58,035"
-  },
-  {
-   "t": "13:25 ET",
-   "text": "图25 · 🌊 看多 flow 簇形成：近10min 主动 $405,900（3 笔）｜主腿 890P $240,800 · 830P $89,500 · 840P $75,600"
-  },
-  {
-   "t": "13:25 ET",
-   "text": "⚡ 总 Gamma +6M→+8M（Δ+2M）"
-  },
-  {
-   "t": "13:05 ET",
-   "text": "图24 · 🌊 看多 flow 簇形成：近10min 主动 $211,640（3 笔）｜主腿 870C $81,000 · 865C $75,640 · 885C $55,000"
-  },
-  {
-   "t": "12:45 ET",
-   "text": "⚡ 总 Gamma 符号翻转：-1M→+5M"
-  },
-  {
-   "t": "12:45 ET",
-   "text": "🧲 最强正节点 860 GEX 3M→6M（+84%）"
-  },
-  {
-   "t": "12:45 ET",
-   "text": "🧲 King 节点 865→860"
-  },
-  {
-   "t": "12:35 ET",
-   "text": "图23 · 🌊 看多 flow 簇形成：近10min 主动 $283,780（3 笔）｜主腿 855P $113,715 · 870C $99,000 · 840P $71,065"
-  },
-  {
-   "t": "12:35 ET",
-   "text": "⚡ 总 Gamma 符号翻转：+1M→-1M"
-  },
-  {
-   "t": "12:25 ET",
-   "text": "⚡ 总 Gamma 符号翻转：-3M→+1M"
-  },
-  {
-   "t": "12:15 ET",
-   "text": "🧲 最强正节点 865 GEX 2M→6M（+150%）"
-  },
-  {
-   "t": "12:15 ET",
-   "text": "图22 · 🧲 King 节点 900→865"
-  },
-  {
-   "t": "11:55 ET",
-   "text": "图21 · 🌊 看空大簇：近10分钟主动成交 $811,092（5 笔，最大单笔 $442,530 @860）｜主腿 860C $442,530 · 900C $143,472 · 830P $119,250 → 仅显示，未改方向预判"
-  },
-  {
-   "t": "11:55 ET",
-   "text": "图20 · 🌊 看空 flow 簇形成：近10min 主动 $811,092（5 笔）｜主腿 860C $442,530 · 900C $143,472 · 830P $119,250"
-  },
-  {
-   "t": "11:55 ET",
-   "text": "图19 · 🌊 看多 flow 簇形成：近10min 主动 $204,530（2 笔）｜主腿 850C $125,055 · 860C $79,475"
-  },
-  {
-   "t": "11:55 ET",
-   "text": "⚡ 总 Gamma -11M→-5M（Δ+6M）"
-  },
-  {
-   "t": "11:55 ET",
-   "text": "🧲 King@900 GEX +4M→+5M（+34%）"
-  },
-  {
-   "t": "11:55 ET",
-   "text": "🧱 Put Wall 855→850 下移"
-  },
-  {
-   "t": "11:50 ET",
-   "text": "⚡ 总 Gamma -14M→-11M（Δ+3M）"
-  },
-  {
-   "t": "11:35 ET",
-   "text": "⚡ 总 Gamma -16M→-13M（Δ+3M）"
-  },
-  {
-   "t": "11:35 ET",
-   "text": "图18 · 🧱 Put Wall 795→855 上移"
-  },
-  {
-   "t": "11:35 ET",
-   "text": "🧱 Call Wall 850→860 上移"
-  },
-  {
-   "t": "11:30 ET",
-   "text": "⚡ 总 Gamma -10M→-16M（Δ-6M）"
-  },
-  {
-   "t": "11:30 ET",
-   "text": "图17 · 🧱 Put Wall 855→795 下移"
-  },
-  {
-   "t": "11:30 ET",
-   "text": "🧱 Call Wall 860→850 下移"
-  },
-  {
-   "t": "11:25 ET",
-   "text": "⚡ 总 Gamma -7M→-10M（Δ-2M）"
-  },
-  {
-   "t": "11:15 ET",
-   "text": "图16 · 🌊 看多大簇：近10分钟主动成交 $706,650（5 笔，最大单笔 $224,990 @850）｜主腿 840P $419,185 · 850P $224,990 · 845P $62,475 → 仅显示，未改方向预判"
-  },
-  {
-   "t": "11:15 ET",
-   "text": "图15 · 🌊 看多 flow 簇形成：近10min 主动 $706,650（5 笔）｜主腿 840P $419,185 · 850P $224,990 · 845P $62,475"
-  },
-  {
-   "t": "11:10 ET",
-   "text": "⚡ 总 Gamma -13M→-8M（Δ+4M）"
-  },
-  {
-   "t": "11:10 ET",
-   "text": "图14 · 🧲 King 节点 855→900"
-  },
-  {
-   "t": "10:55 ET",
-   "text": "图13 · 🌊 看多 flow 簇形成：近10min 主动 $258,320（3 笔）｜主腿 870C $109,455 · 905C $83,700 · 900C $65,165"
-  },
-  {
-   "t": "10:50 ET",
-   "text": "⚡ 总 Gamma -9M→-11M（Δ-2M）"
-  },
-  {
-   "t": "10:45 ET",
-   "text": "图12 · 🌊 看空大簇：近10分钟主动成交 $339,090（2 笔，最大单笔 $273,540 @840）｜主腿 840P $339,090 → 仅显示，未改方向预判"
-  },
-  {
-   "t": "10:45 ET",
-   "text": "图11 · 🌊 看空 flow 簇形成：近10min 主动 $339,090（2 笔）｜主腿 840P $339,090"
-  },
-  {
-   "t": "10:35 ET",
-   "text": "图10 · 🌊 看多 flow 簇形成：近10min 主动 $289,000（3 笔）｜主腿 840P $289,000"
-  },
-  {
-   "t": "10:15 ET",
-   "text": "⚡ 总 Gamma -13M→-10M（Δ+3M）"
-  },
-  {
-   "t": "10:15 ET",
-   "text": "🧲 King 节点 860→855"
-  },
-  {
-   "t": "10:15 ET",
-   "text": "图9 · 🧱 Put Wall 795→855 上移"
-  },
-  {
-   "t": "10:10 ET",
-   "text": "⚡ 总 Gamma -10M→-13M（Δ-2M）"
-  },
-  {
-   "t": "10:10 ET",
-   "text": "🧲 King 节点 865→860"
-  },
-  {
-   "t": "10:10 ET",
-   "text": "图8 · 🧱 Put Wall 850→795 下移"
-  },
-  {
-   "t": "10:05 ET",
-   "text": "🧱 Put Wall 855→850 下移"
-  },
-  {
-   "t": "09:55 ET",
-   "text": "⚡ 总 Gamma -13M→-11M（Δ+3M）"
-  },
-  {
-   "t": "09:50 ET",
-   "text": "⚡ 总 Gamma -8M→-13M（Δ-5M）"
-  },
-  {
-   "t": "09:50 ET",
-   "text": "🧱 Put Wall 865→855 下移"
-  },
-  {
-   "t": "09:50 ET",
-   "text": "🧱 Call Wall 875→860 下移"
-  },
-  {
-   "t": "09:45 ET",
-   "text": "图7 · 🌊 看空大簇：近10分钟主动成交 $589,028（6 笔，最大单笔 $171,000 @875）｜主腿 875C $255,250 · 830P $98,250 · 890C $88,800 → 仅显示，未改方向预判"
-  },
-  {
-   "t": "09:40 ET",
-   "text": "图6 · 🌊 看空 flow 簇形成：近10min 主动 $344,050（3 笔）｜主腿 875C $255,250 · 890C $88,800"
-  },
-  {
-   "t": "09:40 ET",
-   "text": "🧱 Call Wall 885→875 下移"
-  },
-  {
-   "t": "09:35 ET",
-   "text": "图5 · 🎯 09:31 1分钟低 856.6 到达前日低·前周低·VWAP 861.6"
-  },
-  {
-   "t": "09:35 ET",
-   "text": "图4 · 🧲 King 节点 950→865"
+   "t": "09:30 ET",
+   "text": "图3 · 🌊 看空大簇：近10分钟主动成交 $741,990（5 笔，最大单笔 $443,220 @825）｜主腿 825C $443,220 · 815P $152,505 · 830C $146,265 → 仅显示，未改方向预判"
   },
   {
    "t": "09:30 ET",
-   "text": "图3 · 🌊 看空 flow 簇形成：近10min 主动 $386,020（3 笔）｜主腿 855C $208,060 · 810P $120,000 · 880C $57,960"
+   "text": "图2 · 🌊 看空 flow 簇形成：近10min 主动 $741,990（5 笔）｜主腿 825C $443,220 · 815P $152,505 · 830C $146,265"
   },
   {
    "t": "09:30 ET",
-   "text": "图2 · 🌊 看多大簇：近10分钟主动成交 $837,250（5 笔，最大单笔 $214,575 @855）｜主腿 855C $214,575 · 850P $204,875 · 875C $192,000 → 仅显示，未改方向预判"
-  },
-  {
-   "t": "09:30 ET",
-   "text": "图1 · 🌊 看多 flow 簇形成：近10min 主动 $837,250（5 笔）｜主腿 855C $214,575 · 850P $204,875 · 875C $192,000"
+   "text": "图1 · 🎯 现价 819.4 到达盘前低 821.3"
   }
  ],
  "max_pain": {
   "expiry": "2026-11-04",
-  "value": 875,
-  "frame_spot": 854.94,
-  "dist": -20.1,
-  "oi_as_of": "2026-11-03T11:30:00.563Z"
+  "value": 865,
+  "frame_spot": 818.49,
+  "dist": -46.5,
+  "oi_as_of": "2026-11-04T11:30:00.566Z"
  },
  "premarket": {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "expiry": "2026-11-04",
   "asia": {
-   "es_h": 7585.5,
-   "es_l": 7546.0,
-   "es_open": 7583.25,
-   "spx_h": 7545.4,
-   "spx_l": 7505.9,
-   "basis": 40.1,
+   "es_h": 7684.75,
+   "es_l": 7490.0,
+   "es_open": 7574.0,
+   "spx_h": 7565.1,
+   "spx_l": 7370.4,
+   "basis": 119.6,
    "window": "20:00-06:00ET"
   },
-  "movers": [],
+  "movers": [
+   {
+    "ticker": "TSLA",
+    "price": 378.56,
+    "prev": 398.5,
+    "chg_pct": -5.0,
+    "reason": "中期选举民主党横扫两院：市场担心对Musk系公司（自动驾驶、政府合同）监管审查加严、数据中心审批受限，及潜在SpaceX-Tesla合并受更严审查，政治风险溢价压价；大盘期货同期反弹，属个股/政治因素而非大盘拖累。"
+   }
+  ],
   "mu": {
-   "open": 861.55,
-   "prev_h": 892.08,
-   "prev_l": 829.24,
-   "pm_h": 875.0,
-   "pm_l": 825.25
+   "open": 829.04,
+   "prev_h": 871.49,
+   "prev_l": 845.25,
+   "pm_h": 872.94,
+   "pm_l": 826.0
   },
-  "as_of_et": "09:25",
+  "as_of_et": "09:26",
   "tonight_earnings": [
    {
-    "ticker": "AMD",
-    "when": "盘后",
-    "note": "Q3，预期EPS约1.94美元、营收约131亿美元（同比+42%）；看数据中心收入与MI350/MI450指引，MU同行半导体风向标，周三开盘gap风险最大来源"
+    "ticker": "QCOM",
+    "time": "盘后",
+    "meaning": "半导体同行重头：看手机业务复苏＋AI推理/数据中心订单能否兑现，期权隐含约±9.6%波动，明日芯片情绪风向标。"
    },
    {
-    "ticker": "ANET",
-    "when": "盘后",
-    "note": "Q3，预期EPS约1.08美元；AI网络需求风向标，强弱会带動AI硬件链情绪"
+    "ticker": "ARM",
+    "time": "盘后",
+    "meaning": "CPU/AI授权龙头：AMD超预期后，市场看AI需求是否从GPU扩散到CPU/终端，决定芯片轮动广度。"
    },
    {
-    "ticker": "SMCI",
-    "when": "盘后",
-    "note": "Q3，预期EPS约1.20美元；AI服务器出货与毛利率定AI硬件链情绪，与MU存储需求同链"
+    "ticker": "COHR",
+    "time": "盘后",
+    "meaning": "光通信/数据中心互联：看AI数据中心光模块需求，间接印证存储/算力链景气。"
    },
    {
-    "ticker": "ALAB",
-    "when": "盘后",
-    "note": "Q3，预期EPS约1.19美元；AI互连芯片，属半导体链情绪指标，对MU直接影响有限"
-   },
-   {
-    "ticker": "AMGN",
-    "when": "盘后",
-    "note": "Q3，预期EPS约5.79美元；大权重医药股，对MU/SPX科技情绪直接影响有限"
+    "ticker": "APP",
+    "time": "盘后",
+    "meaning": "大权重软件：盘后波动可能带大盘情绪，不直接决定MU，但影响科技风险偏好。"
    }
-  ]
+  ],
+  "walls": "未知（YHS dealer-gex快照503不可用）",
+  "speed": "未知（YHS dealer-gex快照503不可用）"
  }
 }
