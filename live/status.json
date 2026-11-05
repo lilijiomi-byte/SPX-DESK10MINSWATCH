@@ -1,18 +1,18 @@
 {
- "updated_et": "2026-11-05 14:10 ET",
+ "updated_et": "2026-11-05 14:15 ET",
  "alert": null,
  "watch": null,
  "spot": 7399.44,
- "total_gex_m": 27.1,
- "flip": 7398.2,
+ "total_gex_m": 38.6,
+ "flip": 7395.6,
  "call_wall": 7450,
  "put_wall": 7380,
  "king_strike": 7380,
- "king_gex_m": -8.5,
+ "king_gex_m": -7.4,
  "regime": "正 Gamma",
  "targets": {
   "up": 7415,
-  "flat": 7400,
+  "flat": 7395,
   "down": 7360
  },
  "levels": [
@@ -66,8 +66,8 @@
   },
   {
    "name": "EMA250",
-   "value": 7575.09,
-   "dist": 175.6,
+   "value": 7573.66,
+   "dist": 174.2,
    "side": "上方",
    "state": "crossed_down",
    "tier": "primary",
@@ -93,10 +93,10 @@
   },
   {
    "name": "VWAP",
-   "value": 7384.39,
-   "dist": -15.1,
-   "side": "下方",
-   "state": "crossed_up",
+   "value": 7400.82,
+   "dist": 1.4,
+   "side": "上方",
+   "state": "at",
    "tier": "primary",
    "merged": false,
    "today_events": [
@@ -113,6 +113,7 @@
     "↑被拒",
     "↑上破",
     "↓穿过",
+    "↑被拒",
     "↑被拒",
     "↑被拒",
     "↑被拒"
@@ -184,18 +185,18 @@
  "nodes": {
   "king": {
    "strike": 7360,
-   "gex_m": 2507,
+   "gex_m": 2696,
    "delta_m": 570
   },
   "band_up": {
    "lo": 7415,
    "hi": 7425,
-   "gex_m": 1991,
+   "gex_m": 2285,
    "delta_m": 7
   },
   "support": {
    "strike": 7360,
-   "gex_m": 2507,
+   "gex_m": 2696,
    "delta_m": 570,
    "building": true,
    "overlap": []
@@ -204,13 +205,13 @@
  "ladder": [
   {
    "strike": 7435,
-   "gex_m": -367.5,
+   "gex_m": -357.0,
    "dist": 35.6,
    "roles": []
   },
   {
    "strike": 7425,
-   "gex_m": 588.0,
+   "gex_m": 705.1,
    "dist": 25.6,
    "roles": [
     "🧲 上方主带"
@@ -218,7 +219,7 @@
   },
   {
    "strike": 7420,
-   "gex_m": 762.7,
+   "gex_m": 838.7,
    "dist": 20.6,
    "roles": [
     "🧲 上方主带"
@@ -226,7 +227,7 @@
   },
   {
    "strike": 7415,
-   "gex_m": 639.9,
+   "gex_m": 741.4,
    "dist": 15.6,
    "roles": [
     "🧲 上方主带"
@@ -234,15 +235,13 @@
   },
   {
    "strike": 7400,
-   "gex_m": -788.9,
+   "gex_m": -662.1,
    "dist": 0.6,
-   "roles": [
-    "Flip 线"
-   ]
+   "roles": []
   },
   {
    "strike": 7380,
-   "gex_m": -417.0,
+   "gex_m": -478.8,
    "dist": -19.4,
    "roles": [
     "Put Wall"
@@ -250,19 +249,19 @@
   },
   {
    "strike": 7375,
-   "gex_m": -98.4,
+   "gex_m": -71.0,
    "dist": -24.4,
    "roles": []
   },
   {
    "strike": 7370,
-   "gex_m": -270.7,
+   "gex_m": -257.8,
    "dist": -29.4,
    "roles": []
   },
   {
    "strike": 7360,
-   "gex_m": 2506.5,
+   "gex_m": 2695.5,
    "dist": -39.4,
    "roles": [
     "👑 King",
@@ -270,13 +269,13 @@
    ]
   }
  ],
- "ladder_max_m": 2506.5,
+ "ladder_max_m": 2695.5,
  "decision_line": {
   "spot": 7399.44,
   "king": 7360,
   "king_dist": -39.4,
-  "flip": 7398.2,
-  "invalidation_text": "跌回 7398.2 下方失效"
+  "flip": 7395.6,
+  "invalidation_text": "跌回 7395.6 下方失效"
  },
  "range": {
   "brief": {
@@ -301,13 +300,18 @@
   }
  },
  "flow": {
-  "as_of": "14:15 ET",
+  "as_of": "14:21 ET",
   "bull": {
-   "premium": 1970840,
-   "count": 13,
-   "max_premium": 320000,
-   "max_strike": 7375,
+   "premium": 3348090,
+   "count": 21,
+   "max_premium": 522450,
+   "max_strike": 7465,
    "top": [
+    [
+     7465,
+     "P",
+     522450
+    ],
     [
      7375,
      "C",
@@ -317,17 +321,12 @@
      7405,
      "C",
      387010
-    ],
-    [
-     7400,
-     "C",
-     269290
     ]
    ]
   },
   "bear": {
-   "premium": 3413430,
-   "count": 22,
+   "premium": 4087500,
+   "count": 28,
    "max_premium": 368440,
    "max_strike": 7405,
    "top": [
@@ -342,9 +341,9 @@
      727980
     ],
     [
-     7360,
-     "P",
-     556840
+     7410,
+     "C",
+     542460
     ]
    ]
   },
@@ -391,11 +390,11 @@
   "below_pos_d": 2285,
   "neg_above_d": -575,
   "neg_below_d": 643,
-  "flip_dist": -29.5,
+  "flip_dist": -26.9,
   "read": "7320 +588M 新垒；增厚最大 7320 +588M、7360 +570M；衰减最大 7500 -467M；现价上方拆带、下方垒承接；正 GEX 重心下移 15 点（7374→7359）；现价被正曝光包覆且在增厚，波动被对冲吸收。"
  },
  "frame_quality": {
-  "latest_complete_et": "14:10",
+  "latest_complete_et": "14:15",
   "degraded": false
  },
  "changes": [
