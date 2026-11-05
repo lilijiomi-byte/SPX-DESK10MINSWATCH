@@ -50,7 +50,8 @@
 <h1 style="margin:0 0 4px">MU 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1103" aria-selected="true" href="#day-1103">11/3 周二 <span class="tab-move down">26.24</span></a>
+<a class="day-tab" role="tab" data-target="day-1105" aria-selected="true" href="#day-1105">11/5 周四 <span class="tab-move down">111.81</span></a>
+<a class="day-tab" role="tab" data-target="day-1103" aria-selected="false" href="#day-1103">11/3 周二 <span class="tab-move down">26.24</span></a>
 <a class="day-tab" role="tab" data-target="day-1102" aria-selected="false" href="#day-1102">11/2 周一 <span class="tab-move down">62.84</span></a>
 <a class="day-tab" role="tab" data-target="day-1030" aria-selected="false" href="#day-1030">10/30 周五 <span class="tab-move up">44.95</span></a>
 <a class="day-tab" role="tab" data-target="day-1029" aria-selected="false" href="#day-1029">10/29 周四 <span class="tab-move down">43.77</span></a>
@@ -117,10 +118,180 @@
 <a class="day-tab" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">32.67</span></a>
 <a class="day-tab" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">58.21</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 66 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=66;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 67 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=67;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var el=document.getElementById(id);if(el)el.scrollIntoView();}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1103" role="tabpanel">
+<article class="day-panel" id="day-1105" role="tabpanel">
+<header class="mast"><div>
+<h1>MU 日内报告</h1>
+<p class="date">2026年11月5日 · 周四 · 日内报告</p>
+</div><div class="tape">
+<strong>656.39 <span class="down">-12.79%</span></strong>
+<span>开 752.69 · 高 761.81 · 低 650.00</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 1DTE heatmap</h2><div class="source">
+<p>1DTE（2026-11-06到期），夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/mu_2026-11-05.png" alt="MU 2026-11-05 5分钟K线与1DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（1DTE，夜航社 78 档 5 分钟快照）</h3>
+<p>GEX 地形图（1DTE，夜航社 78 档 5 分钟快照）：金色=正 gamma 区（做市商对冲减速带/墙），紫色=负 gamma 区（加速带）。白点为每档现货位置。call wall 775→670（下移）；put wall 745→630（下移）。</p>
+<ul>
+<li>金色带（收盘档）：680(+4.6M)、670(+4.2M)、690(+4.1M)</li>
+<li>紫色带（收盘档）：650(-4.5M)、550(-2.6M)、722(-2.6M)</li>
+<li>全天最大节点：650(-5.9M@13:50)、690(+5.5M@15:45)、670(+5.3M@15:05)、680(+5.1M@15:30)、722(-4.8M@14:55)</li>
+<li>尾盘节点变化：650 -1.2M→-4.5M；690 -0.9M→+4.1M；670 +0.5M→+4.2M</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node purple">
+<span class="node-rank">① · 13:50</span>
+<strong>650</strong>
+<span class="metric">-5.9M</span>
+<p class="node-analysis">一、650（负 gamma 加速带）：全天变化——从 -1.2M 到 -5.9M；影响时段——13:50 ET 达到峰值，当时现货约 670.95；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:45</span>
+<strong>690</strong>
+<span class="metric">+5.5M</span>
+<p class="node-analysis">二、690（正 gamma 墙/地板）：全天变化——由 -0.9M 翻转为 +5.5M；影响时段——15:45 ET 达到峰值，当时现货约 669.06；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">③ · 15:05</span>
+<strong>670</strong>
+<span class="metric">+5.3M</span>
+<p class="node-analysis">三、670（正 gamma 墙/地板）：全天变化——从 +0.5M 到 +5.3M；影响时段——15:05 ET 达到峰值，当时现货约 676.43；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">④ · 15:30</span>
+<strong>680</strong>
+<span class="metric">+5.1M</span>
+<p class="node-analysis">四、680（正 gamma 墙/地板）：全天变化——从 +0.4M 到 +5.1M；影响时段——15:30 ET 达到峰值，当时现货约 675.15；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">⑤ · 14:55</span>
+<strong>722.5</strong>
+<span class="metric">-4.8M</span>
+<p class="node-analysis">五、722（负 gamma 加速带）：全天变化——从 -1.7M 到 -4.8M；影响时段——14:55 ET 达到峰值，当时现货约 691.22；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流（1DTE，全天79笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<div class="flow-table-wrap"><table class="flow-table">
+<thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead><tbody>
+<tr class="tr-call"><td>09:31:31</td><td><b>755.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$14.45</td><td>14.45 / 14.65</td><td><span class="side-pill">BID</span></td><td>300</td><td><b>$0.433M</b></td><td>679</td><td>30</td></tr>
+<tr class="tr-call"><td>09:31:48</td><td><b>755.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$15.75</td><td>15.55 / 15.75</td><td><span class="side-pill">ASK</span></td><td>300</td><td><b>$0.472M</b></td><td>1013</td><td>30</td></tr>
+<tr class="tr-put"><td>09:33:46</td><td><b>855.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$100.50</td><td>94.30 / 100.50</td><td><span class="side-pill">ASK</span></td><td>57</td><td><b>$0.573M</b></td><td>101</td><td>768</td></tr>
+<tr class="tr-put"><td>09:38:00</td><td><b>820.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$80.00</td><td>78.95 / 80.00</td><td><span class="side-pill">ASK</span></td><td>50</td><td><b>$0.400M</b></td><td>74</td><td>1859</td></tr>
+<tr class="tr-put"><td>09:40:58</td><td><b>737.5</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$20.10</td><td>19.90 / 20.30</td><td><span class="side-pill">MID</span></td><td>100</td><td><b>$0.201M</b></td><td>580</td><td>578</td></tr>
+<tr class="tr-put"><td>09:51:08</td><td><b>800.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$80.25</td><td>75.00 / 80.25</td><td><span class="side-pill">ASK</span></td><td>50</td><td><b>$0.401M</b></td><td>660</td><td>3968</td></tr>
+<tr class="tr-put"><td>09:51:46</td><td><b>735.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$28.80</td><td>28.80 / 29.35</td><td><span class="side-pill">BID</span></td><td>130</td><td><b>$0.374M</b></td><td>1659</td><td>1757</td></tr>
+<tr class="tr-put"><td>09:52:15</td><td><b>730.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$25.45</td><td>25.20 / 25.70</td><td><span class="side-pill">MID</span></td><td>100</td><td><b>$0.255M</b></td><td>3511</td><td>1782</td></tr>
+<tr class="tr-put"><td>09:53:05</td><td><b>725.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$23.80</td><td>23.80 / 24.00</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$0.238M</b></td><td>1835</td><td>807</td></tr>
+<tr class="tr-put"><td>09:53:12</td><td><b>750.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$40.00</td><td>39.70 / 40.00</td><td><span class="side-pill">ASK</span></td><td>100</td><td><b>$0.400M</b></td><td>4413</td><td>3255</td></tr>
+<tr class="tr-put"><td>09:55:08</td><td><b>720.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$21.30</td><td>21.05 / 21.30</td><td><span class="side-pill">ASK</span></td><td>109</td><td><b>$0.232M</b></td><td>3192</td><td>857</td></tr>
+<tr class="tr-call"><td>09:55:48</td><td><b>715.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$20.35</td><td>20.00 / 20.35</td><td><span class="side-pill">ASK</span></td><td>125</td><td><b>$0.254M</b></td><td>302</td><td>5</td></tr>
+<tr class="tr-put"><td>09:57:43</td><td><b>710.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$20.12</td><td>20.00 / 20.25</td><td><span class="side-pill">MID</span></td><td>100</td><td><b>$0.201M</b></td><td>2748</td><td>1511</td></tr>
+<tr class="tr-put"><td>09:58:09</td><td><b>735.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$36.00</td><td>36.00 / 36.30</td><td><span class="side-pill">BID</span></td><td>63</td><td><b>$0.227M</b></td><td>1846</td><td>1757</td></tr>
+<tr class="tr-put"><td>09:58:52</td><td><b>700.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$14.49</td><td>14.50 / 14.60</td><td><span class="side-pill">BID</span></td><td>157</td><td><b>$0.228M</b></td><td>10740</td><td>2759</td></tr>
+<tr class="tr-put"><td>10:01:11</td><td><b>735.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$35.00</td><td>34.65 / 35.00</td><td><span class="side-pill">ASK</span></td><td>83</td><td><b>$0.290M</b></td><td>1980</td><td>1757</td></tr>
+<tr class="tr-put"><td>10:10:38</td><td><b>700.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$19.70</td><td>19.45 / 19.70</td><td><span class="side-pill">ASK</span></td><td>171</td><td><b>$0.337M</b></td><td>14665</td><td>2759</td></tr>
+<tr class="tr-put"><td>10:13:26</td><td><b>700.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$22.40</td><td>22.40 / 22.60</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$0.224M</b></td><td>15891</td><td>2759</td></tr>
+<tr class="tr-put"><td>10:21:34</td><td><b>700.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$22.30</td><td>22.30 / 22.35</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$0.223M</b></td><td>17856</td><td>2759</td></tr>
+<tr class="tr-put"><td>10:28:03</td><td><b>790.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$103.00</td><td>103.00 / 106.05</td><td><span class="side-pill">BID</span></td><td>90</td><td><b>$0.927M</b></td><td>441</td><td>1079</td></tr>
+<tr class="tr-put"><td>10:31:34</td><td><b>790.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$95.00</td><td>91.10 / 95.00</td><td><span class="side-pill">ASK</span></td><td>80</td><td><b>$0.760M</b></td><td>521</td><td>1079</td></tr>
+<tr class="tr-put"><td>10:32:59</td><td><b>790.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$95.00</td><td>90.90 / 95.00</td><td><span class="side-pill">ASK</span></td><td>100</td><td><b>$0.950M</b></td><td>641</td><td>1079</td></tr>
+<tr class="tr-put"><td>10:42:09</td><td><b>690.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$23.00</td><td>22.80 / 23.00</td><td><span class="side-pill">ASK</span></td><td>102</td><td><b>$0.235M</b></td><td>9871</td><td>1246</td></tr>
+<tr class="tr-put"><td>10:46:47</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$19.23</td><td>19.20 / 19.35</td><td><span class="side-pill">ASK</span></td><td>197</td><td><b>$0.379M</b></td><td>7372</td><td>734</td></tr>
+<tr class="tr-put"><td>10:47:10</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$19.65</td><td>19.55 / 19.65</td><td><span class="side-pill">ASK</span></td><td>300</td><td><b>$0.590M</b></td><td>7734</td><td>734</td></tr>
+<tr class="tr-put"><td>10:47:13</td><td><b>680.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$23.35</td><td>23.35 / 23.45</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$0.234M</b></td><td>8807</td><td>858</td></tr>
+<tr class="tr-put"><td>10:47:22</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$18.15</td><td>18.00 / 18.15</td><td><span class="side-pill">ASK</span></td><td>135</td><td><b>$0.245M</b></td><td>8110</td><td>734</td></tr>
+<tr class="tr-put"><td>10:48:25</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$17.10</td><td>17.10 / 17.35</td><td><span class="side-pill">BID</span></td><td>136</td><td><b>$0.233M</b></td><td>8439</td><td>734</td></tr>
+<tr class="tr-call"><td>10:48:35</td><td><b>680.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$23.30</td><td>23.30 / 23.35</td><td><span class="side-pill">BID</span></td><td>140</td><td><b>$0.326M</b></td><td>1196</td><td>21</td></tr>
+<tr class="tr-put"><td>10:51:19</td><td><b>800.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$130.00</td><td>122.65 / 130.00</td><td><span class="side-pill">ASK</span></td><td>50</td><td><b>$0.650M</b></td><td>1164</td><td>3968</td></tr>
+<tr class="tr-put"><td>10:58:42</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$21.68</td><td>21.70 / 22.05</td><td><span class="side-pill">BID</span></td><td>114</td><td><b>$0.247M</b></td><td>10586</td><td>734</td></tr>
+<tr class="tr-put"><td>11:08:07</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$22.30</td><td>22.30 / 22.50</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$0.223M</b></td><td>11791</td><td>734</td></tr>
+<tr class="tr-call"><td>11:09:03</td><td><b>680.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$20.70</td><td>20.70 / 20.75</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$0.207M</b></td><td>2891</td><td>21</td></tr>
+<tr class="tr-call"><td>11:10:03</td><td><b>680.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$21.00</td><td>20.75 / 21.00</td><td><span class="side-pill">ASK</span></td><td>106</td><td><b>$0.223M</b></td><td>3110</td><td>21</td></tr>
+<tr class="tr-call"><td>11:11:42</td><td><b>700.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$15.85</td><td>15.70 / 15.85</td><td><span class="side-pill">ASK</span></td><td>129</td><td><b>$0.204M</b></td><td>10996</td><td>67</td></tr>
+<tr class="tr-put"><td>11:13:22</td><td><b>805.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$114.85</td><td>114.85 / 115.95</td><td><span class="side-pill">BID</span></td><td>51</td><td><b>$0.586M</b></td><td>240</td><td>914</td></tr>
+<tr class="tr-call"><td>11:21:44</td><td><b>750.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$7.80</td><td>7.80 / 7.85</td><td><span class="side-pill">BID</span></td><td>478</td><td><b>$0.373M</b></td><td>16223</td><td>231</td></tr>
+<tr class="tr-put"><td>11:27:08</td><td><b>650.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$5.40</td><td>5.25 / 5.40</td><td><span class="side-pill">ASK</span></td><td>899</td><td><b>$0.485M</b></td><td>22726</td><td>2678</td></tr>
+<tr class="tr-call"><td>11:28:38</td><td><b>717.5</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$18.13</td><td>18.15 / 18.40</td><td><span class="side-pill">BID</span></td><td>115</td><td><b>$0.208M</b></td><td>2359</td><td>0</td></tr>
+<tr class="tr-call"><td>11:28:39</td><td><b>717.5</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$18.20</td><td>18.20 / 18.40</td><td><span class="side-pill">BID</span></td><td>135</td><td><b>$0.246M</b></td><td>2494</td><td>0</td></tr>
+<tr class="tr-call"><td>11:37:24</td><td><b>710.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$20.55</td><td>20.55 / 20.75</td><td><span class="side-pill">BID</span></td><td>500</td><td><b>$1.028M</b></td><td>10529</td><td>16</td></tr>
+<tr class="tr-call"><td>11:38:06</td><td><b>710.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$22.00</td><td>21.80 / 22.00</td><td><span class="side-pill">ASK</span></td><td>498</td><td><b>$1.096M</b></td><td>11110</td><td>16</td></tr>
+<tr class="tr-call"><td>11:43:23</td><td><b>700.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$24.35</td><td>24.35 / 24.40</td><td><span class="side-pill">BID</span></td><td>85</td><td><b>$0.207M</b></td><td>16071</td><td>67</td></tr>
+<tr class="tr-call"><td>11:43:44</td><td><b>700.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$23.10</td><td>23.00 / 23.10</td><td><span class="side-pill">ASK</span></td><td>113</td><td><b>$0.261M</b></td><td>16091</td><td>67</td></tr>
+<tr class="tr-put"><td>11:46:12</td><td><b>710.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$28.30</td><td>28.15 / 28.30</td><td><span class="side-pill">ASK</span></td><td>78</td><td><b>$0.221M</b></td><td>9759</td><td>1511</td></tr>
+<tr class="tr-put"><td>11:50:08</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$11.45</td><td>11.45 / 11.60</td><td><span class="side-pill">BID</span></td><td>200</td><td><b>$0.229M</b></td><td>17386</td><td>734</td></tr>
+<tr class="tr-put"><td>11:54:53</td><td><b>700.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$23.25</td><td>23.25 / 23.40</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$0.233M</b></td><td>29308</td><td>2759</td></tr>
+<tr class="tr-put"><td>11:58:11</td><td><b>700.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$23.85</td><td>23.75 / 23.85</td><td><span class="side-pill">ASK</span></td><td>105</td><td><b>$0.250M</b></td><td>29835</td><td>2759</td></tr>
+<tr class="tr-call"><td>12:09:18</td><td><b>700.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$17.15</td><td>17.15 / 17.20</td><td><span class="side-pill">BID</span></td><td>139</td><td><b>$0.238M</b></td><td>18083</td><td>67</td></tr>
+<tr class="tr-call"><td>12:32:16</td><td><b>690.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$22.40</td><td>22.40 / 22.65</td><td><span class="side-pill">BID</span></td><td>100</td><td><b>$0.224M</b></td><td>8066</td><td>24</td></tr>
+<tr class="tr-put"><td>12:43:20</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$16.65</td><td>16.65 / 16.70</td><td><span class="side-pill">BID</span></td><td>211</td><td><b>$0.351M</b></td><td>20951</td><td>734</td></tr>
+<tr class="tr-put"><td>12:43:20</td><td><b>680.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$20.75</td><td>20.75 / 20.80</td><td><span class="side-pill">BID</span></td><td>97</td><td><b>$0.201M</b></td><td>19335</td><td>858</td></tr>
+<tr class="tr-put"><td>12:46:16</td><td><b>650.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$10.60</td><td>10.50 / 10.60</td><td><span class="side-pill">ASK</span></td><td>201</td><td><b>$0.213M</b></td><td>29950</td><td>2678</td></tr>
+<tr class="tr-put"><td>12:47:36</td><td><b>650.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$10.95</td><td>10.95 / 11.10</td><td><span class="side-pill">BID</span></td><td>200</td><td><b>$0.219M</b></td><td>30220</td><td>2678</td></tr>
+<tr class="tr-put"><td>12:55:08</td><td><b>700.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$33.45</td><td>33.15 / 33.45</td><td><span class="side-pill">ASK</span></td><td>72</td><td><b>$0.241M</b></td><td>33183</td><td>2759</td></tr>
+<tr class="tr-put"><td>12:58:12</td><td><b>830.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$153.50</td><td>150.00 / 153.50</td><td><span class="side-pill">ASK</span></td><td>80</td><td><b>$1.228M</b></td><td>240</td><td>962</td></tr>
+<tr class="tr-call"><td>13:02:08</td><td><b>680.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$19.95</td><td>19.95 / 20.00</td><td><span class="side-pill">BID</span></td><td>118</td><td><b>$0.235M</b></td><td>7424</td><td>21</td></tr>
+<tr class="tr-call"><td>13:10:55</td><td><b>680.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$24.63</td><td>24.45 / 24.60</td><td><span class="side-pill">ASK</span></td><td>150</td><td><b>$0.369M</b></td><td>8420</td><td>21</td></tr>
+<tr class="tr-put"><td>13:11:38</td><td><b>680.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$19.85</td><td>19.85 / 19.90</td><td><span class="side-pill">BID</span></td><td>143</td><td><b>$0.284M</b></td><td>22690</td><td>858</td></tr>
+<tr class="tr-call"><td>13:25:06</td><td><b>700.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$13.00</td><td>12.95 / 13.00</td><td><span class="side-pill">ASK</span></td><td>198</td><td><b>$0.257M</b></td><td>24747</td><td>67</td></tr>
+<tr class="tr-put"><td>13:37:29</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$20.00</td><td>19.85 / 20.00</td><td><span class="side-pill">ASK</span></td><td>103</td><td><b>$0.206M</b></td><td>26097</td><td>734</td></tr>
+<tr class="tr-put"><td>13:47:46</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$23.20</td><td>23.20 / 23.45</td><td><span class="side-pill">BID</span></td><td>267</td><td><b>$0.619M</b></td><td>27420</td><td>734</td></tr>
+<tr class="tr-put"><td>13:50:58</td><td><b>680.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$27.65</td><td>27.35 / 27.65</td><td><span class="side-pill">ASK</span></td><td>82</td><td><b>$0.227M</b></td><td>25393</td><td>858</td></tr>
+<tr class="tr-put"><td>14:22:34</td><td><b>720.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$48.90</td><td>48.90 / 49.10</td><td><span class="side-pill">BID</span></td><td>60</td><td><b>$0.293M</b></td><td>6322</td><td>857</td></tr>
+<tr class="tr-put"><td>14:25:42</td><td><b>680.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$24.40</td><td>24.25 / 24.40</td><td><span class="side-pill">ASK</span></td><td>83</td><td><b>$0.203M</b></td><td>27065</td><td>858</td></tr>
+<tr class="tr-put"><td>14:34:21</td><td><b>720.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$52.00</td><td>51.70 / 52.00</td><td><span class="side-pill">ASK</span></td><td>60</td><td><b>$0.312M</b></td><td>6384</td><td>857</td></tr>
+<tr class="tr-call"><td>14:35:35</td><td><b>670.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$24.30</td><td>24.30 / 24.50</td><td><span class="side-pill">BID</span></td><td>143</td><td><b>$0.347M</b></td><td>6893</td><td>0</td></tr>
+<tr class="tr-call"><td>14:35:37</td><td><b>670.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$24.30</td><td>24.30 / 24.50</td><td><span class="side-pill">BID</span></td><td>108</td><td><b>$0.262M</b></td><td>7001</td><td>0</td></tr>
+<tr class="tr-call"><td>14:36:05</td><td><b>670.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$24.55</td><td>24.55 / 24.80</td><td><span class="side-pill">BID</span></td><td>150</td><td><b>$0.368M</b></td><td>7152</td><td>0</td></tr>
+<tr class="tr-call"><td>14:41:11</td><td><b>680.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$21.75</td><td>21.70 / 21.75</td><td><span class="side-pill">ASK</span></td><td>108</td><td><b>$0.235M</b></td><td>16159</td><td>21</td></tr>
+<tr class="tr-put"><td>14:41:52</td><td><b>640.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$7.50</td><td>7.45 / 7.50</td><td><span class="side-pill">ASK</span></td><td>300</td><td><b>$0.225M</b></td><td>17250</td><td>1133</td></tr>
+<tr class="tr-put"><td>14:43:32</td><td><b>670.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$14.50</td><td>14.50 / 14.55</td><td><span class="side-pill">BID</span></td><td>198</td><td><b>$0.287M</b></td><td>31278</td><td>734</td></tr>
+<tr class="tr-call"><td>14:56:46</td><td><b>690.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$20.55</td><td>20.55 / 20.60</td><td><span class="side-pill">BID</span></td><td>298</td><td><b>$0.612M</b></td><td>14561</td><td>24</td></tr>
+<tr class="tr-call"><td>15:30:08</td><td><b>680.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$19.05</td><td>19.05 / 19.10</td><td><span class="side-pill">BID</span></td><td>156</td><td><b>$0.297M</b></td><td>19257</td><td>21</td></tr>
+<tr class="tr-call"><td>15:33:27</td><td><b>670.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$25.65</td><td>25.45 / 25.65</td><td><span class="side-pill">ASK</span></td><td>106</td><td><b>$0.272M</b></td><td>8768</td><td>0</td></tr>
+<tr class="tr-call"><td>15:46:59</td><td><b>690.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$12.70</td><td>12.70 / 12.75</td><td><span class="side-pill">BID</span></td><td>637</td><td><b>$0.809M</b></td><td>17000</td><td>24</td></tr>
+<tr class="tr-put"><td>15:55:02</td><td><b>690.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$36.41</td><td>35.65 / 36.35</td><td><span class="side-pill">ASK</span></td><td>58</td><td><b>$0.211M</b></td><td>23697</td><td>1246</td></tr>
+<tr class="tr-put"><td>15:55:02</td><td><b>690.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$36.15</td><td>36.15 / 36.80</td><td><span class="side-pill">BID</span></td><td>59</td><td><b>$0.213M</b></td><td>23698</td><td>1246</td></tr>
+<tr class="tr-put"><td>15:59:16</td><td><b>610.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$6.95</td><td>6.85 / 6.95</td><td><span class="side-pill">ASK</span></td><td>297</td><td><b>$0.206M</b></td><td>12180</td><td>605</td></tr>
+</tbody></table></div>
+<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ DTE≤1 ｜ MU ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>
+<p class="verdict">全天79笔：主动买入(call ask + put bid)$10.54M，主动卖出(put ask + call bid)$17.09M，mid $0.66M（不计入主动买卖）；主动资金偏空。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 1DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 752.69 在双墙 745–775 之间；全天 761.81–650.00，收 656.39（-12.79%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 752.69 → 高 761.81 → 低 650.00 → 收 656.39。</p></article>
+<article class="summary-item"><p>③ 墙位：call 775 / put 745（heatmap首档算法口径）；heatmap 算法墙首→末：call wall 775→670（下移）; put wall 745→630（下移）。</p></article>
+<article class="summary-item"><p>④ 资金流：全天79笔：主动买入(call ask + put bid)$10.54M，主动卖出(put ask + call bid)$17.09M，mid $0.66M（不计入主动买卖）；主动资金偏空。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 下方（VWAP 692.31，EMA250 741.81）。</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1103" role="tabpanel">
 <header class="mast"><div>
 <h1>MU 日内报告</h1>
 <p class="date">2026年11月3日 · 周二 · 日内报告</p>
