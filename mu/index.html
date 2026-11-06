@@ -37,6 +37,7 @@
 
 /* 日期 tab 收缩 */
 .day-tabs.collapsed{max-height:118px;overflow:hidden}
+.day-tabs:not(.collapsed){max-height:60vh;overflow-y:auto;position:static}
 .tabs-toggle{display:block;width:100%;padding:9px;background:var(--paper);border:1px solid var(--line);border-top:0;color:var(--muted);font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
 .tabs-toggle:hover{background:var(--chip);color:var(--ink)}
 @media(max-width:560px){.day-tabs.collapsed{max-height:92px}}
@@ -120,7 +121,7 @@
 </nav>
 <button class="tabs-toggle" type="button">展开全部 67 个日期 ▾</button>
 <script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=67;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
-<script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var el=document.getElementById(id);if(el)el.scrollIntoView();}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
+<script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var nav=document.querySelector('.day-tabs'),btn=document.querySelector('.tabs-toggle');if(nav)nav.classList.add('collapsed');if(btn)btn.innerHTML='展开全部 '+tabs.length+' 个日期 \u25be';var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
 <article class="day-panel" id="day-1105" role="tabpanel">
 <header class="mast"><div>
 <h1>MU 日内报告</h1>
