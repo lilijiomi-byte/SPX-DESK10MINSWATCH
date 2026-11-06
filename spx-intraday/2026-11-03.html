@@ -37,6 +37,7 @@
 
 /* 日期 tab 收缩 */
 .day-tabs.collapsed{max-height:118px;overflow:hidden}
+.day-tabs:not(.collapsed){max-height:60vh;overflow-y:auto;position:static}
 .tabs-toggle{display:block;width:100%;padding:9px;background:var(--paper);border:1px solid var(--line);border-top:0;color:var(--muted);font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
 .tabs-toggle:hover{background:var(--chip);color:var(--ink)}
 @media(max-width:560px){.day-tabs.collapsed{max-height:92px}}
