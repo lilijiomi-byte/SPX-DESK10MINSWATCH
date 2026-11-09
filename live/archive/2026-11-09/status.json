@@ -17,7 +17,7 @@
  },
  "levels": [
   {
-   "name": "前周高·月高",
+   "name": "前周高·上周三高·月高",
    "value": 7715.57,
    "dist": 167.7,
    "side": "上方",
@@ -29,8 +29,8 @@
   },
   {
    "name": "VWAP",
-   "value": 7546.87,
-   "dist": -1.0,
+   "value": 7547.16,
+   "dist": -0.7,
    "side": "下方",
    "state": "at",
    "tier": "primary",
@@ -52,13 +52,13 @@
    "flip_role": null
   },
   {
-   "name": "昨日高",
+   "name": "昨日高·上周五高",
    "value": 7444.2,
    "dist": -103.6,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
-   "merged": false,
+   "merged": true,
    "today_events": [
     "↑上破"
    ],
@@ -78,13 +78,13 @@
    "flip_role": null
   },
   {
-   "name": "昨日低",
+   "name": "昨日低·上周五低",
    "value": 7369.55,
    "dist": -178.3,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
-   "merged": false,
+   "merged": true,
    "today_events": [],
    "flip_role": null
   },
@@ -100,7 +100,7 @@
    "flip_role": null
   },
   {
-   "name": "前日低·前周低·月低",
+   "name": "前日低·前周低·上周四低·月低",
    "value": 7350.35,
    "dist": -197.5,
    "side": "下方",
@@ -111,14 +111,71 @@
    "flip_role": null
   },
   {
-   "name": "前日高",
+   "name": "前日高·上周四高",
    "value": 7681.29,
    "dist": 133.5,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
+   "merged": true,
+   "today_events": [],
+   "flip_role": null
+  },
+  {
+   "name": "上周一高",
+   "value": 7662.23,
+   "dist": 114.4,
+   "side": "上方",
+   "state": "normal",
+   "tier": "secondary",
    "merged": false,
    "today_events": [],
+   "flip_role": null
+  },
+  {
+   "name": "上周三低",
+   "value": 7635.81,
+   "dist": 88.0,
+   "side": "上方",
+   "state": "normal",
+   "tier": "secondary",
+   "merged": false,
+   "today_events": [],
+   "flip_role": null
+  },
+  {
+   "name": "上周二高",
+   "value": 7594.61,
+   "dist": 46.8,
+   "side": "上方",
+   "state": "normal",
+   "tier": "secondary",
+   "merged": false,
+   "today_events": [],
+   "flip_role": null
+  },
+  {
+   "name": "上周二低",
+   "value": 7545.39,
+   "dist": -2.4,
+   "side": "下方",
+   "state": "normal",
+   "tier": "secondary",
+   "merged": false,
+   "today_events": [],
+   "flip_role": null
+  },
+  {
+   "name": "上周一低",
+   "value": 7539.38,
+   "dist": -8.5,
+   "side": "下方",
+   "state": "normal",
+   "tier": "secondary",
+   "merged": false,
+   "today_events": [
+    "↑被拒"
+   ],
    "flip_role": null
   },
   {
@@ -288,50 +345,50 @@
   }
  },
  "flow": {
-  "as_of": "13:00 ET",
+  "as_of": "13:03 ET",
   "bull": {
-   "premium": 683180,
-   "count": 8,
-   "max_premium": 154800,
-   "max_strike": 7550,
+   "premium": 664600,
+   "count": 7,
+   "max_premium": 221760,
+   "max_strike": 7545,
    "top": [
-    [
-     7560,
-     "C",
-     158980
-    ],
-    [
-     7550,
-     "C",
-     154800
-    ],
     [
      7545,
      "P",
-     154480
+     376240
+    ],
+    [
+     7550,
+     "P",
+     147600
+    ],
+    [
+     7560,
+     "C",
+     73440
     ]
    ]
   },
   "bear": {
-   "premium": 1117260,
-   "count": 12,
-   "max_premium": 223250,
-   "max_strike": 7540,
+   "premium": 645870,
+   "count": 8,
+   "max_premium": 127360,
+   "max_strike": 7550,
    "top": [
     [
      7550,
      "P",
-     377360
+     167290
     ],
     [
-     7540,
-     "C",
-     289240
+     7545,
+     "P",
+     133020
     ],
     [
      7550,
      "C",
-     229450
+     127360
     ]
    ]
   },
