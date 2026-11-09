@@ -51,7 +51,8 @@
 <h1 style="margin:0 0 4px">META 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1106" aria-selected="true" href="#day-1106">11/6 周五 <span class="tab-move up">18.59</span></a>
+<a class="day-tab" role="tab" data-target="day-1109" aria-selected="true" href="#day-1109">11/9 周一 <span class="tab-move up">17.25</span></a>
+<a class="day-tab" role="tab" data-target="day-1106" aria-selected="false" href="#day-1106">11/6 周五 <span class="tab-move up">18.59</span></a>
 <a class="day-tab" role="tab" data-target="day-1105" aria-selected="false" href="#day-1105">11/5 周四 <span class="tab-move down">51.19</span></a>
 <a class="day-tab" role="tab" data-target="day-1104" aria-selected="false" href="#day-1104">11/4 周三 <span class="tab-move up">18.59</span></a>
 <a class="day-tab" role="tab" data-target="day-1103" aria-selected="false" href="#day-1103">11/3 周二 <span class="tab-move up">14.74</span></a>
@@ -121,10 +122,100 @@
 <a class="day-tab" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">11.75</span></a>
 <a class="day-tab" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">23.61</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 69 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=69;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 70 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=70;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var nav=document.querySelector('.day-tabs'),btn=document.querySelector('.tabs-toggle');if(nav)nav.classList.add('collapsed');if(btn)btn.innerHTML='展开全部 '+tabs.length+' 个日期 \u25be';var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1106" role="tabpanel">
+<article class="day-panel" id="day-1109" role="tabpanel">
+<header class="mast"><div>
+<h1>META 日内报告</h1>
+<p class="date">2026年11月9日 · 周一 · 日内报告</p>
+</div><div class="tape">
+<strong>641.41 <span class="up">+5.13%</span></strong>
+<span>开 630.62 · 高 647.25 · 低 630.00</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">正常日</div>
+<div>
+<h2>正常日</h2>
+<p>lib.EVENT_DAYS 无 2026-11-09 条目；META 财报已于 10-29 盘后发布，非财报日；按正常日处理。当日背景：上周五收 610.12（+0.73%），今日跳空高开 +3.35%，全天钉价于 640 磁铁附近、总 gamma 全程为正。</p>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线＋0DTE dealer-GEX heatmap</h2><div class="source">
+<p>0DTE（2026-11-09 到期）dealer-GEX heatmap，78 档 5 分钟快照；墙位为 Junk-man 简报口径（本日缺席记 null），算法墙见正文。</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/meta_2026-11-09.png" alt="META 2026-11-09 5分钟K线＋0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE 2026-11-09 到期链，78 档）</h3>
+<p>YHS 已恢复：78 档 5 分钟快照齐全（09:30–15:55 ET，0DTE 2026-11-09 到期链）。总 gamma 全天为正、无翻负；640 磁铁贯穿全日。尾盘 15:45–15:55 快照退化（0DTE 到期日效应：15:50 帧 642.5 单点 +201.4M、其余 strike 归零；15:55 收盘帧仅剩 2 个 cell），收盘结构以 15:00–15:40 帧为准。</p>
+<ul>
+<li>开盘跳空：官方开盘 630.62，较上周五收盘 610.12 高开 +3.35%（+20.50）；盘前低 608.02（盘前一度跌破上周五收盘），09:25 盘前价 630.86；首根 5m（09:30）低点 630.00 恰踩首帧算法 Put 墙 630（+3.0M）后收 637.74，首根收盘即站上盘前高 636.00</li>
+<li>全天钉在 640 磁铁：总 gamma 全程为正（78 帧无翻负），开盘 +8.1M → 11:00 +71.9M → 14:00 峰值 +215.1M；King 开盘为 652.5（+5.3M），11:00 起转为 640（43.7M → 13:40 峰值 105.6M），15:00 起 642.5 接棒（98.7M）。价格 11:15–11:30 三度收破 640（最低收 639.22）又收回，磁铁未失守</li>
+<li>价格与首帧算法墙：Call 墙 652.5（+5.3M）全天未触及（日高 647.25）；Put 墙 630（+3.0M）首根即测、守住（日低 630.00）。15:20 摸全天高 647.25 后回落，15:55 收 641.41，收在 VWAP 641.75 下方约 0.3 点、EMA250 628.86 之上</li>
+<li>尾盘快照退化（0DTE 到期日效应）：15:30 总 gamma 回落至 +25.8M，15:40 反弹 +109.4M，15:45 仅 +8.6M，15:50 帧 642.5 单点 +201.4M（其余 strike 归零、17 个 cell），15:55 收盘帧仅剩 2 个 cell、总 gamma +1.8M——收盘帧不可作速度/结构判断，以 15:00–15:40 帧为准</li>
+<li>资金流仅 2 笔（DTE≤1，premium≥$20万｜size≥50）：09:36 630C ask $22万（看多，171 张，现货 640.65，价内）；15:52 625C bid $64万（309 张，现货 645.54，深价内、成交价 20.85 基本等于 intrinsic，临近到期日的平仓/对冲性质）。主动资金美元口径偏空，但样本仅 2 笔，不作方向结论</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 15:50</span>
+<strong>642.5</strong>
+<span class="metric">+0.0M</span>
+</article>
+<article class="node">
+<span class="node-rank">② · 13:40</span>
+<strong>640</strong>
+<span class="metric">+0.0M</span>
+</article>
+<article class="node">
+<span class="node-rank">③ · 15:25</span>
+<strong>645</strong>
+<span class="metric">+0.0M</span>
+</article>
+<article class="node">
+<span class="node-rank">④ · 14:00</span>
+<strong>637.5</strong>
+<span class="metric">+0.0M</span>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 15:20</span>
+<strong>650</strong>
+<span class="metric">+0.0M</span>
+</article>
+</div></div>
+<div class="method"><p>全天 78 档快照内各 strike 的最大 |GEX|。注意：642.5 的 +201.4M 来自 15:50 单帧（其余 strike 归零的退化帧），非整日稳态节点；稳态最强节点为 640（+105.6M @13:40）。</p></div>
+<div class="flow-summary">
+<h3>资金流（0DTE到期2026-11-09，仅2笔；premium≥$20万｜size≥50｜DTE≤1｜side=at_ask/at_bid；mid单列、绝不计入主动买卖）</h3>
+<div class="flow-table-wrap"><table class="flow-table">
+<thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead><tbody>
+<tr class="tr-call"><td>09:36:44</td><td><b>630.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$13.00</td><td>13.00 / 13.15</td><td><span class="side-pill">ASK</span></td><td>171</td><td><b>$0.222M</b></td><td>547</td><td>723</td></tr>
+<tr class="tr-call"><td>15:52:07</td><td><b>625.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$20.85</td><td>20.85 / 22.35</td><td><span class="side-pill">BID</span></td><td>309</td><td><b>$0.644M</b></td><td>561</td><td>779</td></tr>
+</tbody></table></div>
+<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ DTE≤1 ｜ META ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>
+<p class="verdict">全天2笔：主动买入(call ask + put bid)$0.22M，主动卖出(put ask + call bid)$0.64M，mid $0M（不计入主动买卖）；主动资金美元口径偏空——但样本仅 2 笔，15:52 的 625C bid 为深价内到期日前平仓/对冲性质，不读成方向押注，不作方向结论。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 630.62（官方，YHS 日线），较昨收 610.12 高开 +3.35%（+20.50）；全天 630.00–647.25，收 641.41（+5.13% vs 昨收；收开差 +10.79 / +1.71%）。盘前高 636.00 / 低 608.02，09:25 盘前价 630.86。</p></article>
+<article class="summary-item"><p>② 白点轨迹（K 线）：首根 09:30 开 631.05、探 630.00 后收 637.74 → 09:35 收 641.68（首根收上 640）→ 上午贴 640 磨（10:00 收 638.93 → 11:00 收 641.97）→ 午后缓推（13:00 收 643.10 → 15:00 收 644.25）→ 15:20 摸高 647.25 → 尾盘回落 15:55 收 641.41（收在前日高 625.55 之上、VWAP 641.75 之下约 0.3 点、EMA250 628.86 之上）。</p></article>
+<article class="summary-item"><p>③ 结构：总 gamma 全天为正、开盘 +8.1M 逐级放大至 14:00 +215.1M，0DTE 到期日典型的钉价（pin）结构；640 磁铁由开盘 +2.2M 增至 13:40 +105.6M，价格全天贴磁铁走；King 652.5（开盘）→ 640（11:00–14:00）→ 642.5（15:00）。首帧算法墙 Call 652.5 / Put 630：低点 630.00 首根即测 Put 墙守住，高点 647.25 未及 Call 墙。</p></article>
+<article class="summary-item"><p>④ Junk-man 简报已核实缺席（见 junkman 字段）：按 2026-11-05 用户指令不再查 Discord，本地无用户当日粘贴/上传的简报文件，墙位记 null；上午算法墙见上文，非简报墙。</p></article>
+<article class="summary-item"><p>⑤ 资金流仅 2 笔：主动买入 $22万 vs 主动卖出 $64万，美元口径偏空但样本极小，且 15:52 的 625C bid 为深价内到期日前平仓性质，不读方向。</p></article>
+</div></section>
+<p class="data-note">K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照；heatmap亮度=平方根连续渐变（p99裁剪）。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。尾盘 15:45–15:55 快照为 0DTE 到期日退化帧，收盘结构以 15:00–15:40 帧为准。</p>
+</article>
+<article class="day-panel" hidden id="day-1106" role="tabpanel">
 <header class="mast"><div>
 <h1>META 日内报告</h1>
 <p class="date">2026年11月6日 · 周五 · 日内报告</p>
