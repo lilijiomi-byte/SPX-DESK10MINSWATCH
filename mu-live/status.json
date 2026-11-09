@@ -1,25 +1,25 @@
 {
- "updated_et": "2026-11-09 10:40 ET",
+ "updated_et": "2026-11-09 10:45 ET",
  "alert": null,
  "watch": null,
- "spot": 731.13,
- "total_gex_m": -23.7,
- "flip": 730.8,
- "call_wall": 732.5,
- "put_wall": null,
+ "spot": 733.23,
+ "total_gex_m": -26.7,
+ "flip": 734.9,
+ "call_wall": 755,
+ "put_wall": 732.5,
  "king_strike": 732.5,
- "king_gex_m": 9.9,
+ "king_gex_m": 8.2,
  "regime": "负 Gamma",
  "targets": {
-  "up": 732.5,
+  "up": 755,
   "flat": 732.5,
-  "down": 727.5
+  "down": 732.5
  },
  "levels": [
   {
    "name": "前周高·月高",
    "value": 892.08,
-   "dist": 161.0,
+   "dist": 158.9,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -29,9 +29,9 @@
   },
   {
    "name": "EMA250",
-   "value": 731.49,
-   "dist": 0.4,
-   "side": "上方",
+   "value": 731.51,
+   "dist": -1.7,
+   "side": "下方",
    "state": "at",
    "tier": "primary",
    "merged": false,
@@ -41,7 +41,7 @@
   {
    "name": "昨日高",
    "value": 724.8,
-   "dist": -6.3,
+   "dist": -8.4,
    "side": "下方",
    "state": "crossed_up",
    "tier": "primary",
@@ -51,8 +51,8 @@
   },
   {
    "name": "VWAP",
-   "value": 717.27,
-   "dist": -13.9,
+   "value": 716.76,
+   "dist": -16.5,
    "side": "下方",
    "state": "crossed_up",
    "tier": "primary",
@@ -65,7 +65,7 @@
   {
    "name": "盘前高",
    "value": 705.8,
-   "dist": -25.3,
+   "dist": -27.4,
    "side": "下方",
    "state": "crossed_up",
    "tier": "primary",
@@ -78,7 +78,7 @@
   {
    "name": "昨日低",
    "value": 676.0,
-   "dist": -55.1,
+   "dist": -57.2,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -89,7 +89,7 @@
   {
    "name": "盘前低",
    "value": 661.3,
-   "dist": -69.8,
+   "dist": -71.9,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -100,7 +100,7 @@
   {
    "name": "前日低·前周低·月低",
    "value": 650.0,
-   "dist": -81.1,
+   "dist": -83.2,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -111,7 +111,7 @@
   {
    "name": "前日高",
    "value": 761.81,
-   "dist": 30.7,
+   "dist": 28.6,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -122,7 +122,7 @@
   {
    "name": "昨开",
    "value": 708.35,
-   "dist": -22.8,
+   "dist": -24.9,
    "side": "下方",
    "state": "crossed_up",
    "tier": "secondary",
@@ -135,7 +135,7 @@
   {
    "name": "昨收",
    "value": 690.0,
-   "dist": -41.1,
+   "dist": -43.2,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -191,197 +191,232 @@
  "nodes": {
   "king": {
    "strike": 732.5,
-   "gex_m": 10,
+   "gex_m": 8,
    "delta_m": 7
   },
   "band_up": {
-   "lo": 732.5,
-   "hi": 732.5,
-   "gex_m": 10,
-   "delta_m": 7
+   "lo": 755,
+   "hi": 765,
+   "gex_m": 4,
+   "delta_m": 2
   },
   "support": {
-   "strike": 712.5,
-   "gex_m": 2,
-   "delta_m": 0,
-   "building": false,
-   "overlap": []
+   "strike": 732.5,
+   "gex_m": 8,
+   "delta_m": 7,
+   "building": true,
+   "overlap": [
+    "EMA250"
+   ]
   },
   "neg_cluster": {
-   "lo": 737.5,
+   "lo": 720,
    "hi": 750,
-   "gex_m": -23
+   "gex_m": -47
   }
  },
  "ladder": [
   {
-   "strike": 765,
-   "gex_m": 0.6,
-   "dist": 33.9,
+   "strike": 770,
+   "gex_m": -1.3,
+   "dist": 36.8,
    "roles": []
+  },
+  {
+   "strike": 765,
+   "gex_m": 1.0,
+   "dist": 31.8,
+   "roles": [
+    "🧲 上方主带"
+   ]
+  },
+  {
+   "strike": 760,
+   "gex_m": 0.6,
+   "dist": 26.8,
+   "roles": [
+    "🧲 上方主带"
+   ]
   },
   {
    "strike": 755,
-   "gex_m": 2.3,
-   "dist": 23.9,
-   "roles": []
+   "gex_m": 2.8,
+   "dist": 21.8,
+   "roles": [
+    "🧲 上方主带",
+    "Call Wall"
+   ]
   },
   {
    "strike": 750,
-   "gex_m": -3.0,
-   "dist": 18.9,
+   "gex_m": -5.4,
+   "dist": 16.8,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 747.5,
-   "gex_m": 1.3,
-   "dist": 16.4,
+   "gex_m": 1.5,
+   "dist": 14.3,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 745,
-   "gex_m": -1.9,
-   "dist": 13.9,
+   "gex_m": -2.2,
+   "dist": 11.8,
+   "roles": [
+    "⛽ 负曝光簇"
+   ]
+  },
+  {
+   "strike": 742.5,
+   "gex_m": -1.4,
+   "dist": 9.3,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 740,
-   "gex_m": -16.1,
-   "dist": 8.9,
+   "gex_m": -17.7,
+   "dist": 6.8,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 737.5,
-   "gex_m": -1.7,
-   "dist": 6.4,
+   "gex_m": -1.8,
+   "dist": 4.3,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
+   "strike": 735,
+   "gex_m": -1.3,
+   "dist": 1.8,
+   "roles": [
+    "⛽ 负曝光簇",
+    "Flip 线"
+   ]
+  },
+  {
    "strike": 732.5,
-   "gex_m": 9.9,
-   "dist": 1.4,
+   "gex_m": 8.2,
+   "dist": -0.7,
    "roles": [
     "👑 King",
-    "🧲 上方主带",
-    "Call Wall",
+    "🛡 下方承接",
+    "⛽ 负曝光簇",
+    "Put Wall",
     "Flip 线"
    ]
   },
   {
    "strike": 730,
-   "gex_m": -3.7,
-   "dist": -1.1,
+   "gex_m": -3.5,
+   "dist": -3.2,
    "roles": [
-    "Flip 线"
+    "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 727.5,
-   "gex_m": 1.2,
-   "dist": -3.6,
-   "roles": []
+   "gex_m": 0.9,
+   "dist": -5.7,
+   "roles": [
+    "⛽ 负曝光簇"
+   ]
   },
   {
    "strike": 725,
-   "gex_m": -8.5,
-   "dist": -6.1,
-   "roles": []
-  },
-  {
-   "strike": 722.5,
-   "gex_m": -1.7,
-   "dist": -8.6,
-   "roles": []
+   "gex_m": -7.7,
+   "dist": -8.2,
+   "roles": [
+    "⛽ 负曝光簇"
+   ]
   },
   {
    "strike": 720,
-   "gex_m": -6.5,
-   "dist": -11.1,
-   "roles": []
+   "gex_m": -5.5,
+   "dist": -13.2,
+   "roles": [
+    "⛽ 负曝光簇"
+   ]
   },
   {
    "strike": 717.5,
-   "gex_m": 1.6,
-   "dist": -13.6,
+   "gex_m": 2.1,
+   "dist": -15.7,
    "roles": []
   },
   {
    "strike": 712.5,
    "gex_m": 2.0,
-   "dist": -18.6,
-   "roles": [
-    "🛡 下方承接"
-   ]
-  },
-  {
-   "strike": 707.5,
-   "gex_m": -1.1,
-   "dist": -23.6,
+   "dist": -20.7,
    "roles": []
   },
   {
    "strike": 700,
-   "gex_m": 1.5,
-   "dist": -31.1,
-   "roles": []
-  },
-  {
-   "strike": 695,
-   "gex_m": -1.0,
-   "dist": -36.1,
+   "gex_m": 1.3,
+   "dist": -33.2,
    "roles": []
   }
  ],
- "ladder_max_m": 16.1,
+ "ladder_max_m": 17.7,
  "decision_line": {
-  "spot": 731.13,
+  "spot": 733.23,
   "king": 732.5,
-  "king_dist": 1.4,
-  "flip": 730.8,
-  "invalidation_text": "跌回 730.8 下方失效"
+  "king_dist": -0.7,
+  "flip": 734.9,
+  "invalidation_text": "站上 734.9 失效"
  },
  "range": {
   "brief": {
    "low": 665.0400268554688,
    "high": 742.1400268554687,
    "center": 703.59,
-   "pos_pct": 85.7,
-   "center_dist": 27.5,
-   "consumed_pct": 56.8
+   "pos_pct": 88.4,
+   "center_dist": 29.6,
+   "consumed_pct": 58.2
   },
   "official": null,
   "realized": {
-   "high": 733.45,
+   "high": 734.49,
    "low": 689.65
   }
  },
  "flow": {
-  "as_of": "10:44 ET",
+  "as_of": "10:50 ET",
   "bull": {
-   "premium": 60720,
-   "count": 1,
-   "max_premium": 60720,
-   "max_strike": 730,
+   "premium": 188220,
+   "count": 3,
+   "max_premium": 69000,
+   "max_strike": 735,
    "top": [
+    [
+     735,
+     "C",
+     69000
+    ],
     [
      730,
      "C",
      60720
+    ],
+    [
+     730,
+     "P",
+     58500
     ]
    ]
   },
   "bear": {
-   "premium": 278940,
+   "premium": 294500,
    "count": 2,
    "max_premium": 223500,
    "max_strike": 730,
@@ -393,8 +428,8 @@
     ],
     [
      732.5,
-     "C",
-     55440
+     "P",
+     71000
     ]
    ]
   },
@@ -441,14 +476,26 @@
   "below_pos_d": -3,
   "neg_above_d": -2,
   "neg_below_d": -13,
-  "flip_dist": 1.0,
+  "flip_dist": -3.1,
   "read": "740 -10M 衰减（全场最大）；732.5 +7M 新垒；增厚最大 732.5 +7M；衰减最大 740 -10M、750 -4M；正 GEX 重心上移 14 点（713→727）；现价附近曝光无单边缺口，对冲放大不明显。"
  },
  "frame_quality": {
-  "latest_complete_et": "10:40",
+  "latest_complete_et": "10:45",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "10:45 ET",
+   "text": "🎯 现价 733.2 跌破 Flip 734.9"
+  },
+  {
+   "t": "10:45 ET",
+   "text": "⚡ 总 Gamma -24M→-27M（Δ-3M）"
+  },
+  {
+   "t": "10:45 ET",
+   "text": "🧱 Call Wall 732.5→755 上移"
+  },
   {
    "t": "10:40 ET",
    "text": "⚡ 总 Gamma -27M→-24M（Δ+3M）"
@@ -633,8 +680,8 @@
  "max_pain": {
   "expiry": "2026-11-09",
   "value": 712.5,
-  "frame_spot": 730.81,
-  "dist": 18.3,
+  "frame_spot": 734.39,
+  "dist": 21.9,
   "oi_as_of": "2026-11-09T11:30:00.573Z"
  },
  "premarket": {
