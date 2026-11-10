@@ -1,19 +1,19 @@
 {
- "updated_et": "2026-11-10 11:20 ET",
+ "updated_et": "2026-11-10 11:25 ET",
  "alert": null,
  "watch": null,
  "spot": 709.4,
- "total_gex_m": 2.5,
+ "total_gex_m": 5.0,
  "flip": null,
- "call_wall": 720,
+ "call_wall": 715,
  "put_wall": 700,
  "king_strike": 730,
  "king_gex_m": 2.6,
- "regime": "混合 Gamma",
+ "regime": "正 Gamma",
  "targets": {
   "up": 720,
   "flat": 730,
-  "down": 700
+  "down": 715
  },
  "levels": [
   {
@@ -42,8 +42,8 @@
   },
   {
    "name": "EMA250",
-   "value": 731.38,
-   "dist": 22.0,
+   "value": 731.26,
+   "dist": 21.9,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -55,7 +55,7 @@
   },
   {
    "name": "VWAP",
-   "value": 722.33,
+   "value": 722.28,
    "dist": 12.9,
    "side": "上方",
    "state": "normal",
@@ -208,9 +208,9 @@
    "delta_m": 1
   },
   "support": {
-   "strike": 700,
-   "gex_m": 1,
-   "delta_m": -1,
+   "strike": 715,
+   "gex_m": 2,
+   "delta_m": 0,
    "building": false,
    "overlap": []
   }
@@ -218,13 +218,13 @@
  "ladder": [
   {
    "strike": 740,
-   "gex_m": 0.7,
+   "gex_m": 1.0,
    "dist": 30.6,
    "roles": []
   },
   {
    "strike": 737.5,
-   "gex_m": -1.4,
+   "gex_m": -1.3,
    "dist": 28.1,
    "roles": []
   },
@@ -245,7 +245,7 @@
   },
   {
    "strike": 725,
-   "gex_m": 0.8,
+   "gex_m": 0.9,
    "dist": 15.6,
    "roles": [
     "🧲 上方主带"
@@ -261,10 +261,17 @@
   },
   {
    "strike": 720,
-   "gex_m": 1.3,
+   "gex_m": 1.8,
    "dist": 10.6,
    "roles": [
-    "🧲 上方主带",
+    "🧲 上方主带"
+   ]
+  },
+  {
+   "strike": 715,
+   "gex_m": 2.2,
+   "dist": 5.6,
+   "roles": [
     "Call Wall"
    ]
   },
@@ -276,18 +283,11 @@
   },
   {
    "strike": 700,
-   "gex_m": 1.2,
+   "gex_m": 1.3,
    "dist": -9.4,
    "roles": [
-    "🛡 下方承接",
     "Put Wall"
    ]
-  },
-  {
-   "strike": 695,
-   "gex_m": 0.6,
-   "dist": -14.4,
-   "roles": []
   },
   {
    "strike": 682.5,
@@ -303,7 +303,7 @@
   },
   {
    "strike": 670,
-   "gex_m": 0.7,
+   "gex_m": 0.8,
    "dist": -39.4,
    "roles": []
   }
@@ -332,28 +332,33 @@
   }
  },
  "flow": {
-  "as_of": "11:13 ET",
+  "as_of": "11:26 ET",
   "bull": {
+   "premium": 882565,
+   "count": 2,
+   "max_premium": 707635,
+   "max_strike": 715,
+   "top": [
+    [
+     715,
+     "P",
+     707635
+    ],
+    [
+     720,
+     "P",
+     174930
+    ]
+   ]
+  },
+  "bear": {
    "premium": 0,
    "count": 0,
    "max_premium": 0,
    "max_strike": null,
    "top": []
   },
-  "bear": {
-   "premium": 236800,
-   "count": 2,
-   "max_premium": 144400,
-   "max_strike": 715,
-   "top": [
-    [
-     715,
-     "P",
-     236800
-    ]
-   ]
-  },
-  "level": "mid"
+  "level": "big"
  },
  "surge": null,
  "delta": {
@@ -400,10 +405,26 @@
   "read": "本片无 ≥8M 的单边结构变化；正 GEX 重心基本不动（729）；现价附近曝光无单边缺口，对冲放大不明显。"
  },
  "frame_quality": {
-  "latest_complete_et": "11:20",
+  "latest_complete_et": "11:25",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "11:25 ET",
+   "text": "图25 · 🌊 看多大簇：近10分钟主动成交 $882,565（2 笔，最大单笔 $707,635 @715）｜主腿 715P $707,635 · 720P $174,930 → 仅显示，未改方向预判"
+  },
+  {
+   "t": "11:25 ET",
+   "text": "图24 · 🌊 看多 flow 簇形成：近10min 主动 $882,565（2 笔）｜主腿 715P $707,635 · 720P $174,930"
+  },
+  {
+   "t": "11:25 ET",
+   "text": "⚡ 总 Gamma +2M→+5M（Δ+3M）"
+  },
+  {
+   "t": "11:25 ET",
+   "text": "🧱 Call Wall 720→715 下移"
+  },
   {
    "t": "11:05 ET",
    "text": "🧲 King 节点 750→730"
@@ -632,8 +653,8 @@
  "max_pain": {
   "expiry": "2026-11-11",
   "value": 720,
-  "frame_spot": 717.5,
-  "dist": -2.5,
+  "frame_spot": 715.89,
+  "dist": -4.1,
   "oi_as_of": "2026-11-10T11:30:00.599Z"
  },
  "premarket": {
