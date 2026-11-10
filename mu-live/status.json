@@ -1,14 +1,14 @@
 {
- "updated_et": "2026-11-10 13:35 ET",
+ "updated_et": "2026-11-10 13:45 ET",
  "alert": null,
  "watch": null,
  "spot": 709.4,
- "total_gex_m": 2.1,
+ "total_gex_m": -1.0,
  "flip": null,
  "call_wall": 715,
  "put_wall": 702.5,
  "king_strike": 715,
- "king_gex_m": 3.1,
+ "king_gex_m": 3.5,
  "regime": "混合 Gamma",
  "targets": {
   "up": 715,
@@ -42,8 +42,8 @@
   },
   {
    "name": "EMA250",
-   "value": 726.66,
-   "dist": 17.3,
+   "value": 726.4,
+   "dist": 17.0,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -56,7 +56,7 @@
   },
   {
    "name": "VWAP",
-   "value": 716.72,
+   "value": 716.7,
    "dist": 7.3,
    "side": "上方",
    "state": "normal",
@@ -204,7 +204,7 @@
  "nodes": {
   "king": {
    "strike": 715,
-   "gex_m": 3,
+   "gex_m": 4,
    "delta_m": 0
   },
   "band_up": {
@@ -224,13 +224,13 @@
  "ladder": [
   {
    "strike": 742.5,
-   "gex_m": 1.2,
+   "gex_m": 1.3,
    "dist": 33.1,
    "roles": []
   },
   {
    "strike": 740,
-   "gex_m": -3.9,
+   "gex_m": -7.3,
    "dist": 30.6,
    "roles": []
   },
@@ -256,7 +256,7 @@
   },
   {
    "strike": 725,
-   "gex_m": 1.2,
+   "gex_m": 0.9,
    "dist": 15.6,
    "roles": [
     "🧲 上方主带"
@@ -272,7 +272,7 @@
   },
   {
    "strike": 720,
-   "gex_m": 1.9,
+   "gex_m": 1.7,
    "dist": 10.6,
    "roles": [
     "🧲 上方主带"
@@ -280,7 +280,7 @@
   },
   {
    "strike": 715,
-   "gex_m": 3.1,
+   "gex_m": 3.5,
    "dist": 5.6,
    "roles": [
     "👑 King",
@@ -296,7 +296,7 @@
   },
   {
    "strike": 710,
-   "gex_m": -0.9,
+   "gex_m": -0.7,
    "dist": 0.6,
    "roles": [
     "Flip 线"
@@ -312,7 +312,7 @@
   },
   {
    "strike": 700,
-   "gex_m": 2.3,
+   "gex_m": 2.4,
    "dist": -9.4,
    "roles": [
     "🛡 下方承接"
@@ -320,7 +320,7 @@
   },
   {
    "strike": 682.5,
-   "gex_m": -0.9,
+   "gex_m": -1.0,
    "dist": -26.9,
    "roles": []
   },
@@ -343,7 +343,7 @@
    "roles": []
   }
  ],
- "ladder_max_m": 3.9,
+ "ladder_max_m": 7.3,
  "decision_line": {
   "spot": 709.4,
   "king": 715,
@@ -367,31 +367,36 @@
   }
  },
  "flow": {
-  "as_of": "13:39 ET",
+  "as_of": "13:47 ET",
   "bull": {
-   "premium": 128850,
+   "premium": 416590,
    "count": 2,
-   "max_premium": 76850,
-   "max_strike": 710,
+   "max_premium": 327590,
+   "max_strike": 740,
    "top": [
     [
-     710,
+     740,
      "C",
-     76850
+     327590
     ],
     [
-     750,
-     "C",
-     52000
+     715,
+     "P",
+     89000
     ]
    ]
   },
   "bear": {
-   "premium": 61200,
-   "count": 1,
-   "max_premium": 61200,
-   "max_strike": 715,
+   "premium": 200400,
+   "count": 2,
+   "max_premium": 139200,
+   "max_strike": 725,
    "top": [
+    [
+     725,
+     "P",
+     139200
+    ],
     [
      715,
      "C",
@@ -399,7 +404,7 @@
     ]
    ]
   },
-  "level": "none"
+  "level": "big"
  },
  "surge": null,
  "delta": {
@@ -446,10 +451,30 @@
   "read": "本片无 ≥8M 的单边结构变化；正 GEX 重心基本不动（724）；现价被正曝光包覆且在增厚，波动被对冲吸收。"
  },
  "frame_quality": {
-  "latest_complete_et": "13:35",
+  "latest_complete_et": "13:45",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "13:45 ET",
+   "text": "图44 · 🌊 看空 flow 簇形成：近10min 主动 $200,400（2 笔）｜主腿 725P $139,200 · 715C $61,200"
+  },
+  {
+   "t": "13:45 ET",
+   "text": "图43 · 🌊 看多大簇：近10分钟主动成交 $416,590（2 笔，最大单笔 $327,590 @740）｜主腿 740C $327,590 · 715P $89,000 → 仅显示，未改方向预判"
+  },
+  {
+   "t": "13:45 ET",
+   "text": "图42 · 🌊 看多 flow 簇形成：近10min 主动 $416,590（2 笔）｜主腿 740C $327,590 · 715P $89,000"
+  },
+  {
+   "t": "13:45 ET",
+   "text": "⚡ 总 Gamma 符号翻转：+2M→-1M"
+  },
+  {
+   "t": "13:45 ET",
+   "text": "📍 740 单帧 -3M（-4M→-7M）"
+  },
   {
    "t": "13:35 ET",
    "text": "🧲 King 节点 730→715"
@@ -802,8 +827,8 @@
  "max_pain": {
   "expiry": "2026-11-11",
   "value": 720,
-  "frame_spot": 709.17,
-  "dist": -10.8,
+  "frame_spot": 710.09,
+  "dist": -9.9,
   "oi_as_of": "2026-11-10T11:30:00.599Z"
  },
  "premarket": {
