@@ -1,14 +1,14 @@
 {
- "updated_et": "2026-11-10 09:30 ET",
+ "updated_et": "2026-11-10 09:35 ET",
  "alert": null,
  "watch": null,
  "spot": 709.4,
- "total_gex_m": -1.5,
+ "total_gex_m": -1.0,
  "flip": null,
  "call_wall": 715,
  "put_wall": 697.5,
- "king_strike": 760,
- "king_gex_m": 1.1,
+ "king_strike": 730,
+ "king_gex_m": 1.3,
  "regime": "混合 Gamma",
  "targets": {
   "up": 715,
@@ -51,7 +51,7 @@
   },
   {
    "name": "VWAP",
-   "value": 712.52,
+   "value": 712.47,
    "dist": 3.1,
    "side": "上方",
    "state": "near",
@@ -171,12 +171,12 @@
  ],
  "nodes": {
   "king": {
-   "strike": 760,
+   "strike": 730,
    "gex_m": 1,
    "delta_m": 0
   },
   "band_up": {
-   "lo": 725,
+   "lo": 730,
    "hi": 730,
    "gex_m": 1,
    "delta_m": 0
@@ -192,7 +192,7 @@
  "ladder": [
   {
    "strike": 740,
-   "gex_m": -0.7,
+   "gex_m": -0.6,
    "dist": 30.6,
    "roles": []
   },
@@ -210,17 +210,10 @@
   },
   {
    "strike": 730,
-   "gex_m": 1.0,
+   "gex_m": 1.3,
    "dist": 20.6,
    "roles": [
-    "🧲 上方主带"
-   ]
-  },
-  {
-   "strike": 725,
-   "gex_m": 0.3,
-   "dist": 15.6,
-   "roles": [
+    "👑 King",
     "🧲 上方主带"
    ]
   },
@@ -232,7 +225,7 @@
   },
   {
    "strike": 715,
-   "gex_m": 1.0,
+   "gex_m": 1.1,
    "dist": 5.6,
    "roles": [
     "Call Wall"
@@ -248,7 +241,7 @@
   },
   {
    "strike": 697.5,
-   "gex_m": 0.4,
+   "gex_m": 0.5,
    "dist": -11.9,
    "roles": [
     "Put Wall"
@@ -256,36 +249,36 @@
   },
   {
    "strike": 695,
-   "gex_m": 1.0,
+   "gex_m": 1.1,
    "dist": -14.4,
    "roles": [
     "🛡 下方承接"
    ]
   },
   {
+   "strike": 690,
+   "gex_m": 0.2,
+   "dist": -19.4,
+   "roles": []
+  },
+  {
    "strike": 682.5,
-   "gex_m": -1.1,
+   "gex_m": -1.2,
    "dist": -26.9,
    "roles": []
   },
   {
-   "strike": 680,
-   "gex_m": -0.6,
-   "dist": -29.4,
-   "roles": []
-  },
-  {
    "strike": 670,
-   "gex_m": 0.3,
+   "gex_m": 0.2,
    "dist": -39.4,
    "roles": []
   }
  ],
- "ladder_max_m": 1.1,
+ "ladder_max_m": 1.3,
  "decision_line": {
   "spot": 709.4,
-  "king": 760,
-  "king_dist": 50.6,
+  "king": 730,
+  "king_dist": 20.6,
   "flip": null,
   "invalidation_text": "Flip 暂不可用（dealer 快照与帧现价偏离 >$10，flip 已弃用）"
  },
@@ -304,14 +297,70 @@
    "low": 702.36
   }
  },
- "flow": null,
+ "flow": {
+  "as_of": "09:41 ET",
+  "bull": {
+   "premium": 214515,
+   "count": 2,
+   "max_premium": 119040,
+   "max_strike": 710,
+   "top": [
+    [
+     710,
+     "P",
+     119040
+    ],
+    [
+     715,
+     "C",
+     95475
+    ]
+   ]
+  },
+  "bear": {
+   "premium": 686805,
+   "count": 6,
+   "max_premium": 165275,
+   "max_strike": 650,
+   "top": [
+    [
+     650,
+     "P",
+     165275
+    ],
+    [
+     720,
+     "C",
+     126000
+    ],
+    [
+     710,
+     "P",
+     119685
+    ]
+   ]
+  },
+  "level": "big"
+ },
  "surge": null,
  "delta": null,
  "frame_quality": {
-  "latest_complete_et": "09:30",
+  "latest_complete_et": "09:35",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "09:35 ET",
+   "text": "图7 · 🎯 09:32 1分钟低 702.4 到达盘前低 705.0"
+  },
+  {
+   "t": "09:35 ET",
+   "text": "图6 · 🎯 09:32 1分钟低 702.4 到达昨开 703.2"
+  },
+  {
+   "t": "09:35 ET",
+   "text": "图5 · 🧲 King 节点 760→730"
+  },
   {
    "t": "09:30 ET",
    "text": "图4 · 🌊 看空大簇：近10分钟主动成交 $1,283,685（7 笔，最大单笔 $450,000 @715）｜主腿 715C $450,000 · 730C $240,920 · 650P $165,275 → 仅显示，未改方向预判"
@@ -336,8 +385,8 @@
  "max_pain": {
   "expiry": "2026-11-11",
   "value": 720,
-  "frame_spot": 711.81,
-  "dist": -8.2,
+  "frame_spot": 710.7,
+  "dist": -9.3,
   "oi_as_of": "2026-11-10T11:30:00.599Z"
  },
  "premarket": {
