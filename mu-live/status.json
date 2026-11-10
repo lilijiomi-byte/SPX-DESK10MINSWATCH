@@ -1,5 +1,5 @@
 {
- "updated_et": "2026-11-10 14:55 ET",
+ "updated_et": "2026-11-10 15:05 ET",
  "alert": null,
  "watch": null,
  "spot": 709.4,
@@ -8,7 +8,7 @@
  "call_wall": 715,
  "put_wall": 700,
  "king_strike": 715,
- "king_gex_m": 4.1,
+ "king_gex_m": 4.2,
  "regime": "混合 Gamma",
  "targets": {
   "up": 715,
@@ -57,7 +57,7 @@
   },
   {
    "name": "VWAP",
-   "value": 716.43,
+   "value": 716.39,
    "dist": 7.0,
    "side": "上方",
    "state": "near",
@@ -202,7 +202,7 @@
   "support": {
    "strike": 700,
    "gex_m": 3,
-   "delta_m": 0,
+   "delta_m": 1,
    "building": true,
    "overlap": []
   }
@@ -210,19 +210,19 @@
  "ladder": [
   {
    "strike": 742.5,
-   "gex_m": 1.5,
+   "gex_m": 1.6,
    "dist": 33.1,
    "roles": []
   },
   {
    "strike": 740,
-   "gex_m": -9.1,
+   "gex_m": -9.2,
    "dist": 30.6,
    "roles": []
   },
   {
    "strike": 737.5,
-   "gex_m": -1.7,
+   "gex_m": -1.9,
    "dist": 28.1,
    "roles": []
   },
@@ -252,13 +252,13 @@
   },
   {
    "strike": 720,
-   "gex_m": -1.0,
+   "gex_m": -1.2,
    "dist": 10.6,
    "roles": []
   },
   {
    "strike": 715,
-   "gex_m": 4.1,
+   "gex_m": 4.2,
    "dist": 5.6,
    "roles": [
     "👑 King",
@@ -268,22 +268,8 @@
   },
   {
    "strike": 712.5,
-   "gex_m": -0.9,
+   "gex_m": -1.2,
    "dist": 3.1,
-   "roles": []
-  },
-  {
-   "strike": 707.5,
-   "gex_m": 0.7,
-   "dist": -1.9,
-   "roles": [
-    "Flip 线"
-   ]
-  },
-  {
-   "strike": 705,
-   "gex_m": 0.6,
-   "dist": -4.4,
    "roles": []
   },
   {
@@ -303,7 +289,7 @@
   },
   {
    "strike": 680,
-   "gex_m": -1.0,
+   "gex_m": -0.9,
    "dist": -29.4,
    "roles": []
   },
@@ -315,12 +301,12 @@
   },
   {
    "strike": 670,
-   "gex_m": 0.7,
+   "gex_m": 0.8,
    "dist": -39.4,
    "roles": []
   }
  ],
- "ladder_max_m": 9.1,
+ "ladder_max_m": 9.2,
  "decision_line": {
   "spot": 709.4,
   "king": 715,
@@ -344,7 +330,7 @@
   }
  },
  "flow": {
-  "as_of": "15:01 ET",
+  "as_of": "15:09 ET",
   "bull": {
    "premium": 0,
    "count": 0,
@@ -353,11 +339,16 @@
    "top": []
   },
   "bear": {
-   "premium": 58050,
-   "count": 1,
-   "max_premium": 58050,
-   "max_strike": 750,
+   "premium": 116880,
+   "count": 2,
+   "max_premium": 58830,
+   "max_strike": 707.5,
    "top": [
+    [
+     707.5,
+     "P",
+     58830
+    ],
     [
      750,
      "C",
@@ -369,50 +360,50 @@
  },
  "surge": null,
  "delta": {
-  "slice": "14:00–14:30",
-  "total_m": -4,
+  "slice": "14:30–15:00",
+  "total_m": 1,
   "top_gain": [
    [
-    670,
+    700,
     1
    ],
    [
-    712.5,
-    0
+    755,
+    1
    ],
    [
-    715,
-    0
+    707.5,
+    1
    ]
   ],
   "top_lose": [
    [
-    740,
-    -2
+    720,
+    -3
    ],
    [
-    750,
-    -2
-   ],
-   [
-    707.5,
+    702.5,
     -1
+   ],
+   [
+    712.5,
+    0
    ]
   ],
-  "com_now": 719.4,
-  "com_prev": 724.1,
-  "com_shift": -4.7,
+  "com_now": 719.9,
+  "com_prev": 719.4,
+  "com_shift": 0.4,
   "above_pos_m": 12,
   "above_pos_d": -1,
-  "below_pos_m": 4,
-  "below_pos_d": 0,
-  "neg_above_d": -2,
-  "neg_below_d": -1,
+  "below_pos_m": 6,
+  "below_pos_d": 1,
+  "neg_above_d": 0,
+  "neg_below_d": 1,
   "flip_dist": null,
-  "read": "本片无 ≥8M 的单边结构变化；正 GEX 重心基本不动（719）；现价附近曝光无单边缺口，对冲放大不明显。"
+  "read": "本片无 ≥8M 的单边结构变化；衰减最大 720 -3M；正 GEX 重心基本不动（720）；现价附近曝光无单边缺口，对冲放大不明显。"
  },
  "frame_quality": {
-  "latest_complete_et": "14:55",
+  "latest_complete_et": "15:05",
   "degraded": false
  },
  "changes": [
@@ -820,8 +811,8 @@
  "max_pain": {
   "expiry": "2026-11-11",
   "value": 720,
-  "frame_spot": 713.71,
-  "dist": -6.3,
+  "frame_spot": 714.12,
+  "dist": -5.9,
   "oi_as_of": "2026-11-10T11:30:00.599Z"
  },
  "premarket": {
