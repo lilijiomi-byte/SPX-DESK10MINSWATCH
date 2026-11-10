@@ -51,7 +51,8 @@
 <h1 style="margin:0 0 4px">META 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1109" aria-selected="true" href="#day-1109">11/9 周一 <span class="tab-move up">17.25</span></a>
+<a class="day-tab" role="tab" data-target="day-1110" aria-selected="true" href="#day-1110">11/10 周二 <span class="tab-event">FOMC</span> <span class="tab-move up">11.78</span></a>
+<a class="day-tab" role="tab" data-target="day-1109" aria-selected="false" href="#day-1109">11/9 周一 <span class="tab-move up">17.25</span></a>
 <a class="day-tab" role="tab" data-target="day-1106" aria-selected="false" href="#day-1106">11/6 周五 <span class="tab-move up">18.59</span></a>
 <a class="day-tab" role="tab" data-target="day-1105" aria-selected="false" href="#day-1105">11/5 周四 <span class="tab-move down">51.19</span></a>
 <a class="day-tab" role="tab" data-target="day-1104" aria-selected="false" href="#day-1104">11/4 周三 <span class="tab-move up">18.59</span></a>
@@ -122,10 +123,95 @@
 <a class="day-tab" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">11.75</span></a>
 <a class="day-tab" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">23.61</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 70 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=70;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 71 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=71;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var nav=document.querySelector('.day-tabs'),btn=document.querySelector('.tabs-toggle');if(nav)nav.classList.add('collapsed');if(btn)btn.innerHTML='展开全部 '+tabs.length+' 个日期 \u25be';var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1109" role="tabpanel">
+<article class="day-panel" id="day-1110" role="tabpanel">
+<header class="mast"><div>
+<h1>META 日内报告</h1>
+<p class="date">2026年11月10日 · 周二 · 日内报告</p>
+</div><div class="tape">
+<strong>641.66 <span class="up">+0.04%</span></strong>
+<span>开 637.63 · 高 647.28 · 低 635.50</span>
+</div></header>
+<aside class="event">
+<div class="event-tag">事件日（CPI）</div>
+<div>
+<h2>事件日（CPI）</h2>
+<p>lib.EVENT_DAYS 有 2026-11-10 条目：08:30 CPI 10月（整体环比预期+0.3%，核心环比预期+0.2%；年率因缺 2025 年 10 月基数不公布）｜12月9日 FOMC 前最后一份通胀数据｜同日 Waller/Bowman 讲话、13:00 10 年期国债拍卖 420 亿、盘后 CoreWeave 财报。实际：整体环比 +0.4%、核心环比 +0.3%，均超预期；12月9日 FOMC 25bp 加息概率约 77%→约 98%。按事件日处理：只看 heatmap 方向，不看精确点位；9:30 首档已是 CPI 后结构。</p>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线＋1DTE dealer-GEX heatmap</h2><div class="source">
+<p>1DTE（2026-11-11 到期，周二无当日到期，用最近未来到期）dealer-GEX heatmap，78 档 5 分钟快照；墙位为 Junk-man 简报口径（本日缺席记 null），算法墙见正文。</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/meta_2026-11-10.png" alt="META 2026-11-10 5分钟K线＋1DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（1DTE 2026-11-11 到期链，78 档）</h3>
+<p>CPI 事件日，1DTE（2026-11-11 到期）链 78 档 5 分钟快照齐全（09:30–15:55 ET）。链极薄：总 gamma 全天仅 -15.1M～+2.9M，10 次翻号，与昨日 0DTE 链的 +215M 钉价结构完全不同；昨日 640 磁铁（峰值 +105.6M）随 0DTE 链到期而消失，今日 640 转负（收盘 -5.9M）。King 在 600（远端残值，深价内，约 40 点下方）与 645 之间来回切换，无单一主导节点。</p>
+<ul>
+<li>CPI 跳空低开后收回：官方开盘 637.63，较昨收 641.41 低开 -0.59%（-3.78）；盘前低 634.02 / 高 648.15，09:25 盘前价 637.64；首根 5m（09:30）探日低 635.50 后收 640.20，09:35 收 642.23，低开缺口当日即回补大半</li>
+<li>上午冲高后全天区间磨：10:00 摸日高 647.28（10:00 根），随后 638–646 区间横盘；15:30 收 645.65，尾盘回落 15:55 收 641.66，收在 VWAP 641.73 下方约 0.1 点、EMA250 639.13 之上；收开差 +4.03（+0.63%），较昨收仅 +0.04%</li>
+<li>链薄、无钉价：总 gamma 全天 -15.1M～+2.9M 且 10 次翻号（昨日为全程正、峰值 +215.1M）；645 为近现货有效 King（+3.2M～+4.8M，全天多数时段），650（-7.8M @10:50）与 660（-7.3M @15:30）负簇在上方，价格 10:00 摸 647.28 后全天未再触及 647；640 由昨日磁铁转负（收盘 -5.9M）</li>
+<li>King 来回切换、无主导节点：600（+2.9M～+4.4M，约 40 点下方的深价内残值）与 645（+3.2M～+4.8M）全天交替为 King，另有 655 短暂接棒（09:50–10:05）；单点量级均 &lt;5M，结构信号弱，价格基本按自身 tape 走</li>
+<li>资金流 0 笔（DTE≤1，premium≥$20万｜size≥50）：YHS 原始 18 笔全部为 DTE≥3（最近 2026-11-13，3DTE），无 0DTE/1DTE 大单；CPI 日无大资金在近端链表态，不作方向结论</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 10:50</span>
+<strong>650</strong>
+<span class="metric">+0.0M</span>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:30</span>
+<strong>660</strong>
+<span class="metric">+0.0M</span>
+</article>
+<article class="node">
+<span class="node-rank">③ · 15:45</span>
+<strong>640</strong>
+<span class="metric">+0.0M</span>
+</article>
+<article class="node">
+<span class="node-rank">④ · 15:25</span>
+<strong>645</strong>
+<span class="metric">+0.0M</span>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 13:05</span>
+<strong>600</strong>
+<span class="metric">+0.0M</span>
+</article>
+</div></div>
+<div class="method"><p>全天 78 档快照内各 strike 的最大 |GEX|。注意：全部为个位数 M 量级（最大仅 -7.8M），与昨日 640 磁铁 +105.6M 不可同量级比较；负值为主，说明今日链以负 gamma 簇为主。</p></div>
+<div class="flow-summary">
+<h3>资金流（1DTE到期2026-11-11，0笔；premium≥$20万｜size≥50｜DTE≤1｜side=at_ask/at_bid；mid单列、绝不计入主动买卖）</h3>
+<p>（当日无符合筛子的 flow 记录，或数据未拉取到）</p>
+<p class="verdict">全天 0 笔：DTE≤1 口径内无符合门槛的成交；YHS 原始 18 笔均为 DTE≥3（最近 2026-11-13，3DTE，多为 11/20 月度与 2027 年 LEAPS），不在口径内。主动资金美元口径无法判断，不作方向结论。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 637.63（官方，YHS 日线），较昨收 641.41 低开 -0.59%（CPI 超预期：整体环比 +0.4%/核心 +0.3%，12月 FOMC 加息概率约 77%→约 98%）；全天 635.50–647.28，收 641.66（+0.04% vs 昨收；收开差 +4.03 / +0.63%）。盘前高 648.15 / 低 634.02，09:25 盘前价 637.64。</p></article>
+<article class="summary-item"><p>② 白点轨迹（K 线）：首根 09:30 开 637.25、探 635.50 后收 640.20 → 09:35 收 642.23 → 10:00 摸日高 647.28 → 上午回落贴 640 磨（11:00–13:30 多次收破 640 又收回）→ 午后缓推（14:00 收 640.14 → 15:30 收 645.65）→ 尾盘回落 15:55 收 641.66（收在前日高 647.25 之下、VWAP 641.73 之下约 0.1 点、EMA250 639.13 之上）。</p></article>
+<article class="summary-item"><p>③ 结构：1DTE 链总 gamma 全天 -15.1M～+2.9M、10 次翻号，无钉价；昨日 0DTE 的 640 磁铁（峰值 +105.6M）随链到期消失，今日 640 转负（收盘 -5.9M）；近现货有效 King 为 645（+3.2M～+4.8M），上方 650/660 负簇（-7.8M/-7.3M）构成软顶，价格 10:00 后未再触及 647。首帧算法墙 Call 655（+1.7M）/ Put 600（+2.9M，40 点下方远端残值），近现货无有效 Put 墙。</p></article>
+<article class="summary-item"><p>④ Junk-man 简报已核实缺席（见 junkman 字段）：按 2026-11-05 用户指令不再查 Discord，本地无用户当日粘贴/上传的简报文件，墙位记 null；上午算法墙见上文，非简报墙。</p></article>
+<article class="summary-item"><p>⑤ 资金流 0 笔：DTE≤1 口径内无大单；原始 18 笔均为 DTE≥3，CPI 日近端链无大资金表态。</p></article>
+</div></section>
+<p class="data-note">K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照；heatmap亮度=平方根连续渐变（p99裁剪）。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。本日为 1DTE（2026-11-11 到期）链，周二无当日到期。</p>
+</article>
+<article class="day-panel" hidden id="day-1109" role="tabpanel">
 <header class="mast"><div>
 <h1>META 日内报告</h1>
 <p class="date">2026年11月9日 · 周一 · 日内报告</p>
