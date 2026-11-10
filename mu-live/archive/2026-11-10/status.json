@@ -1,18 +1,18 @@
 {
- "updated_et": "2026-11-10 13:15 ET",
+ "updated_et": "2026-11-10 13:25 ET",
  "alert": null,
  "watch": null,
  "spot": 709.4,
- "total_gex_m": 0.7,
+ "total_gex_m": 1.3,
  "flip": null,
  "call_wall": 715,
- "put_wall": 702.5,
- "king_strike": 715,
- "king_gex_m": 2.6,
+ "put_wall": 707.5,
+ "king_strike": 730,
+ "king_gex_m": 2.7,
  "regime": "混合 Gamma",
  "targets": {
-  "up": 715,
-  "flat": 715,
+  "up": 707.5,
+  "flat": 705,
   "down": 702.5
  },
  "levels": [
@@ -42,8 +42,8 @@
   },
   {
    "name": "EMA250",
-   "value": 727.28,
-   "dist": 17.9,
+   "value": 726.94,
+   "dist": 17.5,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -56,10 +56,10 @@
   },
   {
    "name": "VWAP",
-   "value": 717.39,
-   "dist": 8.0,
+   "value": 716.78,
+   "dist": 7.4,
    "side": "上方",
-   "state": "normal",
+   "state": "near",
    "tier": "primary",
    "merged": false,
    "today_events": [
@@ -203,14 +203,14 @@
  ],
  "nodes": {
   "king": {
-   "strike": 715,
+   "strike": 730,
    "gex_m": 3,
    "delta_m": 0
   },
   "band_up": {
    "lo": 715,
-   "hi": 720,
-   "gex_m": 4,
+   "hi": 730,
+   "gex_m": 8,
    "delta_m": 0
   },
   "support": {
@@ -230,7 +230,7 @@
   },
   {
    "strike": 740,
-   "gex_m": -3.5,
+   "gex_m": -3.6,
    "dist": 30.6,
    "roles": []
   },
@@ -248,19 +248,32 @@
   },
   {
    "strike": 730,
-   "gex_m": 2.6,
+   "gex_m": 2.7,
    "dist": 20.6,
-   "roles": []
+   "roles": [
+    "👑 King",
+    "🧲 上方主带"
+   ]
+  },
+  {
+   "strike": 725,
+   "gex_m": 1.2,
+   "dist": 15.6,
+   "roles": [
+    "🧲 上方主带"
+   ]
   },
   {
    "strike": 722.5,
    "gex_m": -1.3,
    "dist": 13.1,
-   "roles": []
+   "roles": [
+    "🧲 上方主带"
+   ]
   },
   {
    "strike": 720,
-   "gex_m": 1.6,
+   "gex_m": 1.7,
    "dist": 10.6,
    "roles": [
     "🧲 上方主带"
@@ -271,7 +284,6 @@
    "gex_m": 2.6,
    "dist": 5.6,
    "roles": [
-    "👑 King",
     "🧲 上方主带",
     "Call Wall"
    ]
@@ -284,23 +296,30 @@
   },
   {
    "strike": 710,
-   "gex_m": -1.0,
+   "gex_m": -0.9,
    "dist": 0.6,
    "roles": [
     "Flip 线"
    ]
   },
   {
-   "strike": 702.5,
-   "gex_m": 1.0,
-   "dist": -6.9,
+   "strike": 707.5,
+   "gex_m": 0.9,
+   "dist": -1.9,
    "roles": [
-    "Put Wall"
+    "Put Wall",
+    "Flip 线"
    ]
   },
   {
+   "strike": 702.5,
+   "gex_m": 1.1,
+   "dist": -6.9,
+   "roles": []
+  },
+  {
    "strike": 700,
-   "gex_m": 2.2,
+   "gex_m": 2.3,
    "dist": -9.4,
    "roles": [
     "🛡 下方承接"
@@ -314,7 +333,7 @@
   },
   {
    "strike": 680,
-   "gex_m": -1.1,
+   "gex_m": -1.2,
    "dist": -29.4,
    "roles": []
   },
@@ -331,11 +350,11 @@
    "roles": []
   }
  ],
- "ladder_max_m": 3.5,
+ "ladder_max_m": 3.6,
  "decision_line": {
   "spot": 709.4,
-  "king": 715,
-  "king_dist": 5.6,
+  "king": 730,
+  "king_dist": 20.6,
   "flip": null,
   "invalidation_text": "Flip 暂不可用（dealer 快照与帧现价偏离 >$10，flip 已弃用）"
  },
@@ -355,26 +374,32 @@
   }
  },
  "flow": {
-  "as_of": "13:21 ET",
+  "as_of": "13:26 ET",
   "bull": {
-   "premium": 260000,
-   "count": 1,
+   "premium": 520000,
+   "count": 2,
    "max_premium": 260000,
    "max_strike": 725,
    "top": [
     [
      725,
      "P",
-     260000
+     520000
     ]
    ]
   },
   "bear": {
-   "premium": 0,
-   "count": 0,
-   "max_premium": 0,
-   "max_strike": null,
-   "top": []
+   "premium": 270000,
+   "count": 1,
+   "max_premium": 270000,
+   "max_strike": 725,
+   "top": [
+    [
+     725,
+     "P",
+     270000
+    ]
+   ]
   },
   "level": "big"
  },
@@ -423,10 +448,26 @@
   "read": "本片无 ≥8M 的单边结构变化；正 GEX 重心基本不动（723）；现价被正曝光包覆且在增厚，波动被对冲吸收。"
  },
  "frame_quality": {
-  "latest_complete_et": "13:15",
+  "latest_complete_et": "13:25",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "13:25 ET",
+   "text": "图41 · 🌊 看空大簇：近10分钟主动成交 $270,000（1 笔，最大单笔 $270,000 @725）｜主腿 725P $270,000 → 仅显示，未改方向预判"
+  },
+  {
+   "t": "13:25 ET",
+   "text": "图40 · 🌊 看空 flow 簇形成：近10min 主动 $270,000（1 笔）｜主腿 725P $270,000"
+  },
+  {
+   "t": "13:25 ET",
+   "text": "🧲 King 节点 715→730"
+  },
+  {
+   "t": "13:25 ET",
+   "text": "🧱 Put Wall 702.5→707.5 上移"
+  },
   {
    "t": "13:05 ET",
    "text": "图39 · 🎯 13:00 1分钟高 733.2 到达昨收 733.2"
@@ -755,8 +796,8 @@
  "max_pain": {
   "expiry": "2026-11-11",
   "value": 720,
-  "frame_spot": 705.66,
-  "dist": -14.3,
+  "frame_spot": 707.29,
+  "dist": -12.7,
   "oi_as_of": "2026-11-10T11:30:00.599Z"
  },
  "premarket": {
