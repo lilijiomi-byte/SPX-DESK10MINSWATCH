@@ -33,6 +33,9 @@
          border-radius:10px; padding:12px 14px; font-size:15px; font-weight:700;
          line-height:1.65; margin-bottom:14px; box-shadow:0 0 0 1px rgba(255,191,63,.22);
          white-space:pre-line;}
+  .closeb{display:none; background:#1c2a44; border:1px solid #5a6a85; color:#e8eef7;
+         border-radius:10px; padding:10px 14px; font-size:14px; font-weight:700;
+         line-height:1.6; margin-bottom:14px;}
   .surgeb{display:none; border-radius:10px; padding:12px 14px; font-size:15px;
          font-weight:700; line-height:1.65; margin-bottom:14px; white-space:pre-line;}
   .surgeb.down{background:#2e0a24; border:1px solid #c0267d; color:#ffd7ec;
@@ -191,6 +194,10 @@
 
   <div class="surgeb" id="surge"></div>
 
+  <div class="fqnote" id="datastatus"></div>
+
+  <div class="closeb" id="closebanner"></div>
+
   <div class="cards">
     <div class="decline" id="decline" style="display:none"></div>
     <div class="card"><div class="k">总 Gamma（standard GEX）</div><div class="v" id="total">—</div><div class="s" id="regime">—</div></div>
@@ -198,6 +205,7 @@
     <div class="card"><div class="k">Call Wall</div><div class="v pos" id="cw">—</div><div class="s">上方最近强正节点（dealer 口径）</div></div>
     <div class="card"><div class="k">Put Wall</div><div class="v neg" id="pw">—</div><div class="s">下方最近强正节点（dealer 口径）</div></div>
     <div class="card"><div class="k">King 节点</div><div class="v" id="king">—</div><div class="s" id="kinggex">—</div></div>
+    <div class="card"><div class="k">Gamma 重心 CoG</div><div class="v" id="cog">—</div><div class="s" id="cogdist">—</div></div>
     <div class="card" style="grid-column:span 2; min-width:230px;"><div class="k">30m 靶向（最新截面推演）</div>
       <div class="tgt"><span class="u">↗ <span id="tup">—</span></span><span class="f">➡ <span id="tflat">—</span></span><span class="d">↘ <span id="tdown">—</span></span></div>
       <div class="s">上行目标 / 钉住位 / 下行承接（heatmap 0DTE 结构位）</div></div>
@@ -228,6 +236,8 @@
 
   <h2>🌊 Flow 簇<span id="flowasof">SPXW 0DTE · 近 10 分钟主动成交（单笔 ≥$50k · ≥50 张）</span></h2>
   <div class="lvgrid" id="flowrow"><div class="empty">加载中…</div></div>
+  <div class="flnote" id="flowcum"></div>
+  <div class="flnote" id="flowsigned"></div>
   <div class="flnote">仅显示 · 不改方向预判（看多簇 = call 主动买 + put 主动卖；看空簇 = put 主动买 + call 主动卖｜统计门槛：单笔 ≥$50k 且 ≥50 张｜中簇 ≥$60万 · 大簇 ≥$150万或单笔 ≥$80万）</div>
 
   <h2>区间位置<span>官方区间（昨晚 NW 预告 90%）描边 · 日报区间（9:30 简报）填充 · 白刻为中心 · 黄线为现价</span></h2>
@@ -238,6 +248,9 @@
   <h2>Δ 切片（30分钟 Gamma 变化量）<span>存量看点位 · 变化量看点位在往哪变 · 金 = 增强 · 紫 = 衰减</span></h2>
   <div class="chartbox"><img id="deltachart" src="spx_delta_live.png" alt="Δ 切片图"></div>
   <div class="dread" id="deltaread" style="display:none;"><span class="k">Exposure 解读（最新完整切片）</span><span id="deltareadtxt"></span></div>
+
+  <h2>大单累计 Premium<span>SPXW 0DTE · 单笔 ≥$50k · 按 5 分钟槽位累加 · 绿 = 看多 · 红 = 看空 · 金 = 净</span></h2>
+  <div class="chartbox"><img id="premiumchart" src="spx_premium_live.png" alt="大单累计 Premium 曲线"></div>
 
   <h2>Heatmap 重要变化<span>当日累计 · 最新在前（墙迁移 / King / 大节点增减 / 总 Gamma / Flip）</span></h2>
   <div class="feed" id="feed"><div class="empty">加载中…</div></div>
@@ -274,6 +287,19 @@ function load(){
         fqEl.style.display = "block";
       } else { fqEl.style.display = "none"; }
     }
+    var dsEl = document.getElementById("datastatus");
+    if (dsEl && s.data_status){
+      var D = s.data_status;
+      dsEl.textContent = "数据状态：最新帧 " + (D.last_frame_et || "—") + " ET · 全天 " + (D.frames || 0) + " 帧" + (D.degraded ? " · ⚠ 最新帧不完整" : " · 正常");
+      dsEl.style.display = "block";
+    }
+    var cb = document.getElementById("closebanner");
+    if (cb){
+      if (s.data_status && s.data_status.closed){
+        cb.textContent = "已收盘 · 最后一帧 " + (s.data_status.last_frame_et || "—") + " ET";
+        cb.style.display = "block";
+      } else { cb.style.display = "none"; }
+    }
     document.getElementById("spot").textContent = fmtPx(s.spot);
     var tot = document.getElementById("total");
     tot.textContent = fmtM(s.total_gex_m);
@@ -289,6 +315,11 @@ function load(){
     document.getElementById("pw").textContent = fmtPx(s.put_wall);
     document.getElementById("king").textContent = fmtPx(s.king_strike);
     document.getElementById("kinggex").textContent = "GEX " + fmtM(s.king_gex_m);
+    if (s.cog){
+      document.getElementById("cog").textContent = fmtPx(s.cog.strike);
+      var cd = s.cog.dist;
+      document.getElementById("cogdist").textContent = "现价距重心 " + (cd >= 0 ? "+" : "") + Number(cd).toFixed(1) + " 点";
+    }
     if (s.targets){
       document.getElementById("tup").textContent = fmtPx(s.targets.up);
       document.getElementById("tflat").textContent = fmtPx(s.targets.flat);
@@ -477,8 +508,24 @@ function load(){
           }
           frEl.appendChild(d);
         });
+        var fcEl = document.getElementById("flowcum");
+        if (fcEl){
+          if (s.flow_cum && s.flow_cum.slots && s.flow_cum.slots.length){
+            var nt = s.flow_cum.net;
+            fcEl.textContent = "大单累计：看多 " + fmtUSD(s.flow_cum.bull_total) + " · 看空 " + fmtUSD(s.flow_cum.bear_total) + " · 净 " + (nt >= 0 ? "+" : "-") + fmtUSD(Math.abs(nt));
+          } else { fcEl.textContent = ""; }
+        }
+        var fsEl = document.getElementById("flowsigned");
+        if (fsEl){
+          var S5 = s.flow.signed5m;
+          if (S5){
+            fsEl.textContent = "近 5 分钟：看多 " + fmtUSD(S5.bull_prem) + "（" + S5.bull_n + " 笔）· 看空 " + fmtUSD(S5.bear_prem) + "（" + S5.bear_n + " 笔）· Call " + fmtUSD(S5.call_prem) + " / Put " + fmtUSD(S5.put_prem);
+          } else { fsEl.textContent = ""; }
+        }
       } else {
         frEl.innerHTML = '<div class="empty">flow 数据未到</div>';
+        var fsEl2 = document.getElementById("flowsigned");
+        if (fsEl2) fsEl2.textContent = "";
       }
     }
     var rbEl = document.getElementById("rangebox");
@@ -556,7 +603,7 @@ function load(){
         dr.style.display = "block";
       } else { dr.style.display = "none"; }
     }
-    [["chart", "spx_heatmap_live.png"], ["deltachart", "spx_delta_live.png"]].forEach(function(cfg){
+    [["chart", "spx_heatmap_live.png"], ["deltachart", "spx_delta_live.png"], ["premiumchart", "spx_premium_live.png"]].forEach(function(cfg){
       var img = document.getElementById(cfg[0]);
       if (!img) return;
       var url = cfg[1] + "?t=" + Date.now();
