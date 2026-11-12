@@ -51,7 +51,8 @@
 <h1 style="margin:0 0 4px">TSLA 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1111" aria-selected="true" href="#day-1111">11/11 周三 <span class="tab-move up">9.08</span></a>
+<a class="day-tab" role="tab" data-target="day-1112" aria-selected="true" href="#day-1112">11/12 周四 <span class="tab-move up">16.02</span></a>
+<a class="day-tab" role="tab" data-target="day-1111" aria-selected="false" href="#day-1111">11/11 周三 <span class="tab-move up">9.08</span></a>
 <a class="day-tab" role="tab" data-target="day-1110" aria-selected="false" href="#day-1110">11/10 周二 <span class="tab-move up">9.57</span></a>
 <a class="day-tab" role="tab" data-target="day-1109" aria-selected="false" href="#day-1109">11/9 周一 <span class="tab-move up">22.18</span></a>
 <a class="day-tab" role="tab" data-target="day-1105" aria-selected="false" href="#day-1105">11/5 周四 <span class="tab-move down">33.70</span></a>
@@ -123,10 +124,105 @@
 <a class="day-tab" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">7.34</span></a>
 <a class="day-tab" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">9.50</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 71 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=71;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 72 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=72;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var nav=document.querySelector('.day-tabs'),btn=document.querySelector('.tabs-toggle');if(nav)nav.classList.add('collapsed');if(btn)btn.innerHTML='展开全部 '+tabs.length+' 个日期 \u25be';var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1111" role="tabpanel">
+<article class="day-panel" id="day-1112" role="tabpanel">
+<header class="mast"><div>
+<h1>TSLA 日内报告</h1>
+<p class="date">2026年11月12日 · 周四 · 日内报告</p>
+</div><div class="tape">
+<strong>397.62 <span class="up">+2.95%</span></strong>
+<span>开 386.23 · 高 401.22 · 低 385.20</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 1DTE heatmap</h2><div class="source">
+<p>1DTE，夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/tsla_2026-11-12.png" alt="TSLA 2026-11-12 5分钟K线与1DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（1DTE，夜航社 78 档 5 分钟快照）</h3>
+<p>1DTE全天78档5分钟快照（09:30–15:55 ET）。开盘 386.23，收 397.62（+2.95%），盘前高/低 390.83/384.1。</p>
+<ul>
+<li>早盘(09:30) 现价 392.43：上方强节点 392.5(+6.3M)；下方强节点 367.5(+2.0M), 370(+5.0M), 382.5(+5.6M), 385(+5.5M), 387.5(+2.2M)；负gamma带 377.5(-23.4M), 400(-19.4M)。</li>
+<li>节点强度大变化（首→末）：410 -4.8M→-14.8M（-210%）；400 -19.4M→-27.8M（-44%）；402.5 -4.0M→-11.0M（-176%）；390 -4.0M→-10.5M（-161%）；405 -1.6M→-6.6M（-324%）；380 -3.6M→+0.0M（+100%）。</li>
+<li>尾盘(15:55) 现价 397.17：强正节点 367.5(+1.8M), 370(+4.1M), 382.5(+5.5M), 385(+3.6M), 387.5(+5.0M), 392.5(+5.5M), 395(+7.1M), 397.5(+3.0M), 412.5(+1.9M)；负gamma带 377.5(-16.3M), 400(-27.8M), 410(-14.8M)。</li>
+<li>大单流（premium≥200k/size≥50/DTE≤1，共6笔）：call主动买 0.29M / 主动卖 1.09M；put主动买 0.86M / 主动卖 0.00M。call买=看多、put买=看空/对冲、put卖=看多/收保费。</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node purple">
+<span class="node-rank">① · 10:45</span>
+<strong>377.5</strong>
+<span class="metric">-30.0M</span>
+<p class="node-analysis">一、377.5（负 gamma 加速带，峰值 -30.0M）：全天变化——从 -23.4M 到 -30.0M（约29,987,270倍）；影响时段——10:45 ET 达到峰值，当时现货约 389.04；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">② · 15:45</span>
+<strong>400</strong>
+<span class="metric">-28.7M</span>
+<p class="node-analysis">二、400（负 gamma 加速带，峰值 -28.7M）：全天变化——从 -19.4M 到 -28.7M（约28,653,676倍）；影响时段——15:45 ET 达到峰值，当时现货约 398.02；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">③ · 15:35</span>
+<strong>410</strong>
+<span class="metric">-18.8M</span>
+<p class="node-analysis">三、410（负 gamma 加速带，峰值 -18.8M）：全天变化——从 -4.8M 到 -18.8M（约18,840,715倍）；影响时段——15:35 ET 达到峰值，当时现货约 398.67；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">④ · 15:05</span>
+<strong>390</strong>
+<span class="metric">-18.6M</span>
+<p class="node-analysis">四、390（负 gamma 加速带，峰值 -18.6M）：全天变化——从 -4.0M 到 -18.6M（约18,621,020倍）；影响时段——15:05 ET 达到峰值，当时现货约 393.61；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">⑤ · 15:20</span>
+<strong>402.5</strong>
+<span class="metric">-11.5M</span>
+<p class="node-analysis">五、402.5（负 gamma 加速带，峰值 -11.5M）：全天变化——从 -4.0M 到 -11.5M（约11,517,295倍）；影响时段——15:20 ET 达到峰值，当时现货约 398.46；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断 26.7M；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流（1DTE，全天6笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<div class="flow-table-wrap"><table class="flow-table">
+<thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead><tbody>
+<tr class="tr-put"><td>09:33:59</td><td><b>390.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$4.85</td><td>4.65 / 4.85</td><td><span class="side-pill">ASK</span></td><td>569</td><td><b>$0.276M</b></td><td>2283</td><td>3276</td></tr>
+<tr class="tr-put"><td>11:44:55</td><td><b>390.0</b></td><td><b style="color:#c83c43">PUT</b></td><td>1</td><td>$3.30</td><td>3.25 / 3.30</td><td><span class="side-pill">ASK</span></td><td>1763</td><td><b>$0.582M</b></td><td>26970</td><td>3276</td></tr>
+<tr class="tr-call"><td>15:08:47</td><td><b>390.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$8.50</td><td>6.30 / 8.50</td><td><span class="side-pill">ASK</span></td><td>343</td><td><b>$0.292M</b></td><td>18921</td><td>7011</td></tr>
+<tr class="tr-call"><td>15:09:11</td><td><b>395.0</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$4.50</td><td>4.50 / 4.65</td><td><span class="side-pill">BID</span></td><td>825</td><td><b>$0.371M</b></td><td>46456</td><td>6220</td></tr>
+<tr class="tr-call"><td>15:09:46</td><td><b>392.5</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$5.30</td><td>5.45 / 5.50</td><td><span class="side-pill">BID</span></td><td>844</td><td><b>$0.448M</b></td><td>35206</td><td>7163</td></tr>
+<tr class="tr-call"><td>15:09:46</td><td><b>397.5</b></td><td><b style="color:#158353">CALL</b></td><td>1</td><td>$3.25</td><td>3.25 / 3.55</td><td><span class="side-pill">BID</span></td><td>844</td><td><b>$0.274M</b></td><td>24076</td><td>2342</td></tr>
+</tbody></table></div>
+<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ DTE≤1 ｜ TSLA ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>
+<p class="verdict">全天6笔：call ask $0.29M / call bid $1.09M，put ask $0.86M / put bid $0.00M，mid $0.00M（不计入主动买卖）；主动资金偏空。 主动买前列：11:44 put ask 390ATM $0.58M×1763; 15:08 call ask 390ITM $0.29M×343; 09:33 put ask 390ATM $0.28M×569。 主动卖前列：15:09 call bid 392ATM $0.45M×844; 15:09 call bid 395ATM $0.37M×825; 15:09 call bid 398OTM $0.27M×844。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① ；全天 401.22–385.20，收 397.62（+2.95%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 386.23 → 高 401.22 → 低 385.20 → 收 397.62。</p></article>
+<article class="summary-item"><p>③ 早盘(09:30) 现价 392.43：上方强节点 392.5(+6.3M)；下方强节点 367.5(+2.0M), 370(+5.0M), 382.5(+5.6M), 385(+5.5M), 387.5(+2.2M)；负gamma带 377.5(-23.4M), 400(-19.4M)。</p></article>
+<article class="summary-item"><p>④ 资金流：全天6笔：call ask $0.29M / call bid $1.09M，put ask $0.86M / put bid $0.00M，mid $0.00M（不计入主动买卖）；主动资金偏空。 主动买前列：11:44 put ask 390ATM $0.58M×1763; 15:08 call ask 390ITM $0.29M×343; 09:33 put ask 390ATM $0.28M×569。 主动卖前列：15:09 call bid 392ATM $0.45M×844; 15:09 call bid 395ATM $0.37M×825; 15:09 call bid 398OTM $0.27M×844。</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照；页面为收盘后静态快照，不实时更新行情。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1111" role="tabpanel">
 <header class="mast"><div>
 <h1>TSLA 日内报告</h1>
 <p class="date">2026年11月11日 · 周三 · 日内报告</p>
