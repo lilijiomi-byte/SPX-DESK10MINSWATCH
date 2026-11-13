@@ -51,7 +51,8 @@
 <h1 style="margin:0 0 4px">META 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1112" aria-selected="true" href="#day-1112">11/12 周四 <span class="tab-move down">11.36</span></a>
+<a class="day-tab" role="tab" data-target="day-1113" aria-selected="true" href="#day-1113">11/13 周五 <span class="tab-move up">19.08</span></a>
+<a class="day-tab" role="tab" data-target="day-1112" aria-selected="false" href="#day-1112">11/12 周四 <span class="tab-move down">11.36</span></a>
 <a class="day-tab" role="tab" data-target="day-1111" aria-selected="false" href="#day-1111">11/11 周三 <span class="tab-move down">20.43</span></a>
 <a class="day-tab" role="tab" data-target="day-1110" aria-selected="false" href="#day-1110">11/10 周二 <span class="tab-move up">11.78</span></a>
 <a class="day-tab" role="tab" data-target="day-1109" aria-selected="false" href="#day-1109">11/9 周一 <span class="tab-move up">17.25</span></a>
@@ -125,10 +126,70 @@
 <a class="day-tab" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">11.75</span></a>
 <a class="day-tab" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">23.61</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 73 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=73;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 74 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=74;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var nav=document.querySelector('.day-tabs'),btn=document.querySelector('.tabs-toggle');if(nav)nav.classList.add('collapsed');if(btn)btn.innerHTML='展开全部 '+tabs.length+' 个日期 \u25be';var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1112" role="tabpanel">
+<article class="day-panel" id="day-1113" role="tabpanel">
+<header class="mast"><div>
+<h1>META 日内报告</h1>
+<p class="date">2026年11月13日 · 周五 · 日内报告</p>
+</div><div class="tape">
+<strong>641.99 <span class="up">+2.95%</span></strong>
+<span>开 627.21 · 高 643.91 · 低 624.83</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">正常日</div>
+<div>
+<h2>正常日</h2>
+<p>lib.EVENT_DAYS 无 2026-11-13 条目；今早 8:30 PPI（10 月环比 +0.3%，预期 +0.4%；核心 +0.3% 符合预期；同比 6.5%，2022 年 11 月以来最高），按扫描口径定为非事件日（与 11-06 非农日同例）、无事件日横幅；META 财报已于 10-29 盘后发布，非财报日。按非事件日处理：heatmap 点位可正常参考（本日 heatmap 缺失，仅上午 6 档）。</p>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线（无 heatmap：YHS 维护停服）</h2><div class="source">
+<p>无 heatmap：夜航社 Data API 收盘后维护停服（503），全天 78 档快照未取到；图表只画 5 分钟 K 线＋墙位/均线，墙取上午首帧算法值。</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/meta_2026-11-13.png" alt="META 2026-11-13 5分钟K线（YHS 停服，无 heatmap）" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（无全天 heatmap：YHS Data API 维护停服 503）</h3>
+<p>⚠️ 夜航社 Data API 今日收盘后维护停服（503 SERVICE_DISABLED，discover / heatmap / ohlc / flow 四端点 16:26–16:35 ET 多次重试均失败），全天 78 档 5 分钟快照未取到，本节无全天 heatmap、TOP5 与收盘帧。以下仅为本地晨间扫描存档的上午结构（6 档，09:30–09:55 ET，0DTE 2026-11-13 到期链），只作上午参考，绝不冒充全天；午后结构未知，YHS 恢复后可回补。</p>
+<ul>
+<li>跳空高开、开盘即在双墙之间：开盘 627.21（Yahoo 5m 首根 open 替代值——YHS 日线停服未取到，非官方开盘价；较昨收 623.59 高开 +0.58%），盘前高 629.28 / 低 622.36，09:25 盘前价 626.58；首根 5m（09:30）开 627.21、探 625.00 后收 629.46，收在 Put 墙 620 之上、Call 墙 630 之下</li>
+<li>早盘首根即站上 Call 墙：09:35 收 632.27，是全天首根收在 Call 墙 630 与前日高 630.28 之上的 bar；09:45 摸上午高 637.24、09:50 收 635.67；上午 6 档总 gamma 从 +38.3M 快速衰减至 +0.8M（09:50 一度翻负 -3.9M），King 630 同期 +25.6M→+29.2M 越长越强，上方负簇同步增厚（635 -19.1M、645 -24.0M、640 -14.7M）</li>
+<li>上午回踩不破 Put 墙：10:30 收 627.66，10:35 探日低 624.83（收 625.83）、10:40 收 625.47——回踩全程守在 Put 墙 620 之上，未测试该墙；10:45 收 628.53 收回，11:00 收 629.00，午间 11:30–12:30 在 631–634 之间窄幅磨（12:00 收 631.04）</li>
+<li>午后一路磨高、尾盘摸日高：13:00 收 636.20 → 14:00 收 641.57 → 15:00 收 641.01 → 15:30 收 640.82 → 15:50 摸日高 643.91（收 641.65）→ 15:55 收 641.99；收在 VWAP 635.38 上方约 6.6 点、EMA250 631.43 上方约 10.6 点、Call 墙 630 之上约 12 点</li>
+<li>午后 heatmap 未知：YHS 自收盘起停服，无 09:55 之后任何快照，收盘帧总 gamma / 收盘墙 / 午后墙迁移均缺失，不推测；资金流亦缺失（见 flow_verdict）</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+</div></div>
+<div class="method"><p>无全天 heatmap：TOP5 缺失（YHS 停服）。上午 6 档内各 strike 的最大 |GEX| 见 key_reads，仅作上午参考。</p></div>
+<div class="flow-summary">
+<h3>资金流（YHS 停服，未取到；口径 premium≥$20万｜size≥50｜DTE≤1｜side=at_ask/at_bid；mid单列、绝不计入主动买卖）</h3>
+<p>（当日无符合筛子的 flow 记录，或数据未拉取到）</p>
+<p class="verdict">YHS Data API 维护停服（503），flow/trades 端点未返回任何成交，本日资金流缺失——不是“无大单”，是数据未取到，不作方向判断。YHS 恢复后可回补。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 上午 GEX 结构复盘（午后 heatmap 缺失）</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 627.21（Yahoo 5m 首根 open 替代值——YHS 日线停服未取到，非官方开盘价；较昨收 623.59 高开 +0.58%），全天 624.83–643.91，收 641.99（+2.95% vs 昨收；收开差 +14.78 / +2.36%）。盘前高 629.28 / 低 622.36，09:25 盘前价 626.58。非事件日（今早 8:30 PPI 环比 +0.3% 略低于预期的 +0.4%，核心 +0.3% 符合预期）。</p></article>
+<article class="summary-item"><p>② 白点轨迹（K 线）：首根 09:30 收 629.46 → 09:35 首根收上 Call 墙 630（收 632.27）→ 09:45 摸上午高 637.24 → 10:35 回踩日低 624.83（收 625.83，守在 Put 墙 620 之上）→ 10:45 收回 628.53 → 午间 631–634 窄磨（12:00 收 631.04）→ 午后一路磨高（13:00 收 636.20 → 14:00 收 641.57 → 15:00 收 641.01）→ 15:50 摸日高 643.91 → 终根 15:55 收 641.99（收在 VWAP 635.38 与 EMA250 631.43 之上）。</p></article>
+<article class="summary-item"><p>③ 结构（仅上午 6 档，午后未知）：首帧算法墙 Call 630（+25.6M）/ Put 620（+12.0M），King 630（+25.6M→+29.2M）；价格开盘后第二根即站上 Call 墙并全天未再收回其下，上方 635/640/645 负簇上午同步增厚至 -19.1M/-14.7M/-24.0M——价格穿墙上行、负簇增厚未压住。午后墙是否跟随上移、收盘帧结构如何，均因 YHS 停服未知，不推测。</p></article>
+<article class="summary-item"><p>④ Junk-man 简报已核实缺席（见 junkman 字段）：按 2026-11-05 用户指令不再查 Discord，本地无用户当日粘贴/上传的简报文件，墙位记 null；上午算法墙见上文，非简报墙。</p></article>
+<article class="summary-item"><p>⑤ 资金流缺失：YHS 停服，flow 端点未返回成交，本日无资金流读数（不是无大单）。</p></article>
+</div></section>
+<p class="data-note">K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照（本日停服缺失，上午结构取自本地晨间扫描存档 6 档）。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。本日 heatmap / flow / straddle 因 YHS 维护停服缺失，YHS 恢复后可回补。</p>
+</article>
+<article class="day-panel" hidden id="day-1112" role="tabpanel">
 <header class="mast"><div>
 <h1>META 日内报告</h1>
 <p class="date">2026年11月12日 · 周四 · 日内报告</p>
