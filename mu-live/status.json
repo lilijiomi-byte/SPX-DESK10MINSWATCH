@@ -1,25 +1,25 @@
 {
- "updated_et": "2026-11-13 13:15 ET",
+ "updated_et": "2026-11-13 13:25 ET",
  "alert": null,
  "watch": null,
- "spot": 760.35,
- "total_gex_m": -55.2,
- "flip": 745.8,
+ "spot": 763.81,
+ "total_gex_m": -56.1,
+ "flip": 777.2,
  "call_wall": 780,
  "put_wall": null,
  "king_strike": 780,
- "king_gex_m": 14.7,
+ "king_gex_m": 18.3,
  "regime": "负 Gamma",
  "targets": {
   "up": 780,
-  "flat": 760,
+  "flat": 765,
   "down": 747.5
  },
  "levels": [
   {
    "name": "前周高·月高",
    "value": 892.08,
-   "dist": 131.7,
+   "dist": 128.3,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -30,7 +30,7 @@
   {
    "name": "盘前高",
    "value": 806.65,
-   "dist": 46.3,
+   "dist": 42.8,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -41,7 +41,7 @@
   {
    "name": "昨日高·昨收",
    "value": 799.7,
-   "dist": 39.4,
+   "dist": 35.9,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -52,7 +52,7 @@
   {
    "name": "盘前低",
    "value": 780.88,
-   "dist": 20.5,
+   "dist": 17.1,
    "side": "上方",
    "state": "crossed_down",
    "tier": "primary",
@@ -65,7 +65,7 @@
   {
    "name": "昨开·EMA250",
    "value": 769.31,
-   "dist": 9.0,
+   "dist": 5.5,
    "side": "上方",
    "state": "crossed_down",
    "tier": "primary",
@@ -77,8 +77,8 @@
   },
   {
    "name": "VWAP",
-   "value": 767.27,
-   "dist": 6.9,
+   "value": 767.18,
+   "dist": 3.4,
    "side": "上方",
    "state": "crossed_down",
    "tier": "primary",
@@ -91,9 +91,9 @@
   {
    "name": "昨日低",
    "value": 764.57,
-   "dist": 4.2,
+   "dist": 0.8,
    "side": "上方",
-   "state": "crossed_down",
+   "state": "at",
    "tier": "primary",
    "merged": false,
    "today_events": [],
@@ -102,7 +102,7 @@
   {
    "name": "前周低·月低",
    "value": 650.0,
-   "dist": -110.3,
+   "dist": -113.8,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -113,7 +113,7 @@
   {
    "name": "前日高·本周高",
    "value": 827.58,
-   "dist": 67.2,
+   "dist": 63.8,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -124,9 +124,9 @@
   {
    "name": "前日低",
    "value": 763.05,
-   "dist": 2.7,
-   "side": "上方",
-   "state": "crossed_down",
+   "dist": -0.8,
+   "side": "下方",
+   "state": "at",
    "tier": "secondary",
    "merged": false,
    "today_events": [],
@@ -135,7 +135,7 @@
   {
    "name": "本周低",
    "value": 689.65,
-   "dist": -70.7,
+   "dist": -74.2,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -189,13 +189,13 @@
  "nodes": {
   "king": {
    "strike": 780,
-   "gex_m": 15,
+   "gex_m": 18,
    "delta_m": -4
   },
   "band_up": {
    "lo": 780,
    "hi": 785,
-   "gex_m": 19,
+   "gex_m": 25,
    "delta_m": -6
   },
   "support": {
@@ -208,40 +208,40 @@
   "neg_cluster": {
    "lo": 755,
    "hi": 775,
-   "gex_m": -70
+   "gex_m": -81
   }
  },
  "ladder": [
   {
    "strike": 800,
-   "gex_m": 4.2,
-   "dist": 39.7,
+   "gex_m": 5.3,
+   "dist": 36.2,
    "roles": []
   },
   {
    "strike": 797.5,
    "gex_m": 0.4,
-   "dist": 37.2,
+   "dist": 33.7,
    "roles": []
   },
   {
    "strike": 795,
-   "gex_m": 3.0,
-   "dist": 34.7,
+   "gex_m": 4.1,
+   "dist": 31.2,
    "roles": []
   },
   {
    "strike": 785,
-   "gex_m": 4.4,
-   "dist": 24.7,
+   "gex_m": 7.0,
+   "dist": 21.2,
    "roles": [
     "🧲 上方主带"
    ]
   },
   {
    "strike": 780,
-   "gex_m": 14.7,
-   "dist": 19.7,
+   "gex_m": 18.3,
+   "dist": 16.2,
    "roles": [
     "👑 King",
     "🧲 上方主带",
@@ -250,89 +250,87 @@
   },
   {
    "strike": 775,
-   "gex_m": -13.7,
-   "dist": 14.7,
+   "gex_m": -17.2,
+   "dist": 11.2,
    "roles": [
-    "⛽ 负曝光簇"
+    "⛽ 负曝光簇",
+    "Flip 线"
    ]
   },
   {
    "strike": 770,
-   "gex_m": -23.0,
-   "dist": 9.7,
+   "gex_m": -24.2,
+   "dist": 6.2,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 765,
-   "gex_m": -20.7,
-   "dist": 4.7,
+   "gex_m": -24.7,
+   "dist": 1.2,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 760,
-   "gex_m": -3.6,
-   "dist": -0.3,
+   "gex_m": -3.7,
+   "dist": -3.8,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 755,
-   "gex_m": -8.7,
-   "dist": -5.3,
+   "gex_m": -11.3,
+   "dist": -8.8,
    "roles": [
     "⛽ 负曝光簇"
    ]
   },
   {
    "strike": 747.5,
-   "gex_m": 2.2,
-   "dist": -12.8,
+   "gex_m": 1.6,
+   "dist": -16.3,
    "roles": [
-    "🛡 下方承接",
-    "Flip 线"
+    "🛡 下方承接"
    ]
   },
   {
    "strike": 745,
-   "gex_m": -2.3,
-   "dist": -15.3,
-   "roles": [
-    "Flip 线"
-   ]
+   "gex_m": -1.8,
+   "dist": -18.8,
+   "roles": []
   },
   {
    "strike": 742.5,
-   "gex_m": -3.9,
-   "dist": -17.8,
+   "gex_m": -2.8,
+   "dist": -21.3,
    "roles": []
   },
   {
    "strike": 740,
-   "gex_m": -8.0,
-   "dist": -20.3,
+   "gex_m": -5.6,
+   "dist": -23.8,
    "roles": []
   }
  ],
- "ladder_max_m": 23.0,
+ "ladder_max_m": 24.7,
  "decision_line": {
-  "spot": 760.35,
+  "spot": 763.81,
   "king": 780,
-  "king_dist": 19.7,
-  "flip": 745.8,
-  "invalidation_text": "跌回 745.8 下方失效"
+  "king_dist": 16.2,
+  "flip": 777.2,
+  "invalidation_text": "站上 777.2 失效"
  },
  "range": {
   "brief": {
    "low": 755.0099731445313,
    "high": 810.3099731445312,
    "center": 782.66,
-   "pos_pct": 9.6,
-   "center_dist": -22.3,
+   "pos_pct": 15.9,
+   "center_dist": -18.8,
    "consumed_pct": 83.1
   },
   "official": null,
@@ -416,14 +414,34 @@
   "below_pos_d": -2,
   "neg_above_d": -17,
   "neg_below_d": -8,
-  "flip_dist": 15.9,
+  "flip_dist": -15.4,
   "read": "上方带 765–770 合计 -24M 衰减；衰减最大 765 -18M、770 -6M；正 GEX 重心基本不动（784）；现价上方至 780 间为负曝光（-57M），dealer 对冲顺势放大上行波动。"
  },
  "frame_quality": {
-  "latest_complete_et": "13:15",
+  "latest_complete_et": "13:25",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "13:25 ET",
+   "text": "🎯 现价 763.8 跌破 Flip 777.2"
+  },
+  {
+   "t": "13:25 ET",
+   "text": "图36 · 🎯 Gamma Flip 745.8→777.2（移动 +31 点）"
+  },
+  {
+   "t": "13:25 ET",
+   "text": "📍 775 单帧 -4M（-14M→-17M）"
+  },
+  {
+   "t": "13:25 ET",
+   "text": "📍 765 单帧 -4M（-21M→-25M）"
+  },
+  {
+   "t": "13:25 ET",
+   "text": "🧲 最强正节点 780 GEX 15M→18M（+24%）"
+  },
   {
    "t": "13:15 ET",
    "text": "🎯 现价 760.3 上穿 Flip 745.8"
@@ -996,8 +1014,8 @@
  "max_pain": {
   "expiry": "2026-11-13",
   "value": 770,
-  "frame_spot": 761.22,
-  "dist": -8.8,
+  "frame_spot": 763.17,
+  "dist": -6.8,
   "oi_as_of": "2026-11-13T11:30:00.595Z"
  },
  "premarket": {
