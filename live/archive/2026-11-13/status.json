@@ -1,23 +1,23 @@
 {
- "updated_et": "2026-11-13 09:30 ET",
+ "updated_et": "2026-11-13 09:35 ET",
  "alert": null,
  "watch": null,
- "spot": 7601.3,
- "total_gex_m": 5.3,
- "flip": 7605.2,
+ "spot": 7587.78,
+ "total_gex_m": 13.5,
+ "flip": 7593.3,
  "call_wall": 7610,
- "put_wall": 7600,
+ "put_wall": 7565,
  "king_strike": 7610,
  "king_gex_m": 2.8,
  "regime": "混合 Gamma",
  "targets": {
-  "up": 7605,
-  "flat": 7605,
-  "down": 7600
+  "up": 7590,
+  "flat": 7585,
+  "down": 7585
  },
  "cog": {
-  "strike": 7613.3,
-  "dist": -12.0
+  "strike": 7566.4,
+  "dist": 21.4
  },
  "flow_cum": {
   "slots": [
@@ -28,17 +28,22 @@
    },
    {
     "slot": "09:35",
-    "bull": 347140,
-    "bear": 392730
+    "bull": 1015360,
+    "bear": 1756830
+   },
+   {
+    "slot": "09:40",
+    "bull": 96600,
+    "bear": 0
    }
   ],
-  "bull_total": 1235450,
-  "bear_total": 1981870,
-  "net": -746420
+  "bull_total": 2000270,
+  "bear_total": 3345970,
+  "net": -1345700
  },
  "data_status": {
-  "frames": 1,
-  "last_frame_et": "09:30",
+  "frames": 2,
+  "last_frame_et": "09:35",
   "degraded": false,
   "closed": false
  },
@@ -46,7 +51,7 @@
   {
    "name": "前周高·上周三高·月高",
    "value": 7715.57,
-   "dist": 114.3,
+   "dist": 127.8,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -57,7 +62,7 @@
   {
    "name": "昨日高·本周高",
    "value": 7652.76,
-   "dist": 51.5,
+   "dist": 65.0,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -68,31 +73,34 @@
   {
    "name": "亚洲高",
    "value": 7618.35,
-   "dist": 17.1,
+   "dist": 30.6,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
    "merged": false,
    "today_events": [
-    "↓穿过"
+    "↓穿过",
+    "↑被拒"
+   ],
+   "flip_role": "支撑变压力"
+  },
+  {
+   "name": "VWAP",
+   "value": 7600.92,
+   "dist": 13.1,
+   "side": "上方",
+   "state": "normal",
+   "tier": "primary",
+   "merged": false,
+   "today_events": [
+    "↓撑住"
    ],
    "flip_role": null
   },
   {
-   "name": "VWAP",
-   "value": 7609.32,
-   "dist": 8.0,
-   "side": "上方",
-   "state": "near",
-   "tier": "primary",
-   "merged": false,
-   "today_events": [],
-   "flip_role": null
-  },
-  {
    "name": "EMA250",
-   "value": 7576.21,
-   "dist": -25.1,
+   "value": 7576.31,
+   "dist": -11.5,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -103,7 +111,7 @@
   {
    "name": "亚洲低",
    "value": 7568.1,
-   "dist": -33.2,
+   "dist": -19.7,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -114,7 +122,7 @@
   {
    "name": "昨日低·昨开",
    "value": 7550.84,
-   "dist": -50.5,
+   "dist": -36.9,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -125,7 +133,7 @@
   {
    "name": "本周低",
    "value": 7422.24,
-   "dist": -179.1,
+   "dist": -165.5,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -136,7 +144,7 @@
   {
    "name": "前周低·上周四低·月低",
    "value": 7350.35,
-   "dist": -250.9,
+   "dist": -237.4,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -147,7 +155,7 @@
   {
    "name": "上周四高",
    "value": 7681.29,
-   "dist": 80.0,
+   "dist": 93.5,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -158,7 +166,7 @@
   {
    "name": "上周一高",
    "value": 7662.23,
-   "dist": 60.9,
+   "dist": 74.4,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -169,7 +177,7 @@
   {
    "name": "前日高",
    "value": 7647.2,
-   "dist": 45.9,
+   "dist": 59.4,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -180,7 +188,7 @@
   {
    "name": "上周三低",
    "value": 7635.81,
-   "dist": 34.5,
+   "dist": 48.0,
    "side": "上方",
    "state": "normal",
    "tier": "secondary",
@@ -191,9 +199,9 @@
   {
    "name": "上周二高",
    "value": 7594.61,
-   "dist": -6.7,
-   "side": "下方",
-   "state": "normal",
+   "dist": 6.8,
+   "side": "上方",
+   "state": "crossed_down",
    "tier": "secondary",
    "merged": false,
    "today_events": [],
@@ -202,9 +210,9 @@
   {
    "name": "昨收",
    "value": 7592.4,
-   "dist": -8.9,
-   "side": "下方",
-   "state": "normal",
+   "dist": 4.6,
+   "side": "上方",
+   "state": "crossed_down",
    "tier": "secondary",
    "merged": false,
    "today_events": [],
@@ -213,7 +221,7 @@
   {
    "name": "前日低",
    "value": 7571.88,
-   "dist": -29.4,
+   "dist": -15.9,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -224,7 +232,7 @@
   {
    "name": "上周二低",
    "value": 7545.39,
-   "dist": -55.9,
+   "dist": -42.4,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -235,7 +243,7 @@
   {
    "name": "上周一低",
    "value": 7539.38,
-   "dist": -61.9,
+   "dist": -48.4,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -246,7 +254,7 @@
   {
    "name": "上周五高",
    "value": 7444.2,
-   "dist": -157.1,
+   "dist": -143.6,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -257,7 +265,7 @@
   {
    "name": "上周五低",
    "value": 7369.55,
-   "dist": -231.8,
+   "dist": -218.2,
    "side": "下方",
    "state": "normal",
    "tier": "secondary",
@@ -268,115 +276,142 @@
  ],
  "nodes": {
   "king": {
-   "strike": 7605,
-   "gex_m": 369,
+   "strike": 7500,
+   "gex_m": 466,
    "delta_m": 0
   },
   "band_up": {
-   "lo": 7655,
-   "hi": 7665,
-   "gex_m": 620,
+   "lo": 7605,
+   "hi": 7605,
+   "gex_m": 344,
    "delta_m": 0
   },
   "support": {
    "strike": 7500,
-   "gex_m": 351,
+   "gex_m": 466,
    "delta_m": 0,
    "building": false,
    "overlap": []
+  },
+  "neg_cluster": {
+   "lo": 7575,
+   "hi": 7580,
+   "gex_m": -1335
   }
  },
  "ladder": [
   {
-   "strike": 7640,
-   "gex_m": 119.0,
-   "dist": 38.7,
-   "roles": []
-  },
-  {
-   "strike": 7635,
-   "gex_m": -141.1,
-   "dist": 33.7,
-   "roles": []
-  },
-  {
-   "strike": 7630,
-   "gex_m": -249.7,
-   "dist": 28.7,
-   "roles": []
-  },
-  {
    "strike": 7625,
-   "gex_m": -762.5,
-   "dist": 23.7,
+   "gex_m": -581.0,
+   "dist": 37.2,
    "roles": []
   },
   {
    "strike": 7620,
-   "gex_m": -187.8,
-   "dist": 18.7,
+   "gex_m": -126.9,
+   "dist": 32.2,
    "roles": []
   },
   {
    "strike": 7605,
-   "gex_m": 369.3,
-   "dist": 3.7,
+   "gex_m": 344.2,
+   "dist": 17.2,
    "roles": [
-    "👑 King",
+    "🧲 上方主带"
+   ]
+  },
+  {
+   "strike": 7595,
+   "gex_m": -303.7,
+   "dist": 7.2,
+   "roles": [
     "Flip 线"
    ]
   },
   {
-   "strike": 7600,
-   "gex_m": 124.5,
-   "dist": -1.3,
+   "strike": 7590,
+   "gex_m": 226.0,
+   "dist": 2.2,
+   "roles": []
+  },
+  {
+   "strike": 7585,
+   "gex_m": 258.0,
+   "dist": -2.8,
+   "roles": []
+  },
+  {
+   "strike": 7580,
+   "gex_m": -83.2,
+   "dist": -7.8,
+   "roles": [
+    "⛽ 负曝光簇"
+   ]
+  },
+  {
+   "strike": 7575,
+   "gex_m": -1251.6,
+   "dist": -12.8,
+   "roles": [
+    "⛽ 负曝光簇"
+   ]
+  },
+  {
+   "strike": 7565,
+   "gex_m": 236.0,
+   "dist": -22.8,
    "roles": [
     "Put Wall"
    ]
   },
   {
-   "strike": 7595,
-   "gex_m": -330.5,
-   "dist": -6.3,
+   "strike": 7560,
+   "gex_m": -186.5,
+   "dist": -27.8,
    "roles": []
   },
   {
-   "strike": 7575,
-   "gex_m": -1241.1,
-   "dist": -26.3,
-   "roles": [
-    "⚡ 负GEX"
-   ]
+   "strike": 7550,
+   "gex_m": -221.7,
+   "dist": -37.8,
+   "roles": []
   }
  ],
- "ladder_max_m": 1241.1,
+ "ladder_max_m": 1251.6,
  "decision_line": {
-  "spot": 7601.3,
-  "king": 7605,
-  "king_dist": 3.7,
-  "flip": 7605.2,
-  "invalidation_text": "站上 7605.2 失效"
+  "spot": 7587.78,
+  "king": 7500,
+  "king_dist": -87.8,
+  "flip": 7593.3,
+  "invalidation_text": "站上 7593.3 失效"
  },
  "range": {
-  "brief": null,
+  "brief": {
+   "low": 7605,
+   "high": 7670,
+   "center": 7637.5,
+   "pos_pct": -26.5,
+   "center_dist": -49.7,
+   "consumed_pct": 60.8
+  },
   "official": {
    "low": 7477,
    "high": 7707,
    "center": 7592.0,
-   "pos_pct": 54.0,
-   "center_dist": 9.3,
-   "consumed_pct": 12.1
+   "pos_pct": 48.2,
+   "center_dist": -4.2,
+   "consumed_pct": 17.2
   },
   "realized": {
    "high": 7621.78,
-   "low": 7594.0
+   "low": 7582.24
   }
  },
  "flow": {
-  "as_of": "09:36 ET",
+  "as_of": "09:40 ET",
   "bull": {
-   "premium": 1235450,
-   "count": 10,
+   "premium": 2000270,
+   "count": 18,
    "max_premium": 220000,
    "max_strike": 7610,
    "top": [
@@ -386,22 +421,22 @@
      506570
     ],
     [
+     7580,
+     "P",
+     407430
+    ],
+    [
      7600,
      "C",
      292710
-    ],
-    [
-     7610,
-     "C",
-     238400
     ]
    ]
   },
   "bear": {
-   "premium": 1981870,
-   "count": 13,
-   "max_premium": 318240,
-   "max_strike": 7610,
+   "premium": 3345970,
+   "count": 22,
+   "max_premium": 354330,
+   "max_strike": 7600,
    "top": [
     [
      7610,
@@ -415,28 +450,56 @@
     ],
     [
      7600,
-     "C",
-     256280
+     "P",
+     354330
     ]
    ]
   },
   "level": "big",
   "signed5m": {
-   "bull_prem": 1108310,
-   "bear_prem": 1528630,
+   "bull_prem": 839620,
+   "bear_prem": 1756830,
    "bull_n": 9,
-   "bear_n": 11,
-   "call_prem": 1692640,
-   "put_prem": 1154300
+   "bear_n": 12,
+   "call_prem": 421260,
+   "put_prem": 2385190
   }
  },
  "surge": null,
  "delta": null,
  "frame_quality": {
-  "latest_complete_et": "09:30",
+  "latest_complete_et": "09:35",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "09:35 ET",
+   "text": "图8 · 🌊 看多大簇：近10分钟主动成交 $2,000,270（18 笔，最大单笔 $220,000 @7610）｜主腿 7610P $506,570 · 7580P $407,430 · 7600C $292,710 → 仅显示，未改方向预判"
+  },
+  {
+   "t": "09:35 ET",
+   "text": "现价突破日报区间下沿 7605"
+  },
+  {
+   "t": "09:35 ET",
+   "text": "图7 · 🎯 09:32 1分钟高 7619.6 到达亚洲高 7618.4（ES换算）"
+  },
+  {
+   "t": "09:35 ET",
+   "text": "图6 · 🎯 09:35 1分钟低 7594.0 到达上周二高 7594.6"
+  },
+  {
+   "t": "09:35 ET",
+   "text": "图5 · 🎯 09:35 1分钟低 7594.0 到达昨收 7592.4"
+  },
+  {
+   "t": "09:35 ET",
+   "text": "🎯 Gamma Flip 7605.2→7593.3（移动 -12 点）"
+  },
+  {
+   "t": "09:35 ET",
+   "text": "图4 · 🧱 Put Wall 7600→7565 下移"
+  },
   {
    "t": "09:30 ET",
    "text": "图3 · 🌊 看空大簇：近10分钟主动成交 $1,917,600（12 笔，最大单笔 $318,240 @7610）｜主腿 7610C $1,029,480 · 7610P $367,100 · 7600C $256,280 → 仅显示，未改方向预判"
