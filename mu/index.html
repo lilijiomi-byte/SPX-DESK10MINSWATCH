@@ -51,7 +51,8 @@
 <h1 style="margin:0 0 4px">MU 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1112" aria-selected="true" href="#day-1112">11/12 周四 <span class="tab-move up">35.13</span></a>
+<a class="day-tab" role="tab" data-target="day-1113" aria-selected="true" href="#day-1113">11/13 周五 <span class="tab-move down">45.93</span></a>
+<a class="day-tab" role="tab" data-target="day-1112" aria-selected="false" href="#day-1112">11/12 周四 <span class="tab-move up">35.13</span></a>
 <a class="day-tab" role="tab" data-target="day-1111" aria-selected="false" href="#day-1111">11/11 周三 <span class="tab-move up">64.53</span></a>
 <a class="day-tab" role="tab" data-target="day-1110" aria-selected="false" href="#day-1110">11/10 周二 <span class="tab-move down">46.01</span></a>
 <a class="day-tab" role="tab" data-target="day-1109" aria-selected="false" href="#day-1109">11/9 周一 <span class="tab-move up">55.09</span></a>
@@ -125,10 +126,98 @@
 <a class="day-tab" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">32.67</span></a>
 <a class="day-tab" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">58.21</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 73 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=73;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 74 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=74;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var nav=document.querySelector('.day-tabs'),btn=document.querySelector('.tabs-toggle');if(nav)nav.classList.add('collapsed');if(btn)btn.innerHTML='展开全部 '+tabs.length+' 个日期 \u25be';var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1112" role="tabpanel">
+<article class="day-panel" id="day-1113" role="tabpanel">
+<header class="mast"><div>
+<h1>MU 日内报告</h1>
+<p class="date">2026年11月13日 · 周五 · 日内报告</p>
+</div><div class="tape">
+<strong>778.40 <span class="down">-0.54%</span></strong>
+<span>开 782.66 · 高 796.18 · 低 750.25</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE（2026-11-13到期），夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/mu_2026-11-13.png" alt="MU 2026-11-13 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 78 档 5 分钟快照）</h3>
+<p>GEX 地形图（0DTE，夜航社 78 档 5 分钟快照）：金色=正 gamma 区（做市商对冲减速带/墙），紫色=负 gamma 区（加速带）。白点为每档现货位置。call wall 795→780（下移）。</p>
+<ul>
+<li>金色带（收盘档）：780(+0.4M)、775(+0.0M)</li>
+<li>紫色带（收盘档）：无显著负节点</li>
+<li>全天最大节点：785(+267.5M@15:50)、780(+92.5M@15:45)、775(+61.2M@15:45)、770(+57.1M@15:40)、765(-40.0M@13:50)</li>
+<li>尾盘节点变化：785 +5.7M→+267.5M；780 -10.3M→+0.4M；775 -3.9M→+0.0M</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node">
+<span class="node-rank">① · 15:50</span>
+<strong>785</strong>
+<span class="metric">+267.5M</span>
+<p class="node-analysis">一、785（正 gamma 墙/地板）：全天变化——从 +5.7M 到 +267.5M；影响时段——15:50 ET 达到峰值，当时现货约 783.90；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:45</span>
+<strong>780</strong>
+<span class="metric">+92.5M</span>
+<p class="node-analysis">二、780（正 gamma 墙/地板）：全天变化——由 -10.3M 翻转为 +92.5M；影响时段——15:45 ET 达到峰值，当时现货约 777.22；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">③ · 15:45</span>
+<strong>775</strong>
+<span class="metric">+61.2M</span>
+<p class="node-analysis">三、775（正 gamma 墙/地板）：全天变化——由 -3.9M 翻转为 +61.2M；影响时段——15:45 ET 达到峰值，当时现货约 777.22；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">④ · 15:40</span>
+<strong>770</strong>
+<span class="metric">+57.1M</span>
+<p class="node-analysis">四、770（正 gamma 墙/地板）：全天变化——从 +0.5M 到 +57.1M；影响时段——15:40 ET 达到峰值，当时现货约 771.64；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">⑤ · 13:50</span>
+<strong>765</strong>
+<span class="metric">-40.0M</span>
+<p class="node-analysis">五、765（负 gamma 加速带）：全天变化——从 -2.8M 到 -40.0M；影响时段——13:50 ET 达到峰值，当时现货约 766.15；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流（0DTE，全天0笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<p>（当日无符合筛子的 flow 记录，或数据未拉取到）</p>
+<p class="verdict">全天0笔：主动买入(call ask + put bid)$0.00M，主动卖出(put ask + call bid)$0.00M，mid $0.00M（不计入主动买卖）；主动资金中性。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① 开盘 782.66 在 put wall 785 下方；全天 796.18–750.25，收 778.40（-0.54%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 782.66 → 高 796.18 → 低 750.25 → 收 778.40。</p></article>
+<article class="summary-item"><p>③ 墙位：call 795 / put 785（heatmap首档算法口径）；heatmap 算法墙首→末：call wall 795→780（下移）。</p></article>
+<article class="summary-item"><p>④ 资金流：全天0笔：主动买入(call ask + put bid)$0.00M，主动卖出(put ask + call bid)$0.00M，mid $0.00M（不计入主动买卖）；主动资金中性。</p></article>
+<article class="summary-item"><p>⑤ 收盘在 VWAP 上方（VWAP 769.75，EMA250 778.96）。</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1112" role="tabpanel">
 <header class="mast"><div>
 <h1>MU 日内报告</h1>
 <p class="date">2026年11月12日 · 周四 · 日内报告</p>

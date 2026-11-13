@@ -1,0 +1,103 @@
+{
+ "ticker": "MU",
+ "date": "2026-11-13",
+ "mmdd": "1113",
+ "weekday": "周五",
+ "date_str": "2026年11月13日 · 周五 · 日内报告",
+ "tape": {
+  "close": 778.4,
+  "chg_pct": -0.54,
+  "open": 782.66,
+  "high": 796.18,
+  "low": 750.25
+ },
+ "event": {
+  "is_event": false,
+  "tag": "非事件日",
+  "detail": "",
+  "bias": ""
+ },
+ "junkman": {
+  "status": "pending",
+  "meta": "",
+  "full_text": ""
+ },
+ "chart": {
+  "rel": "charts/mu_2026-11-13.png",
+  "alt": "MU 2026-11-13 5分钟K线与0DTE dealer-GEX heatmap",
+  "caption": "0DTE（2026-11-13到期），夜航社 78 档 5 分钟快照；白点为每档现货位置"
+ },
+ "chart_title": "5 分钟 K 线 × 0DTE heatmap",
+ "heatmap_title": "heatmap解读（0DTE，夜航社 78 档 5 分钟快照）",
+ "heatmap_intro": "GEX 地形图（0DTE，夜航社 78 档 5 分钟快照）：金色=正 gamma 区（做市商对冲减速带/墙），紫色=负 gamma 区（加速带）。白点为每档现货位置。call wall 795→780（下移）。",
+ "key_reads": [
+  "金色带（收盘档）：780(+0.4M)、775(+0.0M)",
+  "紫色带（收盘档）：无显著负节点",
+  "全天最大节点：785(+267.5M@15:50)、780(+92.5M@15:45)、775(+61.2M@15:45)、770(+57.1M@15:40)、765(-40.0M@13:50)",
+  "尾盘节点变化：785 +5.7M→+267.5M；780 -10.3M→+0.4M；775 -3.9M→+0.0M"
+ ],
+ "top5": [
+  {
+   "rank": 1,
+   "strike": 785,
+   "gex_m": 267.5,
+   "et": "15:50",
+   "pos": true,
+   "analysis": "一、785（正 gamma 墙/地板）：全天变化——从 +5.7M 到 +267.5M；影响时段——15:50 ET 达到峰值，当时现货约 783.90；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。"
+  },
+  {
+   "rank": 2,
+   "strike": 780,
+   "gex_m": 92.5,
+   "et": "15:45",
+   "pos": true,
+   "analysis": "二、780（正 gamma 墙/地板）：全天变化——由 -10.3M 翻转为 +92.5M；影响时段——15:45 ET 达到峰值，当时现货约 777.22；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。"
+  },
+  {
+   "rank": 3,
+   "strike": 775,
+   "gex_m": 61.2,
+   "et": "15:45",
+   "pos": true,
+   "analysis": "三、775（正 gamma 墙/地板）：全天变化——由 -3.9M 翻转为 +61.2M；影响时段——15:45 ET 达到峰值，当时现货约 777.22；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。"
+  },
+  {
+   "rank": 4,
+   "strike": 770,
+   "gex_m": 57.1,
+   "et": "15:40",
+   "pos": true,
+   "analysis": "四、770（正 gamma 墙/地板）：全天变化——从 +0.5M 到 +57.1M；影响时段——15:40 ET 达到峰值，当时现货约 771.64；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。"
+  },
+  {
+   "rank": 5,
+   "strike": 765,
+   "gex_m": -40.0,
+   "et": "13:50",
+   "pos": false,
+   "analysis": "五、765（负 gamma 加速带）：全天变化——从 -2.8M 到 -40.0M；影响时段——13:50 ET 达到峰值，当时现货约 766.15；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。"
+  }
+ ],
+ "top5_method": "亮度口径：p99 截断做上限；红框 = 全天该 strike 最大 |GEX| 时刻。",
+ "flow_title": "资金流（0DTE，全天0笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）",
+ "flow_items": [],
+ "flow_trade_list": [],
+ "flow_verdict": "全天0笔：主动买入(call ask + put bid)$0.00M，主动卖出(put ask + call bid)$0.00M，mid $0.00M（不计入主动买卖）；主动资金中性。",
+ "summary": [
+  "① 开盘 782.66 在 put wall 785 下方；全天 796.18–750.25，收 778.40（-0.54%）。",
+  "② 白点轨迹：开 782.66 → 高 796.18 → 低 750.25 → 收 778.40。",
+  "③ 墙位：call 795 / put 785（heatmap首档算法口径）；heatmap 算法墙首→末：call wall 795→780（下移）。",
+  "④ 资金流：全天0笔：主动买入(call ask + put bid)$0.00M，主动卖出(put ask + call bid)$0.00M，mid $0.00M（不计入主动买卖）；主动资金中性。",
+  "⑤ 收盘在 VWAP 上方（VWAP 769.75，EMA250 778.96）。"
+ ],
+ "summary_title": "分析总结",
+ "summary_sub": "价格行为 × 0DTE GEX 结构复盘",
+ "method_note": "heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照。",
+ "data_note": "收盘后的静态快照；页面不在打开时更新行情。",
+ "gex": {
+  "status": "pending",
+  "meta": "",
+  "full_text": ""
+ },
+ "chart_file": "charts/mu_2026-11-13.png"
+}
