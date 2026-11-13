@@ -52,7 +52,8 @@
 <h1 style="margin:0 0 4px">SPX 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1112" aria-selected="true" href="#day-1112">11/12 周四 <span class="tab-move down">101.92</span></a>
+<a class="day-tab" role="tab" data-target="day-1113" aria-selected="true" href="#day-1113">11/13 周五 <span class="tab-move down">122.38</span></a>
+<a class="day-tab" role="tab" data-target="day-1112" aria-selected="false" href="#day-1112">11/12 周四 <span class="tab-move down">101.92</span></a>
 <a class="day-tab" role="tab" data-target="day-1111" aria-selected="false" href="#day-1111">11/11 周三 <span class="tab-move up">75.32</span></a>
 <a class="day-tab" role="tab" data-target="day-1110" aria-selected="false" href="#day-1110">11/10 周二 <span class="tab-move down">73.49</span></a>
 <a class="day-tab" role="tab" data-target="day-1109" aria-selected="false" href="#day-1109">11/9 周一 <span class="tab-move up">155.15</span></a>
@@ -134,10 +135,92 @@
 <a class="day-tab" role="tab" data-target="day-0723" aria-selected="false" href="#day-0723">7/23 周四 <span class="tab-move down">74.50</span></a>
 <a class="day-tab" role="tab" data-target="day-0722" aria-selected="false" href="#day-0722">7/22 周三 <span class="tab-solar">大暑</span> <span class="tab-move up">38.25</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 81 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=81;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 82 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=82;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var nav=document.querySelector('.day-tabs'),btn=document.querySelector('.tabs-toggle');if(nav)nav.classList.add('collapsed');if(btn)btn.innerHTML='展开全部 '+tabs.length+' 个日期 \u25be';var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1112" role="tabpanel">
+<article class="day-panel" id="day-1113" role="tabpanel">
+<header class="mast"><div>
+<h1>SPX 日内报告</h1>
+<p class="date">2026年11月13日 · 周五 · 日内报告</p>
+</div><div class="tape">
+<strong>7,560.87 <span class="down">-0.42%</span></strong>
+<span>开 7,616.85 · 高 7,621.78 · 低 7,499.40</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE，夜航社 14 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/spx_2026-11-13.png" alt="SPX 2026-11-13 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 14 档 5 分钟快照）</h3>
+<ul>
+<li>金色带在 7540(+1490M) / 7570(+1376M) / 7535(+1062M) / 7545(+1012M)</li>
+<li>紫色带在 7550(-8004M) / 7560(-3715M)</li>
+<li>白点轨迹: 开 7616.85→高 7621.78→低 7499.4→收 7560.87（-0.42%）；收盘在 call wall 7610 下方，put wall 7600 下方</li>
+<li>尾盘节点变化: 前三节点迁移 [7575, 7600, 7605]→[7540, 7550, 7560]；7550 减弱 -4868%（-161M→-8004M）；7560 减弱 -1343%（-257M→-3715M）</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node purple">
+<span class="node-rank">① · 15:20</span>
+<strong>7550</strong>
+<span class="metric">-8004.2M</span>
+</article>
+<article class="node purple">
+<span class="node-rank">② · 15:20</span>
+<strong>7560</strong>
+<span class="metric">-3714.5M</span>
+</article>
+<article class="node purple">
+<span class="node-rank">③ · 13:50</span>
+<strong>7575</strong>
+<span class="metric">-2523.0M</span>
+</article>
+<article class="node">
+<span class="node-rank">④ · 14:20</span>
+<strong>7570</strong>
+<span class="metric">+1737.9M</span>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 14:50</span>
+<strong>7530</strong>
+<span class="metric">+1615.9M</span>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流（0DTE SPXW，全天0笔；premium≥$20万｜size≥50｜0DTE｜side=B/M/A）</h3>
+<p>（当日无符合筛子的 flow 记录，或数据未拉取到）</p>
+<p class="verdict">主动资金0（中性）：主动买入 $0.00M，主动卖出 $0.00M，mid $0.00M（不计入主动买卖）。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+<p>价格行为 × 0DTE GEX 结构复盘</p>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>①开盘 7616.85，相对 call wall 7610 位置：贴墙；put wall 7600。</p></article>
+<article class="summary-item"><p>②白点轨迹: 开 7616.85→高 7621.78→低 7499.4→收 7560.87（-0.42%）；收盘在 call wall 7610 下方，put wall 7600 下方</p></article>
+<article class="summary-item"><p>③尾盘节点变化: 前三节点迁移 [7575, 7600, 7605]→[7540, 7550, 7560]；7550 减弱 -4868%（-161M→-8004M）；7560 减弱 -1343%（-257M→-3715M）</p></article>
+<article class="summary-item"><p>④flow：0 笔，中性。</p></article>
+<article class="summary-item"><p>⑤收盘 7560.87（-0.42%），VWAP 7542.78，EMA250 7564.95；非事件日</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo ^GSPC 5分钟＋ES成交量动态basis换算VWAP；heatmap=夜航社 dealer-GEX 5分钟快照。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1112" role="tabpanel">
 <header class="mast"><div>
 <h1>SPX 日内报告</h1>
 <p class="date">2026年11月12日 · 周四 · 日内报告</p>
