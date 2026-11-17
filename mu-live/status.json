@@ -1,19 +1,19 @@
 {
- "updated_et": "2026-11-17 09:35 ET",
+ "updated_et": "2026-11-17 09:40 ET",
  "alert": null,
  "watch": null,
  "spot": 718.75,
- "total_gex_m": 1.7,
+ "total_gex_m": 0.5,
  "flip": null,
  "call_wall": 727.5,
  "put_wall": 712.5,
  "king_strike": 730,
- "king_gex_m": 3.8,
+ "king_gex_m": 3.7,
  "regime": "混合 Gamma",
  "targets": {
-  "up": 727.5,
-  "flat": 715,
-  "down": 712.5
+  "up": 712.5,
+  "flat": 710,
+  "down": 655
  },
  "levels": [
   {
@@ -29,8 +29,8 @@
   },
   {
    "name": "EMA250",
-   "value": 748.34,
-   "dist": 29.6,
+   "value": 748.04,
+   "dist": 29.3,
    "side": "上方",
    "state": "normal",
    "tier": "primary",
@@ -198,13 +198,13 @@
    "delta_m": 0
   },
   "band_up": {
-   "lo": 725,
-   "hi": 737.5,
+   "lo": 727.5,
+   "hi": 742.5,
    "gex_m": 14,
    "delta_m": 0
   },
   "support": {
-   "strike": 712.5,
+   "strike": 655,
    "gex_m": 1,
    "delta_m": 0,
    "building": false,
@@ -213,14 +213,24 @@
  },
  "ladder": [
   {
+   "strike": 742.5,
+   "gex_m": 0.4,
+   "dist": 23.8,
+   "roles": [
+    "🧲 上方主带"
+   ]
+  },
+  {
    "strike": 740,
-   "gex_m": -1.9,
+   "gex_m": -2.0,
    "dist": 21.2,
-   "roles": []
+   "roles": [
+    "🧲 上方主带"
+   ]
   },
   {
    "strike": 737.5,
-   "gex_m": 2.4,
+   "gex_m": 2.3,
    "dist": 18.8,
    "roles": [
     "🧲 上方主带"
@@ -228,7 +238,7 @@
   },
   {
    "strike": 735,
-   "gex_m": 1.5,
+   "gex_m": 1.6,
    "dist": 16.2,
    "roles": [
     "🧲 上方主带"
@@ -244,7 +254,7 @@
   },
   {
    "strike": 730,
-   "gex_m": 3.8,
+   "gex_m": 3.7,
    "dist": 11.2,
    "roles": [
     "👑 King",
@@ -261,14 +271,6 @@
    ]
   },
   {
-   "strike": 725,
-   "gex_m": 0.6,
-   "dist": 6.2,
-   "roles": [
-    "🧲 上方主带"
-   ]
-  },
-  {
    "strike": 722.5,
    "gex_m": -0.7,
    "dist": 3.8,
@@ -276,7 +278,7 @@
   },
   {
    "strike": 720,
-   "gex_m": -1.7,
+   "gex_m": -1.8,
    "dist": 1.2,
    "roles": [
     "Flip 线"
@@ -284,30 +286,29 @@
   },
   {
    "strike": 717.5,
-   "gex_m": -0.9,
+   "gex_m": -1.3,
    "dist": -1.2,
    "roles": [
     "Flip 线"
    ]
   },
   {
+   "strike": 715,
+   "gex_m": 0.6,
+   "dist": -3.8,
+   "roles": []
+  },
+  {
    "strike": 712.5,
-   "gex_m": 1.1,
+   "gex_m": 1.0,
    "dist": -6.2,
    "roles": [
-    "🛡 下方承接",
     "Put Wall"
    ]
   },
   {
-   "strike": 705,
-   "gex_m": 0.7,
-   "dist": -13.8,
-   "roles": []
-  },
-  {
    "strike": 700,
-   "gex_m": -4.7,
+   "gex_m": -5.1,
    "dist": -18.8,
    "roles": []
   },
@@ -325,12 +326,12 @@
   },
   {
    "strike": 680,
-   "gex_m": -1.7,
+   "gex_m": -1.8,
    "dist": -38.8,
    "roles": []
   }
  ],
- "ladder_max_m": 4.7,
+ "ladder_max_m": 5.1,
  "decision_line": {
   "spot": 718.75,
   "king": 730,
@@ -354,50 +355,40 @@
   }
  },
  "flow": {
-  "as_of": "09:41 ET",
+  "as_of": "09:45 ET",
   "bull": {
-   "premium": 1056820,
-   "count": 10,
-   "max_premium": 164000,
-   "max_strike": 740,
+   "premium": 1384750,
+   "count": 9,
+   "max_premium": 274125,
+   "max_strike": 717.5,
    "top": [
     [
-     740,
+     717.5,
      "C",
-     352240
+     634125
     ],
     [
      750,
      "C",
-     274720
-    ],
-    [
-     725,
-     "C",
-     156170
-    ]
-   ]
-  },
-  "bear": {
-   "premium": 1025090,
-   "count": 5,
-   "max_premium": 674300,
-   "max_strike": 737.5,
-   "top": [
-    [
-     737.5,
-     "C",
-     674300
-    ],
-    [
-     715,
-     "P",
-     112420
+     218685
     ],
     [
      740,
      "C",
-     100000
+     164000
+    ]
+   ]
+  },
+  "bear": {
+   "premium": 56750,
+   "count": 1,
+   "max_premium": 56750,
+   "max_strike": 735,
+   "top": [
+    [
+     735,
+     "C",
+     56750
     ]
    ]
   },
@@ -406,10 +397,14 @@
  "surge": null,
  "delta": null,
  "frame_quality": {
-  "latest_complete_et": "09:35",
+  "latest_complete_et": "09:40",
   "degraded": false
  },
  "changes": [
+  {
+   "t": "09:40 ET",
+   "text": "图7 · 🎯 09:37 1分钟低 706.0 到达盘前低 704.3"
+  },
   {
    "t": "09:35 ET",
    "text": "图6 · 🎯 09:35 1分钟低 710.1 到达昨日低·本周低·VWAP 716.4"
@@ -442,8 +437,8 @@
  "max_pain": {
   "expiry": "2026-11-18",
   "value": 725,
-  "frame_spot": 713.07,
-  "dist": -11.9,
+  "frame_spot": 711.14,
+  "dist": -13.9,
   "oi_as_of": "2026-11-17T11:30:00.571Z"
  },
  "premarket": {
