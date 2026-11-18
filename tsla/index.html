@@ -51,7 +51,8 @@
 <h1 style="margin:0 0 4px">TSLA 日内报告</h1>
 <p class="data-note">历史数据库：每日收盘后追加当日报告，历史日期永久保留。</p>
 <nav class="day-tabs" role="tablist" aria-label="日期">
-<a class="day-tab" role="tab" data-target="day-1117" aria-selected="true" href="#day-1117">11/17 周二 <span class="tab-move down">8.69</span></a>
+<a class="day-tab" role="tab" data-target="day-1118" aria-selected="true" href="#day-1118">11/18 周三 <span class="tab-move down">10.91</span></a>
+<a class="day-tab" role="tab" data-target="day-1117" aria-selected="false" href="#day-1117">11/17 周二 <span class="tab-move down">8.69</span></a>
 <a class="day-tab" role="tab" data-target="day-1116" aria-selected="false" href="#day-1116">11/16 周一 <span class="tab-move down">14.17</span></a>
 <a class="day-tab" role="tab" data-target="day-1113" aria-selected="false" href="#day-1113">11/13 周五 <span class="tab-move down">28.77</span></a>
 <a class="day-tab" role="tab" data-target="day-1112" aria-selected="false" href="#day-1112">11/12 周四 <span class="tab-move up">25.59</span></a>
@@ -127,10 +128,104 @@
 <a class="day-tab" role="tab" data-target="day-0804" aria-selected="false" href="#day-0804">8/4 周二 <span class="tab-move up">7.34</span></a>
 <a class="day-tab" role="tab" data-target="day-0803" aria-selected="false" href="#day-0803">8/3 周一 <span class="tab-move up">9.50</span></a>
 </nav>
-<button class="tabs-toggle" type="button">展开全部 75 个日期 ▾</button>
-<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=75;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
+<button class="tabs-toggle" type="button">展开全部 76 个日期 ▾</button>
+<script>(function(){var nav=document.querySelector('.day-tabs');if(!nav)return;var btn=document.querySelector('.tabs-toggle');var n=76;nav.classList.add('collapsed');function setC(c){nav.classList.toggle('collapsed',c);btn.innerHTML=c?('展开全部 '+n+' 个日期 \u25be'):'收起 \u25b4';}btn.onclick=function(){setC(!nav.classList.contains('collapsed'));};})();</script>
 <script>(function(){var tabs=document.querySelectorAll('.day-tab');if(!tabs.length)return;function show(id){document.querySelectorAll('.day-panel').forEach(function(p){p.hidden=(p.id!==id);});tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-target')===id?'true':'false');});var nav=document.querySelector('.day-tabs'),btn=document.querySelector('.tabs-toggle');if(nav)nav.classList.add('collapsed');if(btn)btn.innerHTML='展开全部 '+tabs.length+' 个日期 \u25be';var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});}tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.getAttribute('data-target'));history.replaceState(null,'','#'+t.getAttribute('data-target'));});});var h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);})();</script>
-<article class="day-panel" id="day-1117" role="tabpanel">
+<article class="day-panel" id="day-1118" role="tabpanel">
+<header class="mast"><div>
+<h1>TSLA 日内报告</h1>
+<p class="date">2026年11月18日 · 周三 · 日内报告</p>
+</div><div class="tape">
+<strong>383.54 <span class="down">-0.49%</span></strong>
+<span>开 385.43 · 高 389.27 · 低 378.36</span>
+</div></header>
+<aside class="event">
+<div class="event-tag quiet">非事件日</div>
+<div>
+<h2>非事件日</h2>
+</div></aside>
+<section aria-label="早盘分析">
+<div class="section-head"><h2>早盘分析</h2><div class="source">
+<p>（Junk-man 早盘简报未抓取到，留空待补）</p>
+</div></div>
+<div class="brief"><p>（待补充 Junk-man 当日 #junkman-analysis 原文）</p></div>
+</section>
+<section aria-label="K线与heatmap">
+<div class="section-head"><h2>5 分钟 K 线 × 0DTE heatmap</h2><div class="source">
+<p>0DTE，夜航社 78 档 5 分钟快照；白点为每档现货位置</p>
+</div></div>
+<figure class="chart-shell"><img src="charts/tsla_2026-11-18.png" alt="TSLA 2026-11-18 5分钟K线与0DTE dealer-GEX heatmap" loading="lazy"></figure>
+<div class="gex-intro">
+<h3>heatmap解读（0DTE，夜航社 78 档 5 分钟快照）</h3>
+<p>0DTE全天78档5分钟快照（09:30–15:55 ET）。开盘 385.43，收 383.54（-0.49%），盘前高/低 385.45/381.4。</p>
+<ul>
+<li>早盘(09:30) 现价 380.86：上方强节点 385(+7.2M), 390(+7.3M)；下方强节点 370(+3.0M), 377.5(+9.8M), 380(+6.0M)；负gamma带 375(-6.1M), 382.5(-3.7M), 392.5(-3.4M), 395(-3.5M)。</li>
+<li>节点强度大变化（首→末）：385 +7.2M→+135.4M（+1783%）；382.5 -3.7M→-76.3M（-1945%）；377.5 +9.8M→+0.1M（-99%）；390 +7.3M→+0.0M（-100%）；375 -6.1M→-0.0M（+100%）；380 +6.0M→-0.1M（-101%）。</li>
+<li>尾盘(15:45) 现价 383.90：强正节点 385(+135.4M)；负gamma带 382.5(-76.3M)。</li>
+<li>大单流（premium≥200k/size≥50/DTE≤1，共5笔）：call主动买 0.20M / 主动卖 0.53M；put主动买 0.38M / 主动卖 0.38M。call买=看多、put买=看空/对冲、put卖=看多/收保费。</li>
+</ul>
+</div>
+<div class="top5-wrap"><h3>全天最大节点 TOP5</h3><div class="top5">
+<article class="node purple">
+<span class="node-rank">① · 15:40</span>
+<strong>382.5</strong>
+<span class="metric">-216.1M</span>
+<p class="node-analysis">一、382.5（负 gamma 加速带，峰值 -216.1M）：全天变化——从 -3.7M 到 -216.1M（约216,059,591倍）；影响时段——15:40 ET 达到峰值，当时现货约 383.33；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">② · 15:45</span>
+<strong>385</strong>
+<span class="metric">+135.4M</span>
+<p class="node-analysis">二、385（正 gamma 墙/地板，峰值 +582.6M）：全天变化——从 +7.2M 到 +582.6M（约81倍）；影响时段——15:50 ET 达到峰值，当时现货约 385.23；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">③ · 13:50</span>
+<strong>387.5</strong>
+<span class="metric">-70.2M</span>
+<p class="node-analysis">三、387.5（负 gamma 加速带，峰值 -70.2M）：全天变化——由 +0.7M 翻转为 -70.2M；影响时段——13:50 ET 达到峰值，当时现货约 386.58；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node purple">
+<span class="node-rank">④ · 14:45</span>
+<strong>380</strong>
+<span class="metric">-36.6M</span>
+<p class="node-analysis">四、380（负 gamma 加速带，峰值 -36.6M）：全天变化——由 +6.0M 翻转为 -36.6M；影响时段——14:45 ET 达到峰值，当时现货约 382.70；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。</p>
+</article>
+<article class="node">
+<span class="node-rank">⑤ · 12:30</span>
+<strong>390</strong>
+<span class="metric">+32.1M</span>
+<p class="node-analysis">五、390（正 gamma 墙/地板，峰值 +32.1M）：全天变化——从 +7.3M 到 +32.1M（约4倍）；影响时段——12:30 ET 达到峰值，当时现货约 385.83；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。</p>
+</article>
+</div></div>
+<div class="method"><p>亮度口径：p99 截断 106.3M；红框 = 全天该 strike 最大 |GEX| 时刻。</p></div>
+<div class="flow-summary">
+<h3>资金流（0DTE，全天5笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）</h3>
+<div class="flow-table-wrap"><table class="flow-table">
+<thead><tr><th>时间</th><th>Strike</th><th>C/P</th><th>DTE</th><th>Fill</th><th>Bid/Ask</th><th>Side</th><th>Size</th><th>Prem</th><th>Vol</th><th>OI</th></tr></thead><tbody>
+<tr class="tr-put"><td>09:31:41</td><td><b>427.5</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$42.95</td><td>39.95 / 42.95</td><td><span class="side-pill">ASK</span></td><td>88</td><td><b>$0.378M</b></td><td>90</td><td>0</td></tr>
+<tr class="tr-put"><td>09:31:41</td><td><b>427.5</b></td><td><b style="color:#c83c43">PUT</b></td><td>0</td><td>$43.15</td><td>43.15 / 43.75</td><td><span class="side-pill">BID</span></td><td>89</td><td><b>$0.384M</b></td><td>178</td><td>0</td></tr>
+<tr class="tr-call"><td>10:21:13</td><td><b>385.0</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$2.55</td><td>2.55 / 2.56</td><td><span class="side-pill">BID</span></td><td>1000</td><td><b>$0.255M</b></td><td>40150</td><td>4260</td></tr>
+<tr class="tr-call"><td>11:35:22</td><td><b>382.5</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$1.49</td><td>1.49 / 1.50</td><td><span class="side-pill">BID</span></td><td>1854</td><td><b>$0.276M</b></td><td>38704</td><td>2936</td></tr>
+<tr class="tr-call"><td>12:24:19</td><td><b>377.5</b></td><td><b style="color:#158353">CALL</b></td><td>0</td><td>$6.80</td><td>6.45 / 6.80</td><td><span class="side-pill">ASK</span></td><td>300</td><td><b>$0.204M</b></td><td>3631</td><td>1918</td></tr>
+</tbody></table></div>
+<div class="footnote">筛选：09:30–16:00 ET ｜ premium ≥ $20万 ｜ size ≥ 50 ｜ DTE≤1 ｜ TSLA ｜ 单腿 ｜ side=B/M/A ｜ kind=order ｜ YHS /v1/flow/trades。ask=主动买（call买看多/put买看空），bid=主动卖（call卖看空/put卖看多）。mid 单独列示，不计入主动买卖。</div>
+<p class="verdict">全天5笔：call ask $0.20M / call bid $0.53M，put ask $0.38M / put bid $0.38M，mid $0.00M（不计入主动买卖）；主动资金偏空。 主动买前列：09:31 put ask 428ITM $0.38M×88; 12:24 call ask 378ITM $0.20M×300。 主动卖前列：09:31 put bid 428ITM $0.38M×89; 11:35 call bid 382ATM $0.28M×1854; 10:21 call bid 385ATM $0.26M×1000。</p>
+</div>
+</section>
+<section aria-label="分析总结">
+<div class="section-head">
+<h2>分析总结</h2>
+</div>
+<div class="summary-list">
+<article class="summary-item"><p>① ；全天 389.27–378.36，收 383.54（-0.49%）。</p></article>
+<article class="summary-item"><p>② 白点轨迹：开 385.43 → 高 389.27 → 低 378.36 → 收 383.54。</p></article>
+<article class="summary-item"><p>③ 早盘(09:30) 现价 380.86：上方强节点 385(+7.2M), 390(+7.3M)；下方强节点 370(+3.0M), 377.5(+9.8M), 380(+6.0M)；负gamma带 375(-6.1M), 382.5(-3.7M), 392.5(-3.4M), 395(-3.5M)。</p></article>
+<article class="summary-item"><p>④ 资金流：全天5笔：call ask $0.20M / call bid $0.53M，put ask $0.38M / put bid $0.38M，mid $0.00M（不计入主动买卖）；主动资金偏空。 主动买前列：09:31 put ask 428ITM $0.38M×88; 12:24 call ask 378ITM $0.20M×300。 主动卖前列：09:31 put bid 428ITM $0.38M×89; 11:35 call bid 382ATM $0.28M×1854; 10:21 call bid 385ATM $0.26M×1000。</p></article>
+</div></section>
+<p class="data-note">heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照；页面为收盘后静态快照，不实时更新行情。</p>
+<p class="data-note">收盘后的静态快照；页面不在打开时更新行情。</p>
+</article>
+<article class="day-panel" hidden id="day-1117" role="tabpanel">
 <header class="mast"><div>
 <h1>TSLA 日内报告</h1>
 <p class="date">2026年11月17日 · 周二 · 日内报告</p>
