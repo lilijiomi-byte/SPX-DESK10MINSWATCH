@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>尾盘观察桌 · SPX 0DTE 2026-11-19</title>
+<title>尾盘观察桌 · SPX 0DTE 2026-11-20</title>
 <style>
 :root{--bg:#0a1120; --panel:#0f1a30; --line:#22314f; --ink:#dbe4f0; --muted:#8a97ad;
  --gold:#ffc400; --purple:#a855f7; --blue:#4db2ff; --yellow:#ffd23f; --orange:#ff9f1c;
@@ -79,30 +79,30 @@ td:first-child, th:first-child{text-align:left;}
 <body><div class="wrap">
 <div class="hero">
 <div class="lab">CALL / PUT 主导 · 最近 600 秒带内主动权利金</div>
-<div class="big flat">均衡</div>
-<div class="sub">净占比 -7.4%（多 Call 主动权利金 − Put 主动权利金）<br>窗口 15:50–16:00（600 秒）· 现货 ±1% 带内 · 3,758 张 · 方向已知 100.0%</div>
+<div class="big put">PUT 主导</div>
+<div class="sub">净占比 -17.0%（多 Call 主动权利金 − Put 主动权利金）<br>窗口 15:20–15:30（600 秒）· 现货 ±1% 带内 · 3,938 张 · 方向已知 94.5%</div>
 <div class="note">主导 = 最近 600 秒带内多空主动权利金占比 ≥15%；结论另需 5 分钟 ATM 流同向（见 Playbook）。</div>
 </div>
 <header>
 <h1>尾盘观察桌 · SPX 0DTE<span class="tag">仅观察 · 非建议</span></h1>
-<div class="upd">2026-11-19（周四） · 生成 16:00:18 ET · 距收盘 0 分钟</div>
-<div class="spot">SPX 7175.39 <small>heatmap live 矩阵现货 · 15:59:11 ET</small></div>
-<div class="upd">Flow 最新成交 15:59:58 ET · 方向已知占比 93.8%（当日窗内）· flow 覆盖完整性未测</div>
+<div class="upd">2026-11-20（周五） · 生成 15:30:29 ET · 距收盘 29 分钟</div>
+<div class="spot">SPX 6938.74 <small>heatmap live 矩阵现货 · 15:30:26 ET</small></div>
+<div class="upd">Flow 最新成交 15:30:12 ET · 方向已知占比 61.1%（当日窗内）· flow 覆盖完整性未测</div>
 </header>
-<div class='warn'>GEX：live 矩阵无 2026-11-19 到期日（首到期 2026-11-20）</div>
+
 <section>
 <h2>Playbook · 成交流倾向（flow-only）<small>仅观察 · 非建议</small></h2>
 <div class="verdict flat">中性</div>
-<div class="verdict-sub">strike_bias 占比 -7.4% 未达 ±15% 阈值</div>
+<div class="verdict-sub">strike_bias PUT（-17.0%）但 atm_flow_5m 为 无方向（-1.5%），不同向</div>
 <div class="ev">
-<div class="row"><span class="l">strike_bias（40 分）</span><span class="r">-7.4%（阈值 ±15%）· 3,758 张</span></div>
-<div class="row"><span class="l">atm_flow_5m（0 分，仅展示）</span><span class="r">Call 占比差 -81.8%（阈值 ±10%）· 1,207 张</span></div>
-<div class="row"><span class="l">skew_rr25（10 分，仅参考）</span><span class="r">未算出：链 IV 暂无（atm-chains 未返回有效链）</span></div>
+<div class="row"><span class="l">strike_bias（40 分）</span><span class="r">-17.0%（阈值 ±15%）· 3,938 张</span></div>
+<div class="row"><span class="l">atm_flow_5m（0 分，仅展示）</span><span class="r">Call 占比差 -1.5%（阈值 ±10%）· 1,974 张</span></div>
+<div class="row"><span class="l">skew_rr25（10 分，仅参考）</span><span class="r">未算出：链数据形状未识别（首项 keys：[&#x27;option_symbol&#x27;, &#x27;date&#x27;, &#x27;open_usd&#x27;, &#x27;high_usd&#x27;, &#x27;low_usd&#x27;, &#x27;close_usd&#x27;, &#x27;bid_usd&#x27;, &#x27;ask_usd&#x27;, &#x27;iv&#x27;, &#x27;volume&#x27;, &#x27;open_interest&#x27;, &#x27;trades&#x27;]）</span></div>
 <div class="row"><span class="l">charm_hedge_flow（20 分）</span><span class="r">弃权：v1 未计算 Charm（需链 IV + 前日 OI）</span></div>
 <div class="row"><span class="l">key_level（15 分）</span><span class="r">弃权：需实时现货确认节点穿越，live 矩阵 5 分钟一新，未达标准</span></div>
 <div class="row"><span class="l">breakout_integrity（15 分）</span><span class="r">弃权：需实时现货确认穿越 ≥3 点后打回</span></div>
 <div class="row"><span class="l">rejection_reversal（15+10+10 分）</span><span class="r">弃权：仅 15:50–16:00 且需 180 秒内实时现货行为</span></div>
-<div class="row"><span class="l">gex_regime（15 分）</span><span class="r">不选边，仅展示状态：—</span></div>
+<div class="row"><span class="l">gex_regime（15 分）</span><span class="r">不选边，仅展示状态：正 Gamma（总净 $11863.61M）</span></div>
 </div>
 <p class="muted" style="font-size:12px;margin-top:8px">裁决（用户 11-18 晚定，选项 A 规则 ①）：
 strike_bias 达标且 atm_flow_5m 同向 → CALL/PUT，否则中性；
@@ -110,15 +110,33 @@ skew_rr25 只作 supporting，不能单独定方向。</p>
 </section>
 <section>
 <h2>Feed · 成交异动<small>YHS flow · 近实时（11-17 实测中位 −1.1 秒）</small></h2>
-<div class='sig'><span class='t'>15:58:06 7180C 大单主动买</span> · 逐笔 · 100 张 · $32.0K · 价 $3.20 · 主动买 100%</div><div class='sig'><span class='t'>15:56:56 7180P 大单主动买</span> · 逐笔 · 238 张 · $29.8K · 价 $1.25 · 主动买 100%</div><div class='sig'><span class='t'>15:55:00 7190P 大单主动买</span> · 逐笔 · 62 张 · $20.0K · 价 $3.80 · 主动买 100%</div><div class='sig'><span class='t'>15:54:10 7200C 大单主动买</span> · 逐笔 · 85 张 · $25.0K · 价 $2.95 · 主动买 100%</div><div class='sig'><span class='t'>15:52:55 7200C 大单主动买</span> · 逐笔 · 80 张 · $23.9K · 价 $3.10 · 主动买 100%</div><div class='sig'><span class='t'>15:52:30 7190P 大单主动买</span> · 逐笔 · 60 张 · $23.8K · 价 $4.00 · 主动买 100%</div><div class='sig'><span class='t'>15:51:11 7170P 大单主动买</span> · 逐笔 · 540 张 · $21.6K · 价 $0.40 · 主动买 100%</div><div class='sig'><span class='t'>15:50:23 7200C 大单主动买</span> · 逐笔 · 66 张 · $26.4K · 价 $4.00 · 主动买 100%</div><div class='sig'><span class='t'>15:37:37 7210C 大单主动买</span> · 逐笔 · 96 张 · $25.4K · 价 $2.65 · 主动买 100%</div><div class='sig'><span class='t'>15:35:04 7200C 大单主动买</span> · 逐笔 · 51 张 · $20.4K · 价 $4.00 · 主动买 100%</div><div class='sig'><span class='t'>15:31:35 7200C 大单主动买</span> · 逐笔 · 65 张 · $26.0K · 价 $4.00 · 主动买 100%</div>
+<div class='sig'><span class='t'>15:30:02 6905P 大单主动买</span> · 逐笔 · 57 张 · $22.8K · 价 $4.00 · 主动买 100%</div>
 </section>
 <section>
 <h2>Strike Leader · 行权价领跑<small>按当日权利金排序</small></h2>
-<table><tr><th>行权价</th><th>5分钟权利金</th><th>当日权利金</th><th>5分钟净主动</th><th>最新成交价</th><th>距现货</th></tr><tr><td><b>7200C</b></td><td>$0</td><td>$2.56M</td><td class=''>$0</td><td>$2.95</td><td>+25</td></tr><tr><td><b>7180C</b></td><td>$32.0K</td><td>$1.89M</td><td class='gold'>$32.0K</td><td>$3.20</td><td>+5</td></tr><tr><td><b>7190P</b></td><td>$315.2K</td><td>$1.76M</td><td class='purp'>$-267.4K</td><td>$10.90</td><td>+15</td></tr><tr><td><b>7190C</b></td><td>$0</td><td>$1.67M</td><td class=''>$0</td><td>$9.00</td><td>+15</td></tr><tr><td><b>7180P</b></td><td>$29.8K</td><td>$1.32M</td><td class='purp'>$-29.8K</td><td>$1.25</td><td>+5</td></tr><tr><td><b>7195C</b></td><td>$0</td><td>$1.03M</td><td class=''>$0</td><td>$4.80</td><td>+20</td></tr><tr><td><b>7200P</b></td><td>$236.1K</td><td>$989.2K</td><td class='purp'>$-39.8K</td><td>$23.20</td><td>+25</td></tr><tr><td><b>7500P</b></td><td>$0</td><td>$850.5K</td><td class=''>$0</td><td>$315.00</td><td>+325</td></tr><tr><td><b>7185C</b></td><td>$0</td><td>$794.8K</td><td class=''>$0</td><td>$12.40</td><td>+10</td></tr><tr><td><b>7250P</b></td><td>$0</td><td>$688.5K</td><td class=''>$0</td><td>$59.00</td><td>+75</td></tr></table><p class='muted' style='font-size:12px;margin-top:6px'>窗口 15:30–16:00；净主动 = 多头权利金 − 空头权利金（call 买/put 卖为多，put 买/call 卖为空）；共 37 个行权价有成交。</p>
+<table><tr><th>行权价</th><th>5分钟权利金</th><th>当日权利金</th><th>5分钟净主动</th><th>最新成交价</th><th>距现货</th></tr><tr><td><b>6960P</b></td><td>$82.7K</td><td>$1.12M</td><td class='gold'>$82.7K</td><td>$22.50</td><td>+21</td></tr><tr><td><b>6950P</b></td><td>$215.9K</td><td>$978.8K</td><td class='purp'>$-126.8K</td><td>$19.60</td><td>+11</td></tr><tr><td><b>6970P</b></td><td>$32.9K</td><td>$653.0K</td><td class='purp'>$-32.9K</td><td>$29.90</td><td>+31</td></tr><tr><td><b>6960C</b></td><td>$0</td><td>$602.0K</td><td class=''>$0</td><td>$11.30</td><td>+21</td></tr><tr><td><b>6950C</b></td><td>$198.9K</td><td>$559.7K</td><td class='purp'>$-77.3K</td><td>$11.80</td><td>+11</td></tr><tr><td><b>6955P</b></td><td>$69.5K</td><td>$552.7K</td><td class='purp'>$-69.5K</td><td>$22.50</td><td>+16</td></tr><tr><td><b>6875C</b></td><td>$0</td><td>$540.8K</td><td class=''>$0</td><td>$78.00</td><td>-64</td></tr><tr><td><b>6940P</b></td><td>$313.6K</td><td>$494.2K</td><td class='purp'>$-101.9K</td><td>$15.10</td><td>+1</td></tr><tr><td><b>6955C</b></td><td>$105.9K</td><td>$430.5K</td><td class='purp'>$-105.9K</td><td>$9.70</td><td>+16</td></tr><tr><td><b>7000C</b></td><td>$0</td><td>$308.8K</td><td class=''>$0</td><td>$2.50</td><td>+61</td></tr></table><p class='muted' style='font-size:12px;margin-top:6px'>窗口 15:30–15:30；净主动 = 多头权利金 − 空头权利金（call 买/put 卖为多，put 买/call 卖为空）；共 32 个行权价有成交。</p>
 </section>
-<section class="grey">
-<h2>GEX · Gamma 敞口<small>不可用</small></h2>
-<p class='muted'>GEX 不可用：无有效 GEX 数据。</p>
+<section class="">
+<h2>GEX · Gamma 敞口<small>heatmap live 全矩阵</small></h2>
+
+<div class='kv'>
+<span>King <b class='gold'>6925（$3302.76M）</b></span>
+<span>最负节点 <b class='purp'>6965（$-524.19M）</b></span>
+<span>总净 GEX <b>$11863.61M</b></span>
+<span>状态 <b>正 Gamma</b></span>
+<span>覆盖率 <b>87%</b></span>
+</div>
+<div class='kv' style='margin-top:4px'>
+<span>Flip <b>6905.884333312259</b></span>
+<span>Call 墙 <b>7000</b></span>
+<span>Put 墙 <b>6940</b></span>
+<span class='muted'>dealer 快照 15:30</span>
+</div>
+<div class='ladder' style='margin-top:8px'><div class='lrow'><span class='st'>6975</span><span class='bar'><i style='width:24%;background:var(--gold)'></i></span><span class='v'>$805.97M</span></div><div class='lrow'><span class='st'>6970</span><span class='bar'><i style='width:8%;background:var(--gold)'></i></span><span class='v'>$251.36M</span></div><div class='lrow'><span class='st'>6965 最负</span><span class='bar'><i style='width:16%;background:var(--purple)'></i></span><span class='v'>$-524.19M</span></div><div class='lrow'><span class='st'>6960</span><span class='bar'><i style='width:13%;background:var(--gold)'></i></span><span class='v'>$423.89M</span></div><div class='lrow'><span class='st'>6955</span><span class='bar'><i style='width:13%;background:var(--gold)'></i></span><span class='v'>$422.20M</span></div><div class='lrow'><span class='st'>6950</span><span class='bar'><i style='width:47%;background:var(--gold)'></i></span><span class='v'>$1568.16M</span></div><div class='lrow'><span class='st'>6945</span><span class='bar'><i style='width:38%;background:var(--gold)'></i></span><span class='v'>$1254.73M</span></div><div class='lrow'><span class='st'>6940</span><span class='bar'><i style='width:28%;background:var(--gold)'></i></span><span class='v'>$937.00M</span></div><div class='lrow spotrow'><span class='st'>现价 6938.74</span><span class='bar'></span><span class='v muted'>帧 15:30</span></div><div class='lrow'><span class='st'>6935</span><span class='bar'><i style='width:10%;background:var(--gold)'></i></span><span class='v'>$325.93M</span></div><div class='lrow'><span class='st'>6930</span><span class='bar'><i style='width:19%;background:var(--gold)'></i></span><span class='v'>$625.89M</span></div><div class='lrow king'><span class='st'>6925 👑King</span><span class='bar'><i style='width:100%;background:var(--gold)'></i></span><span class='v'>$3302.76M</span></div><div class='lrow'><span class='st'>6920</span><span class='bar'><i style='width:9%;background:var(--gold)'></i></span><span class='v'>$285.96M</span></div><div class='lrow'><span class='st'>6915</span><span class='bar'><i style='width:26%;background:var(--gold)'></i></span><span class='v'>$848.64M</span></div><div class='lrow'><span class='st'>6910</span><span class='bar'><i style='width:16%;background:var(--gold)'></i></span><span class='v'>$541.85M</span></div><div class='lrow'><span class='st'>6905</span><span class='bar'><i style='width:2%;background:var(--purple)'></i></span><span class='v'>$-57.53M</span></div><div class='lrow'><span class='st'>6900</span><span class='bar'><i style='width:18%;background:var(--gold)'></i></span><span class='v'>$581.89M</span></div></div>
+<p class='muted' style='font-size:12px;margin-top:6px'>
+GEX 来源：heatmap live 全矩阵 · 帧时间 15:30:26 ET
+（金色正 Gamma、紫色负 Gamma；符号约定"做市商持 Call 多头、Put 空头"为假设）
+dealer 墙/flip 为快照口径，与 heatmap 帧逐 strike 净值口径不同，两路数字不直接可比。</p>
 </section>
 <section>
 <h2>Junk-man 参考<small>只作参考，不投票，不计分</small></h2>
@@ -151,7 +169,7 @@ A+ 纪律无新帖；他本人 0 次提"跳板结构"。</p>
 （关键词搜索）；多张教学图为缩略图未全读；11-10 长帖第 4 部分未见正文。</p>
 </div>
 <h3>五种高胜率结构 A–D（2026-11-01 教学块，round 12）</h3>
-<div class='chk'><span class='nm'>A｜Gamma 前移突破</span><span class='vd muted'>未确认</span><ul><li><span class='m'>—</span>现价距当日高点 ≤0.5 ATR</li><li><span class='m'>—</span>30 分钟上方正 GEX 占比 +&gt;5pp 且下方 −&gt;5pp</li></ul></div><div class='chk'><span class='nm'>B｜目标节点+负 Gamma 加速带</span><span class='vd muted'>未确认</span><ul><li><span class='m'>—</span>上方 2–10 ATR 内强正节点占比 ≥20%</li><li><span class='m'>—</span>4 ATR 内负节点占比 ≤−10%</li></ul></div><div class='chk'><span class='nm'>C｜King 在前+负 Gamma 扩张</span><span class='vd muted'>未确认</span><ul><li><span class='m'>—</span>King 为正且在现价上方 1 ATR 内（King 未知；ATR 未接入）</li><li><span class='m'>—</span>30 分钟上方负 GEX +&gt;5pp</li></ul></div><div class='chk'><span class='nm'>D｜负 Gamma 动量加速</span><span class='vd muted'>未确认</span><ul><li><span class='m'>—</span>30 分钟已涨 &gt;1.5 ATR</li><li><span class='m'>—</span>King 为负且在上方 &gt;1 ATR</li><li><span class='m'>—</span>近价净 gamma 30 分钟 −&gt;10pp</li></ul></div>
+<div class='chk'><span class='nm'>A｜Gamma 前移突破</span><span class='vd red'>不成立</span><ul><li><span class='m'>—</span>现价距当日高点 ≤0.5 ATR</li><li><span class='m'>✗</span>30 分钟上方正 GEX 占比 +&gt;5pp 且下方 −&gt;5pp</li></ul></div><div class='chk'><span class='nm'>B｜目标节点+负 Gamma 加速带</span><span class='vd muted'>未确认</span><ul><li><span class='m'>—</span>上方 2–10 ATR 内强正节点占比 ≥20%</li><li><span class='m'>—</span>4 ATR 内负节点占比 ≤−10%</li></ul></div><div class='chk'><span class='nm'>C｜King 在前+负 Gamma 扩张</span><span class='vd red'>不成立</span><ul><li><span class='m'>—</span>King 为正且在现价上方 1 ATR 内（King 6925，+3303M，距现价 -14 点；ATR 未接入）</li><li><span class='m'>✗</span>30 分钟上方负 GEX +&gt;5pp</li></ul></div><div class='chk'><span class='nm'>D｜负 Gamma 动量加速</span><span class='vd red'>不成立</span><ul><li><span class='m'>—</span>30 分钟已涨 &gt;1.5 ATR</li><li><span class='m'>—</span>King 为负且在上方 &gt;1 ATR</li><li><span class='m'>✗</span>近价净 gamma 30 分钟 −&gt;10pp</li></ul></div>
 <p class="muted" style="font-size:13px;line-height:1.8">
 E｜开盘重心前移为晨间结构（9:35–10:30），不在 15:30–16:00 窗口内，只作背景，不上桌。
 他列的是五个（A–E），用户同日分享的是六个（A–F），是否同一套、F 是否存在未核实，不混用。
@@ -168,11 +186,11 @@ ATR 未接入（YHS 1 分钟 K 线新鲜度待核实），带 ATR 的项标 —�
 </section>
 <div class="foot">
 <p>数据源：YHS /v1/flow/trades（SPXW 0DTE）· heatmap live 全矩阵
-（—）· dealer-gex live 快照 · atm-chains 链 IV。
+（heatmap live 全矩阵）· dealer-gex live 快照 · atm-chains 链 IV。
 只读，无下单、无持久化行情、无回测。</p>
 <p>局限：无实时买卖盘（报价规则判方向不可用；方向来自 YHS side 字段）；
 flow 覆盖完整性未测；GEX live 矩阵 5 分钟一新（文档口径），新鲜度待 11-19 盘中实测确认；
 链 IV 形状待首次 live 运行核实；Feed 价格过滤用最新成交价代理卖价（待用户确认）。</p>
-<p>生成时间 16:00:18 ET · v1 · 尾盘观察桌（YHS-only 降级版）</p>
+<p>生成时间 15:30:29 ET · v1 · 尾盘观察桌（YHS-only 降级版）</p>
 </div>
 </div></body></html>
