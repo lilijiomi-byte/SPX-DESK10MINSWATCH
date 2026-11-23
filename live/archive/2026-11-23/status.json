@@ -1,14 +1,14 @@
 {
- "updated_et": "2026-11-23 15:50 ET",
+ "updated_et": "2026-11-23 15:55 ET",
  "alert": null,
  "watch": null,
  "spot": 7258.83,
- "total_gex_m": 93.2,
- "flip": 7238.1,
+ "total_gex_m": 113.2,
+ "flip": 7243.2,
  "call_wall": 7250,
- "put_wall": 7235,
+ "put_wall": 7240,
  "king_strike": 7250,
- "king_gex_m": 44.1,
+ "king_gex_m": 85.5,
  "regime": "正 Gamma",
  "targets": {
   "up": 7265,
@@ -378,19 +378,19 @@
    },
    {
     "slot": "15:55",
-    "bull": 337070,
-    "bear": 234640
+    "bull": 585690,
+    "bear": 1016190
    }
   ],
-  "bull_total": 26280460,
-  "bear_total": 24979600,
-  "net": 1300860
+  "bull_total": 26529080,
+  "bear_total": 25761150,
+  "net": 767930
  },
  "data_status": {
-  "frames": 77,
-  "last_frame_et": "15:50",
+  "frames": 78,
+  "last_frame_et": "15:55",
   "degraded": true,
-  "closed": false
+  "closed": true
  },
  "levels": [
   {
@@ -406,8 +406,8 @@
   },
   {
    "name": "VWAP",
-   "value": 7248.05,
-   "dist": -10.8,
+   "value": 7241.8,
+   "dist": -17.0,
    "side": "下方",
    "state": "crossed_up",
    "tier": "primary",
@@ -424,14 +424,16 @@
     "↓穿过",
     "↑上破",
     "↓穿过",
-    "↑被拒"
+    "↑被拒",
+    "↑上破",
+    "↓撑住"
    ],
-   "flip_role": "支撑变压力"
+   "flip_role": "压力变支撑"
   },
   {
    "name": "EMA250",
-   "value": 7213.61,
-   "dist": -45.2,
+   "value": 7213.85,
+   "dist": -45.0,
    "side": "下方",
    "state": "normal",
    "tier": "primary",
@@ -693,23 +695,23 @@
    "strike": 7245,
    "gex_m": 438.3,
    "dist": -13.8,
-   "roles": []
+   "roles": [
+    "Flip 线"
+   ]
   },
   {
    "strike": 7240,
    "gex_m": 78.1,
    "dist": -18.8,
    "roles": [
-    "Flip 线"
+    "Put Wall"
    ]
   },
   {
    "strike": 7235,
    "gex_m": -1.5,
    "dist": -23.8,
-   "roles": [
-    "Put Wall"
-   ]
+   "roles": []
   }
  ],
  "ladder_max_m": 4148.4,
@@ -717,8 +719,8 @@
   "spot": 7258.83,
   "king": 7255,
   "king_dist": -3.8,
-  "flip": 7238.1,
-  "invalidation_text": "跌回 7238.1 下方失效"
+  "flip": 7243.2,
+  "invalidation_text": "跌回 7243.2 下方失效"
  },
  "range": {
   "brief": {
@@ -743,12 +745,12 @@
   }
  },
  "flow": {
-  "as_of": "15:55 ET",
+  "as_of": "15:57 ET",
   "bull": {
-   "premium": 769240,
+   "premium": 967390,
    "count": 7,
-   "max_premium": 147070,
-   "max_strike": 7260,
+   "max_premium": 248620,
+   "max_strike": 7280,
    "top": [
     [
      7230,
@@ -756,23 +758,28 @@
      337070
     ],
     [
+     7280,
+     "P",
+     248620
+    ],
+    [
      7235,
      "P",
      234630
-    ],
-    [
-     7260,
-     "P",
-     147070
     ]
    ]
   },
   "bear": {
-   "premium": 602160,
-   "count": 7,
-   "max_premium": 144900,
-   "max_strike": 7260,
+   "premium": 1383710,
+   "count": 8,
+   "max_premium": 781550,
+   "max_strike": 7280,
    "top": [
+    [
+     7280,
+     "P",
+     781550
+    ],
     [
      7250,
      "P",
@@ -782,22 +789,17 @@
      7240,
      "P",
      165580
-    ],
-    [
-     7260,
-     "P",
-     144900
     ]
    ]
   },
   "level": "mid",
   "signed5m": {
-   "bull_prem": 718770,
-   "bear_prem": 536660,
-   "bull_n": 6,
-   "bear_n": 6,
+   "bull_prem": 585690,
+   "bear_prem": 1016190,
+   "bull_n": 4,
+   "bear_n": 4,
    "call_prem": 0,
-   "put_prem": 1255430
+   "put_prem": 1601880
   }
  },
  "surge": null,
@@ -841,7 +843,7 @@
   "below_pos_d": 590,
   "neg_above_d": 1,
   "neg_below_d": 0,
-  "flip_dist": 20.7,
+  "flip_dist": 15.6,
   "read": "上方带 7260–7270 合计 -862M 衰减；现价带 7250–7265 合计 +1.2B 垒厚；增厚最大 7250 +593M、7265 +428M；衰减最大 7270 -681M、7285 -346M；现价上方拆带、下方垒承接；正 GEX 重心基本不动（7257）；现价被正曝光包覆且在增厚，波动被对冲吸收。"
  },
  "frame_quality": {
@@ -849,6 +851,18 @@
   "degraded": true
  },
  "changes": [
+  {
+   "t": "15:50 ET",
+   "text": "👀 注意（15:50+15:55 两窗）：近10分钟主动成交单边集中，净 $1,203,275（占比63%）｜put ask $2,903,710＋call bid $74,625｜现价 7258.8，总Gamma +113.2M，Flip 7243.2（现价在Flip上方），King 7250｜未来5–10分钟值得看，结合 gamma 结构判断，不是方向信号"
+  },
+  {
+   "t": "15:50 ET",
+   "text": "🧲 King@7250 GEX +44M→+85M（+94%）"
+  },
+  {
+   "t": "15:50 ET",
+   "text": "🧱 Put Wall 7235→7240 上移"
+  },
   {
    "t": "15:50 ET",
    "text": "🧲 上方节点增厚 7265 +428M（10分钟片 15:40–15:50）"
