@@ -1,0 +1,212 @@
+{
+ "ticker": "TSLA",
+ "date": "2026-11-27",
+ "mmdd": "1127",
+ "weekday": "周五",
+ "date_str": "2026年11月27日 · 周五 · 日内报告",
+ "tape": {
+  "close": 398.85,
+  "chg_pct": 1.92,
+  "open": 391.34,
+  "high": 401.85,
+  "low": 384.66
+ },
+ "event": {
+  "is_event": false,
+  "tag": "非事件日",
+  "detail": "",
+  "bias": "利多"
+ },
+ "junkman": {
+  "status": "pending",
+  "meta": "",
+  "full_text": ""
+ },
+ "chart": {
+  "rel": "charts/tsla_2026-11-27.png",
+  "alt": "TSLA 2026-11-27 5分钟K线与0DTE dealer-GEX heatmap",
+  "caption": "0DTE，夜航社 42 档 5 分钟快照；白点为每档现货位置"
+ },
+ "chart_title": "5 分钟 K 线 × 0DTE heatmap",
+ "heatmap_title": "heatmap解读（0DTE，夜航社 42 档 5 分钟快照）",
+ "heatmap_intro": "0DTE全天42档5分钟快照（09:30–12:55 ET）。开盘 391.34，收 398.85（+1.92%），盘前高/低 391.56/385.09。",
+ "key_reads": [
+  "早盘(09:30) 现价 386.98：上方强节点 392.5(+5.1M), 395(+4.1M), 397.5(+3.4M), 400(+9.6M)；下方强节点 382.5(+5.4M)；负gamma带 380(-10.1M), 390(-7.9M)。",
+  "节点强度大变化（首→末）：400 +9.6M→+152.4M（+1489%）；397.5 +3.4M→+35.1M（+922%）；380 -10.1M→-1.6M（+84%）；382.5 +5.4M→+0.0M（-100%）；402.5 +0.8M→-4.4M（-669%）；392.5 +5.1M→+0.0M（-99%）。",
+  "尾盘(12:55) 现价 399.99：强正节点 400(+152.4M)；负gamma带 390(-4.5M), 402.5(-4.4M), 405(-5.2M)。",
+  "大单流（premium≥200k/size≥50/DTE≤1，共5笔）：call主动买 2.63M / 主动卖 0.00M；put主动买 0.00M / 主动卖 0.28M。call买=看多、put买=看空/对冲、put卖=看多/收保费。"
+ ],
+ "top5": [
+  {
+   "rank": 1,
+   "strike": 400,
+   "gex_m": 152.4,
+   "et": "12:55",
+   "pos": true,
+   "analysis": "一、400（正 gamma 墙/地板，峰值 +152.4M）：全天变化——从 +9.6M 到 +152.4M（约16倍）；影响时段——12:55 ET 达到峰值，当时现货约 399.99；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。"
+  },
+  {
+   "rank": 2,
+   "strike": 397.5,
+   "gex_m": 119.3,
+   "et": "12:45",
+   "pos": true,
+   "analysis": "二、397.5（正 gamma 墙/地板，峰值 +119.3M）：全天变化——从 +3.4M 到 +119.3M（约35倍）；影响时段——12:45 ET 达到峰值，当时现货约 398.43；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。"
+  },
+  {
+   "rank": 3,
+   "strike": 395,
+   "gex_m": 79.7,
+   "et": "12:45",
+   "pos": true,
+   "analysis": "三、395（正 gamma 墙/地板，峰值 +79.7M）：全天变化——从 +4.1M 到 +79.7M（约19倍）；影响时段——12:45 ET 达到峰值，当时现货约 398.43；影响方式（初稿）——价格在其附近获得支撑/减速，以实际 K 线为准。"
+  },
+  {
+   "rank": 4,
+   "strike": 405,
+   "gex_m": -34.7,
+   "et": "11:55",
+   "pos": false,
+   "analysis": "四、405（负 gamma 加速带，峰值 -34.7M）：全天变化——从 -1.3M 到 -34.7M（约34,682,379倍）；影响时段——11:55 ET 达到峰值，当时现货约 399.72；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。"
+  },
+  {
+   "rank": 5,
+   "strike": 402.5,
+   "gex_m": -21.6,
+   "et": "12:20",
+   "pos": false,
+   "analysis": "五、402.5（负 gamma 加速带，峰值 -21.6M）：全天变化——由 +0.8M 翻转为 -21.6M；影响时段——12:20 ET 达到峰值，当时现货约 399.38；影响方式（初稿）——价格进入后波动放大、加速通过，以实际 K 线为准。"
+  }
+ ],
+ "top5_method": "亮度口径：p99 截断 86.5M；红框 = 全天该 strike 最大 |GEX| 时刻。",
+ "flow_title": "资金流（0DTE，全天5笔；premium≥$20万｜size≥50｜DTE≤1｜side=B/M/A）",
+ "flow_items": {
+  "09:30": {
+   "call_ask": 2381625,
+   "call_bid": 0,
+   "call_mid": 0,
+   "put_ask": 0,
+   "put_bid": 277200,
+   "put_mid": 0,
+   "n": 4
+  },
+  "11:30": {
+   "call_ask": 251790,
+   "call_bid": 0,
+   "call_mid": 0,
+   "put_ask": 0,
+   "put_bid": 0,
+   "put_mid": 0,
+   "n": 1
+  }
+ },
+ "flow_trade_list": [
+  {
+   "t": "09:39:52",
+   "strike": 400.0,
+   "right": "Put",
+   "dte": 0,
+   "fill": 11.55,
+   "bid": 11.55,
+   "ask": 11.9,
+   "side": "BID",
+   "size": 240,
+   "prem_m": 0.277,
+   "net_m": null,
+   "vol": 344,
+   "oi": 886,
+   "spot": 388.9,
+   "sweep": false,
+   "moneyness": "ITM"
+  },
+  {
+   "t": "09:54:18",
+   "strike": 250.0,
+   "right": "Call",
+   "dte": 0,
+   "fill": 143.25,
+   "bid": 141.1,
+   "ask": 143.25,
+   "side": "ASK",
+   "size": 109,
+   "prem_m": 1.561,
+   "net_m": null,
+   "vol": 124,
+   "oi": 191,
+   "spot": 393.4,
+   "sweep": false,
+   "moneyness": "ITM"
+  },
+  {
+   "t": "09:57:57",
+   "strike": 382.5,
+   "right": "Call",
+   "dte": 0,
+   "fill": 10.25,
+   "bid": 9.6,
+   "ask": 10.25,
+   "side": "ASK",
+   "size": 228,
+   "prem_m": 0.234,
+   "net_m": null,
+   "vol": 1097,
+   "oi": 6041,
+   "spot": 391.8,
+   "sweep": false,
+   "moneyness": "ITM"
+  },
+  {
+   "t": "09:57:57",
+   "strike": 390.0,
+   "right": "Call",
+   "dte": 0,
+   "fill": 4.25,
+   "bid": 4.2,
+   "ask": 4.25,
+   "side": "ASK",
+   "size": 1380,
+   "prem_m": 0.587,
+   "net_m": null,
+   "vol": 18679,
+   "oi": 9731,
+   "spot": 391.8,
+   "sweep": false,
+   "moneyness": "ITM"
+  },
+  {
+   "t": "11:55:36",
+   "strike": 390.0,
+   "right": "Call",
+   "dte": 0,
+   "fill": 10.9,
+   "bid": 10.4,
+   "ask": 10.9,
+   "side": "ASK",
+   "size": 231,
+   "prem_m": 0.252,
+   "net_m": null,
+   "vol": 24951,
+   "oi": 9731,
+   "spot": 400.6,
+   "sweep": true,
+   "moneyness": "ITM"
+  }
+ ],
+ "flow_verdict": "全天5笔：call ask $2.63M / call bid $0.00M，put ask $0.00M / put bid $0.28M，mid $0.00M（不计入主动买卖）；主动资金偏多。 主动买前列：09:54 call ask 250ITM $1.56M×109; 09:57 call ask 390ATM $0.59M×1380; 11:55 call ask 390ITM $0.25M×231。 主动卖前列：09:39 put bid 400ITM $0.28M×240。",
+ "summary": [
+  "① ；全天 401.85–384.66，收 398.85（+1.92%）。",
+  "② 白点轨迹：开 391.34 → 高 401.85 → 低 384.66 → 收 398.85。",
+  "③ 早盘(09:30) 现价 386.98：上方强节点 392.5(+5.1M), 395(+4.1M), 397.5(+3.4M), 400(+9.6M)；下方强节点 382.5(+5.4M)；负gamma带 380(-10.1M), 390(-7.9M)。",
+  "④ 资金流：全天5笔：call ask $2.63M / call bid $0.00M，put ask $0.00M / put bid $0.28M，mid $0.00M（不计入主动买卖）；主动资金偏多。 主动买前列：09:54 call ask 250ITM $1.56M×109; 09:57 call ask 390ATM $0.59M×1380; 11:55 call ask 390ITM $0.25M×231。 主动卖前列：09:39 put bid 400ITM $0.28M×240。"
+ ],
+ "summary_title": "分析总结",
+ "summary_sub": "",
+ "method_note": "heatmap 亮度=平方根连续渐变（p99 裁剪）；K线=Yahoo Finance 5分钟；heatmap=夜航社 dealer-GEX 5分钟快照；页面为收盘后静态快照，不实时更新行情。",
+ "data_note": "收盘后的静态快照；页面不在打开时更新行情。",
+ "gex": {
+  "status": "pending",
+  "meta": "",
+  "full_text": ""
+ },
+ "chart_file": "charts/tsla_2026-11-27.png"
+}
